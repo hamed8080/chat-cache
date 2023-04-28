@@ -30,7 +30,7 @@ from the community.
 
 Before contributing code or documentation to ChatCache,
 we encourage you to first open a 
-[GitHub issue](https://github.com/hamed8080/chatcache/issues/new/choose) 
+[GitHub issue](https://github.com/hamed8080/chat-cache/issues/new/choose) 
 for a bug report or feature request.
 This will allow us to provide feedback on the proposed change.
 However, this is not a requirement. If your contribution is small in scope,
@@ -55,7 +55,7 @@ installed.
 1. Checkout this repository using:
 
     ```bash
-    git clone git@github.com:hamed8080/chatcache.git
+    git clone git@github.com:hamed8080/chat-cache.git
     ```
 
 2. Navigate to the root of your cloned repository with:

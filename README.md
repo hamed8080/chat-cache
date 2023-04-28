@@ -1,7 +1,8 @@
 # ChatCache
-ChatCache manage and save all caches of important things such as conversations, messages and so on.
 
-<img src="https://github.com/hamed8080/chatcache/raw/main/images/icon.png"  width="164" height="164">
+<h5>ChatCache manage and save all caches of important things such as conversations, messages and so on.</h5>
+
+<img src="https://github.com/hamed8080/chat-cache/raw/main/images/icon.png"  width="164" height="164">
 
 ## Features
 
@@ -15,7 +16,7 @@ ChatCache manage and save all caches of important things such as conversations, 
 Add in `Package.swift` or directly in `Xcode Project dependencies` section:
 
 ```swift
-.package(url: "https://github.com/hamed8080/chatcache.git", .upToNextMinor(from: "1.0.0")),
+.package(url: "https://github.com/hamed8080/chat-cache.git", .upToNextMinor(from: "1.0.0")),
 ```
 
 #### [CocoaPods](https://cocoapods.org) 
@@ -27,9 +28,8 @@ pod "chat-cache", :git => 'http://pubgi.fanapsoft.ir/chat/ios/chat-cache.git', :
 ```
 <br/>
 
-## [Documentation](https://hamed8080.gitlab.io/chat-cache/chatcache/documentation/chatcache/)
-For more information about how to use ChatCache visit [Documentation](https://hamed8080.gitlab.io/chat-cache/chatcache/documentation/chatcache/) 
-<br/>
+## [Documentation](https://hamed8080.github.io/chat-cache/chatcache/documentation/chatcache/)
+For more information about how to use ChatCache visit [Documentation](https://hamed8080.github.io/chat-cache/documentation/chatcache/) 
 <br/>
 
 ## Contributing to ChatCache

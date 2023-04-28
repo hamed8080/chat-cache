@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "4509A2AE-07C4-454A-A6AA-D5538619090B",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ChatCacheTests",
+        "name" : "ChatCacheTests"
+      }
+    }
+  ],
+  "version" : 1
+}
