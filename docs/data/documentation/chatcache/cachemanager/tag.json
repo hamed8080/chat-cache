@@ -1,0 +1,242 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/ChatCache\/documentation\/ChatCache",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/tag"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:9ChatCache0B7ManagerC3tagAA0b3TagC0Cvp",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "let"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "tag"
+      },
+      {
+        "kind" : "text",
+        "text" : ": "
+      },
+      {
+        "kind" : "typeIdentifier",
+        "preciseIdentifier" : "s:9ChatCache0B10TagManagerC",
+        "text" : "CacheTagManager"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "ChatCache"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Instance Property",
+    "symbolKind" : "property",
+    "title" : "tag"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "let"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "tag"
+            },
+            {
+              "kind" : "text",
+              "text" : ": "
+            },
+            {
+              "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheTagManager",
+              "kind" : "typeIdentifier",
+              "preciseIdentifier" : "s:9ChatCache0B10TagManagerC",
+              "text" : "CacheTagManager"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/chatcache\/cachemanager\/tag"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://ChatCache/documentation/ChatCache": {
+  "abstract" : [
+    {
+      "text" : "ChatCache manage and save all caches of important things such as conversations, messages and so on.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache",
+  "images" : [
+    {
+      "identifier" : "icon.png",
+      "type" : "icon"
+    }
+  ],
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "ChatCache",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "CacheManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "CacheManager"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "CacheManager",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/tag": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "tag"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B10TagManagerC",
+      "text" : "CacheTagManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/tag",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "tag",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/tag"
+},
+"doc://ChatCache/documentation/ChatCache/CacheTagManager": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "CacheTagManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheTagManager",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "CacheTagManager"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "CacheTagManager",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachetagmanager"
+},
+"icon.png": {
+  "alt" : "App icon.",
+  "identifier" : "icon.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/icon.png"
+    }
+  ]
+}
+}
+}

@@ -1,0 +1,1073 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/ChatCache\/documentation\/ChatCache"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:9ChatCache0B7ManagerC",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "class"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "CacheManager"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "ChatCache"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "CacheManager"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Class",
+    "symbolKind" : "class",
+    "title" : "CacheManager"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "final"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "class"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "CacheManager"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/8ChatCore20CacheManagerProtocolP"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/init(context:logger:)"
+      ],
+      "title" : "Initializers"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/assistant",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/contact",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/conversation",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/editQueue",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/file",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/fileQueue",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/forwardInfo",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/forwardQueue",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/image",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/message",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/mutualGroup",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/participant",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/replyInfo",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/tag",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/tagParticipant",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/textQueue",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/user",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/userRole"
+      ],
+      "title" : "Instance Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/deleteQueues(uniqueIds:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/mergeChanges(context:key:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/truncate(bgTask:context:)"
+      ],
+      "title" : "Instance Methods"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/chatcache\/cachemanager"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://ChatCache/8ChatCore20CacheManagerProtocolP": {
+  "identifier" : "doc:\/\/ChatCache\/8ChatCore20CacheManagerProtocolP",
+  "title" : "ChatCore.CacheManagerProtocol",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/documentation/ChatCache": {
+  "abstract" : [
+    {
+      "text" : "ChatCache manage and save all caches of important things such as conversations, messages and so on.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache",
+  "images" : [
+    {
+      "identifier" : "icon.png",
+      "type" : "icon"
+    }
+  ],
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "ChatCache",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "CacheManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "CacheManager"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "CacheManager",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/assistant": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "assistant"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B16AssistantManagerC",
+      "text" : "CacheAssistantManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/assistant",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "assistant",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/assistant"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/contact": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "contact"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B14ContactManagerC",
+      "text" : "CacheContactManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/contact",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "contact",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/contact"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/conversation": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "conversation"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B19ConversationManagerC",
+      "text" : "CacheConversationManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/conversation",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "conversation",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/conversation"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/deleteQueues(uniqueIds:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "deleteQueues"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "uniqueIds"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "])"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/deleteQueues(uniqueIds:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "deleteQueues(uniqueIds:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/deletequeues(uniqueids:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/editQueue": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "editQueue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B26QueueOfEditMessagesManagerC",
+      "text" : "CacheQueueOfEditMessagesManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/editQueue",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "editQueue",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/editqueue"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/file": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "file"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B19CoreDataFileManagerC",
+      "text" : "CacheCoreDataFileManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/file",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "file",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/file"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/fileQueue": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fileQueue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B26QueueOfFileMessagesManagerC",
+      "text" : "CacheQueueOfFileMessagesManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/fileQueue",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fileQueue",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/filequeue"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/forwardInfo": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "forwardInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B18ForwardInfoManagerC",
+      "text" : "CacheForwardInfoManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/forwardInfo",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "forwardInfo",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/forwardinfo"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/forwardQueue": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "forwardQueue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B29QueueOfForwardMessagesManagerC",
+      "text" : "CacheQueueOfForwardMessagesManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/forwardQueue",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "forwardQueue",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/forwardqueue"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/image": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "image"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B12ImageManagerC",
+      "text" : "CacheImageManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/image",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "image",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/image"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/init(context:logger:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "identifier",
+      "text" : "init"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "context"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSManagedObjectContext",
+      "text" : "NSManagedObjectContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "logger"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:6LoggerAAC",
+      "text" : "Logger"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/init(context:logger:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "init(context:logger:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/init(context:logger:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/mergeChanges(context:key:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "mergeChanges"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "context"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSManagedObjectContext",
+      "text" : "NSManagedObjectContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "key"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ", ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSManagedObjectID",
+      "text" : "NSManagedObjectID"
+    },
+    {
+      "kind" : "text",
+      "text" : "])"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/mergeChanges(context:key:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "mergeChanges(context:key:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/mergechanges(context:key:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/message": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "message"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B14MessageManagerC",
+      "text" : "CacheMessageManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/message",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "message",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/message"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/mutualGroup": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "mutualGroup"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B18MutualGroupManagerC",
+      "text" : "CacheMutualGroupManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/mutualGroup",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "mutualGroup",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/mutualgroup"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/participant": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "participant"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B18ParticipantManagerC",
+      "text" : "CacheParticipantManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/participant",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "participant",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/participant"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/replyInfo": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "replyInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B16ReplyInfoManagerC",
+      "text" : "CacheReplyInfoManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/replyInfo",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "replyInfo",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/replyinfo"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/tag": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "tag"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B10TagManagerC",
+      "text" : "CacheTagManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/tag",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "tag",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/tag"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/tagParticipant": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "tagParticipant"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B21TagParticipantManagerC",
+      "text" : "CacheTagParticipantManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/tagParticipant",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "tagParticipant",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/tagparticipant"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/textQueue": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "textQueue"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B26QueueOfTextMessagesManagerC",
+      "text" : "CacheQueueOfTextMessagesManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/textQueue",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "textQueue",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/textqueue"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/truncate(bgTask:context:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "truncate"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "bgTask"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSManagedObjectContext",
+      "text" : "NSManagedObjectContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "context"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSManagedObjectContext",
+      "text" : "NSManagedObjectContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/truncate(bgTask:context:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "truncate(bgTask:context:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/truncate(bgtask:context:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/user": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "user"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B11UserManagerC",
+      "text" : "CacheUserManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/user",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "user",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/user"
+},
+"doc://ChatCache/documentation/ChatCache/CacheManager/userRole": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "userRole"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:9ChatCache0B15UserRoleManagerC",
+      "text" : "CacheUserRoleManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheManager\/userRole",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "userRole",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachemanager\/userrole"
+},
+"icon.png": {
+  "alt" : "App icon.",
+  "identifier" : "icon.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/icon.png"
+    }
+  ]
+}
+}
+}

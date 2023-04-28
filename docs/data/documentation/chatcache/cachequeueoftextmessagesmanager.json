@@ -1,0 +1,573 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/ChatCache\/documentation\/ChatCache"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:9ChatCache0B26QueueOfTextMessagesManagerC",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "class"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "CacheQueueOfTextMessagesManager"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "ChatCache"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "CacheQueueOfTextMessagesManager"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Class",
+    "symbolKind" : "class",
+    "title" : "CacheQueueOfTextMessagesManager"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "final"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "class"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "CacheQueueOfTextMessagesManager"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/delete(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/find(predicate:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/first(with:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/insert(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/insert(models:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/unsendForThread(_:_:_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/update(_:_:)"
+      ],
+      "title" : "Instance Methods"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/chatcache\/cachequeueoftextmessagesmanager"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://ChatCache/documentation/ChatCache": {
+  "abstract" : [
+    {
+      "text" : "ChatCache manage and save all caches of important things such as conversations, messages and so on.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache",
+  "images" : [
+    {
+      "identifier" : "icon.png",
+      "type" : "icon"
+    }
+  ],
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "ChatCache",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache"
+},
+"doc://ChatCache/documentation/ChatCache/CacheQueueOfTextMessagesManager": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "CacheQueueOfTextMessagesManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "CacheQueueOfTextMessagesManager"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "CacheQueueOfTextMessagesManager",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager"
+},
+"doc://ChatCache/documentation/ChatCache/CacheQueueOfTextMessagesManager/delete(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "delete"
+    },
+    {
+      "kind" : "text",
+      "text" : "(["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "])"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/delete(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "delete(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/delete(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheQueueOfTextMessagesManager/find(predicate:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "find"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "predicate"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSPredicate",
+      "text" : "NSPredicate"
+    },
+    {
+      "kind" : "text",
+      "text" : ", (["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDQueueOfTextMessages",
+      "text" : "CDQueueOfTextMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/find(predicate:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "find(predicate:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/find(predicate:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheQueueOfTextMessagesManager/first(with:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "first"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "with"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ", ("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDQueueOfTextMessages",
+      "text" : "CDQueueOfTextMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : "?) -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/first(with:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "first(with:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/first(with:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheQueueOfTextMessagesManager/insert(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "insert"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7ChatDTO22SendTextMessageRequestC",
+      "text" : "SendTextMessageRequest"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/insert(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "insert(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/insert(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheQueueOfTextMessagesManager/insert(models:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "insert"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "models"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10ChatModels19QueueOfTextMessagesC",
+      "text" : "QueueOfTextMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : "])"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/insert(models:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "insert(models:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/insert(models:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheQueueOfTextMessagesManager/unsendForThread(_:_:_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "unsendForThread"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, (["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDQueueOfTextMessages",
+      "text" : "CDQueueOfTextMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : "], "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/unsendForThread(_:_:_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "unsendForThread(_:_:_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/unsendforthread(_:_:_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheQueueOfTextMessagesManager/update(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "update"
+    },
+    {
+      "kind" : "text",
+      "text" : "(["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "Any"
+    },
+    {
+      "kind" : "text",
+      "text" : "], "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSPredicate",
+      "text" : "NSPredicate"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheQueueOfTextMessagesManager\/update(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "update(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/update(_:_:)"
+},
+"icon.png": {
+  "alt" : "App icon.",
+  "identifier" : "icon.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/icon.png"
+    }
+  ]
+}
+}
+}

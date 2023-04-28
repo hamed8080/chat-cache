@@ -1,0 +1,1185 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/ChatCache\/documentation\/ChatCache"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "s:9ChatCache0B19ConversationManagerC",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "class"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "CacheConversationManager"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "ChatCache"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "CacheConversationManager"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Class",
+    "symbolKind" : "class",
+    "title" : "CacheConversationManager"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "keyword",
+              "text" : "final"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "class"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "CacheConversationManager"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/allUnreadCount(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/archive(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/changeThreadType(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/close(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/decreamentUnreadCount(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/delete(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/fetch(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/fetchIds(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/increamentUnreadCount(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/insert(models:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/mute(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/partnerDeliver(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/partnerSeen(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/pin(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/seen(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/setLastMessageVO(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/setUnreadCountToZero(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/threadsUnreadcount(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/updateLastMessage(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/updateLastMessage(_:_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/updateThreadsUnreadCount(_:)"
+      ],
+      "title" : "Instance Methods"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/chatcache\/cacheconversationmanager"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://ChatCache/documentation/ChatCache": {
+  "abstract" : [
+    {
+      "text" : "ChatCache manage and save all caches of important things such as conversations, messages and so on.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache",
+  "images" : [
+    {
+      "identifier" : "icon.png",
+      "type" : "icon"
+    }
+  ],
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "ChatCache",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "CacheConversationManager"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "CacheConversationManager"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "CacheConversationManager",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/allUnreadCount(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "allUnreadCount"
+    },
+    {
+      "kind" : "text",
+      "text" : "(("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/allUnreadCount(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "allUnreadCount(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/allunreadcount(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/archive(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "archive"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/archive(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "archive(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/archive(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/changeThreadType(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "changeThreadType"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10ChatModels12ConversationC",
+      "text" : "Conversation"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/changeThreadType(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "changeThreadType(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/changethreadtype(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/close(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "close"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/close(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "close(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/close(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/decreamentUnreadCount(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "decreamentUnreadCount"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ", (("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")?)"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/decreamentUnreadCount(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "decreamentUnreadCount(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/decreamentunreadcount(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/delete(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "delete"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/delete(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "delete(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/delete(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/fetch(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fetch"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7ChatDTO14ThreadsRequestC",
+      "text" : "ThreadsRequest"
+    },
+    {
+      "kind" : "text",
+      "text" : ", (["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDConversation",
+      "text" : "CDConversation"
+    },
+    {
+      "kind" : "text",
+      "text" : "], "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/fetch(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fetch(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/fetch(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/fetchIds(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fetchIds"
+    },
+    {
+      "kind" : "text",
+      "text" : "((["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/fetchIds(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fetchIds(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/fetchids(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/increamentUnreadCount(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "increamentUnreadCount"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ", (("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")?)"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/increamentUnreadCount(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "increamentUnreadCount(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/increamentunreadcount(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/insert(models:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "insert"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "externalParam",
+      "text" : "models"
+    },
+    {
+      "kind" : "text",
+      "text" : ": ["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10ChatModels12ConversationC",
+      "text" : "Conversation"
+    },
+    {
+      "kind" : "text",
+      "text" : "])"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/insert(models:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "insert(models:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/insert(models:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/mute(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "mute"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/mute(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "mute(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/mute(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/partnerDeliver(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "partnerDeliver"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7ChatDTO15MessageResponseC",
+      "text" : "MessageResponse"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/partnerDeliver(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "partnerDeliver(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/partnerdeliver(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/partnerSeen(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "partnerSeen"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7ChatDTO15MessageResponseC",
+      "text" : "MessageResponse"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/partnerSeen(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "partnerSeen(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/partnerseen(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/pin(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "pin"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Sb",
+      "text" : "Bool"
+    },
+    {
+      "kind" : "text",
+      "text" : ", "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "?)"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/pin(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "pin(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/pin(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/seen(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "seen"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:7ChatDTO18MessageSeenRequestC",
+      "text" : "MessageSeenRequest"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/seen(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "seen(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/seen(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/setLastMessageVO(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setLastMessageVO"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10ChatModels7MessageC",
+      "text" : "Message"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/setLastMessageVO(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setLastMessageVO(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/setlastmessagevo(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/setUnreadCountToZero(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "setUnreadCountToZero"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ", (("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")?)"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/setUnreadCountToZero(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "setUnreadCountToZero(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/setunreadcounttozero(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/threadsUnreadcount(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "threadsUnreadcount"
+    },
+    {
+      "kind" : "text",
+      "text" : "(["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "], (["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "]) -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s4Voida",
+      "text" : "Void"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/threadsUnreadcount(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "threadsUnreadcount(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/threadsunreadcount(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/updateLastMessage(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "updateLastMessage"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10ChatModels12ConversationC",
+      "text" : "Conversation"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/updateLastMessage(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "updateLastMessage(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/updatelastmessage(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/updateLastMessage(_:_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "updateLastMessage"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "?, "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/updateLastMessage(_:_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "updateLastMessage(_:_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/updatelastmessage(_:_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CacheConversationManager/updateThreadsUnreadCount(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "updateThreadsUnreadCount"
+    },
+    {
+      "kind" : "text",
+      "text" : "(["
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : " : "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:Si",
+      "text" : "Int"
+    },
+    {
+      "kind" : "text",
+      "text" : "])"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CacheConversationManager\/updateThreadsUnreadCount(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "updateThreadsUnreadCount(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cacheconversationmanager\/updatethreadsunreadcount(_:)"
+},
+"icon.png": {
+  "alt" : "App icon.",
+  "identifier" : "icon.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/icon.png"
+    }
+  ]
+}
+}
+}

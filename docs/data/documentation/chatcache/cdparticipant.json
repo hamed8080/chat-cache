@@ -1,0 +1,2459 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/ChatCache\/documentation\/ChatCache"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "c:@M@ChatCache@objc(cs)CDParticipant",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "class"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "CDParticipant"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "ChatCache"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "CDParticipant"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Class",
+    "symbolKind" : "class",
+    "title" : "CDParticipant"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "attribute",
+              "text" : "@objc"
+            },
+            {
+              "kind" : "text",
+              "text" : "(CDParticipant) "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "final"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "class"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "CDParticipant"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/objc(cs)NSManagedObject"
+      ],
+      "kind" : "relationships",
+      "title" : "Inherits From",
+      "type" : "inheritsFrom"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/7Combine16ObservableObjectP",
+        "doc:\/\/ChatCache\/objc(pl)NSFetchRequestResult",
+        "doc:\/\/ChatCache\/objc(pl)NSObject",
+        "doc:\/\/ChatCache\/s7CVarArgP",
+        "doc:\/\/ChatCache\/s28CustomDebugStringConvertibleP",
+        "doc:\/\/ChatCache\/s23CustomStringConvertibleP",
+        "doc:\/\/ChatCache\/SQ",
+        "doc:\/\/ChatCache\/SH"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/admin",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/assistant",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/auditor",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/bio",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/blocked",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/cellphoneNumber",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/codable",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/contactFirstName",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/contactId",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/contactLastName",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/contactName",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/conversation",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/coreUserId",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/email",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/firstName",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/forwardInfos",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/id",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/image",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/inviter",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/keyId",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/lastName",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/messages",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/metadata",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/myFriend",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/name",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/notSeenDuration",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/online",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/receiveEnable",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/replyInfo",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/roles",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/sendEnable",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/ssoId",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/time",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/username"
+      ],
+      "title" : "Instance Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToAssistant(_:)-14lol",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToAssistant(_:)-2uki",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToForwardInfos(_:)-2mfv0",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToForwardInfos(_:)-54t4c",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToMessages(_:)-1g94i",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToMessages(_:)-6z4zb",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToReplyInfo(_:)-4ztz4",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToReplyInfo(_:)-81spt",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromAssistant(_:)-2a43k",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromAssistant(_:)-82ep",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromForwardInfos(_:)-34a51",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromForwardInfos(_:)-5b4yt",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromMessages(_:)-6xbgg",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromMessages(_:)-85o1p",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromReplyInfo(_:)-4w9cy",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromReplyInfo(_:)-98df",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/update(_:)"
+      ],
+      "title" : "Instance Methods"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/entityName"
+      ],
+      "title" : "Type Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/entityDescription(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/fetchRequest()",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/insertEntity(_:)"
+      ],
+      "title" : "Type Methods"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/chatcache\/cdparticipant"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://ChatCache/7Combine16ObservableObjectP": {
+  "identifier" : "doc:\/\/ChatCache\/7Combine16ObservableObjectP",
+  "title" : "Combine.ObservableObject",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/SH": {
+  "identifier" : "doc:\/\/ChatCache\/SH",
+  "title" : "Swift.Hashable",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/SQ": {
+  "identifier" : "doc:\/\/ChatCache\/SQ",
+  "title" : "Swift.Equatable",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/documentation/ChatCache": {
+  "abstract" : [
+    {
+      "text" : "ChatCache manage and save all caches of important things such as conversations, messages and so on.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache",
+  "images" : [
+    {
+      "identifier" : "icon.png",
+      "type" : "icon"
+    }
+  ],
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "ChatCache",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "CDParticipant"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "CDParticipant"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "CDParticipant",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/addToAssistant(_:)-14lol": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addToAssistant"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToAssistant(_:)-14lol",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addToAssistant(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/addtoassistant(_:)-14lol"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/addToAssistant(_:)-2uki": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addToAssistant"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDAssistant",
+      "text" : "CDAssistant"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToAssistant(_:)-2uki",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addToAssistant(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/addtoassistant(_:)-2uki"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/addToForwardInfos(_:)-2mfv0": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addToForwardInfos"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDForwardInfo",
+      "text" : "CDForwardInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToForwardInfos(_:)-2mfv0",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addToForwardInfos(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/addtoforwardinfos(_:)-2mfv0"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/addToForwardInfos(_:)-54t4c": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addToForwardInfos"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToForwardInfos(_:)-54t4c",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addToForwardInfos(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/addtoforwardinfos(_:)-54t4c"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/addToMessages(_:)-1g94i": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addToMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDMessage",
+      "text" : "CDMessage"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToMessages(_:)-1g94i",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addToMessages(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/addtomessages(_:)-1g94i"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/addToMessages(_:)-6z4zb": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addToMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToMessages(_:)-6z4zb",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addToMessages(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/addtomessages(_:)-6z4zb"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/addToReplyInfo(_:)-4ztz4": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addToReplyInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToReplyInfo(_:)-4ztz4",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addToReplyInfo(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/addtoreplyinfo(_:)-4ztz4"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/addToReplyInfo(_:)-81spt": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "addToReplyInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDReplyInfo",
+      "text" : "CDReplyInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/addToReplyInfo(_:)-81spt",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "addToReplyInfo(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/addtoreplyinfo(_:)-81spt"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/admin": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "admin"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/admin",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "admin",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/admin"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/assistant": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "assistant"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/assistant",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "assistant",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/assistant"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/auditor": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "auditor"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/auditor",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "auditor",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/auditor"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/bio": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "bio"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/bio",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "bio",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/bio"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/blocked": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "blocked"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/blocked",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "blocked",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/blocked"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/cellphoneNumber": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "cellphoneNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/cellphoneNumber",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "cellphoneNumber",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/cellphonenumber"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/codable": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "codable"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10ChatModels11ParticipantC",
+      "text" : "Participant"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/codable",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "codable",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/codable"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/contactFirstName": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "contactFirstName"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/contactFirstName",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "contactFirstName",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/contactfirstname"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/contactId": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "contactId"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/contactId",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "contactId",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/contactid"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/contactLastName": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "contactLastName"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/contactLastName",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "contactLastName",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/contactlastname"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/contactName": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "contactName"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/contactName",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "contactName",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/contactname"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/conversation": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "conversation"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDConversation",
+      "text" : "CDConversation"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/conversation",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "conversation",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/conversation"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/coreUserId": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "coreUserId"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/coreUserId",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "coreUserId",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/coreuserid"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/email": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "email"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/email",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "email",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/email"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/entityDescription(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "entityDescription"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSManagedObjectContext",
+      "text" : "NSManagedObjectContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSEntityDescription",
+      "text" : "NSEntityDescription"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/entityDescription(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "entityDescription(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/entitydescription(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/entityName": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "entityName"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/entityName",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "entityName",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/entityname"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/fetchRequest()": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fetchRequest"
+    },
+    {
+      "kind" : "text",
+      "text" : "() -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSFetchRequest",
+      "text" : "NSFetchRequest"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDParticipant",
+      "text" : "CDParticipant"
+    },
+    {
+      "kind" : "text",
+      "text" : ">"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/fetchRequest()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fetchRequest()",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/fetchrequest()"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/firstName": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "firstName"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/firstName",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "firstName",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/firstname"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/forwardInfos": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "forwardInfos"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/forwardInfos",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "forwardInfos",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/forwardinfos"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/id": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "id"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/id",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "id",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/id"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/image": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "image"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/image",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "image",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/image"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/insertEntity(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "insertEntity"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSManagedObjectContext",
+      "text" : "NSManagedObjectContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDParticipant",
+      "text" : "CDParticipant"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/insertEntity(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "insertEntity(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/insertentity(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/inviter": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "inviter"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDConversation",
+      "text" : "CDConversation"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/inviter",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "inviter",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/inviter"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/keyId": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "keyId"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/keyId",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "keyId",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/keyid"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/lastName": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "lastName"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/lastName",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "lastName",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/lastname"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/messages": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "messages"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/messages",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "messages",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/messages"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/metadata": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "metadata"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/metadata",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "metadata",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/metadata"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/myFriend": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "myFriend"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/myFriend",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "myFriend",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/myfriend"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/name": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "name"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/name",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "name",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/name"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/notSeenDuration": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "notSeenDuration"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/notSeenDuration",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "notSeenDuration",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/notseenduration"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/online": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "online"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/online",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "online",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/online"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/receiveEnable": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "receiveEnable"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/receiveEnable",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "receiveEnable",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/receiveenable"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/removeFromAssistant(_:)-2a43k": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "removeFromAssistant"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromAssistant(_:)-2a43k",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "removeFromAssistant(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/removefromassistant(_:)-2a43k"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/removeFromAssistant(_:)-82ep": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "removeFromAssistant"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDAssistant",
+      "text" : "CDAssistant"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromAssistant(_:)-82ep",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "removeFromAssistant(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/removefromassistant(_:)-82ep"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/removeFromForwardInfos(_:)-34a51": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "removeFromForwardInfos"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromForwardInfos(_:)-34a51",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "removeFromForwardInfos(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/removefromforwardinfos(_:)-34a51"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/removeFromForwardInfos(_:)-5b4yt": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "removeFromForwardInfos"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDForwardInfo",
+      "text" : "CDForwardInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromForwardInfos(_:)-5b4yt",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "removeFromForwardInfos(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/removefromforwardinfos(_:)-5b4yt"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/removeFromMessages(_:)-6xbgg": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "removeFromMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDMessage",
+      "text" : "CDMessage"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromMessages(_:)-6xbgg",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "removeFromMessages(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/removefrommessages(_:)-6xbgg"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/removeFromMessages(_:)-85o1p": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "removeFromMessages"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromMessages(_:)-85o1p",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "removeFromMessages(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/removefrommessages(_:)-85o1p"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/removeFromReplyInfo(_:)-4w9cy": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "removeFromReplyInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDReplyInfo",
+      "text" : "CDReplyInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromReplyInfo(_:)-4w9cy",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "removeFromReplyInfo(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/removefromreplyinfo(_:)-4w9cy"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/removeFromReplyInfo(_:)-98df": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "removeFromReplyInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/removeFromReplyInfo(_:)-98df",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "removeFromReplyInfo(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/removefromreplyinfo(_:)-98df"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/replyInfo": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "replyInfo"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSSet",
+      "text" : "NSSet"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/replyInfo",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "replyInfo",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/replyinfo"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/roles": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "roles"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation4DataV",
+      "text" : "Data"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/roles",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "roles",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/roles"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/sendEnable": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "sendEnable"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/sendEnable",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "sendEnable",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/sendenable"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/ssoId": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "ssoId"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/ssoId",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "ssoId",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/ssoid"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/time": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "time"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/time",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "time",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/time"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/update(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "update"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10ChatModels11ParticipantC",
+      "text" : "Participant"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/update(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "update(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/update(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CDParticipant/username": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "username"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDParticipant\/username",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "username",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdparticipant\/username"
+},
+"doc://ChatCache/objc(cs)NSManagedObject": {
+  "identifier" : "doc:\/\/ChatCache\/objc(cs)NSManagedObject",
+  "title" : "CoreData.NSManagedObject",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/objc(pl)NSFetchRequestResult": {
+  "identifier" : "doc:\/\/ChatCache\/objc(pl)NSFetchRequestResult",
+  "title" : "CoreData.NSFetchRequestResult",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/objc(pl)NSObject": {
+  "identifier" : "doc:\/\/ChatCache\/objc(pl)NSObject",
+  "title" : "ObjectiveC.NSObjectProtocol",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/s23CustomStringConvertibleP": {
+  "identifier" : "doc:\/\/ChatCache\/s23CustomStringConvertibleP",
+  "title" : "Swift.CustomStringConvertible",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/s28CustomDebugStringConvertibleP": {
+  "identifier" : "doc:\/\/ChatCache\/s28CustomDebugStringConvertibleP",
+  "title" : "Swift.CustomDebugStringConvertible",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/s7CVarArgP": {
+  "identifier" : "doc:\/\/ChatCache\/s7CVarArgP",
+  "title" : "Swift.CVarArg",
+  "type" : "unresolvable"
+},
+"icon.png": {
+  "alt" : "App icon.",
+  "identifier" : "icon.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/icon.png"
+    }
+  ]
+}
+}
+}

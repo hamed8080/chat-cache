@@ -1,0 +1,3406 @@
+{
+  "interfaceLanguages" : {
+    "swift" : [
+      {
+        "children" : [
+          {
+            "title" : "Classes",
+            "type" : "groupMarker"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/assistant",
+                "title" : "var assistant: Invitee?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/block",
+                "title" : "var block: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/codable",
+                "title" : "var codable: Assistant",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/contacttype",
+                "title" : "var contactType: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/inviteeid",
+                "title" : "var inviteeId: Int64",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/participant",
+                "title" : "var participant: CDParticipant?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/roles",
+                "title" : "var roles: Data?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/update(_:)",
+                "title" : "func update(Assistant)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDAssistant>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdassistant\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDAssistant",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdassistant",
+            "title" : "CDAssistant",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/blocked",
+                "title" : "var blocked: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/cellphonenumber",
+                "title" : "var cellphoneNumber: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/codable",
+                "title" : "var codable: Contact",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/email",
+                "title" : "var email: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/firstname",
+                "title" : "var firstName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/hasuser",
+                "title" : "var hasUser: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/id",
+                "title" : "var id: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/image",
+                "title" : "var image: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/lastname",
+                "title" : "var lastName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/notseenduration",
+                "title" : "var notSeenDuration: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/time",
+                "title" : "var time: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/uniqueid",
+                "title" : "var uniqueId: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/user",
+                "title" : "var user: CDUser?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/userid",
+                "title" : "var userId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/iscontactchanged(contact:)",
+                "title" : "func isContactChanged(contact: Contact) -> Bool",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/update(_:)",
+                "title" : "func update(Contact)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDContact>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdcontact\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDContact",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdcontact",
+            "title" : "CDContact",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/admin",
+                "title" : "var admin: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/caneditinfo",
+                "title" : "var canEditInfo: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/canspam",
+                "title" : "var canSpam: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/closedthread",
+                "title" : "var closedThread: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/descriptions",
+                "title" : "var descriptions: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/forwardinfos",
+                "title" : "var forwardInfos: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/group",
+                "title" : "var group: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/id",
+                "title" : "var id: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/image",
+                "title" : "var image: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/inviter",
+                "title" : "var inviter: CDParticipant?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/isarchive",
+                "title" : "var isArchive: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/joindate",
+                "title" : "var joinDate: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/lastmessage",
+                "title" : "var lastMessage: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/lastmessagevo",
+                "title" : "var lastMessageVO: CDMessage?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/lastparticipantimage",
+                "title" : "var lastParticipantImage: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/lastparticipantname",
+                "title" : "var lastParticipantName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/lastseenmessageid",
+                "title" : "var lastSeenMessageId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/lastseenmessagenanos",
+                "title" : "var lastSeenMessageNanos: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/lastseenmessagetime",
+                "title" : "var lastSeenMessageTime: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/mentioned",
+                "title" : "var mentioned: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/messages",
+                "title" : "var messages: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/metadata",
+                "title" : "var metadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/mute",
+                "title" : "var mute: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/mutualgroups",
+                "title" : "var mutualGroups: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/participantcount",
+                "title" : "var participantCount: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/participants",
+                "title" : "var participants: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/partner",
+                "title" : "var partner: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/partnerlastdeliveredmessageid",
+                "title" : "var partnerLastDeliveredMessageId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/partnerlastdeliveredmessagenanos",
+                "title" : "var partnerLastDeliveredMessageNanos: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/partnerlastdeliveredmessagetime",
+                "title" : "var partnerLastDeliveredMessageTime: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/partnerlastseenmessageid",
+                "title" : "var partnerLastSeenMessageId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/partnerlastseenmessagenanos",
+                "title" : "var partnerLastSeenMessageNanos: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/partnerlastseenmessagetime",
+                "title" : "var partnerLastSeenMessageTime: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/pin",
+                "title" : "var pin: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/pinmessages",
+                "title" : "var pinMessages: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/tagparticipants",
+                "title" : "var tagParticipants: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/time",
+                "title" : "var time: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/title",
+                "title" : "var title: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/type",
+                "title" : "var type: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/uniquename",
+                "title" : "var uniqueName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/unreadcount",
+                "title" : "var unreadCount: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/usergrouphash",
+                "title" : "var userGroupHash: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtoforwardinfos(_:)-8c3h5",
+                "title" : "func addToForwardInfos(CDForwardInfo)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtoforwardinfos(_:)-e9aa",
+                "title" : "func addToForwardInfos(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtomessages(_:)-3j1wr",
+                "title" : "func addToMessages(CDMessage)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtomessages(_:)-70at6",
+                "title" : "func addToMessages(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtomutualgroups(_:)-91gjz",
+                "title" : "func addToMutualGroups(CDMutualGroup)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtomutualgroups(_:)-zlyg",
+                "title" : "func addToMutualGroups(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtoparticipants(_:)-3cioo",
+                "title" : "func addToParticipants(CDParticipant)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtoparticipants(_:)-6gjx8",
+                "title" : "func addToParticipants(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtopinmessages(_:)-2rjzt",
+                "title" : "func addToPinMessages(CDMessage)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtopinmessages(_:)-70umf",
+                "title" : "func addToPinMessages(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtotagparticipants(_:)-3ygkk",
+                "title" : "func addToTagParticipants(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/addtotagparticipants(_:)-drys",
+                "title" : "func addToTagParticipants(CDTagParticipant)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/codable(filllastmessagevo:fillparticipants:fillpinmessages:)",
+                "title" : "func codable(fillLastMessageVO: Bool, fillParticipants: Bool, fillPinMessages: Bool) -> Conversation",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefromforwardinfos(_:)-1otk4",
+                "title" : "func removeFromForwardInfos(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefromforwardinfos(_:)-9md8q",
+                "title" : "func removeFromForwardInfos(CDForwardInfo)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefrommessages(_:)-3mp2k",
+                "title" : "func removeFromMessages(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefrommessages(_:)-8tyj4",
+                "title" : "func removeFromMessages(CDMessage)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefrommutualgroups(_:)-2y5h2",
+                "title" : "func removeFromMutualGroups(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefrommutualgroups(_:)-9zhvl",
+                "title" : "func removeFromMutualGroups(CDMutualGroup)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefromparticipants(_:)-5h5v0",
+                "title" : "func removeFromParticipants(CDParticipant)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefromparticipants(_:)-sumg",
+                "title" : "func removeFromParticipants(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefrompinmessages(_:)-210q9",
+                "title" : "func removeFromPinMessages(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefrompinmessages(_:)-8fdd3",
+                "title" : "func removeFromPinMessages(CDMessage)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefromtagparticipants(_:)-5ued5",
+                "title" : "func removeFromTagParticipants(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/removefromtagparticipants(_:)-6yidg",
+                "title" : "func removeFromTagParticipants(CDTagParticipant)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/update(_:)",
+                "title" : "func update(Conversation)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDConversation>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdconversation\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDConversation",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdconversation",
+            "title" : "CDConversation",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/codable",
+                "title" : "var codable: File",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/hashcode",
+                "title" : "var hashCode: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/name",
+                "title" : "var name: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/size",
+                "title" : "var size: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/type",
+                "title" : "var type: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/update(_:)",
+                "title" : "func update(File)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDFile>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdfile\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDFile",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdfile",
+            "title" : "CDFile",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdforwardinfo\/codable",
+                "title" : "var codable: ForwardInfo",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdforwardinfo\/conversation",
+                "title" : "var conversation: CDConversation?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdforwardinfo\/message",
+                "title" : "var message: CDMessage?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdforwardinfo\/messageid",
+                "title" : "var messageId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdforwardinfo\/participant",
+                "title" : "var participant: CDParticipant?",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdforwardinfo\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdforwardinfo\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdforwardinfo\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDForwardInfo>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdforwardinfo\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDForwardInfo",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdforwardinfo",
+            "title" : "CDForwardInfo",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/actualheight",
+                "title" : "var actualHeight: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/actualwidth",
+                "title" : "var actualWidth: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/codable",
+                "title" : "var codable: Image",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/hashcode",
+                "title" : "var hashCode: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/height",
+                "title" : "var height: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/name",
+                "title" : "var name: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/size",
+                "title" : "var size: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/width",
+                "title" : "var width: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDImage>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdimage\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDImage",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdimage",
+            "title" : "CDImage",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/conversation",
+                "title" : "var conversation: CDConversation?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/deletable",
+                "title" : "var deletable: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/delivered",
+                "title" : "var delivered: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/editable",
+                "title" : "var editable: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/edited",
+                "title" : "var edited: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/forwardinfo",
+                "title" : "var forwardInfo: CDForwardInfo?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/id",
+                "title" : "var id: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/lastmessagevo",
+                "title" : "var lastMessageVO: CDConversation?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/mentioned",
+                "title" : "var mentioned: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/message",
+                "title" : "var message: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/messagetype",
+                "title" : "var messageType: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/metadata",
+                "title" : "var metadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/notifyall",
+                "title" : "var notifyAll: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/ownerid",
+                "title" : "var ownerId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/participant",
+                "title" : "var participant: CDParticipant?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/pinmessages",
+                "title" : "var pinMessages: CDConversation?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/pintime",
+                "title" : "var pinTime: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/pinned",
+                "title" : "var pinned: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/previousid",
+                "title" : "var previousId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/replyinfo",
+                "title" : "var replyInfo: CDReplyInfo?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/seen",
+                "title" : "var seen: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/systemmetadata",
+                "title" : "var systemMetadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/threadid",
+                "title" : "var threadId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/time",
+                "title" : "var time: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/uniqueid",
+                "title" : "var uniqueId: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/codable(fillconversation:fillparticipant:fillforwardinfo:fillreplyinfo:)",
+                "title" : "func codable(fillConversation: Bool, fillParticipant: Bool, fillForwardInfo: Bool, fillReplyInfo: Bool) -> Message",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/update(_:)",
+                "title" : "func update(Message)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDMessage>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmessage\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDMessage",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdmessage",
+            "title" : "CDMessage",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/codable",
+                "title" : "var codable: MutualGroup",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/conversations",
+                "title" : "var conversations: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/idtype",
+                "title" : "var idType: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/mutualid",
+                "title" : "var mutualId: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/addtoconversations(_:)-2fewz",
+                "title" : "func addToConversations(CDConversation)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/addtoconversations(_:)-4hkwk",
+                "title" : "func addToConversations(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/removefromconversations(_:)-1aya5",
+                "title" : "func removeFromConversations(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/removefromconversations(_:)-8edd5",
+                "title" : "func removeFromConversations(CDConversation)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/update(_:)",
+                "title" : "func update(MutualGroup)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDMutualGroup>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdmutualgroup\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDMutualGroup",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdmutualgroup",
+            "title" : "CDMutualGroup",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/admin",
+                "title" : "var admin: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/assistant",
+                "title" : "var assistant: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/auditor",
+                "title" : "var auditor: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/bio",
+                "title" : "var bio: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/blocked",
+                "title" : "var blocked: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/cellphonenumber",
+                "title" : "var cellphoneNumber: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/codable",
+                "title" : "var codable: Participant",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/contactfirstname",
+                "title" : "var contactFirstName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/contactid",
+                "title" : "var contactId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/contactlastname",
+                "title" : "var contactLastName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/contactname",
+                "title" : "var contactName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/conversation",
+                "title" : "var conversation: CDConversation?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/coreuserid",
+                "title" : "var coreUserId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/email",
+                "title" : "var email: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/firstname",
+                "title" : "var firstName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/forwardinfos",
+                "title" : "var forwardInfos: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/id",
+                "title" : "var id: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/image",
+                "title" : "var image: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/inviter",
+                "title" : "var inviter: CDConversation?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/keyid",
+                "title" : "var keyId: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/lastname",
+                "title" : "var lastName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/messages",
+                "title" : "var messages: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/metadata",
+                "title" : "var metadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/myfriend",
+                "title" : "var myFriend: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/name",
+                "title" : "var name: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/notseenduration",
+                "title" : "var notSeenDuration: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/online",
+                "title" : "var online: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/receiveenable",
+                "title" : "var receiveEnable: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/replyinfo",
+                "title" : "var replyInfo: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/roles",
+                "title" : "var roles: Data?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/sendenable",
+                "title" : "var sendEnable: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/ssoid",
+                "title" : "var ssoId: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/time",
+                "title" : "var time: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/username",
+                "title" : "var username: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/addtoassistant(_:)-14lol",
+                "title" : "func addToAssistant(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/addtoassistant(_:)-2uki",
+                "title" : "func addToAssistant(CDAssistant)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/addtoforwardinfos(_:)-2mfv0",
+                "title" : "func addToForwardInfos(CDForwardInfo)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/addtoforwardinfos(_:)-54t4c",
+                "title" : "func addToForwardInfos(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/addtomessages(_:)-1g94i",
+                "title" : "func addToMessages(CDMessage)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/addtomessages(_:)-6z4zb",
+                "title" : "func addToMessages(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/addtoreplyinfo(_:)-4ztz4",
+                "title" : "func addToReplyInfo(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/addtoreplyinfo(_:)-81spt",
+                "title" : "func addToReplyInfo(CDReplyInfo)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/removefromassistant(_:)-2a43k",
+                "title" : "func removeFromAssistant(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/removefromassistant(_:)-82ep",
+                "title" : "func removeFromAssistant(CDAssistant)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/removefromforwardinfos(_:)-34a51",
+                "title" : "func removeFromForwardInfos(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/removefromforwardinfos(_:)-5b4yt",
+                "title" : "func removeFromForwardInfos(CDForwardInfo)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/removefrommessages(_:)-6xbgg",
+                "title" : "func removeFromMessages(CDMessage)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/removefrommessages(_:)-85o1p",
+                "title" : "func removeFromMessages(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/removefromreplyinfo(_:)-4w9cy",
+                "title" : "func removeFromReplyInfo(CDReplyInfo)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/removefromreplyinfo(_:)-98df",
+                "title" : "func removeFromReplyInfo(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/update(_:)",
+                "title" : "func update(Participant)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDParticipant>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdparticipant\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDParticipant",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdparticipant",
+            "title" : "CDParticipant",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/codable",
+                "title" : "var codable: QueueOfEditMessages",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/messageid",
+                "title" : "var messageId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/messagetype",
+                "title" : "var messageType: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/metadata",
+                "title" : "var metadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/repliedto",
+                "title" : "var repliedTo: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/textmessage",
+                "title" : "var textMessage: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/threadid",
+                "title" : "var threadId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/typecode",
+                "title" : "var typeCode: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/uniqueid",
+                "title" : "var uniqueId: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/update(_:)",
+                "title" : "func update(QueueOfEditMessages)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDQueueOfEditMessages>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofeditmessages\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDQueueOfEditMessages",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdqueueofeditmessages",
+            "title" : "CDQueueOfEditMessages",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/codable",
+                "title" : "var codable: QueueOfFileMessages",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/fileextension",
+                "title" : "var fileExtension: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/filename",
+                "title" : "var fileName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/filetosend",
+                "title" : "var fileToSend: Data?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/hc",
+                "title" : "var hC: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/imagetosend",
+                "title" : "var imageToSend: Data?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/ispublic",
+                "title" : "var isPublic: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/messagetype",
+                "title" : "var messageType: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/metadata",
+                "title" : "var metadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/mimetype",
+                "title" : "var mimeType: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/originalname",
+                "title" : "var originalName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/repliedto",
+                "title" : "var repliedTo: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/textmessage",
+                "title" : "var textMessage: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/threadid",
+                "title" : "var threadId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/typecode",
+                "title" : "var typeCode: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/uniqueid",
+                "title" : "var uniqueId: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/usergrouphash",
+                "title" : "var userGroupHash: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/wc",
+                "title" : "var wC: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/xc",
+                "title" : "var xC: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/yc",
+                "title" : "var yC: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/update(_:)",
+                "title" : "func update(QueueOfFileMessages)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDQueueOfFileMessages>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoffilemessages\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDQueueOfFileMessages",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdqueueoffilemessages",
+            "title" : "CDQueueOfFileMessages",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/codable",
+                "title" : "var codable: QueueOfForwardMessages",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/fromthreadid",
+                "title" : "var fromThreadId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/messageids",
+                "title" : "var messageIds: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/threadid",
+                "title" : "var threadId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/typecode",
+                "title" : "var typeCode: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/uniqueids",
+                "title" : "var uniqueIds: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/update(_:)",
+                "title" : "func update(QueueOfForwardMessages)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDQueueOfForwardMessages>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDQueueOfForwardMessages",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdqueueofforwardmessages",
+            "title" : "CDQueueOfForwardMessages",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/codable",
+                "title" : "var codable: QueueOfTextMessages",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/messagetype",
+                "title" : "var messageType: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/metadata",
+                "title" : "var metadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/repliedto",
+                "title" : "var repliedTo: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/systemmetadata",
+                "title" : "var systemMetadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/textmessage",
+                "title" : "var textMessage: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/threadid",
+                "title" : "var threadId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/typecode",
+                "title" : "var typeCode: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/uniqueid",
+                "title" : "var uniqueId: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/update(_:)",
+                "title" : "func update(QueueOfTextMessages)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDQueueOfTextMessages>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdqueueoftextmessages\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDQueueOfTextMessages",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdqueueoftextmessages",
+            "title" : "CDQueueOfTextMessages",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/codable",
+                "title" : "var codable: ReplyInfo",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/markdeleted",
+                "title" : "var markDeleted: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/messageid",
+                "title" : "var messageId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/messagetext",
+                "title" : "var messageText: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/messagetype",
+                "title" : "var messageType: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/metadata",
+                "title" : "var metadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/parentmessage",
+                "title" : "var parentMessage: CDMessage?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/participant",
+                "title" : "var participant: CDParticipant?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/repliedtomessageid",
+                "title" : "var repliedToMessageId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/systemmetadata",
+                "title" : "var systemMetadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/time",
+                "title" : "var time: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/update(_:)",
+                "title" : "func update(ReplyInfo)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDReplyInfo>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdreplyinfo\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDReplyInfo",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdreplyinfo",
+            "title" : "CDReplyInfo",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/active",
+                "title" : "var active: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/codable",
+                "title" : "var codable: Tag",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/id",
+                "title" : "var id: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/name",
+                "title" : "var name: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/tagparticipants",
+                "title" : "var tagParticipants: NSSet?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/addtotagparticipants(_:)-5r6r5",
+                "title" : "func addToTagParticipants(CDTagParticipant)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/addtotagparticipants(_:)-9mkca",
+                "title" : "func addToTagParticipants(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/removefromtagparticipants(_:)-3y8v2",
+                "title" : "func removeFromTagParticipants(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/removefromtagparticipants(_:)-4435t",
+                "title" : "func removeFromTagParticipants(CDTagParticipant)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/update(_:)",
+                "title" : "func update(Tag)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDTag>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtag\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDTag",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdtag",
+            "title" : "CDTag",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/active",
+                "title" : "var active: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/codable",
+                "title" : "var codable: TagParticipant",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/conversation",
+                "title" : "var conversation: CDConversation?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/id",
+                "title" : "var id: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/tag",
+                "title" : "var tag: CDTag?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/tagid",
+                "title" : "var tagId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/threadid",
+                "title" : "var threadId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/update(_:)",
+                "title" : "func update(TagParticipant)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDTagParticipant>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cdtagparticipant\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDTagParticipant",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cdtagparticipant",
+            "title" : "CDTagParticipant",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/bio",
+                "title" : "var bio: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/cellphonenumber",
+                "title" : "var cellphoneNumber: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/codable",
+                "title" : "var codable: User",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/contacts",
+                "title" : "var contacts: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/coreuserid",
+                "title" : "var coreUserId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/email",
+                "title" : "var email: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/firstname",
+                "title" : "var firstName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/id",
+                "title" : "var id: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/image",
+                "title" : "var image: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/isme",
+                "title" : "var isMe: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/lastname",
+                "title" : "var lastName: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/lastseen",
+                "title" : "var lastSeen: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/metadata",
+                "title" : "var metadata: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/name",
+                "title" : "var name: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/nickname",
+                "title" : "var nickname: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/receiveenable",
+                "title" : "var receiveEnable: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/roles",
+                "title" : "var roles: NSSet?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/sendenable",
+                "title" : "var sendEnable: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/ssoid",
+                "title" : "var ssoId: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/username",
+                "title" : "var username: String?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/addtocontacts(_:)-201vq",
+                "title" : "func addToContacts(CDContact)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/addtocontacts(_:)-95rrn",
+                "title" : "func addToContacts(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/addtoroles(_:)-2njxe",
+                "title" : "func addToRoles(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/addtoroles(_:)-6znea",
+                "title" : "func addToRoles(CDUserRole)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/removefromcontacts(_:)-83iww",
+                "title" : "func removeFromContacts(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/removefromcontacts(_:)-8c3bo",
+                "title" : "func removeFromContacts(CDContact)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/removefromroles(_:)-2j8tx",
+                "title" : "func removeFromRoles(CDUserRole)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/removefromroles(_:)-3dv7f",
+                "title" : "func removeFromRoles(NSSet)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/update(_:)",
+                "title" : "func update(User)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDUser>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduser\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDUser",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cduser",
+            "title" : "CDUser",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/codable",
+                "title" : "var codable: UserRole",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/image",
+                "title" : "var image: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/name",
+                "title" : "var name: String?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/roles",
+                "title" : "var roles: Data?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/user",
+                "title" : "var user: CDUser?",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/userid",
+                "title" : "var userId: NSNumber?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/update(_:)",
+                "title" : "func update(UserRole)",
+                "type" : "method"
+              },
+              {
+                "title" : "Type Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/entityname",
+                "title" : "static let entityName: String",
+                "type" : "property"
+              },
+              {
+                "title" : "Type Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/entitydescription(_:)",
+                "title" : "static func entityDescription(NSManagedObjectContext) -> NSEntityDescription",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/fetchrequest()",
+                "title" : "class func fetchRequest() -> NSFetchRequest<CDUserRole>",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cduserrole\/insertentity(_:)",
+                "title" : "static func insertEntity(NSManagedObjectContext) -> CDUserRole",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cduserrole",
+            "title" : "CDUserRole",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheassistantmanager\/block(block:assistants:)",
+                "title" : "func block(block: Bool, assistants: [Assistant])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheassistantmanager\/delete(_:)",
+                "title" : "func delete([Assistant])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheassistantmanager\/fetch(_:_:)",
+                "title" : "func fetch(AssistantsRequest, ([CDAssistant], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheassistantmanager\/getblocked(_:_:_:)",
+                "title" : "func getBlocked(Int?, Int?, ([CDAssistant], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheassistantmanager\/insert(models:)",
+                "title" : "func insert(models: [Assistant])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheassistantmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cacheassistantmanager",
+            "title" : "CacheAssistantManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecontactmanager\/allcontacts(_:)",
+                "title" : "func allContacts(([CDContact]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecontactmanager\/block(_:_:)",
+                "title" : "func block(Bool, Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecontactmanager\/delete(_:)",
+                "title" : "func delete(Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecontactmanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDContact]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecontactmanager\/getcontacts(_:_:)",
+                "title" : "func getContacts(ContactsRequest?, ([CDContact], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecontactmanager\/insert(models:)",
+                "title" : "func insert(models: [Contact])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecontactmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachecontactmanager",
+            "title" : "CacheContactManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/allunreadcount(_:)",
+                "title" : "func allUnreadCount((Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/archive(_:_:)",
+                "title" : "func archive(Bool, Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/changethreadtype(_:)",
+                "title" : "func changeThreadType(Conversation?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/close(_:_:)",
+                "title" : "func close(Bool, Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/decreamentunreadcount(_:_:)",
+                "title" : "func decreamentUnreadCount(Int, ((Int) -> Void)?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/delete(_:)",
+                "title" : "func delete(Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/fetch(_:_:)",
+                "title" : "func fetch(ThreadsRequest, ([CDConversation], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/fetchids(_:)",
+                "title" : "func fetchIds(([Int]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/increamentunreadcount(_:_:)",
+                "title" : "func increamentUnreadCount(Int, ((Int) -> Void)?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/insert(models:)",
+                "title" : "func insert(models: [Conversation])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/mute(_:_:)",
+                "title" : "func mute(Bool, Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/partnerdeliver(_:)",
+                "title" : "func partnerDeliver(MessageResponse)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/partnerseen(_:)",
+                "title" : "func partnerSeen(MessageResponse)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/pin(_:_:)",
+                "title" : "func pin(Bool, Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/seen(_:)",
+                "title" : "func seen(MessageSeenRequest)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/setlastmessagevo(_:)",
+                "title" : "func setLastMessageVO(Message)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/setunreadcounttozero(_:_:)",
+                "title" : "func setUnreadCountToZero(Int, ((Int) -> Void)?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/threadsunreadcount(_:_:)",
+                "title" : "func threadsUnreadcount([Int], ([String : Int]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/updatelastmessage(_:)",
+                "title" : "func updateLastMessage(Conversation)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/updatelastmessage(_:_:)",
+                "title" : "func updateLastMessage(Int?, String)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheconversationmanager\/updatethreadsunreadcount(_:)",
+                "title" : "func updateThreadsUnreadCount([String : Int])",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cacheconversationmanager",
+            "title" : "CacheConversationManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecoredatafilemanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDFile]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecoredatafilemanager\/first(with:_:)",
+                "title" : "func first(with: String, (CDFile?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecoredatafilemanager\/insert(models:)",
+                "title" : "func insert(models: [File])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachecoredatafilemanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachecoredatafilemanager",
+            "title" : "CacheCoreDataFileManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheforwardinfomanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDForwardInfo]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheforwardinfomanager\/first(_:_:_:)",
+                "title" : "func first(Int?, Int?, Int?) throws -> CDForwardInfo?",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheforwardinfomanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cacheforwardinfomanager",
+            "title" : "CacheForwardInfoManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheimagemanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDImage]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheimagemanager\/first(with:_:)",
+                "title" : "func first(with: String, (CDImage?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheimagemanager\/insert(models:)",
+                "title" : "func insert(models: [Image])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheimagemanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cacheimagemanager",
+            "title" : "CacheImageManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/init(context:logger:)",
+                "title" : "init(context: NSManagedObjectContext, logger: Logger)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/assistant",
+                "title" : "let assistant: CacheAssistantManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/contact",
+                "title" : "let contact: CacheContactManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/conversation",
+                "title" : "let conversation: CacheConversationManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/editqueue",
+                "title" : "let editQueue: CacheQueueOfEditMessagesManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/file",
+                "title" : "let file: CacheCoreDataFileManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/filequeue",
+                "title" : "let fileQueue: CacheQueueOfFileMessagesManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/forwardinfo",
+                "title" : "let forwardInfo: CacheForwardInfoManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/forwardqueue",
+                "title" : "let forwardQueue: CacheQueueOfForwardMessagesManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/image",
+                "title" : "let image: CacheImageManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/message",
+                "title" : "let message: CacheMessageManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/mutualgroup",
+                "title" : "let mutualGroup: CacheMutualGroupManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/participant",
+                "title" : "let participant: CacheParticipantManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/replyinfo",
+                "title" : "let replyInfo: CacheReplyInfoManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/tag",
+                "title" : "let tag: CacheTagManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/tagparticipant",
+                "title" : "let tagParticipant: CacheTagParticipantManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/textqueue",
+                "title" : "let textQueue: CacheQueueOfTextMessagesManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/user",
+                "title" : "let user: CacheUserManager",
+                "type" : "property"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/userrole",
+                "title" : "let userRole: CacheUserRoleManager",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/deletequeues(uniqueids:)",
+                "title" : "func deleteQueues(uniqueIds: [String])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/mergechanges(context:key:_:)",
+                "title" : "func mergeChanges(context: NSManagedObjectContext, key: String, [NSManagedObjectID])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemanager\/truncate(bgtask:context:)",
+                "title" : "func truncate(bgTask: NSManagedObjectContext, context: NSManagedObjectContext)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachemanager",
+            "title" : "CacheManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/clearhistory(threadid:)",
+                "title" : "func clearHistory(threadId: Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/delete(_:)",
+                "title" : "func delete(Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/delete(_:_:)",
+                "title" : "func delete(Int?, Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/fecthmessage(threadid:messageid:)",
+                "title" : "func fecthMessage(threadId: Int?, messageId: Int?) throws -> CDMessage?",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/fetch(_:_:)",
+                "title" : "func fetch(GetHistoryRequest, ([CDMessage], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/find(_:_:_:)",
+                "title" : "func find(Int?, Int?, (CDMessage?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDMessage]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/findorcreate(_:_:_:)",
+                "title" : "func findOrCreate(Int?, Int?, (CDMessage?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDMessage?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/getmentions(_:_:)",
+                "title" : "func getMentions(MentionRequest, ([CDMessage], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/insert(models:)",
+                "title" : "func insert(models: [Message])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/joinpredicate(_:_:)",
+                "title" : "func joinPredicate(Int?, Int?) -> NSPredicate",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/partnerdeliver(_:)",
+                "title" : "func partnerDeliver(MessageResponse)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/partnerseen(_:)",
+                "title" : "func partnerSeen(MessageResponse)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/pin(_:_:_:)",
+                "title" : "func pin(Bool, Int?, Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/predicate(_:_:)",
+                "title" : "func predicate(Int?, Int?) -> NSPredicate",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/predicatearray(_:)",
+                "title" : "func predicateArray(GetHistoryRequest) -> NSCompoundPredicate",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/seen(_:userid:)",
+                "title" : "func seen(MessageSeenRequest, userId: Int)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemessagemanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachemessagemanager",
+            "title" : "CacheMessageManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemutualgroupmanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDMutualGroup]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemutualgroupmanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDMutualGroup?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemutualgroupmanager\/insert(_:_:)",
+                "title" : "func insert([Conversation], MutualGroupsRequest)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemutualgroupmanager\/insert(models:)",
+                "title" : "func insert(models: [MutualGroup])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemutualgroupmanager\/mutualgroups(_:_:)",
+                "title" : "func mutualGroups(String?, ([CDMutualGroup]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachemutualgroupmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachemutualgroupmanager",
+            "title" : "CacheMutualGroupManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheparticipantmanager\/delete(_:)",
+                "title" : "func delete([Participant])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheparticipantmanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDParticipant]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheparticipantmanager\/findorcreateentity(_:_:_:)",
+                "title" : "func findOrCreateEntity(Int?, Int?, (CDParticipant?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheparticipantmanager\/first(_:_:_:)",
+                "title" : "func first(Int, Int, (CDParticipant?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheparticipantmanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDParticipant?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheparticipantmanager\/getparticipantsforthread(_:_:_:_:)",
+                "title" : "func getParticipantsForThread(Int?, Int?, Int?, ([CDParticipant], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheparticipantmanager\/insert(model:)",
+                "title" : "func insert(model: Conversation?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheparticipantmanager\/insert(models:)",
+                "title" : "func insert(models: [Participant])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheparticipantmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cacheparticipantmanager",
+            "title" : "CacheParticipantManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofeditmessagesmanager\/delete(_:)",
+                "title" : "func delete([String])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofeditmessagesmanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDQueueOfEditMessages]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofeditmessagesmanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDQueueOfEditMessages?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofeditmessagesmanager\/insert(_:)",
+                "title" : "func insert(EditMessageRequest)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofeditmessagesmanager\/insert(models:)",
+                "title" : "func insert(models: [QueueOfEditMessages])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofeditmessagesmanager\/unsedforthread(_:_:_:_:)",
+                "title" : "func unsedForThread(Int?, Int?, Int?, ([CDQueueOfEditMessages], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofeditmessagesmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachequeueofeditmessagesmanager",
+            "title" : "CacheQueueOfEditMessagesManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoffilemessagesmanager\/delete(_:)",
+                "title" : "func delete([String])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoffilemessagesmanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDQueueOfFileMessages?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoffilemessagesmanager\/insert(req:imagerequest:)",
+                "title" : "func insert(req: SendTextMessageRequest?, imageRequest: UploadImageRequest)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoffilemessagesmanager\/insert(req:uploadfile:)",
+                "title" : "func insert(req: SendTextMessageRequest?, uploadFile: UploadFileRequest)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoffilemessagesmanager\/unsedforthread(_:_:_:_:)",
+                "title" : "func unsedForThread(Int?, Int?, Int?, ([CDQueueOfFileMessages], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoffilemessagesmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachequeueoffilemessagesmanager",
+            "title" : "CacheQueueOfFileMessagesManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofforwardmessagesmanager\/delete(_:)",
+                "title" : "func delete([String])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofforwardmessagesmanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDQueueOfForwardMessages]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofforwardmessagesmanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDQueueOfForwardMessages?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofforwardmessagesmanager\/insert(_:)",
+                "title" : "func insert(ForwardMessageRequest)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofforwardmessagesmanager\/insert(models:)",
+                "title" : "func insert(models: [QueueOfForwardMessages])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofforwardmessagesmanager\/unsedforthread(_:_:_:_:)",
+                "title" : "func unsedForThread(Int?, Int?, Int?, ([CDQueueOfForwardMessages], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueofforwardmessagesmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachequeueofforwardmessagesmanager",
+            "title" : "CacheQueueOfForwardMessagesManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/delete(_:)",
+                "title" : "func delete([String])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDQueueOfTextMessages]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDQueueOfTextMessages?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/insert(_:)",
+                "title" : "func insert(SendTextMessageRequest)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/insert(models:)",
+                "title" : "func insert(models: [QueueOfTextMessages])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/unsendforthread(_:_:_:_:)",
+                "title" : "func unsendForThread(Int?, Int?, Int?, ([CDQueueOfTextMessages], Int) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachequeueoftextmessagesmanager",
+            "title" : "CacheQueueOfTextMessagesManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachereplyinfomanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDReplyInfo]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachereplyinfomanager\/findorcreate(_:_:_:)",
+                "title" : "func findOrCreate(Int?, Int?, (CDReplyInfo?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachereplyinfomanager\/first(_:_:_:)",
+                "title" : "func first(Int?, Int?, (CDReplyInfo?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachereplyinfomanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDReplyInfo?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachereplyinfomanager\/insert(models:)",
+                "title" : "func insert(models: [ReplyInfo])",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachereplyinfomanager",
+            "title" : "CacheReplyInfoManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagmanager\/delete(_:)",
+                "title" : "func delete(Int?)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagmanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDTag]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagmanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDTag?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagmanager\/gettags(_:)",
+                "title" : "func getTags(([CDTag]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagmanager\/insert(models:)",
+                "title" : "func insert(models: [Tag])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachetagmanager",
+            "title" : "CacheTagManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagparticipantmanager\/delete(_:)",
+                "title" : "func delete([TagParticipant])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagparticipantmanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDTagParticipant]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagparticipantmanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDTagParticipant?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagparticipantmanager\/insert(models:)",
+                "title" : "func insert(models: [TagParticipant])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cachetagparticipantmanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cachetagparticipantmanager",
+            "title" : "CacheTagParticipantManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheusermanager\/fetchcurrentuser(_:)",
+                "title" : "func fetchCurrentUser((CDUser?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheusermanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDUser]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheusermanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDUser?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheusermanager\/insert(_:isme:)",
+                "title" : "func insert([User], isMe: Bool)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheusermanager\/insert(models:)",
+                "title" : "func insert(models: [User])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheusermanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cacheusermanager",
+            "title" : "CacheUserManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheuserrolemanager\/find(predicate:_:)",
+                "title" : "func find(predicate: NSPredicate, ([CDUserRole]) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheuserrolemanager\/first(with:_:)",
+                "title" : "func first(with: Int, (CDUserRole?) -> Void)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheuserrolemanager\/insert(model:)",
+                "title" : "func insert(model: UserRole)",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheuserrolemanager\/insert(models:)",
+                "title" : "func insert(models: [UserRole])",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheuserrolemanager\/roles(_:)",
+                "title" : "func roles(Int) -> [Roles]",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/cacheuserrolemanager\/update(_:_:)",
+                "title" : "func update([String : Any], NSPredicate)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/cacheuserrolemanager",
+            "title" : "CacheUserRoleManager",
+            "type" : "class"
+          },
+          {
+            "children" : [
+              {
+                "title" : "Initializers",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/persistentmanager\/init(logger:cacheenabled:)",
+                "title" : "init(logger: Logger?, cacheEnabled: Bool)",
+                "type" : "init"
+              },
+              {
+                "title" : "Instance Properties",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/persistentmanager\/context",
+                "title" : "var context: NSManagedObjectContext?",
+                "type" : "property"
+              },
+              {
+                "title" : "Instance Methods",
+                "type" : "groupMarker"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/persistentmanager\/delete()",
+                "title" : "func delete()",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/persistentmanager\/newbgtask()",
+                "title" : "func newBgTask() -> NSManagedObjectContext?",
+                "type" : "method"
+              },
+              {
+                "path" : "\/documentation\/chatcache\/persistentmanager\/switchtocontainer(userid:)",
+                "title" : "func switchToContainer(userId: Int)",
+                "type" : "method"
+              }
+            ],
+            "path" : "\/documentation\/chatcache\/persistentmanager",
+            "title" : "PersistentManager",
+            "type" : "class"
+          }
+        ],
+        "icon" : "icon.png",
+        "path" : "\/documentation\/chatcache",
+        "title" : "ChatCache",
+        "type" : "module"
+      }
+    ]
+  },
+  "references" : {
+    "icon.png" : {
+      "alt" : "App icon.",
+      "identifier" : "icon.png",
+      "type" : "image",
+      "variants" : [
+        {
+          "traits" : [
+            "1x",
+            "light"
+          ],
+          "url" : "\/images\/icon.png"
+        }
+      ]
+    }
+  },
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 1,
+    "patch" : 1
+  }
+}

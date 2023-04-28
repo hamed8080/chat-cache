@@ -1,0 +1,778 @@
+{
+  "hierarchy" : {
+    "paths" : [
+      [
+        "doc:\/\/ChatCache\/documentation\/ChatCache"
+      ]
+    ]
+  },
+  "identifier" : {
+    "interfaceLanguage" : "swift",
+    "url" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant"
+  },
+  "kind" : "symbol",
+  "metadata" : {
+    "externalID" : "c:@M@ChatCache@objc(cs)CDAssistant",
+    "fragments" : [
+      {
+        "kind" : "keyword",
+        "text" : "class"
+      },
+      {
+        "kind" : "text",
+        "text" : " "
+      },
+      {
+        "kind" : "identifier",
+        "text" : "CDAssistant"
+      }
+    ],
+    "modules" : [
+      {
+        "name" : "ChatCache"
+      }
+    ],
+    "navigatorTitle" : [
+      {
+        "kind" : "identifier",
+        "text" : "CDAssistant"
+      }
+    ],
+    "role" : "symbol",
+    "roleHeading" : "Class",
+    "symbolKind" : "class",
+    "title" : "CDAssistant"
+  },
+  "primaryContentSections" : [
+    {
+      "declarations" : [
+        {
+          "languages" : [
+            "swift"
+          ],
+          "platforms" : [
+            "macOS"
+          ],
+          "tokens" : [
+            {
+              "kind" : "attribute",
+              "text" : "@objc"
+            },
+            {
+              "kind" : "text",
+              "text" : "(CDAssistant) "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "final"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "keyword",
+              "text" : "class"
+            },
+            {
+              "kind" : "text",
+              "text" : " "
+            },
+            {
+              "kind" : "identifier",
+              "text" : "CDAssistant"
+            }
+          ]
+        }
+      ],
+      "kind" : "declarations"
+    }
+  ],
+  "relationshipsSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/objc(cs)NSManagedObject"
+      ],
+      "kind" : "relationships",
+      "title" : "Inherits From",
+      "type" : "inheritsFrom"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/7Combine16ObservableObjectP",
+        "doc:\/\/ChatCache\/objc(pl)NSFetchRequestResult",
+        "doc:\/\/ChatCache\/objc(pl)NSObject",
+        "doc:\/\/ChatCache\/s7CVarArgP",
+        "doc:\/\/ChatCache\/s28CustomDebugStringConvertibleP",
+        "doc:\/\/ChatCache\/s23CustomStringConvertibleP",
+        "doc:\/\/ChatCache\/SQ",
+        "doc:\/\/ChatCache\/SH"
+      ],
+      "kind" : "relationships",
+      "title" : "Conforms To",
+      "type" : "conformsTo"
+    }
+  ],
+  "schemaVersion" : {
+    "major" : 0,
+    "minor" : 3,
+    "patch" : 0
+  },
+  "sections" : [
+
+  ],
+  "topicSections" : [
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/assistant",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/block",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/codable",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/contactType",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/inviteeId",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/participant",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/roles"
+      ],
+      "title" : "Instance Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/update(_:)"
+      ],
+      "title" : "Instance Methods"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/entityName"
+      ],
+      "title" : "Type Properties"
+    },
+    {
+      "identifiers" : [
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/entityDescription(_:)",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/fetchRequest()",
+        "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/insertEntity(_:)"
+      ],
+      "title" : "Type Methods"
+    }
+  ],
+  "variants" : [
+    {
+      "paths" : [
+        "\/documentation\/chatcache\/cdassistant"
+      ],
+      "traits" : [
+        {
+          "interfaceLanguage" : "swift"
+        }
+      ]
+    }
+  ]
+, 
+"references": {
+"doc://ChatCache/7Combine16ObservableObjectP": {
+  "identifier" : "doc:\/\/ChatCache\/7Combine16ObservableObjectP",
+  "title" : "Combine.ObservableObject",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/SH": {
+  "identifier" : "doc:\/\/ChatCache\/SH",
+  "title" : "Swift.Hashable",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/SQ": {
+  "identifier" : "doc:\/\/ChatCache\/SQ",
+  "title" : "Swift.Equatable",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/documentation/ChatCache": {
+  "abstract" : [
+    {
+      "text" : "ChatCache manage and save all caches of important things such as conversations, messages and so on.",
+      "type" : "text"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache",
+  "images" : [
+    {
+      "identifier" : "icon.png",
+      "type" : "icon"
+    }
+  ],
+  "kind" : "symbol",
+  "role" : "collection",
+  "title" : "ChatCache",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "CDAssistant"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant",
+  "kind" : "symbol",
+  "navigatorTitle" : [
+    {
+      "kind" : "identifier",
+      "text" : "CDAssistant"
+    }
+  ],
+  "role" : "symbol",
+  "title" : "CDAssistant",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/assistant": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "assistant"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatModels@objc(cs)Invitee",
+      "text" : "Invitee"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/assistant",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "assistant",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/assistant"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/block": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "block"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSNumber",
+      "text" : "NSNumber"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/block",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "block",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/block"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/codable": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "codable"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10ChatModels9AssistantC",
+      "text" : "Assistant"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/codable",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "codable",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/codable"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/contactType": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "contactType"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/contactType",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "contactType",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/contacttype"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/entityDescription(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "entityDescription"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSManagedObjectContext",
+      "text" : "NSManagedObjectContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSEntityDescription",
+      "text" : "NSEntityDescription"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/entityDescription(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "entityDescription(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/entitydescription(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/entityName": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "let"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "entityName"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:SS",
+      "text" : "String"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/entityName",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "entityName",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/entityname"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/fetchRequest()": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "class"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "fetchRequest"
+    },
+    {
+      "kind" : "text",
+      "text" : "() -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSFetchRequest",
+      "text" : "NSFetchRequest"
+    },
+    {
+      "kind" : "text",
+      "text" : "<"
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDAssistant",
+      "text" : "CDAssistant"
+    },
+    {
+      "kind" : "text",
+      "text" : ">"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/fetchRequest()",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "fetchRequest()",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/fetchrequest()"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/insertEntity(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "static"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "insertEntity"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:objc(cs)NSManagedObjectContext",
+      "text" : "NSManagedObjectContext"
+    },
+    {
+      "kind" : "text",
+      "text" : ") -> "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDAssistant",
+      "text" : "CDAssistant"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/insertEntity(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "insertEntity(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/insertentity(_:)"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/inviteeId": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "inviteeId"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:s5Int64V",
+      "text" : "Int64"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/inviteeId",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "inviteeId",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/inviteeid"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/participant": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "participant"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "c:@M@ChatCache@objc(cs)CDParticipant",
+      "text" : "CDParticipant"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/participant",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "participant",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/participant"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/roles": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "var"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "roles"
+    },
+    {
+      "kind" : "text",
+      "text" : ": "
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10Foundation4DataV",
+      "text" : "Data"
+    },
+    {
+      "kind" : "text",
+      "text" : "?"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/roles",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "roles",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/roles"
+},
+"doc://ChatCache/documentation/ChatCache/CDAssistant/update(_:)": {
+  "abstract" : [
+
+  ],
+  "fragments" : [
+    {
+      "kind" : "keyword",
+      "text" : "func"
+    },
+    {
+      "kind" : "text",
+      "text" : " "
+    },
+    {
+      "kind" : "identifier",
+      "text" : "update"
+    },
+    {
+      "kind" : "text",
+      "text" : "("
+    },
+    {
+      "kind" : "typeIdentifier",
+      "preciseIdentifier" : "s:10ChatModels9AssistantC",
+      "text" : "Assistant"
+    },
+    {
+      "kind" : "text",
+      "text" : ")"
+    }
+  ],
+  "identifier" : "doc:\/\/ChatCache\/documentation\/ChatCache\/CDAssistant\/update(_:)",
+  "kind" : "symbol",
+  "role" : "symbol",
+  "title" : "update(_:)",
+  "type" : "topic",
+  "url" : "\/documentation\/chatcache\/cdassistant\/update(_:)"
+},
+"doc://ChatCache/objc(cs)NSManagedObject": {
+  "identifier" : "doc:\/\/ChatCache\/objc(cs)NSManagedObject",
+  "title" : "CoreData.NSManagedObject",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/objc(pl)NSFetchRequestResult": {
+  "identifier" : "doc:\/\/ChatCache\/objc(pl)NSFetchRequestResult",
+  "title" : "CoreData.NSFetchRequestResult",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/objc(pl)NSObject": {
+  "identifier" : "doc:\/\/ChatCache\/objc(pl)NSObject",
+  "title" : "ObjectiveC.NSObjectProtocol",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/s23CustomStringConvertibleP": {
+  "identifier" : "doc:\/\/ChatCache\/s23CustomStringConvertibleP",
+  "title" : "Swift.CustomStringConvertible",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/s28CustomDebugStringConvertibleP": {
+  "identifier" : "doc:\/\/ChatCache\/s28CustomDebugStringConvertibleP",
+  "title" : "Swift.CustomDebugStringConvertible",
+  "type" : "unresolvable"
+},
+"doc://ChatCache/s7CVarArgP": {
+  "identifier" : "doc:\/\/ChatCache\/s7CVarArgP",
+  "title" : "Swift.CVarArg",
+  "type" : "unresolvable"
+},
+"icon.png": {
+  "alt" : "App icon.",
+  "identifier" : "icon.png",
+  "type" : "image",
+  "variants" : [
+    {
+      "traits" : [
+        "1x",
+        "light"
+      ],
+      "url" : "\/images\/icon.png"
+    }
+  ]
+}
+}
+}
