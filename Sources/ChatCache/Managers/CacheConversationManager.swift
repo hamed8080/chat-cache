@@ -1,22 +1,19 @@
 //
-//  CacheConversationManager.swift
+// CacheConversationManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
 import ChatModels
-import ChatDTO
 
 public final class CacheConversationManager: CoreDataProtocol {
     let idName = "id"
     var context: NSManagedObjectContext
-    let logger: Logger
+    let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: Logger) {
+    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
@@ -65,7 +62,7 @@ public final class CacheConversationManager: CoreDataProtocol {
                 entity?.addToPinMessages(pinMessageEntity)
             }
         } catch {
-            logger.log(message: error.localizedDescription, persist: true, type: .internalLog)
+            logger.log(message: error.localizedDescription, persist: true, error: nil)
         }
     }
 
@@ -117,35 +114,35 @@ public final class CacheConversationManager: CoreDataProtocol {
 
     func delete(entity _: CDConversation) {}
 
-    public func seen(_ request: MessageSeenRequest) {
-        let predicate = idPredicate(id: request.threadId)
+    public func seen(threadId: Int, messageId: Int) {
+        let predicate = idPredicate(id: threadId)
         let propertiesToUpdate = [
-            "lastSeenMessageId": (request.messageId) as NSNumber,
+            "lastSeenMessageId": (messageId) as NSNumber,
             "lastSeenMessageTime": (Date().timeIntervalSince1970) as NSNumber,
             "lastSeenMessageNanos": (Date().timeIntervalSince1970) as NSNumber,
         ]
         update(propertiesToUpdate, predicate)
     }
 
-    public func partnerDeliver(_ response: MessageResponse) {
-        let predicate = idPredicate(id: response.threadId ?? -1)
+    public func partnerDeliver(threadId: Int, messageId: Int, messageTime: UInt) {
+        let predicate = idPredicate(id: threadId)
         let propertiesToUpdate: [String: Any] = [
-            "partnerLastDeliveredMessageTime": response.messageTime ?? 0,
-            "partnerLastDeliveredMessageNanos": response.messageTime ?? 0,
-            "partnerLastDeliveredMessageId": response.messageId ?? -1,
+            "partnerLastDeliveredMessageTime": messageTime,
+            "partnerLastDeliveredMessageNanos": messageTime,
+            "partnerLastDeliveredMessageId": messageId,
         ]
         update(propertiesToUpdate, predicate)
     }
 
-    public func partnerSeen(_ response: MessageResponse) {
-        let predicate = idPredicate(id: response.threadId ?? -1)
+    public func partnerSeen(threadId: Int, messageId: Int, messageTime: Int = 0) {
+        let predicate = idPredicate(id: threadId)
         let propertiesToUpdate: [String: Any] = [
-            "partnerLastSeenMessageTime": response.messageTime ?? 0,
-            "partnerLastSeenMessageNanos": response.messageTime ?? 0,
-            "partnerLastSeenMessageId": response.messageId ?? -1,
-            "partnerLastDeliveredMessageTime": response.messageTime ?? 0,
-            "partnerLastDeliveredMessageNanos": response.messageTime ?? 0,
-            "partnerLastDeliveredMessageId": response.messageId ?? -1,
+            "partnerLastSeenMessageTime": messageTime,
+            "partnerLastSeenMessageNanos": messageTime,
+            "partnerLastSeenMessageId": messageId,
+            "partnerLastDeliveredMessageTime": messageTime,
+            "partnerLastDeliveredMessageNanos": messageTime,
+            "partnerLastDeliveredMessageId": messageId,
         ]
         update(propertiesToUpdate, predicate)
     }
@@ -174,7 +171,7 @@ public final class CacheConversationManager: CoreDataProtocol {
         }
     }
 
-    public func fetch(_ req: ThreadsRequest, _ completion: @escaping ([CDConversation], Int) -> Void) {
+    public func fetch(_ req: FetchThreadRequest, _ completion: @escaping ([CDConversation], Int) -> Void) {
         let fetchRequest = CDConversation.fetchRequest()
         fetchRequest.fetchLimit = req.count
         fetchRequest.fetchOffset = req.offset
@@ -195,7 +192,7 @@ public final class CacheConversationManager: CoreDataProtocol {
             orFetchPredicatArray.append(groupPredicate)
         }
 
-        if let type = req.type?.rawValue {
+        if let type = req.type {
             let thtreadTypePredicate = NSPredicate(format: "type == %i", type)
             orFetchPredicatArray.append(thtreadTypePredicate)
         }

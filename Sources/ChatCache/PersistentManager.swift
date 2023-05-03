@@ -1,11 +1,10 @@
 //
 // PersistentManager.swift
-// Copyright (c) 2022 Chat
+// Copyright (c) 2022 ChatCache
 //
 // Created by Hamed Hosseini on 12/14/22
 
 import CoreData
-import Logger
 
 extension Bundle {
     static var moduleBundle: Bundle {
@@ -26,11 +25,11 @@ final class PMPersistentContainer: NSPersistentContainer {
 
 /// TLDR 'Persistance Service Manager'
 public final class PersistentManager {
-    var logger: Logger?
+    public weak var logger: CacheLogDelegate?
     var cacheEnabled: Bool
     let baseModelFileName = "ChatSDKModel"
 
-    public init(logger: Logger? = nil, cacheEnabled: Bool = false) {
+    public init(logger: CacheLogDelegate? = nil, cacheEnabled: Bool = false) {
         self.logger = logger
         self.cacheEnabled = cacheEnabled
     }
@@ -66,7 +65,7 @@ public final class PersistentManager {
         let container = PMPersistentContainer(name: "\(baseModelFileName)-\(userId)", managedObjectModel: modelFile)
         container.loadPersistentStores { [weak self] desc, error in
             if let error = error {
-                self?.logger?.createLog(message: "error load CoreData persistentstore des:\(desc) error: \(error)", persist: true, level: .error, type: .internalLog)
+                self?.logger?.log(message: "error load CoreData persistentstore des:\(desc) error: \(error)", persist: true, error: error)
             }
         }
         container.viewContext.automaticallyMergesChangesFromParent = true

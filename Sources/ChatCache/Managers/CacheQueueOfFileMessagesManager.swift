@@ -1,23 +1,19 @@
 //
-//  CacheQueueOfFileMessagesManager.swift
+// CacheQueueOfFileMessagesManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
-import ChatDTO
 import ChatModels
-import ChatExtensions
 
 public final class CacheQueueOfFileMessagesManager: CoreDataProtocol {
     let idName = "id"
     var context: NSManagedObjectContext
-    let logger: Logger
+    let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: Logger) {
+    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
@@ -74,17 +70,15 @@ public final class CacheQueueOfFileMessagesManager: CoreDataProtocol {
 
     func delete(entity _: CDQueueOfFileMessages) {}
 
-    public func insert(req: SendTextMessageRequest? = nil, uploadFile: UploadFileRequest) {
+    public func insert(req: QueueOfFileMessages) {
         insertObjects(context) { context in
-            let req = QueueOfFileMessages(req: req, uploadFile: uploadFile)
             let entity = CDQueueOfFileMessages.insertEntity(context)
             entity.update(req)
         }
     }
 
-    public func insert(req: SendTextMessageRequest? = nil, imageRequest: UploadImageRequest) {
+    public func insertImage(req: QueueOfFileMessages) {
         insertObjects(context) { context in
-            let req = QueueOfFileMessages(req: req, imageRequest: imageRequest)
             let entity = CDQueueOfFileMessages.insertEntity(context)
             entity.update(req)
         }

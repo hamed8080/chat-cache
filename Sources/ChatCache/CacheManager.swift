@@ -1,16 +1,13 @@
 //
-//  CacheManager.swift
+// CacheManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/13/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
-import ChatCore
 
-public final class CacheManager: CacheManagerProtocol {
+public final class CacheManager {
     public let assistant: CacheAssistantManager
     public let contact: CacheContactManager
     public let conversation: CacheConversationManager
@@ -52,7 +49,7 @@ public final class CacheManager: CacheManagerProtocol {
         ]
     }
 
-    public init(context: NSManagedObjectContext, logger: Logger) {
+    public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         assistant = CacheAssistantManager(context: context, logger: logger)
         contact = CacheContactManager(context: context, logger: logger)
         conversation = CacheConversationManager(context: context, logger: logger)

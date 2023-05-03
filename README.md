@@ -16,7 +16,7 @@
 Add in `Package.swift` or directly in `Xcode Project dependencies` section:
 
 ```swift
-.package(url: "https://github.com/hamed8080/chat-cache.git", .upToNextMinor(from: "1.0.0")),
+.package(url: "https://github.com/hamed8080/chat-cache.git", .upToNextMinor(from: "1.0.1")),
 ```
 
 #### [CocoaPods](https://cocoapods.org) 
@@ -24,7 +24,7 @@ Add in `Package.swift` or directly in `Xcode Project dependencies` section:
 Add in `Podfile`:
 
 ```ruby
-pod "chat-cache", :git => 'http://pubgi.fanapsoft.ir/chat/ios/chat-cache.git', :tag => '1.0.0'
+pod "chat-cache", :git => 'http://pubgi.fanapsoft.ir/chat/ios/chat-cache.git', :tag => '1.0.1'
 ```
 <br/>
 

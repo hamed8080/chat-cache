@@ -1,25 +1,27 @@
 //
-//  CoreDataProtocol.swift
+// CoreDataProtocol.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
 
 protocol IdProtocol {}
 extension Int: IdProtocol {}
 extension String: IdProtocol {}
 
+public protocol CacheLogDelegate: AnyObject {
+    func log(message: String, persist: Bool, error: Error?)
+}
+
 protocol CoreDataProtocol {
     associatedtype Entity: NSManagedObject
     associatedtype Model: Codable
     associatedtype Id: IdProtocol
-    init(context: NSManagedObjectContext, logger: Logger)
+    init(context: NSManagedObjectContext, logger: CacheLogDelegate)
     var context: NSManagedObjectContext { get set }
-    var logger: Logger { get }
+    var logger: CacheLogDelegate { get }
     var idName: String { get }
     func idPredicate(id: Id) -> NSPredicate
     func save()
@@ -44,13 +46,13 @@ extension CoreDataProtocol {
             do {
                 try context.save()
                 context.reset()
-                logger.log(message: "saved successfully", persist: false, type: .internalLog)
+                logger.log(message: "saved successfully", persist: false, error: nil)
             } catch {
                 let nserror = error as NSError
-                logger.createLog(message: "Error occured in save CoreData: \(nserror), \(nserror.userInfo)", persist: true, level: .error, type: .internalLog)
+                logger.log(message: "Error occured in save CoreData: \(nserror)", persist: true, error: nserror)
             }
         } else {
-            logger.log(message: "no changes find on context so nothing to save!", persist: false, type: .internalLog)
+            logger.log(message: "no changes find on context so nothing to save!", persist: false, error: nil)
         }
     }
 

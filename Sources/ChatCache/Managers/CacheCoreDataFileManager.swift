@@ -1,21 +1,19 @@
 //
-//  CacheCoreDataFileManager.swift
+// CacheCoreDataFileManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
 import ChatModels
 
 public final class CacheCoreDataFileManager: CoreDataProtocol {
     let idName = "hashCode"
     var context: NSManagedObjectContext
-    let logger: Logger
+    let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: Logger) {
+    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }

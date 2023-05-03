@@ -17,24 +17,18 @@ let package = Package(
             targets: ["ChatCache"]),
     ],
     dependencies: [
-        // .package(path: "../ChatModels"),
-        // .package(path: "../ChatDTO"),
-        // .package(path: "../ChatExtensions"),
-        .package(url: "https://pubgi.fanapsoft.ir/chat/ios/chat-extensions.git", exact: "1.0.0"),
+        .package(url: "https://pubgi.fanapsoft.ir/chat/ios/chat-models.git", exact: "1.0.1"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],
     targets: [        
         .target(
             name: "ChatCache",
-            dependencies: [.product(name: "ChatExtensions", package: "chat-extensions")],
+            dependencies: [.product(name: "ChatModels", package: "chat-models")],
             resources: [.process("Resources")]
         ),
         .testTarget(
             name: "ChatCacheTests",
-            dependencies: ["ChatCache"],
-            resources: [
-                .copy("Resources/icon.png")
-            ]
+            dependencies: ["ChatCache"]
         ),
     ]
 )

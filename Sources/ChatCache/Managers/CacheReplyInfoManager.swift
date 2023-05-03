@@ -1,21 +1,19 @@
 //
-//  CacheReplyInfoManager.swift
+// CacheReplyInfoManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
 import ChatModels
 
 public final class CacheReplyInfoManager: CoreDataProtocol {
     let idName = "id"
     var context: NSManagedObjectContext
-    let logger: Logger
+    let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: Logger) {
+    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }

@@ -1,9 +1,8 @@
 //
-//  RolesValueTransformer.swift
+// RolesValueTransformer.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/5/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import Foundation
 import ChatModels

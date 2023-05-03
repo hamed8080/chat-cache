@@ -1,22 +1,19 @@
 //
-//  CacheAssistantManager.swift
+// CacheAssistantManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
 import ChatModels
-import ChatDTO
 
 public final class CacheAssistantManager: CoreDataProtocol {
     let idName = "id"
     var context: NSManagedObjectContext
-    let logger: Logger
+    let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: Logger) {
+    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
@@ -59,7 +56,7 @@ public final class CacheAssistantManager: CoreDataProtocol {
     func update(model _: Assistant, entity _: CDAssistant) {}
 
     func update(models: [Assistant]) {
-        let predicate = NSPredicate(format: "id IN == @i", models.compactMap { $0.id as? NSNumber })
+        let _ = NSPredicate(format: "id IN == @i", models.compactMap { $0.id as? NSNumber })
     }
 
     public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
@@ -91,12 +88,12 @@ public final class CacheAssistantManager: CoreDataProtocol {
         batchDelete(context, entityName: CDAssistant.entityName, predicate: predicate)
     }
 
-    public func fetch(_ req: AssistantsRequest, _ completion: @escaping ([CDAssistant], Int) -> Void) {
+    public func fetch(_ count: Int = 25, _ offset: Int = 0, _ completion: @escaping ([CDAssistant], Int) -> Void) {
         let fetchRequest = CDAssistant.fetchRequest()
         context.perform {
             let threads = try self.context.fetch(fetchRequest)
-            fetchRequest.fetchLimit = req.count
-            fetchRequest.fetchOffset = req.offset
+            fetchRequest.fetchLimit = count
+            fetchRequest.fetchOffset = offset
             let count = try self.context.count(for: fetchRequest)
             completion(threads, count)
         }

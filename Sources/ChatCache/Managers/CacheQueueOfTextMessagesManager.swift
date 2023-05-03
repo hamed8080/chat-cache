@@ -1,23 +1,19 @@
 //
-//  CacheQueueOfTextMessagesManager.swift
+// CacheQueueOfTextMessagesManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
-import ChatDTO
 import ChatModels
-import ChatExtensions
 
 public final class CacheQueueOfTextMessagesManager: CoreDataProtocol {
     let idName = "id"
     var context: NSManagedObjectContext
-    let logger: Logger
+    let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: Logger) {
+    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
@@ -74,9 +70,8 @@ public final class CacheQueueOfTextMessagesManager: CoreDataProtocol {
 
     func delete(entity _: CDQueueOfTextMessages) {}
 
-    public func insert(_ req: SendTextMessageRequest) {
-        let model = QueueOfTextMessages(textRequest: req)
-        insert(models: [model])
+    public func insert(_ text: QueueOfTextMessages) {
+        insert(models: [text])
     }
 
     public func delete(_ uniqueIds: [String]) {

@@ -1,22 +1,19 @@
 //
-//  CacheMutualGroupManager.swift
+// CacheMutualGroupManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
 import ChatModels
-import ChatDTO
 
 public final class CacheMutualGroupManager: CoreDataProtocol {
     let idName = "id"
     var context: NSManagedObjectContext
-    let logger: Logger
+    let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: Logger) {
+    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
@@ -81,8 +78,8 @@ public final class CacheMutualGroupManager: CoreDataProtocol {
 
     func delete(entity _: CDMutualGroup) {}
 
-    public func insert(_ threads: [Conversation], _ req: MutualGroupsRequest) {
-        let model = MutualGroup(idType: InviteeTypes(rawValue: req.toBeUserVO.idType ?? -1) ?? .unknown, mutualId: req.toBeUserVO.id, conversations: threads)
+    public func insert(_ threads: [Conversation], idType: InviteeTypes = .unknown, mutualId: String?) {
+        let model = MutualGroup(idType: idType , mutualId: mutualId, conversations: threads)
         insert(models: [model])
     }
 

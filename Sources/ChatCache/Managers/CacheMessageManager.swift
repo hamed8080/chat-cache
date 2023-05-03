@@ -1,22 +1,19 @@
 //
-//  CacheMessageManager.swift
+// CacheMessageManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
-import ChatDTO
 import ChatModels
 
 public final class CacheMessageManager: CoreDataProtocol {
     let idName = "id"
     var context: NSManagedObjectContext
-    let logger: Logger
+    let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: Logger) {
+    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
@@ -162,12 +159,12 @@ public final class CacheMessageManager: CoreDataProtocol {
     /// We should do that because we need to distinguish between messages that came from the partner or messages sent by myself.
     /// Also we should set delivered to true because when we have seen a message for 100% we have received the message as well.
     /// Also we need to set lastSeenMessageId and time and nano time in the conversation entity to keep it synced.
-    public func seen(_ request: MessageSeenRequest, userId: Int) {
-        let predicate = NSPredicate(format: "threadId == %i AND id <= %i AND (seen = nil OR seen == NO) AND ownerId != %i", request.threadId, request.messageId, userId)
+    public func seen(threadId: Int, messageId: Int, userId: Int) {
+        let predicate = NSPredicate(format: "threadId == %i AND id <= %i AND (seen = nil OR seen == NO) AND ownerId != %i", threadId, messageId, userId)
         let propertiesToUpdate = ["seen": NSNumber(booleanLiteral: true), "delivered": NSNumber(booleanLiteral: true)]
         update(propertiesToUpdate, predicate)
         let cmConversation = CacheConversationManager(context: context, logger: logger)
-        cmConversation.seen(request)
+        cmConversation.seen(threadId: threadId, messageId: messageId)
     }
 
     // We don't join with the conversation.id because it leads to a crash when batch updating due to lack of relation update query support in a predicate in batch mode.
@@ -183,27 +180,23 @@ public final class CacheMessageManager: CoreDataProtocol {
         return NSPredicate(format: "(conversation.id == %i OR threadId == %i) AND id == %i", threadId, threadId, messageId)
     }
 
-    public func partnerDeliver(_ response: MessageResponse) {
-        let threadId = response.threadId ?? -1
-        let messageId = response.messageId ?? -1
+    public func partnerDeliver(threadId: Int, messageId: Int, messageTime: UInt = 0) {
         let predicate = NSPredicate(format: "threadId == %i AND id <= %i AND (delivered = nil OR delivered == NO)", threadId, messageId)
         let propertiesToUpdate = ["delivered": NSNumber(booleanLiteral: true)]
         update(propertiesToUpdate, predicate)
         let cm = CacheConversationManager(context: context, logger: logger)
-        cm.partnerDeliver(response)
+        cm.partnerDeliver(threadId: threadId, messageId: messageId, messageTime: messageTime)
     }
 
-    public func partnerSeen(_ response: MessageResponse) {
-        let threadId = response.threadId ?? -1
-        let messageId = response.messageId ?? -1
+    public func partnerSeen(threadId: Int, messageId: Int) {
         let predicate = NSPredicate(format: "threadId == %i AND id <= %i AND (seen = nil OR seen == NO)", threadId, messageId)
         let propertiesToUpdate = ["seen": NSNumber(booleanLiteral: true), "delivered": NSNumber(booleanLiteral: true)]
         update(propertiesToUpdate, predicate)
         let cm = CacheConversationManager(context: context, logger: logger)
-        cm.partnerSeen(response)
+        cm.partnerSeen(threadId: threadId, messageId: messageId)
     }
 
-    public func predicateArray(_ req: GetHistoryRequest) -> NSCompoundPredicate {
+    public func predicateArray(_ req: FetchMessagesRequest) -> NSCompoundPredicate {
         var predicateArray = [NSPredicate]()
         predicateArray.append(NSPredicate(format: "threadId == %i", req.threadId))
         if let messageId = req.messageId {
@@ -242,7 +235,7 @@ public final class CacheMessageManager: CoreDataProtocol {
         return try context.fetch(req).first
     }
 
-    public func fetch(_ req: GetHistoryRequest, _ completion: @escaping ([CDMessage], Int) -> Void) {
+    public func fetch(_ req: FetchMessagesRequest, _ completion: @escaping ([CDMessage], Int) -> Void) {
         context.perform {
             let fetchRequest = CDMessage.fetchRequest()
             let sortByTime = NSSortDescriptor(key: "time", ascending: (req.order == Ordering.asc.rawValue) ? true : false)
@@ -256,9 +249,9 @@ public final class CacheMessageManager: CoreDataProtocol {
         }
     }
 
-    public func getMentions(_ req: MentionRequest, _ completion: @escaping ([CDMessage], Int) -> Void) {
-        let predicate = NSPredicate(format: "threadId == %i", req.threadId, req.threadId)
-        fetchWithOffset(entityName: CDMessage.entityName, count: req.count, offset: req.offset, predicate: predicate, completion)
+    public func getMentions(threadId: Int, offset: Int = 0, count: Int = 25, _ completion: @escaping ([CDMessage], Int) -> Void) {
+        let predicate = NSPredicate(format: "threadId == %i", threadId)
+        fetchWithOffset(entityName: CDMessage.entityName, count: count, offset: offset, predicate: predicate, completion)
     }
 
     public func clearHistory(threadId: Int?) {

@@ -1,22 +1,19 @@
 //
-//  CacheContactManager.swift
+// CacheContactManager.swift
+// Copyright (c) 2022 ChatCache
 //
-//
-//  Created by hamed on 1/11/23.
-//
+// Created by Hamed Hosseini on 12/14/22
 
 import CoreData
 import Foundation
-import Logger
 import ChatModels
-import ChatDTO
 
 public final class CacheContactManager: CoreDataProtocol {
     let idName = "id"
     var context: NSManagedObjectContext
-    let logger: Logger
+    let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: Logger) {
+    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
@@ -83,14 +80,13 @@ public final class CacheContactManager: CoreDataProtocol {
         update(propertiesToUpdate, predicate)
     }
 
-    public func getContacts(_ req: ContactsRequest?, _ completion: @escaping ([CDContact], Int) -> Void) {
-        guard let req = req else { completion([], 0); return }
+    public func getContacts(_ req: FetchContactsRequest, _ completion: @escaping ([CDContact], Int) -> Void) {
         let fetchRequest = CDContact.fetchRequest()
         let ascending = req.order != Ordering.desc.rawValue
         if let id = req.id {
             fetchRequest.predicate = NSPredicate(format: "id == %i", id)
-        } else if req.isAutoGenratedUniqueId == false {
-            fetchRequest.predicate = NSPredicate(format: "uniqueId == %@", req.uniqueId)
+        } else if let uniqueId = req.uniqueId {
+            fetchRequest.predicate = NSPredicate(format: "uniqueId == %@", uniqueId)
         } else {
             var andPredicateArr = [NSPredicate]()
 
