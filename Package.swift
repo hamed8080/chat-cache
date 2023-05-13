@@ -17,13 +17,15 @@ let package = Package(
             targets: ["ChatCache"]),
     ],
     dependencies: [
-        .package(url: "https://pubgi.fanapsoft.ir/chat/ios/chat-models.git", .upToNextMinor(from: "1.0.0")),
+        .package(path: "../ChatModels"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],
     targets: [        
         .target(
             name: "ChatCache",
-            dependencies: [.product(name: "ChatModels", package: "chat-models")],
+            dependencies: [
+                "ChatModels",
+            ],
             resources: [.process("Resources")]
         ),
         .testTarget(
