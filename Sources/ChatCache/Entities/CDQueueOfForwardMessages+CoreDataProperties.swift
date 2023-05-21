@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDQueueOfForwardMessages {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDQueueOfForwardMessages> {
-        NSFetchRequest<CDQueueOfForwardMessages>(entityName: "CDQueueOfForwardMessages")
-    }
+    typealias Entity = CDQueueOfForwardMessages
+    typealias Model = QueueOfForwardMessages
+    typealias Id = Int
+    static let name = "CDQueueOfForwardMessages"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDQueueOfForwardMessages"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDQueueOfForwardMessages {
-        CDQueueOfForwardMessages(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDQueueOfForwardMessages {
     @NSManaged var fromThreadId: NSNumber?
     @NSManaged var messageIds: String?
     @NSManaged var threadId: NSNumber?
@@ -30,15 +26,15 @@ public extension CDQueueOfForwardMessages {
 }
 
 public extension CDQueueOfForwardMessages {
-    func update(_ queueOfForwardMessages: QueueOfForwardMessages) {
-        fromThreadId = queueOfForwardMessages.fromThreadId as? NSNumber
-        messageIds = queueOfForwardMessages.messageIds?.map { "\($0)" }.joined(separator: ",")
-        threadId = queueOfForwardMessages.threadId as? NSNumber
-        typeCode = queueOfForwardMessages.typeCode
-        uniqueIds = queueOfForwardMessages.uniqueIds?.joined(separator: ",")
+    func update(_ model: Model) {
+        fromThreadId = model.fromThreadId as? NSNumber
+        messageIds = model.messageIds?.map { "\($0)" }.joined(separator: ",")
+        threadId = model.threadId as? NSNumber
+        typeCode = model.typeCode
+        uniqueIds = model.uniqueIds?.joined(separator: ",")
     }
 
-    var codable: QueueOfForwardMessages {
+    var codable: Model {
         QueueOfForwardMessages(fromThreadId: fromThreadId?.intValue,
                                messageIds: messageIds?.split(separator: ",").compactMap { Int($0) },
                                threadId: threadId?.intValue,

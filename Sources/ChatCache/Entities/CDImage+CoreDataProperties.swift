@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDImage {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDImage> {
-        NSFetchRequest<CDImage>(entityName: "CDImage")
-    }
+    typealias Entity = CDImage
+    typealias Model = Image
+    typealias Id = String
+    static let name = "CDImage"
+    static var queryIdSpecifier: String = "%@"
+    static let idName = "hashCode"
+}
 
-    static let entityName = "CDImage"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDImage {
-        CDImage(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDImage {
     @NSManaged var actualHeight: NSNumber?
     @NSManaged var actualWidth: NSNumber?
     @NSManaged var hashCode: String?
@@ -31,18 +27,18 @@ public extension CDImage {
     @NSManaged var width: NSNumber?
 }
 
-extension CDImage {
-    func update(_ image: Image) {
-        actualWidth = image.actualWidth as? NSNumber
-        actualHeight = image.actualHeight as? NSNumber
-        height = image.height as? NSNumber
-        width = image.width as? NSNumber
-        size = image.size as? NSNumber
-        name = image.name
-        hashCode = image.hashCode
+public extension CDImage {
+    func update(_ model: Model) {
+        actualWidth = model.actualWidth as? NSNumber
+        actualHeight = model.actualHeight as? NSNumber
+        height = model.height as? NSNumber
+        width = model.width as? NSNumber
+        size = model.size as? NSNumber
+        name = model.name
+        hashCode = model.hashCode
     }
 
-    public var codable: Image {
+    var codable: Model {
         Image(actualWidth: actualWidth?.intValue,
               actualHeight: actualHeight?.intValue,
               height: height?.intValue,

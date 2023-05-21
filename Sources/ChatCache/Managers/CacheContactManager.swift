@@ -9,58 +9,19 @@ import Foundation
 import ChatModels
 
 public final class CacheContactManager: CoreDataProtocol {
-    let idName = "id"
-    var context: NSManagedObjectContext
-    let logger: CacheLogDelegate
+    public typealias Entity = CDContact
+    public var context: NSManagedObjectContext
+    public let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
+    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
 
-    func insert(model: Contact) {
-        let entity = CDContact.insertEntity(context)
-        entity.update(model)
-    }
-
-    public func insert(models: [Contact]) {
-        insertObjects(context) { [weak self] _ in
-            models.forEach { model in
-                self?.insert(model: model)
-            }
-        }
-    }
-
-    func idPredicate(id: Int) -> NSPredicate {
-        NSPredicate(format: "\(idName) == %i", id)
-    }
-
-    func first(with id: Int, _ completion: @escaping (CDContact?) -> Void) {
-        context.perform {
-            let req = CDContact.fetchRequest()
-            req.predicate = self.idPredicate(id: id)
-            let contact = try self.context.fetch(req).first
-            completion(contact)
-        }
-    }
-
-    public func find(predicate: NSPredicate, _ completion: @escaping ([CDContact]) -> Void) {
-        context.perform {
-            let req = CDContact.fetchRequest()
-            req.predicate = predicate
-            let contacts = try self.context.fetch(req)
-            completion(contacts)
-        }
-    }
-
-    func update(model _: Contact, entity _: CDContact) {}
-
-    func update(models _: [Contact]) {}
-
     public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
         // batch update request
         batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: CDContact.entityName)
+            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
             batchRequest.predicate = predicate
             batchRequest.propertiesToUpdate = propertiesToUpdate
             batchRequest.resultType = .updatedObjectIDsResultType
@@ -68,10 +29,8 @@ public final class CacheContactManager: CoreDataProtocol {
         }
     }
 
-    func delete(entity _: CDContact) {}
-
     public func delete(_ id: Int) {
-        batchDelete(context, entityName: CDContact.entityName, predicate: idPredicate(id: id))
+        batchDelete(context, entityName: Entity.name, predicate: idPredicate(id: id))
     }
 
     public func block(_ block: Bool, _ threadId: Int?) {
@@ -80,11 +39,11 @@ public final class CacheContactManager: CoreDataProtocol {
         update(propertiesToUpdate, predicate)
     }
 
-    public func getContacts(_ req: FetchContactsRequest, _ completion: @escaping ([CDContact], Int) -> Void) {
-        let fetchRequest = CDContact.fetchRequest()
+    public func getContacts(_ req: FetchContactsRequest, _ completion: @escaping ([Entity], Int) -> Void) {
+        let fetchRequest = Entity.fetchRequest()
         let ascending = req.order != Ordering.desc.rawValue
         if let id = req.id {
-            fetchRequest.predicate = NSPredicate(format: "id == %i", id)
+            fetchRequest.predicate = NSPredicate(format: "\(Entity.idName) == \(Entity.queryIdSpecifier)", id)
         } else if let uniqueId = req.uniqueId {
             fetchRequest.predicate = NSPredicate(format: "uniqueId == %@", uniqueId)
         } else {
@@ -117,7 +76,7 @@ public final class CacheContactManager: CoreDataProtocol {
         let lastNameSort = NSSortDescriptor(key: "lastName", ascending: ascending)
         fetchRequest.sortDescriptors = [lastNameSort, firstNameSort]
         context.perform {
-            let count = try? self.context.count(for: CDContact.fetchRequest())
+            let count = try? self.context.count(for: Entity.fetchRequest())
             fetchRequest.fetchLimit = req.size
             fetchRequest.fetchOffset = req.offset
             let contacts = try self.context.fetch(fetchRequest)
@@ -125,9 +84,9 @@ public final class CacheContactManager: CoreDataProtocol {
         }
     }
 
-    public func allContacts(_ completion: @escaping ([CDContact]) -> Void) {
+    public func allContacts(_ completion: @escaping ([Entity]) -> Void) {
         context.perform {
-            let req = CDContact.fetchRequest()
+            let req = Entity.fetchRequest()
             let contacts = try self.context.fetch(req)
             completion(contacts)
         }

@@ -9,17 +9,17 @@ import Foundation
 import ChatModels
 
 public final class CacheForwardInfoManager: CoreDataProtocol {
-    let idName = "id"
-    var context: NSManagedObjectContext
-    let logger: CacheLogDelegate
+    public typealias Entity = CDForwardInfo
+    public var context: NSManagedObjectContext
+    public let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
+    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
 
-    func insert(model: ForwardInfo) {
-        let entity = CDForwardInfo.insertEntity(context)
+    public func insert(model: Entity.Model) {
+        let entity = Entity.insertEntity(context)
         if let participant = model.participant, let thread = model.conversation {
             CacheConversationManager(context: context, logger: logger).findOrCreateEntity(model.conversation?.id) { threadEntity in
                 threadEntity?.update(thread)
@@ -32,58 +32,14 @@ public final class CacheForwardInfoManager: CoreDataProtocol {
         }
     }
 
-    func insert(models: [ForwardInfo]) {
-        insertObjects(context) { [weak self] _ in
-            models.forEach { model in
-                self?.insert(model: model)
-            }
-        }
-    }
-
-    func idPredicate(id: Int) -> NSPredicate {
-        NSPredicate(format: "\(idName) == %i", id)
-    }
-
-    func first(with id: Int, _ completion: @escaping (CDForwardInfo?) -> Void) {
-        context.perform {
-            let req = CDForwardInfo.fetchRequest()
-            req.predicate = self.idPredicate(id: id)
-            let forward = try self.context.fetch(req).first
-            completion(forward)
-        }
-    }
-
-    public func find(predicate: NSPredicate, _ completion: @escaping ([CDForwardInfo]) -> Void) {
-        context.perform {
-            let req = CDForwardInfo.fetchRequest()
-            req.predicate = predicate
-            let forwards = try self.context.fetch(req)
-            completion(forwards)
-        }
-    }
-
-    func update(model _: ForwardInfo, entity _: CDForwardInfo) {}
-
-    func update(models _: [ForwardInfo]) {}
-
     public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
         // batch update request
         batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: CDForwardInfo.entityName)
+            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
             batchRequest.predicate = predicate
             batchRequest.propertiesToUpdate = propertiesToUpdate
             batchRequest.resultType = .updatedObjectIDsResultType
             _ = try? bgTask.execute(batchRequest)
         }
-    }
-
-    func delete(entity _: CDForwardInfo) {}
-
-    public func first(_ messageId: Int?, _ threadId: Int?, _: Int?) throws -> CDForwardInfo? {
-        let predicate = NSPredicate(format: "message.id == %i AND conversation.id == %i AND participant.id", messageId ?? -1, threadId ?? -1, threadId ?? -1)
-        let req = CDForwardInfo.fetchRequest()
-        req.predicate = predicate
-        req.fetchLimit = 1
-        return try context.fetch(req).first
     }
 }

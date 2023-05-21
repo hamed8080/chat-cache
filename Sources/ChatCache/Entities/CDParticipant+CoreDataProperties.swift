@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDParticipant {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDParticipant> {
-        NSFetchRequest<CDParticipant>(entityName: "CDParticipant")
-    }
+    typealias Entity = CDParticipant
+    typealias Model = Participant
+    typealias Id = Int
+    static let name = "CDParticipant"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDParticipant"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDParticipant {
-        CDParticipant(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDParticipant {
     @NSManaged var admin: NSNumber?
     @NSManaged var auditor: NSNumber?
     @NSManaged var bio: String?
@@ -122,36 +118,36 @@ public extension CDParticipant {
 }
 
 public extension CDParticipant {
-    func update(_ participant: Participant) {
-        admin = participant.admin as? NSNumber
-        auditor = participant.auditor as? NSNumber
-        blocked = participant.blocked as? NSNumber
-        cellphoneNumber = participant.cellphoneNumber
-        contactFirstName = participant.contactFirstName
-        contactId = participant.contactId as? NSNumber
-        contactName = participant.contactName
-        contactLastName = participant.contactLastName
-        coreUserId = participant.coreUserId as? NSNumber
-        email = participant.email
-        firstName = participant.firstName
-        id = participant.id as? NSNumber
-        image = participant.image
-        keyId = participant.keyId
-        lastName = participant.lastName
-        myFriend = participant.myFriend as? NSNumber
-        name = participant.name
-        notSeenDuration = participant.notSeenDuration as? NSNumber
-        online = participant.online as? NSNumber
-        receiveEnable = participant.receiveEnable as? NSNumber
-        sendEnable = participant.sendEnable as? NSNumber
-        username = participant.username
-        roles = participant.roles?.data
-        bio = participant.chatProfileVO?.bio
-        ssoId = participant.ssoId
-        metadata = participant.chatProfileVO?.metadata
+    func update(_ model: Model) {
+        admin = model.admin as? NSNumber
+        auditor = model.auditor as? NSNumber
+        blocked = model.blocked as? NSNumber
+        cellphoneNumber = model.cellphoneNumber
+        contactFirstName = model.contactFirstName
+        contactId = model.contactId as? NSNumber
+        contactName = model.contactName
+        contactLastName = model.contactLastName
+        coreUserId = model.coreUserId as? NSNumber
+        email = model.email
+        firstName = model.firstName
+        id = model.id as? NSNumber
+        image = model.image
+        keyId = model.keyId
+        lastName = model.lastName
+        myFriend = model.myFriend as? NSNumber
+        name = model.name
+        notSeenDuration = model.notSeenDuration as? NSNumber
+        online = model.online as? NSNumber
+        receiveEnable = model.receiveEnable as? NSNumber
+        sendEnable = model.sendEnable as? NSNumber
+        username = model.username
+        roles = model.roles?.data
+        bio = model.chatProfileVO?.bio
+        ssoId = model.ssoId
+        metadata = model.chatProfileVO?.metadata
     }
 
-    var codable: Participant {
+    var codable: Model {
         Participant(admin: admin?.boolValue,
                     auditor: auditor?.boolValue,
                     blocked: blocked?.boolValue,

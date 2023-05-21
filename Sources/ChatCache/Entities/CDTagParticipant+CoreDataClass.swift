@@ -8,4 +8,4 @@ import CoreData
 import Foundation
 
 @objc(CDTagParticipant)
-public final class CDTagParticipant: NSManagedObject {}
+public final class CDTagParticipant: NSManagedObject, EntityProtocol {}

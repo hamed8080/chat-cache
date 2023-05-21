@@ -8,4 +8,4 @@ import CoreData
 import Foundation
 
 @objc(CDForwardInfo)
-public final class CDForwardInfo: NSManagedObject {}
+public final class CDForwardInfo: NSManagedObject, EntityProtocol {}

@@ -9,58 +9,19 @@ import Foundation
 import ChatModels
 
 public final class CacheUserRoleManager: CoreDataProtocol {
-    let idName = "id"
-    var context: NSManagedObjectContext
-    let logger: CacheLogDelegate
+    public typealias Entity = CDUserRole
+    public var context: NSManagedObjectContext
+    public let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
+    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
 
-    public func insert(model: UserRole) {
-        let entity = CDUserRole.insertEntity(context)
-        entity.update(model)
-    }
-
-    public func insert(models: [UserRole]) {
-        insertObjects(context) { [weak self] _ in
-            models.forEach { model in
-                self?.insert(model: model)
-            }
-        }
-    }
-
-    func idPredicate(id: Int) -> NSPredicate {
-        NSPredicate(format: "\(idName) == %i", id)
-    }
-
-    public func first(with id: Int, _ completion: @escaping (CDUserRole?) -> Void) {
-        context.perform {
-            let req = CDUserRole.fetchRequest()
-            req.predicate = self.idPredicate(id: id)
-            let userRole = try self.context.fetch(req).first
-            completion(userRole)
-        }
-    }
-
-    public func find(predicate: NSPredicate, _ completion: @escaping ([CDUserRole]) -> Void) {
-        context.perform {
-            let req = CDUserRole.fetchRequest()
-            req.predicate = predicate
-            let userRoles = try self.context.fetch(req)
-            completion(userRoles)
-        }
-    }
-
-    func update(model _: UserRole, entity _: CDUserRole) {}
-
-    func update(models _: [UserRole]) {}
-
     public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
         // batch update request
         batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: CDUserRole.entityName)
+            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
             batchRequest.predicate = predicate
             batchRequest.propertiesToUpdate = propertiesToUpdate
             batchRequest.resultType = .updatedObjectIDsResultType
@@ -68,11 +29,9 @@ public final class CacheUserRoleManager: CoreDataProtocol {
         }
     }
 
-    func delete(entity _: CDUserRole) {}
-
     public func roles(_ threadId: Int) -> [Roles] {
-        let req = CDUserRole.fetchRequest()
-        req.predicate = NSPredicate(format: "threadId == %i", threadId)
+        let req = Entity.fetchRequest()
+        req.predicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId)
         let roles = (try? context.fetch(req))?.first?.codable.roles
         return roles ?? []
     }

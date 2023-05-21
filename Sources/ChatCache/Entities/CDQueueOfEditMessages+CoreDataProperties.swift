@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDQueueOfEditMessages {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDQueueOfEditMessages> {
-        NSFetchRequest<CDQueueOfEditMessages>(entityName: "CDQueueOfEditMessages")
-    }
+    typealias Entity = CDQueueOfEditMessages
+    typealias Model = QueueOfEditMessages
+    typealias Id = Int
+    static let name = "CDQueueOfEditMessages"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDQueueOfEditMessages"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDQueueOfEditMessages {
-        CDQueueOfEditMessages(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDQueueOfEditMessages {
     @NSManaged var messageId: NSNumber?
     @NSManaged var messageType: NSNumber?
     @NSManaged var metadata: String?
@@ -33,18 +29,18 @@ public extension CDQueueOfEditMessages {
 }
 
 public extension CDQueueOfEditMessages {
-    func update(_ queueOfEditMessages: QueueOfEditMessages) {
-        messageId = queueOfEditMessages.messageId as? NSNumber
-        messageType = queueOfEditMessages.messageType?.rawValue as? NSNumber
-        metadata = queueOfEditMessages.metadata
-        repliedTo = queueOfEditMessages.repliedTo as? NSNumber
-        textMessage = queueOfEditMessages.textMessage
-        threadId = queueOfEditMessages.threadId as? NSNumber
-        typeCode = queueOfEditMessages.typeCode
-        uniqueId = queueOfEditMessages.uniqueId
+    func update(_ model: Model) {
+        messageId = model.messageId as? NSNumber
+        messageType = model.messageType?.rawValue as? NSNumber
+        metadata = model.metadata
+        repliedTo = model.repliedTo as? NSNumber
+        textMessage = model.textMessage
+        threadId = model.threadId as? NSNumber
+        typeCode = model.typeCode
+        uniqueId = model.uniqueId
     }
 
-    var codable: QueueOfEditMessages {
+    var codable: Model {
         QueueOfEditMessages(messageId: messageId?.intValue,
                             messageType: MessageType(rawValue: messageType?.intValue ?? 0),
                             metadata: metadata,

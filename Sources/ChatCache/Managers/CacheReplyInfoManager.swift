@@ -9,17 +9,17 @@ import Foundation
 import ChatModels
 
 public final class CacheReplyInfoManager: CoreDataProtocol {
-    let idName = "id"
-    var context: NSManagedObjectContext
-    let logger: CacheLogDelegate
+    public typealias Entity = CDReplyInfo
+    public var context: NSManagedObjectContext
+    public let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
+    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
 
-    func insert(model: ReplyInfo) {
-        let entity = CDReplyInfo.insertEntity(context)
+    public func insert(model: Entity.Model) {
+        let entity = Entity.insertEntity(context)
         entity.update(model)
 
         if let participant = model.participant, let thread = model.participant?.conversation {
@@ -34,57 +34,21 @@ public final class CacheReplyInfoManager: CoreDataProtocol {
         }
     }
 
-    public func insert(models: [ReplyInfo]) {
-        insertObjects(context) { [weak self] _ in
-            models.forEach { model in
-                self?.insert(model: model)
-            }
-        }
-    }
-
-    func idPredicate(id: Int) -> NSPredicate {
-        NSPredicate(format: "\(idName) == %i", id)
-    }
-
-    public func first(with id: Int, _ completion: @escaping (CDReplyInfo?) -> Void) {
-        context.perform {
-            let req = CDReplyInfo.fetchRequest()
-            req.predicate = self.idPredicate(id: id)
-            let reply = try self.context.fetch(req).first
-            completion(reply)
-        }
-    }
-
-    public func find(predicate: NSPredicate, _ completion: @escaping ([CDReplyInfo]) -> Void) {
-        context.perform {
-            let req = CDReplyInfo.fetchRequest()
-            req.predicate = predicate
-            let replyes = try self.context.fetch(req)
-            completion(replyes)
-        }
-    }
-
-    func update(model _: ReplyInfo, entity _: CDReplyInfo) {}
-
-    func update(models _: [ReplyInfo]) {}
-
-    func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
+    public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
         // batch update request
         batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: CDReplyInfo.entityName)
+            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
             batchRequest.predicate = predicate
             batchRequest.propertiesToUpdate = propertiesToUpdate
             batchRequest.resultType = .updatedObjectIDsResultType
             _ = try? bgTask.execute(batchRequest)
         }
     }
-
-    func delete(entity _: CDReplyInfo) {}
-
-    public func first(_ participantId: Int?, _ repliedToMessageId: Int?, _ completion: @escaping (CDReplyInfo?) -> Void) {
+    
+    public func first(_ participantId: Int?, _ repliedToMessageId: Int?, _ completion: @escaping (Entity?) -> Void) {
         context.perform {
-            let predicate = NSPredicate(format: "participant.id == %i AND repliedToMessageId == %i", participantId ?? -1, repliedToMessageId ?? -1)
-            let req = CDReplyInfo.fetchRequest()
+            let predicate = NSPredicate(format: "\(CDParticipant.idName) == \(CDParticipant.queryIdSpecifier) AND repliedToMessageId == %i", participantId ?? -1, repliedToMessageId ?? -1)
+            let req = Entity.fetchRequest()
             req.predicate = predicate
             req.fetchLimit = 1
             let reply = try self.context.fetch(req).first
@@ -92,9 +56,9 @@ public final class CacheReplyInfoManager: CoreDataProtocol {
         }
     }
 
-    public func findOrCreate(_ participantId: Int?, _ replyToMessageId: Int?, _ completion: @escaping (CDReplyInfo?) -> Void) {
+    public func findOrCreate(_ participantId: Int?, _ replyToMessageId: Int?, _ completion: @escaping (Entity?) -> Void) {
         first(participantId, replyToMessageId) { message in
-            completion(message ?? CDReplyInfo.insertEntity(self.context))
+            completion(message ?? Entity.insertEntity(self.context))
         }
     }
 }

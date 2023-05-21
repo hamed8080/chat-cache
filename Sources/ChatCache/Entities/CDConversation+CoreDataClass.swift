@@ -8,4 +8,4 @@ import CoreData
 import Foundation
 
 @objc(CDConversation)
-public final class CDConversation: NSManagedObject {}
+public final class CDConversation: NSManagedObject, EntityProtocol {}

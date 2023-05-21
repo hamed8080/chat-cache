@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDConversation {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDConversation> {
-        NSFetchRequest<CDConversation>(entityName: "CDConversation")
-    }
+    typealias Entity = CDConversation
+    typealias Model = Conversation
+    typealias Id = Int
+    static let name = "CDConversation"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDConversation"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDConversation {
-        CDConversation(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDConversation {
     @NSManaged var admin: NSNumber?
     @NSManaged var canEditInfo: NSNumber?
     @NSManaged var canSpam: NSNumber?
@@ -163,44 +159,44 @@ public extension CDConversation {
 }
 
 public extension CDConversation {
-    func update(_ conversation: Conversation) {
-        admin = conversation.admin as? NSNumber
-        canEditInfo = conversation.canEditInfo as? NSNumber
-        canSpam = conversation.canSpam as NSNumber?
-        closedThread = conversation.closedThread as NSNumber?
-        descriptions = conversation.description
-        group = conversation.group as? NSNumber
-        id = conversation.id as? NSNumber
-        image = conversation.image
-        joinDate = conversation.joinDate as? NSNumber
-        lastMessage = conversation.lastMessage
-        lastParticipantImage = conversation.lastParticipantImage
-        lastParticipantName = conversation.lastParticipantName
-        lastSeenMessageId = conversation.lastSeenMessageId as? NSNumber
-        lastSeenMessageNanos = conversation.lastSeenMessageNanos as? NSNumber
-        lastSeenMessageTime = conversation.lastSeenMessageTime as? NSNumber
-        mentioned = conversation.mentioned as? NSNumber
-        metadata = conversation.metadata
-        mute = conversation.mute as? NSNumber
-        participantCount = conversation.participantCount as? NSNumber
-        partner = conversation.partner as? NSNumber
-        partnerLastDeliveredMessageId = conversation.partnerLastDeliveredMessageId as? NSNumber
-        partnerLastDeliveredMessageNanos = conversation.partnerLastDeliveredMessageNanos as? NSNumber
-        partnerLastDeliveredMessageTime = conversation.partnerLastDeliveredMessageTime as? NSNumber
-        partnerLastSeenMessageId = conversation.partnerLastSeenMessageId as? NSNumber
-        partnerLastSeenMessageNanos = conversation.partnerLastSeenMessageNanos as? NSNumber
-        partnerLastSeenMessageTime = conversation.partnerLastSeenMessageTime as? NSNumber
-        pin = conversation.pin as? NSNumber
-        time = conversation.time as? NSNumber
-        title = conversation.title
-        type = conversation.type?.rawValue as? NSNumber
-        unreadCount = conversation.unreadCount as? NSNumber
-        uniqueName = conversation.uniqueName
-        userGroupHash = conversation.userGroupHash
-        isArchive = conversation.isArchive as NSNumber?
+    func update(_ model: Model) {
+        admin = model.admin as? NSNumber
+        canEditInfo = model.canEditInfo as? NSNumber
+        canSpam = model.canSpam as NSNumber?
+        closedThread = model.closedThread as NSNumber?
+        descriptions = model.description
+        group = model.group as? NSNumber
+        id = model.id as? NSNumber
+        image = model.image
+        joinDate = model.joinDate as? NSNumber
+        lastMessage = model.lastMessage
+        lastParticipantImage = model.lastParticipantImage
+        lastParticipantName = model.lastParticipantName
+        lastSeenMessageId = model.lastSeenMessageId as? NSNumber
+        lastSeenMessageNanos = model.lastSeenMessageNanos as? NSNumber
+        lastSeenMessageTime = model.lastSeenMessageTime as? NSNumber
+        mentioned = model.mentioned as? NSNumber
+        metadata = model.metadata
+        mute = model.mute as? NSNumber
+        participantCount = model.participantCount as? NSNumber
+        partner = model.partner as? NSNumber
+        partnerLastDeliveredMessageId = model.partnerLastDeliveredMessageId as? NSNumber
+        partnerLastDeliveredMessageNanos = model.partnerLastDeliveredMessageNanos as? NSNumber
+        partnerLastDeliveredMessageTime = model.partnerLastDeliveredMessageTime as? NSNumber
+        partnerLastSeenMessageId = model.partnerLastSeenMessageId as? NSNumber
+        partnerLastSeenMessageNanos = model.partnerLastSeenMessageNanos as? NSNumber
+        partnerLastSeenMessageTime = model.partnerLastSeenMessageTime as? NSNumber
+        pin = model.pin as? NSNumber
+        time = model.time as? NSNumber
+        title = model.title
+        type = model.type?.rawValue as? NSNumber
+        unreadCount = model.unreadCount as? NSNumber
+        uniqueName = model.uniqueName
+        userGroupHash = model.userGroupHash
+        isArchive = model.isArchive as NSNumber?
     }
 
-    func codable(fillLastMessageVO: Bool = true, fillParticipants: Bool = false, fillPinMessages: Bool = true) -> Conversation {
+    func codable(fillLastMessageVO: Bool = true, fillParticipants: Bool = false, fillPinMessages: Bool = true) -> Model {
         Conversation(admin: admin?.boolValue,
                      canEditInfo: canEditInfo?.boolValue,
                      canSpam: canSpam?.boolValue,

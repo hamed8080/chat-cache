@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDTag {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDTag> {
-        NSFetchRequest<CDTag>(entityName: "CDTag")
-    }
+    typealias Entity = CDTag
+    typealias Model = Tag
+    typealias Id = Int
+    static let name = "CDTag"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDTag"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDTag {
-        CDTag(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDTag {
     @NSManaged var active: NSNumber?
     @NSManaged var id: NSNumber?
     @NSManaged var name: String?
@@ -45,13 +41,13 @@ public extension CDTag {
 }
 
 public extension CDTag {
-    func update(_ tag: Tag) {
-        id = tag.id as NSNumber
-        name = tag.name
-        active = tag.active as NSNumber
+    func update(_ model: Model) {
+        id = model.id as NSNumber
+        name = model.name
+        active = model.active as NSNumber
     }
 
-    var codable: Tag {
+    var codable: Model {
         Tag(id: id?.intValue ?? -1,
             name: name ?? "",
             active: active?.boolValue ?? false,

@@ -26,7 +26,7 @@ public final class CacheManager {
     public let tagParticipant: CacheTagParticipantManager
     public let user: CacheUserManager
     public let userRole: CacheUserRoleManager
-    var entities: [NSEntityDescription] {
+    lazy var entities: [NSEntityDescription] = {
         [
             CDTag.entity(),
             CDParticipant.entity(),
@@ -47,7 +47,7 @@ public final class CacheManager {
             CDMutualGroup.entity(),
             CDContact.entity(),
         ]
-    }
+    }()
 
     public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         assistant = CacheAssistantManager(context: context, logger: logger)

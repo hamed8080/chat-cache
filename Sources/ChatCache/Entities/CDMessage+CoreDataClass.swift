@@ -8,4 +8,4 @@ import CoreData
 import Foundation
 
 @objc(CDMessage)
-public final class CDMessage: NSManagedObject {}
+public final class CDMessage: NSManagedObject, EntityProtocol {}

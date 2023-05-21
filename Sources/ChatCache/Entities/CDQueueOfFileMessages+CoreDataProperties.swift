@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDQueueOfFileMessages {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDQueueOfFileMessages> {
-        NSFetchRequest<CDQueueOfFileMessages>(entityName: "CDQueueOfFileMessages")
-    }
+    typealias Entity = CDQueueOfFileMessages
+    typealias Model = QueueOfFileMessages
+    typealias Id = Int
+    static let name = "CDQueueOfFileMessages"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDQueueOfFileMessages"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDQueueOfFileMessages {
-        CDQueueOfFileMessages(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDQueueOfFileMessages {
     @NSManaged var fileExtension: String?
     @NSManaged var fileName: String?
     @NSManaged var fileToSend: Data?
@@ -44,29 +40,29 @@ public extension CDQueueOfFileMessages {
 }
 
 public extension CDQueueOfFileMessages {
-    func update(_ queueOfFileMessages: QueueOfFileMessages) {
-        fileExtension = queueOfFileMessages.fileExtension
-        fileName = queueOfFileMessages.fileName
-        fileToSend = queueOfFileMessages.fileToSend
-        imageToSend = queueOfFileMessages.imageToSend
-        isPublic = queueOfFileMessages.isPublic as? NSNumber
-        messageType = queueOfFileMessages.messageType?.rawValue as? NSNumber
-        metadata = queueOfFileMessages.metadata
-        mimeType = queueOfFileMessages.mimeType
-        originalName = queueOfFileMessages.originalName
-        repliedTo = queueOfFileMessages.repliedTo as? NSNumber
-        textMessage = queueOfFileMessages.textMessage
-        threadId = queueOfFileMessages.threadId as? NSNumber
-        typeCode = queueOfFileMessages.typeCode
-        uniqueId = queueOfFileMessages.uniqueId
-        userGroupHash = queueOfFileMessages.userGroupHash
-        hC = queueOfFileMessages.hC as? NSNumber
-        wC = queueOfFileMessages.wC as? NSNumber
-        xC = queueOfFileMessages.xC as? NSNumber
-        yC = queueOfFileMessages.yC as? NSNumber
+    func update(_ model: Model) {
+        fileExtension = model.fileExtension
+        fileName = model.fileName
+        fileToSend = model.fileToSend
+        imageToSend = model.imageToSend
+        isPublic = model.isPublic as? NSNumber
+        messageType = model.messageType?.rawValue as? NSNumber
+        metadata = model.metadata
+        mimeType = model.mimeType
+        originalName = model.originalName
+        repliedTo = model.repliedTo as? NSNumber
+        textMessage = model.textMessage
+        threadId = model.threadId as? NSNumber
+        typeCode = model.typeCode
+        uniqueId = model.uniqueId
+        userGroupHash = model.userGroupHash
+        hC = model.hC as? NSNumber
+        wC = model.wC as? NSNumber
+        xC = model.xC as? NSNumber
+        yC = model.yC as? NSNumber
     }
 
-    var codable: QueueOfFileMessages {
+    var codable: Model {
         QueueOfFileMessages(fileExtension: fileExtension,
                             fileName: fileName,
                             isPublic: isPublic?.boolValue,

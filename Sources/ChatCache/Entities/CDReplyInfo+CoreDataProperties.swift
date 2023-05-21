@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDReplyInfo {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDReplyInfo> {
-        NSFetchRequest<CDReplyInfo>(entityName: "CDReplyInfo")
-    }
+    typealias Entity = CDReplyInfo
+    typealias Model = ReplyInfo
+    typealias Id = Int
+    static let name = "CDReplyInfo"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDReplyInfo"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDReplyInfo {
-        CDReplyInfo(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDReplyInfo {
     @NSManaged var markDeleted: NSNumber?
     @NSManaged var messageId: NSNumber?
     @NSManaged var messageText: String?
@@ -35,17 +31,17 @@ public extension CDReplyInfo {
 }
 
 public extension CDReplyInfo {
-    func update(_ replyInfo: ReplyInfo) {
-        markDeleted = replyInfo.deleted as? NSNumber
-        messageText = replyInfo.message
-        messageType = replyInfo.messageType?.rawValue as? NSNumber
-        metadata = replyInfo.metadata
-        repliedToMessageId = replyInfo.repliedToMessageId as? NSNumber
-        systemMetadata = replyInfo.systemMetadata
-        time = replyInfo.time as? NSNumber
+    func update(_ model: Model) {
+        markDeleted = model.deleted as? NSNumber
+        messageText = model.message
+        messageType = model.messageType?.rawValue as? NSNumber
+        metadata = model.metadata
+        repliedToMessageId = model.repliedToMessageId as? NSNumber
+        systemMetadata = model.systemMetadata
+        time = model.time as? NSNumber
     }
 
-    var codable: ReplyInfo {
+    var codable: Model {
         ReplyInfo(deleted: markDeleted?.boolValue,
                   repliedToMessageId: repliedToMessageId?.intValue,
                   message: messageText,

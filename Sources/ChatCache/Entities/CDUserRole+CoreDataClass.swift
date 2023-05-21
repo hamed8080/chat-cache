@@ -8,4 +8,4 @@ import CoreData
 import Foundation
 
 @objc(CDUserRole)
-public final class CDUserRole: NSManagedObject {}
+public final class CDUserRole: NSManagedObject, EntityProtocol {}

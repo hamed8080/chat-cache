@@ -8,4 +8,4 @@ import CoreData
 import Foundation
 
 @objc(CDMutualGroup)
-public final class CDMutualGroup: NSManagedObject {}
+public final class CDMutualGroup: NSManagedObject, EntityProtocol {}

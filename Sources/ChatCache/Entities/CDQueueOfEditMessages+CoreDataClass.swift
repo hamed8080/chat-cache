@@ -8,4 +8,4 @@ import CoreData
 import Foundation
 
 @objc(CDQueueOfEditMessages)
-public final class CDQueueOfEditMessages: NSManagedObject {}
+public final class CDQueueOfEditMessages: NSManagedObject, EntityProtocol {}

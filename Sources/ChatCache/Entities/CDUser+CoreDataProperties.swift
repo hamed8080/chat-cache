@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDUser {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDUser> {
-        NSFetchRequest<CDUser>(entityName: "CDUser")
-    }
+    typealias Entity = CDUser
+    typealias Model = User
+    typealias Id = Int
+    static let name = "CDUser"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDUser"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDUser {
-        CDUser(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDUser {
     @NSManaged var bio: String?
     @NSManaged var cellphoneNumber: String?
     @NSManaged var coreUserId: NSNumber?
@@ -76,26 +72,26 @@ public extension CDUser {
 }
 
 public extension CDUser {
-    func update(_ user: User) {
-        cellphoneNumber = user.cellphoneNumber
-        coreUserId = user.coreUserId as? NSNumber
-        email = user.email
-        id = user.id as? NSNumber
-        image = user.image
-        lastSeen = user.lastSeen as? NSNumber
-        name = user.name
-        nickname = user.nickname
-        receiveEnable = user.receiveEnable as? NSNumber
-        sendEnable = user.sendEnable as? NSNumber
-        username = user.username
-        bio = user.chatProfileVO?.bio
-        metadata = user.chatProfileVO?.metadata
-        ssoId = user.ssoId
-        lastName = user.lastName
-        firstName = user.firstName
+    func update(_ model: Model) {
+        cellphoneNumber = model.cellphoneNumber
+        coreUserId = model.coreUserId as? NSNumber
+        email = model.email
+        id = model.id as? NSNumber
+        image = model.image
+        lastSeen = model.lastSeen as? NSNumber
+        name = model.name
+        nickname = model.nickname
+        receiveEnable = model.receiveEnable as? NSNumber
+        sendEnable = model.sendEnable as? NSNumber
+        username = model.username
+        bio = model.chatProfileVO?.bio
+        metadata = model.chatProfileVO?.metadata
+        ssoId = model.ssoId
+        lastName = model.lastName
+        firstName = model.firstName
     }
 
-    var codable: User {
+    var codable: Model {
         User(cellphoneNumber: cellphoneNumber,
              coreUserId: coreUserId?.intValue,
              email: email,

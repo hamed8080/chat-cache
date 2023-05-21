@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDMessage {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDMessage> {
-        NSFetchRequest<CDMessage>(entityName: "CDMessage")
-    }
+    typealias Entity = CDMessage
+    typealias Model = Message
+    typealias Id = Int
+    static let name = "CDMessage"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDMessage"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDMessage {
-        CDMessage(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDMessage {
     @NSManaged var deletable: NSNumber?
     @NSManaged var delivered: NSNumber?
     @NSManaged var editable: NSNumber?
@@ -50,29 +46,29 @@ public extension CDMessage {
 }
 
 public extension CDMessage {
-    func update(_ message: Message) {
-        deletable = message.deletable as? NSNumber
-        delivered = message.delivered as? NSNumber
-        editable = message.editable as? NSNumber
-        edited = message.edited as? NSNumber
-        id = message.id as? NSNumber
-        mentioned = message.mentioned as? NSNumber
-        self.message = message.message
-        messageType = message.messageType?.rawValue as? NSNumber
-        metadata = message.metadata
-        ownerId = message.ownerId as? NSNumber
-        pinned = message.pinned as? NSNumber
-        previousId = message.previousId as? NSNumber
-        seen = message.seen as? NSNumber
-        systemMetadata = message.systemMetadata
-        threadId = message.threadId as? NSNumber
-        time = message.time as? NSNumber
-        uniqueId = message.uniqueId
-        pinTime = message.pinTime as? NSNumber
-        notifyAll = message.pinNotifyAll as? NSNumber
+    func update(_ model: Model) {
+        deletable = model.deletable as? NSNumber
+        delivered = model.delivered as? NSNumber
+        editable = model.editable as? NSNumber
+        edited = model.edited as? NSNumber
+        id = model.id as? NSNumber
+        mentioned = model.mentioned as? NSNumber
+        self.message = model.message
+        messageType = model.messageType?.rawValue as? NSNumber
+        metadata = model.metadata
+        ownerId = model.ownerId as? NSNumber
+        pinned = model.pinned as? NSNumber
+        previousId = model.previousId as? NSNumber
+        seen = model.seen as? NSNumber
+        systemMetadata = model.systemMetadata
+        threadId = model.threadId as? NSNumber
+        time = model.time as? NSNumber
+        uniqueId = model.uniqueId
+        pinTime = model.pinTime as? NSNumber
+        notifyAll = model.pinNotifyAll as? NSNumber
     }
 
-    func codable(fillConversation: Bool = true, fillParticipant: Bool = true, fillForwardInfo: Bool = false, fillReplyInfo: Bool = false) -> Message {
+    func codable(fillConversation: Bool = true, fillParticipant: Bool = true, fillForwardInfo: Bool = false, fillReplyInfo: Bool = false) -> Model {
         Message(threadId: threadId?.intValue,
                 deletable: deletable?.boolValue,
                 delivered: deletable?.boolValue,

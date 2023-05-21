@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDAssistant {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDAssistant> {
-        NSFetchRequest<CDAssistant>(entityName: "CDAssistant")
-    }
+    typealias Entity = CDAssistant
+    typealias Model = Assistant
+    typealias Id = Int
+    static let name = "CDAssistant"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDAssistant"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDAssistant {
-        CDAssistant(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDAssistant {
     @NSManaged var assistant: Invitee?
     @NSManaged var block: NSNumber?
     @NSManaged var contactType: String?
@@ -31,14 +27,14 @@ public extension CDAssistant {
 }
 
 public extension CDAssistant {
-    func update(_ assistant: Assistant) {
-        contactType = assistant.contactType
-        self.assistant = assistant.assistant
-        roles = assistant.roles?.data
-        block = assistant.block as? NSNumber
+    func update(_ model: Model) {
+        contactType = model.contactType
+        self.assistant = model.assistant
+        roles = model.roles?.data
+        block = model.block as? NSNumber
     }
 
-    var codable: Assistant {
+    var codable: Model {
         Assistant(contactType: contactType,
                   assistant: assistant,
                   participant: participant?.codable,

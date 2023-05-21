@@ -9,28 +9,20 @@ import Foundation
 import ChatModels
 
 public final class CacheParticipantManager: CoreDataProtocol {
-    let idName = "id"
-    var context: NSManagedObjectContext
-    let logger: CacheLogDelegate
+    public typealias Entity = CDParticipant
+    public var context: NSManagedObjectContext
+    public let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
+    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
 
-    func insert(model: Participant) {
-        let entity = CDParticipant.insertEntity(context)
+    public func insert(model: Entity.Model) {
+        let entity = Entity.insertEntity(context)
         entity.update(model)
         CacheConversationManager(context: context, logger: logger).findOrCreateEntity(model.conversation?.id ?? -1) { threadEntity in
             threadEntity?.addToParticipants(entity)
-        }
-    }
-
-    public func insert(models: [Participant]) {
-        insertObjects(context) { [weak self] _ in
-            models.forEach { model in
-                self?.insert(model: model)
-            }
         }
     }
 
@@ -39,25 +31,12 @@ public final class CacheParticipantManager: CoreDataProtocol {
             self.insertObjects(self.context) { _ in
                 if let threadEntity = threadEntity {
                     model?.participants?.forEach { participant in
-                        let participantEntity = CDParticipant.insertEntity(self.context)
+                        let participantEntity = Entity.insertEntity(self.context)
                         participantEntity.update(participant)
                         threadEntity.addToParticipants(participantEntity)
                     }
                 }
             }
-        }
-    }
-
-    func idPredicate(id: Int) -> NSPredicate {
-        NSPredicate(format: "\(idName) == %i", id)
-    }
-
-    public func first(with id: Int, _ completion: @escaping (CDParticipant?) -> Void) {
-        context.perform {
-            let req = CDParticipant.fetchRequest()
-            req.predicate = self.idPredicate(id: id)
-            let participant = try self.context.fetch(req).first
-            completion(participant)
         }
     }
 
@@ -71,26 +50,13 @@ public final class CacheParticipantManager: CoreDataProtocol {
     }
 
     func predicate(_ threadId: Int, _ participantId: Int) -> NSPredicate {
-        NSPredicate(format: "conversation.id == %i AND id == %i", threadId, threadId, participantId)
+        NSPredicate(format: "conversation.\(CDConversation.idName) == \(CDConversation.queryIdSpecifier) AND \(Entity.idName) == \(Entity.queryIdSpecifier)", threadId, threadId, participantId)
     }
-
-    public func find(predicate: NSPredicate, _ completion: @escaping ([CDParticipant]) -> Void) {
-        context.perform {
-            let req = CDParticipant.fetchRequest()
-            req.predicate = predicate
-            let participants = try self.context.fetch(req)
-            completion(participants)
-        }
-    }
-
-    func update(model _: Participant, entity _: CDParticipant) {}
-
-    func update(models _: [CDParticipant]) {}
 
     public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
         // batch update request
         batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: CDParticipant.entityName)
+            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
             batchRequest.predicate = predicate
             batchRequest.propertiesToUpdate = propertiesToUpdate
             batchRequest.resultType = .updatedObjectIDsResultType
@@ -98,22 +64,20 @@ public final class CacheParticipantManager: CoreDataProtocol {
         }
     }
 
-    func delete(entity _: CDParticipant) {}
-
-    public func getParticipantsForThread(_ threadId: Int?, _ count: Int?, _ offset: Int?, _ completion: @escaping ([CDParticipant], Int) -> Void) {
-        let predicate = NSPredicate(format: "conversation.id == %i", threadId ?? -1)
-        fetchWithOffset(entityName: CDParticipant.entityName, count: count, offset: offset, predicate: predicate, completion)
+    public func getParticipantsForThread(_ threadId: Int?, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
+        let predicate = NSPredicate(format: "conversation.\(CDConversation.idName) == \(CDConversation.queryIdSpecifier)", threadId ?? -1)
+        fetchWithOffset(entityName: Entity.name, count: count, offset: offset, predicate: predicate, completion)
     }
 
-    public func delete(_ models: [Participant]) {
+    public func delete(_ models: [Entity.Model]) {
         let ids = models.compactMap(\.id)
-        let predicate = NSPredicate(format: "id IN %@", ids)
-        batchDelete(context, entityName: CDParticipant.entityName, predicate: predicate)
+        let predicate = NSPredicate(format: "\(Entity.idName) IN %@", ids)
+        batchDelete(context, entityName: Entity.name, predicate: predicate)
     }
 
-    public func findOrCreateEntity(_ threadId: Int?, _ participantId: Int?, _ completion: @escaping (CDParticipant?) -> Void) {
+    public func findOrCreateEntity(_ threadId: Int?, _ participantId: Int?, _ completion: @escaping (Entity?) -> Void) {
         first(threadId ?? -1, participantId ?? -1) { participant in
-            completion(participant ?? CDParticipant.insertEntity(self.context))
+            completion(participant ?? Entity.insertEntity(self.context))
         }
     }
 }

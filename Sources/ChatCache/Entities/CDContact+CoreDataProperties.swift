@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDContact {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDContact> {
-        NSFetchRequest<CDContact>(entityName: "CDContact")
-    }
+    typealias Entity = CDContact
+    typealias Model = Contact
+    typealias Id = Int
+    static let name = "CDContact"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDContact"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDContact {
-        CDContact(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDContact {
     @NSManaged var blocked: NSNumber?
     @NSManaged var cellphoneNumber: String?
     @NSManaged var email: String?
@@ -38,21 +34,21 @@ public extension CDContact {
 }
 
 public extension CDContact {
-    func update(_ contact: Contact) {
-        blocked = contact.blocked as? NSNumber
-        cellphoneNumber = contact.cellphoneNumber
-        email = contact.email
-        firstName = contact.firstName
-        hasUser = contact.hasUser as NSNumber?
-        id = contact.id as? NSNumber
-        image = contact.image
-        lastName = contact.lastName
-        notSeenDuration = contact.notSeenDuration as? NSNumber
-        time = contact.time as? NSNumber
-        userId = contact.userId as? NSNumber
+    func update(_ model: Model) {
+        blocked = model.blocked as? NSNumber
+        cellphoneNumber = model.cellphoneNumber
+        email = model.email
+        firstName = model.firstName
+        hasUser = model.hasUser as NSNumber?
+        id = model.id as? NSNumber
+        image = model.image
+        lastName = model.lastName
+        notSeenDuration = model.notSeenDuration as? NSNumber
+        time = model.time as? NSNumber
+        userId = model.userId as? NSNumber
     }
 
-    var codable: Contact {
+    var codable: Model {
         Contact(blocked: blocked?.boolValue,
                 cellphoneNumber: cellphoneNumber,
                 email: email,

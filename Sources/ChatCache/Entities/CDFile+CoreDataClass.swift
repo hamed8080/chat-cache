@@ -8,4 +8,4 @@ import CoreData
 import Foundation
 
 @objc(CDFile)
-public final class CDFile: NSManagedObject {}
+public final class CDFile: NSManagedObject, EntityProtocol {}

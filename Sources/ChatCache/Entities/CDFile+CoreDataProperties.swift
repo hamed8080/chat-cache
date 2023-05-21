@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDFile {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDFile> {
-        NSFetchRequest<CDFile>(entityName: "CDFile")
-    }
+    typealias Entity = CDFile
+    typealias Model = File
+    typealias Id = String
+    static let name = "CDFile"
+    static var queryIdSpecifier: String = "%@"
+    static let idName = "hashCode"
+}
 
-    static let entityName = "CDFile"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDFile {
-        CDFile(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDFile {
     @NSManaged var hashCode: String?
     @NSManaged var name: String?
     @NSManaged var size: NSNumber?
@@ -29,14 +25,14 @@ public extension CDFile {
 }
 
 public extension CDFile {
-    func update(_ file: File) {
-        hashCode = file.hashCode
-        name = file.name
-        size = file.size as? NSNumber
-        type = file.type
+    func update(_ model: Model) {
+        hashCode = model.hashCode
+        name = model.name
+        size = model.size as? NSNumber
+        type = model.type
     }
 
-    var codable: File {
+    var codable: Model {
         File(hashCode: hashCode, name: name, size: size?.intValue, type: type)
     }
 }

@@ -9,19 +9,15 @@ import ChatModels
 import Foundation
 
 public extension CDTagParticipant {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDTagParticipant> {
-        NSFetchRequest<CDTagParticipant>(entityName: "CDTagParticipant")
-    }
+    typealias Entity = CDTagParticipant
+    typealias Model = TagParticipant
+    typealias Id = Int
+    static let name = "CDTagParticipant"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDTagParticipant"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDTagParticipant {
-        CDTagParticipant(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDTagParticipant {
     @NSManaged var active: NSNumber?
     @NSManaged var id: NSNumber?
     @NSManaged var tagId: NSNumber?
@@ -31,14 +27,14 @@ public extension CDTagParticipant {
 }
 
 public extension CDTagParticipant {
-    func update(_ tagParticipant: TagParticipant) {
-        id = tagParticipant.id as? NSNumber
-        active = tagParticipant.active as? NSNumber
-        tagId = tagParticipant.tagId as? NSNumber
-        id = tagParticipant.id as? NSNumber
+    func update(_ model: Model) {
+        id = model.id as? NSNumber
+        active = model.active as? NSNumber
+        tagId = model.tagId as? NSNumber
+        id = model.id as? NSNumber
     }
 
-    var codable: TagParticipant {
+    var codable: Model {
         TagParticipant(id: id?.intValue,
                        active: active?.boolValue,
                        tagId: tagId?.intValue,

@@ -9,19 +9,15 @@ import Foundation
 import ChatModels
 
 public extension CDUserRole {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDUserRole> {
-        NSFetchRequest<CDUserRole>(entityName: "CDUserRole")
-    }
+    typealias Entity = CDUserRole
+    typealias Model = UserRole
+    typealias Id = Int
+    static let name = "CDUserRole"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDUserRole"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDUserRole {
-        CDUserRole(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDUserRole {
     @NSManaged var image: String?
     @NSManaged var name: String?
     @NSManaged var roles: Data?
@@ -30,14 +26,14 @@ public extension CDUserRole {
 }
 
 public extension CDUserRole {
-    func update(_ userRole: UserRole) {
-        name = userRole.name
-        roles = userRole.roles?.data
-        userId = userRole.userId as? NSNumber
-        image = userRole.image
+    func update(_ model: Model) {
+        name = model.name
+        roles = model.roles?.data
+        userId = model.userId as? NSNumber
+        image = model.image
     }
 
-    var codable: UserRole {
+    var codable: Model {
         UserRole(userId: userId?.intValue,
                  name: name,
                  roles: try? JSONDecoder.instance.decode([Roles].self, from: roles ?? Data()),

@@ -9,26 +9,21 @@ import Foundation
 import ChatModels
 
 public extension CDMutualGroup {
-    @nonobjc class func fetchRequest() -> NSFetchRequest<CDMutualGroup> {
-        NSFetchRequest<CDMutualGroup>(entityName: "CDMutualGroup")
-    }
+    typealias Entity = CDMutualGroup
+    typealias Model = MutualGroup
+    typealias Id = Int
+    static let name = "CDMutualGroup"
+    static var queryIdSpecifier: String = "%i"
+    static let idName = "id"
+}
 
-    static let entityName = "CDMutualGroup"
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: entityName, in: context)!
-    }
-
-    static func insertEntity(_ context: NSManagedObjectContext) -> CDMutualGroup {
-        CDMutualGroup(entity: entityDescription(context), insertInto: context)
-    }
-
+public extension CDMutualGroup {
     @NSManaged var idType: NSNumber?
     @NSManaged var mutualId: String?
     @NSManaged var conversations: NSSet?
 }
 
 // MARK: Generated accessors for conversations
-
 public extension CDMutualGroup {
     @objc(addConversationsObject:)
     @NSManaged func addToConversations(_ value: CDConversation)
@@ -44,12 +39,12 @@ public extension CDMutualGroup {
 }
 
 public extension CDMutualGroup {
-    func update(_ model: MutualGroup) {
+    func update(_ model: Model) {
         idType = model.idType?.rawValue as? NSNumber
         mutualId = model.mutualId
     }
 
-    var codable: MutualGroup {
+    var codable: Model {
         MutualGroup(idType: InviteeTypes(rawValue: Int(truncating: idType ?? -1)) ?? .unknown,
                     mutualId: mutualId,
                     conversations: conversations?.allObjects.compactMap { $0 as? CDConversation }.map { $0.codable() })

@@ -9,58 +9,19 @@ import Foundation
 import ChatModels
 
 public final class CacheUserManager: CoreDataProtocol {
-    let idName = "id"
-    var context: NSManagedObjectContext
-    let logger: CacheLogDelegate
+    public typealias Entity = CDUser
+    public var context: NSManagedObjectContext
+    public let logger: CacheLogDelegate
 
-    required init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
+    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
         self.context = context
         self.logger = logger
     }
 
-    func insert(model: User) {
-        let entity = CDUser.insertEntity(context)
-        entity.update(model)
-    }
-
-    public func insert(models: [User]) {
-        insertObjects(context) { [weak self] _ in
-            models.forEach { model in
-                self?.insert(model: model)
-            }
-        }
-    }
-
-    func idPredicate(id: Int) -> NSPredicate {
-        NSPredicate(format: "\(idName) == %i", id)
-    }
-
-    public func first(with id: Int, _ completion: @escaping (CDUser?) -> Void) {
-        context.perform {
-            let req = CDUser.fetchRequest()
-            req.predicate = self.idPredicate(id: id)
-            let user = try self.context.fetch(req).first
-            completion(user)
-        }
-    }
-
-    public func find(predicate: NSPredicate, _ completion: @escaping ([CDUser]) -> Void) {
-        context.perform {
-            let req = CDUser.fetchRequest()
-            req.predicate = predicate
-            let users = try self.context.fetch(req)
-            completion(users)
-        }
-    }
-
-    func update(model _: User, entity _: CDUser) {}
-
-    func update(models _: [User]) {}
-
     public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
         // batch update request
         batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: CDUser.entityName)
+            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
             batchRequest.predicate = predicate
             batchRequest.propertiesToUpdate = propertiesToUpdate
             batchRequest.resultType = .updatedObjectIDsResultType
@@ -68,21 +29,19 @@ public final class CacheUserManager: CoreDataProtocol {
         }
     }
 
-    func delete(entity _: CDUser) {}
-
-    public func insert(_ models: [User], isMe: Bool = false) {
+    public func insert(_ models: [Entity.Model], isMe: Bool = false) {
         insertObjects(context) { bgTask in
             models.forEach { model in
-                let userEntity = CDUser.insertEntity(bgTask)
+                let userEntity = Entity.insertEntity(bgTask)
                 userEntity.update(model)
                 userEntity.isMe = isMe as NSNumber
             }
         }
     }
 
-    public func fetchCurrentUser(_ compeletion: @escaping (CDUser?) -> Void) {
+    public func fetchCurrentUser(_ compeletion: @escaping (Entity?) -> Void) {
         context.perform {
-            let req = CDUser.fetchRequest()
+            let req = Entity.fetchRequest()
             req.predicate = NSPredicate(format: "isMe == %@", NSNumber(booleanLiteral: true))
             let cachedUseInfo = try self.context.fetch(req).first
             compeletion(cachedUseInfo)
