@@ -7,6 +7,7 @@
 import CoreData
 import Foundation
 import ChatModels
+import Additive
 
 public extension CDUserRole {
     typealias Entity = CDUserRole

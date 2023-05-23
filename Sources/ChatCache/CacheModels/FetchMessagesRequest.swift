@@ -7,18 +7,18 @@
 import Foundation
 
 public struct FetchMessagesRequest {
-    public let messageType: Int?
-    public let fromTime: UInt?
-    public let messageId: Int?
-    public let uniqueIds: [String]?
-    public let toTime: UInt?
-    public let query: String?
-    public let threadId: Int
-    public var offset: Int
-    public var count: Int
-    public let order: String?
-    public let hashtag: String?
-    public let toTimeNanos: UInt?
+    internal let messageType: Int?
+    internal let fromTime: UInt?
+    internal let messageId: Int?
+    internal let uniqueIds: [String]?
+    internal let toTime: UInt?
+    internal let query: String?
+    internal let threadId: Int
+    internal var offset: Int
+    internal var count: Int
+    internal let order: String?
+    internal let hashtag: String?
+    internal let toTimeNanos: UInt?
 
     public init(messageType: Int?,
                 fromTime: UInt?,

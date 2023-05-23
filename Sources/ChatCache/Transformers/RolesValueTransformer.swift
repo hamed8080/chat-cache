@@ -6,6 +6,7 @@
 
 import Foundation
 import ChatModels
+import Additive
 
 @objc(RolesValueTransformer)
 final class RolesValueTransformer: ValueTransformer {

@@ -8,29 +8,10 @@ import CoreData
 import Foundation
 import ChatModels
 
-public final class CacheContactManager: CoreDataProtocol {
-    public typealias Entity = CDContact
-    public var context: NSManagedObjectContext
-    public let logger: CacheLogDelegate
-
-    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
-        self.context = context
-        self.logger = logger
-    }
-
-    public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
-        // batch update request
-        batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
-            batchRequest.predicate = predicate
-            batchRequest.propertiesToUpdate = propertiesToUpdate
-            batchRequest.resultType = .updatedObjectIDsResultType
-            _ = try? bgTask.execute(batchRequest)
-        }
-    }
+public final class CacheContactManager: BaseCoreDataManager<CDContact> {
 
     public func delete(_ id: Int) {
-        batchDelete(context, entityName: Entity.name, predicate: idPredicate(id: id))
+        batchDelete(entityName: Entity.name, predicate: idPredicate(id: id))
     }
 
     public func block(_ block: Bool, _ threadId: Int?) {
@@ -44,8 +25,6 @@ public final class CacheContactManager: CoreDataProtocol {
         let ascending = req.order != Ordering.desc.rawValue
         if let id = req.id {
             fetchRequest.predicate = NSPredicate(format: "\(Entity.idName) == \(Entity.queryIdSpecifier)", id)
-        } else if let uniqueId = req.uniqueId {
-            fetchRequest.predicate = NSPredicate(format: "uniqueId == %@", uniqueId)
         } else {
             var andPredicateArr = [NSPredicate]()
 
@@ -67,6 +46,10 @@ public final class CacheContactManager: CoreDataProtocol {
                 orPredicatArray.append(theSearchPredicate)
             }
 
+            if let uniqueId = req.uniqueId, !uniqueId.contains("G-") {
+                orPredicatArray.append(NSPredicate(format: "uniqueId CONTAINS[cd] %@", uniqueId))
+            }
+
             if orPredicatArray.count > 0 {
                 fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: orPredicatArray)
             }
@@ -75,19 +58,19 @@ public final class CacheContactManager: CoreDataProtocol {
         let firstNameSort = NSSortDescriptor(key: "firstName", ascending: ascending)
         let lastNameSort = NSSortDescriptor(key: "lastName", ascending: ascending)
         fetchRequest.sortDescriptors = [lastNameSort, firstNameSort]
-        context.perform {
-            let count = try? self.context.count(for: Entity.fetchRequest())
+        viewContext.perform {
+            let count = try? self.viewContext.count(for: Entity.fetchRequest())
             fetchRequest.fetchLimit = req.size
             fetchRequest.fetchOffset = req.offset
-            let contacts = try self.context.fetch(fetchRequest)
+            let contacts = try self.viewContext.fetch(fetchRequest)
             completion(contacts, count ?? 0)
         }
     }
 
     public func allContacts(_ completion: @escaping ([Entity]) -> Void) {
-        context.perform {
+        viewContext.perform {
             let req = Entity.fetchRequest()
-            let contacts = try self.context.fetch(req)
+            let contacts = try self.viewContext.fetch(req)
             completion(contacts)
         }
     }

@@ -26,43 +26,43 @@ final class PMPersistentContainer: NSPersistentContainer {
 /// TLDR 'Persistance Service Manager'
 public final class PersistentManager {
     public weak var logger: CacheLogDelegate?
-    var cacheEnabled: Bool
     let baseModelFileName = "ChatSDKModel"
+    var container: NSPersistentContainer?
+    let inMemory: Bool = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_TEST"] == "1"
 
-    public init(logger: CacheLogDelegate? = nil, cacheEnabled: Bool = false) {
+    public init(logger: CacheLogDelegate? = nil) {
         self.logger = logger
-        self.cacheEnabled = cacheEnabled
     }
 
-    public var context: NSManagedObjectContext? {
+    public func viewContext(name: String = "Main") -> NSManagedObjectContext? {
         guard let context = container?.viewContext else { return nil }
-        context.name = "Main"
+        context.name = name
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return context
     }
 
-    public func newBgTask() -> NSManagedObjectContext? {
+    public func newBgTask(name: String = "BGTASK") -> NSManagedObjectContext? {
         guard let bgTask = container?.newBackgroundContext() else { return nil }
-        bgTask.name = "BGTASK"
+        bgTask.name = name
         bgTask.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return bgTask
     }
 
     /// The structure and model of SQLite database which is a file we created at Resources/ChaSDKModel.xcdataModeld.
-    /// Notice: In runtime we should not call this mutliple time and this is the reason why we made this property lazy variable, because we wanted to init this property only once.
-    /// If you call this multiple time such as inside a concreate object you will get console warning realted to `mutiple Climas entity`.
-    lazy var modelFile: NSManagedObjectModel = {
+    /// Notice: In runtime we should not call this mutliple times and this is the reason why we made this property lazy variable, because we wanted to init this property only once.
+    /// If you call this multiple times such as inside a concreate object you will get console warning realted to `mutiple Climas entity`.
+    private lazy var modelFile: NSManagedObjectModel = {
         guard let modelURL = Bundle.moduleBundle.url(forResource: baseModelFileName, withExtension: "momd") else { fatalError("Couldn't find the mond file!") }
         guard let mom = NSManagedObjectModel(contentsOf: modelURL) else { fatalError("Error initializing mom from: \(modelURL)") }
         return mom
     }()
 
-    var container: NSPersistentContainer?
-
-    public func switchToContainer(userId: Int) {
-        RolesValueTransformer.register()
-        AssistantValueTransformer.register()
+    func switchToContainer(userId: Int, completion: @escaping () -> Void) {
+        registerTransformers()
         let container = PMPersistentContainer(name: "\(baseModelFileName)-\(userId)", managedObjectModel: modelFile)
+        if inMemory {
+            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+        }
         container.loadPersistentStores { [weak self] desc, error in
             if let error = error {
                 self?.logger?.log(message: "error load CoreData persistentstore des:\(desc) error: \(error)", persist: true, error: error)
@@ -70,6 +70,7 @@ public final class PersistentManager {
         }
         container.viewContext.automaticallyMergesChangesFromParent = true
         self.container = container
+        completion()
     }
 
     public func delete() {
@@ -82,7 +83,14 @@ public final class PersistentManager {
                 try storeCordinator?.destroyPersistentStore(at: url, ofType: NSSQLiteStoreType)
             }
         } catch {
-            print("Error to delete the database file: \(error.localizedDescription)")
+            logger?.log(message: "Error on delete persistent store: \(store) with an error:\n\(error)", persist: true, error: error)
         }
+    }
+}
+
+extension PersistentManager {
+    func registerTransformers() {
+        RolesValueTransformer.register()
+        AssistantValueTransformer.register()
     }
 }

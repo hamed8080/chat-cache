@@ -8,30 +8,11 @@ import CoreData
 import Foundation
 import ChatModels
 
-public final class CacheTagParticipantManager: CoreDataProtocol {
-    public typealias Entity = CDTagParticipant
-    public var context: NSManagedObjectContext
-    public let logger: CacheLogDelegate
-
-    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
-        self.context = context
-        self.logger = logger
-    }
-
-    public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
-        // batch update request
-        batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
-            batchRequest.predicate = predicate
-            batchRequest.propertiesToUpdate = propertiesToUpdate
-            batchRequest.resultType = .updatedObjectIDsResultType
-            _ = try? bgTask.execute(batchRequest)
-        }
-    }
+public final class CacheTagParticipantManager: BaseCoreDataManager<CDTagParticipant> {
 
     public func delete(_ models: [Entity.Model]) {
         let ids = models.compactMap(\.id)
         let predicate = NSPredicate(format: "\(Entity.idName) IN %@", ids)
-        batchDelete(context, entityName: Entity.name, predicate: predicate)
+        batchDelete(entityName: Entity.name, predicate: predicate)
     }
 }

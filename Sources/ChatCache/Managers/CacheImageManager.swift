@@ -8,24 +8,4 @@ import CoreData
 import Foundation
 import ChatModels
 
-public final class CacheImageManager: CoreDataProtocol {
-    public typealias Entity = CDImage
-    public var context: NSManagedObjectContext
-    public let logger: CacheLogDelegate
-
-    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
-        self.context = context
-        self.logger = logger
-    }
-
-    public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
-        // batch update request
-        batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
-            batchRequest.predicate = predicate
-            batchRequest.propertiesToUpdate = propertiesToUpdate
-            batchRequest.resultType = .updatedObjectIDsResultType
-            _ = try? bgTask.execute(batchRequest)
-        }
-    }
-}
+public final class CacheImageManager: BaseCoreDataManager<CDImage> {}

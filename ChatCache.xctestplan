@@ -9,7 +9,12 @@
     }
   ],
   "defaultOptions" : {
-
+    "environmentVariableEntries" : [
+      {
+        "key" : "XCODE_RUNNING_FOR_TEST",
+        "value" : "1"
+      }
+    ]
   },
   "testTargets" : [
     {

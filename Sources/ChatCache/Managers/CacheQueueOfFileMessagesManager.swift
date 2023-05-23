@@ -8,30 +8,11 @@ import CoreData
 import Foundation
 import ChatModels
 
-public final class CacheQueueOfFileMessagesManager: CoreDataProtocol {
-    public typealias Entity = CDQueueOfFileMessages
-    public var context: NSManagedObjectContext
-    public let logger: CacheLogDelegate
-
-    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
-        self.context = context
-        self.logger = logger
-    }
-
-    public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
-        // batch update request
-        batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
-            batchRequest.predicate = predicate
-            batchRequest.propertiesToUpdate = propertiesToUpdate
-            batchRequest.resultType = .updatedObjectIDsResultType
-            _ = try? bgTask.execute(batchRequest)
-        }
-    }
+public final class CacheQueueOfFileMessagesManager: BaseCoreDataManager<CDQueueOfFileMessages> {
 
     public func delete(_ uniqueIds: [String]) {
         let predicate = NSPredicate(format: "uniqueId IN %@", uniqueIds)
-        batchDelete(context, entityName: Entity.name, predicate: predicate)
+        batchDelete(entityName: Entity.name, predicate: predicate)
     }
 
     public func unsedForThread(_ threadId: Int?, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {

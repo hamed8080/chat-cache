@@ -8,31 +8,12 @@ import CoreData
 import Foundation
 import ChatModels
 
-public final class CacheUserManager: CoreDataProtocol {
-    public typealias Entity = CDUser
-    public var context: NSManagedObjectContext
-    public let logger: CacheLogDelegate
-
-    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
-        self.context = context
-        self.logger = logger
-    }
-
-    public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
-        // batch update request
-        batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
-            batchRequest.predicate = predicate
-            batchRequest.propertiesToUpdate = propertiesToUpdate
-            batchRequest.resultType = .updatedObjectIDsResultType
-            _ = try? bgTask.execute(batchRequest)
-        }
-    }
-
+public final class CacheUserManager: BaseCoreDataManager<CDUser> {
+ 
     public func insert(_ models: [Entity.Model], isMe: Bool = false) {
-        insertObjects(context) { bgTask in
+        insertObjects() { context in
             models.forEach { model in
-                let userEntity = Entity.insertEntity(bgTask)
+                let userEntity = Entity.insertEntity(context)
                 userEntity.update(model)
                 userEntity.isMe = isMe as NSNumber
             }
@@ -40,10 +21,10 @@ public final class CacheUserManager: CoreDataProtocol {
     }
 
     public func fetchCurrentUser(_ compeletion: @escaping (Entity?) -> Void) {
-        context.perform {
+        viewContext.perform {
             let req = Entity.fetchRequest()
             req.predicate = NSPredicate(format: "isMe == %@", NSNumber(booleanLiteral: true))
-            let cachedUseInfo = try self.context.fetch(req).first
+            let cachedUseInfo = try self.viewContext.fetch(req).first
             compeletion(cachedUseInfo)
         }
     }

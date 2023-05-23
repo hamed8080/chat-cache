@@ -8,24 +8,25 @@ import CoreData
 import Foundation
 
 public final class CacheManager {
-    public let assistant: CacheAssistantManager
-    public let contact: CacheContactManager
-    public let conversation: CacheConversationManager
-    public let file: CacheCoreDataFileManager
-    public let forwardInfo: CacheForwardInfoManager
-    public let image: CacheImageManager
-    public let message: CacheMessageManager
-    public let mutualGroup: CacheMutualGroupManager
-    public let participant: CacheParticipantManager
-    public let editQueue: CacheQueueOfEditMessagesManager
-    public let textQueue: CacheQueueOfTextMessagesManager
-    public let forwardQueue: CacheQueueOfForwardMessagesManager
-    public let fileQueue: CacheQueueOfFileMessagesManager
-    public let replyInfo: CacheReplyInfoManager
-    public let tag: CacheTagManager
-    public let tagParticipant: CacheTagParticipantManager
-    public let user: CacheUserManager
-    public let userRole: CacheUserRoleManager
+    private let persistentManager: PersistentManager
+    public private(set) var assistant: CacheAssistantManager?
+    public private(set) var contact: CacheContactManager?
+    public private(set) var conversation: CacheConversationManager?
+    public private(set) var file: CacheCoreDataFileManager?
+    public private(set) var forwardInfo: CacheForwardInfoManager?
+    public private(set) var image: CacheImageManager?
+    public private(set) var message: CacheMessageManager?
+    public private(set) var mutualGroup: CacheMutualGroupManager?
+    public private(set) var participant: CacheParticipantManager?
+    public private(set) var editQueue: CacheQueueOfEditMessagesManager?
+    public private(set) var textQueue: CacheQueueOfTextMessagesManager?
+    public private(set) var forwardQueue: CacheQueueOfForwardMessagesManager?
+    public private(set) var fileQueue: CacheQueueOfFileMessagesManager?
+    public private(set) var replyInfo: CacheReplyInfoManager?
+    public private(set) var tag: CacheTagManager?
+    public private(set) var tagParticipant: CacheTagParticipantManager?
+    public private(set) var user: CacheUserManager?
+    public private(set) var userRole: CacheUserRoleManager?
     lazy var entities: [NSEntityDescription] = {
         [
             CDTag.entity(),
@@ -49,25 +50,31 @@ public final class CacheManager {
         ]
     }()
 
-    public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
-        assistant = CacheAssistantManager(context: context, logger: logger)
-        contact = CacheContactManager(context: context, logger: logger)
-        conversation = CacheConversationManager(context: context, logger: logger)
-        file = CacheCoreDataFileManager(context: context, logger: logger)
-        forwardInfo = CacheForwardInfoManager(context: context, logger: logger)
-        image = CacheImageManager(context: context, logger: logger)
-        message = CacheMessageManager(context: context, logger: logger)
-        mutualGroup = CacheMutualGroupManager(context: context, logger: logger)
-        participant = CacheParticipantManager(context: context, logger: logger)
-        editQueue = CacheQueueOfEditMessagesManager(context: context, logger: logger)
-        textQueue = CacheQueueOfTextMessagesManager(context: context, logger: logger)
-        forwardQueue = CacheQueueOfForwardMessagesManager(context: context, logger: logger)
-        fileQueue = CacheQueueOfFileMessagesManager(context: context, logger: logger)
-        replyInfo = CacheReplyInfoManager(context: context, logger: logger)
-        tag = CacheTagManager(context: context, logger: logger)
-        tagParticipant = CacheTagParticipantManager(context: context, logger: logger)
-        user = CacheUserManager(context: context, logger: logger)
-        userRole = CacheUserRoleManager(context: context, logger: logger)
+    public init(logger: CacheLogDelegate) {
+        persistentManager = PersistentManager(logger: logger)
+    }
+
+    public func setupManangers(){
+        if let logger = persistentManager.logger {
+            assistant = CacheAssistantManager(container: persistentManager, logger: logger)
+            contact = CacheContactManager(container: persistentManager, logger: logger)
+            conversation = CacheConversationManager(container: persistentManager, logger: logger)
+            file = CacheCoreDataFileManager(container: persistentManager, logger: logger)
+            forwardInfo = CacheForwardInfoManager(container: persistentManager, logger: logger)
+            image = CacheImageManager(container: persistentManager, logger: logger)
+            message = CacheMessageManager(container: persistentManager, logger: logger)
+            mutualGroup = CacheMutualGroupManager(container: persistentManager, logger: logger)
+            participant = CacheParticipantManager(container: persistentManager, logger: logger)
+            editQueue = CacheQueueOfEditMessagesManager(container: persistentManager, logger: logger)
+            textQueue = CacheQueueOfTextMessagesManager(container: persistentManager, logger: logger)
+            forwardQueue = CacheQueueOfForwardMessagesManager(container: persistentManager, logger: logger)
+            fileQueue = CacheQueueOfFileMessagesManager(container: persistentManager, logger: logger)
+            replyInfo = CacheReplyInfoManager(container: persistentManager, logger: logger)
+            tag = CacheTagManager(container: persistentManager, logger: logger)
+            tagParticipant = CacheTagParticipantManager(container: persistentManager, logger: logger)
+            user = CacheUserManager(container: persistentManager, logger: logger)
+            userRole = CacheUserRoleManager(container: persistentManager, logger: logger)
+        }
     }
 
     public func truncate(bgTask: NSManagedObjectContext, context: NSManagedObjectContext) {
@@ -94,9 +101,19 @@ public final class CacheManager {
     }
 
     public func deleteQueues(uniqueIds: [String]) {
-        editQueue.delete(uniqueIds)
-        fileQueue.delete(uniqueIds)
-        textQueue.delete(uniqueIds)
-        forwardQueue.delete(uniqueIds)
+        editQueue?.delete(uniqueIds)
+        fileQueue?.delete(uniqueIds)
+        textQueue?.delete(uniqueIds)
+        forwardQueue?.delete(uniqueIds)
+    }
+
+    public func switchToContainer(userId: Int) {
+        persistentManager.switchToContainer(userId: userId) { [weak self] in
+            self?.setupManangers()
+        }
+    }
+
+    public func delete() {
+         persistentManager.delete()
     }
 }

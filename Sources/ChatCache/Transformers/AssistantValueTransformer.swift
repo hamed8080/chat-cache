@@ -6,6 +6,7 @@
 
 import Foundation
 import ChatModels
+import Additive
 
 @objc(AssistantValueTransformer)
 final class AssistantValueTransformer: ValueTransformer {

@@ -8,24 +8,16 @@ import CoreData
 import Foundation
 import ChatModels
 
-public final class CacheReplyInfoManager: CoreDataProtocol {
-    public typealias Entity = CDReplyInfo
-    public var context: NSManagedObjectContext
-    public let logger: CacheLogDelegate
+public final class CacheReplyInfoManager: BaseCoreDataManager<CDReplyInfo> {
 
-    required public init(context: NSManagedObjectContext, logger: CacheLogDelegate) {
-        self.context = context
-        self.logger = logger
-    }
-
-    public func insert(model: Entity.Model) {
+    public override func insert(model: Entity.Model, context: NSManagedObjectContext) {
         let entity = Entity.insertEntity(context)
         entity.update(model)
 
         if let participant = model.participant, let thread = model.participant?.conversation {
-            CacheConversationManager(context: context, logger: logger).findOrCreateEntity(thread.id) { threadEntity in
+            CacheConversationManager(container: container, logger: logger).findOrCreateEntity(thread.id, context) { threadEntity in
                 threadEntity?.update(thread)
-                CacheParticipantManager(context: self.context, logger: self.logger).findOrCreateEntity(thread.id, participant.id) { participantEntity in
+                CacheParticipantManager(container: self.container, logger: self.logger).findOrCreateEntity(thread.id, participant.id) { participantEntity in
                     participantEntity?.update(participant)
                     participantEntity?.conversation = threadEntity
                     entity.participant = participantEntity
@@ -34,31 +26,20 @@ public final class CacheReplyInfoManager: CoreDataProtocol {
         }
     }
 
-    public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
-        // batch update request
-        batchUpdate(context) { bgTask in
-            let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
-            batchRequest.predicate = predicate
-            batchRequest.propertiesToUpdate = propertiesToUpdate
-            batchRequest.resultType = .updatedObjectIDsResultType
-            _ = try? bgTask.execute(batchRequest)
-        }
-    }
-    
     public func first(_ participantId: Int?, _ repliedToMessageId: Int?, _ completion: @escaping (Entity?) -> Void) {
-        context.perform {
+        viewContext.perform {
             let predicate = NSPredicate(format: "\(CDParticipant.idName) == \(CDParticipant.queryIdSpecifier) AND repliedToMessageId == %i", participantId ?? -1, repliedToMessageId ?? -1)
             let req = Entity.fetchRequest()
             req.predicate = predicate
             req.fetchLimit = 1
-            let reply = try self.context.fetch(req).first
+            let reply = try self.viewContext.fetch(req).first
             completion(reply)
         }
     }
 
     public func findOrCreate(_ participantId: Int?, _ replyToMessageId: Int?, _ completion: @escaping (Entity?) -> Void) {
         first(participantId, replyToMessageId) { message in
-            completion(message ?? Entity.insertEntity(self.context))
+            completion(message ?? Entity.insertEntity(self.viewContext))
         }
     }
 }
