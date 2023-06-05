@@ -82,8 +82,19 @@ public final class PersistentManager {
             } else {
                 try storeCordinator?.destroyPersistentStore(at: url, ofType: NSSQLiteStoreType)
             }
+            deleteFiles(url: url)
         } catch {
             logger?.log(message: "Error on delete persistent store: \(store) with an error:\n\(error)", persist: true, error: error)
+        }
+    }
+
+    /// Calling destroyPersistentStore is not enough and it will not delete all core data and SQLite files from the disk it just truncates the database and leaves SQLite files untouched.
+    /// We should manually delete files because sometimes the size of SQLite files is too high.
+    private func deleteFiles(url: URL) {
+        NSFileCoordinator(filePresenter: nil).coordinate(writingItemAt: url.deletingLastPathComponent(), options: .forDeleting, error: nil) { url in
+            try? FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil).filter { $0.absoluteString.contains( container?.name ?? "")}.forEach { url in
+                try? FileManager.default.removeItem(at: url)
+            }
         }
     }
 }

@@ -82,6 +82,7 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
                         let entity = Entity.insertEntity(context)
                         entity.update(model)
                         entity.conversation = threadEntity
+                        threadEntity?.lastMessageVO = entity
                         try self?.updateRelations(entity, model, context: context)
                     }
                 }
@@ -91,12 +92,12 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
 
     public func delete(_ threadId: Int?, _ messageId: Int?) {
         let predicate = predicate(threadId, messageId)
-        batchDelete(entityName: Entity.name, predicate: predicate)
+        batchDelete(predicate: predicate)
     }
 
     public func delete(_ messageId: Int?) {
         let predicate = idPredicate(id: messageId ?? -1)
-        batchDelete(entityName: Entity.name, predicate: predicate)
+        batchDelete(predicate: predicate)
     }
 
     public func pin(_ pin: Bool, _ threadId: Int?, _ messageId: Int?) {
@@ -201,17 +202,11 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
 
     public func getMentions(threadId: Int, offset: Int = 0, count: Int = 25, _ completion: @escaping ([Entity], Int) -> Void) {
         let predicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId)
-        fetchWithOffset(entityName: Entity.name, count: count, offset: offset, predicate: predicate, completion)
+        fetchWithOffset(count: count, offset: offset, predicate: predicate, completion)
     }
 
     public func clearHistory(threadId: Int?) {
         let predicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId ?? -1)
-        batchDelete(entityName: Entity.name, predicate: predicate)
-    }
-
-    public func findOrCreate(_ threadId: Int?, _ messageId: Int?, _ completion: @escaping (Entity?) -> Void) {
-        find(threadId, messageId) { message in
-            completion(message ?? Entity.insertEntity(self.viewContext))
-        }
+        batchDelete(predicate: predicate)
     }
 }

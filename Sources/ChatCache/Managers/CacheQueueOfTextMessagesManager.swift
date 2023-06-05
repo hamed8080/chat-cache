@@ -10,17 +10,13 @@ import ChatModels
 
 public final class CacheQueueOfTextMessagesManager: BaseCoreDataManager<CDQueueOfTextMessages> {
 
-    public func insert(_ text: Entity.Model) {
-        insert(models: [text])
-    }
-
     public func delete(_ uniqueIds: [String]) {
-        let predicate = NSPredicate(format: "uniqueId IN %@", uniqueIds)
-        batchDelete(entityName: Entity.name, predicate: predicate)
+        let predicate = NSPredicate(format: "%K IN %@", #keyPath(CDQueueOfTextMessages.uniqueId), uniqueIds)
+        batchDelete(predicate: predicate)
     }
 
     public func unsendForThread(_ threadId: Int?, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
         let threadIdPredicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId ?? -1)
-        fetchWithOffset(entityName: Entity.name, count: count, offset: offset, predicate: threadIdPredicate, completion)
+        fetchWithOffset(count: count, offset: offset, predicate: threadIdPredicate, completion)
     }
 }

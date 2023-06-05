@@ -33,6 +33,21 @@ public extension CDAssistant {
         self.assistant = model.assistant
         roles = model.roles?.data
         block = model.block as? NSNumber
+        setParticipant(model: model)
+    }
+    
+    func setParticipant(model: Model) {
+        guard let context = managedObjectContext else { return }
+        let predicate = NSPredicate(format: "%K == %i", #keyPath(CDParticipant.id), model.participant?.id as? NSNumber ?? 0)
+        let req = CDParticipant.fetchRequest()
+        req.predicate = predicate
+        if let participantEntity = try? context.fetch(req).first {
+            self.participant = participantEntity
+        } else if let participantModel = model.participant {
+            let participantEntity = CDParticipant.insertEntity(context)
+            participantEntity.update(participantModel)
+            self.participant = participantEntity
+        }
     }
 
     var codable: Model {

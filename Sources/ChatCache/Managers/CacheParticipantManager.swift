@@ -47,13 +47,13 @@ public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
 
     public func getParticipantsForThread(_ threadId: Int?, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
         let predicate = NSPredicate(format: "conversation.\(CDConversation.idName) == \(CDConversation.queryIdSpecifier)", threadId ?? -1)
-        fetchWithOffset(entityName: Entity.name, count: count, offset: offset, predicate: predicate, completion)
+        fetchWithOffset(count: count, offset: offset, predicate: predicate, completion)
     }
 
     public func delete(_ models: [Entity.Model]) {
         let ids = models.compactMap(\.id)
         let predicate = NSPredicate(format: "\(Entity.idName) IN %@", ids)
-        batchDelete(entityName: Entity.name, predicate: predicate)
+        batchDelete(predicate: predicate)
     }
 
     public func findOrCreateEntity(_ threadId: Int?, _ participantId: Int?, _ completion: @escaping (Entity?) -> Void) {

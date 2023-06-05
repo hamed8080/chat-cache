@@ -46,6 +46,21 @@ public extension CDContact {
         notSeenDuration = model.notSeenDuration as? NSNumber
         time = model.time as? NSNumber
         userId = model.userId as? NSNumber
+        setUser(model: model)
+    }
+
+    func setUser(model: Model) {
+        guard let context = managedObjectContext else { return }
+        let predicate = NSPredicate(format: "%K == %i", #keyPath(CDUser.id), model.user?.id as? NSNumber ?? 0)
+        let req = CDUser.fetchRequest()
+        req.predicate = predicate
+        if let userEntity = try? context.fetch(req).first {
+            self.user = userEntity
+        } else if let userModel = model.user {
+            let userEntity = CDUser.insertEntity(context)
+            userEntity.update(userModel)
+            self.user = userEntity
+        }
     }
 
     var codable: Model {

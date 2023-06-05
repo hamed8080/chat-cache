@@ -9,6 +9,17 @@
     }
   ],
   "defaultOptions" : {
+    "commandLineArgumentEntries" : [
+      {
+        "argument" : "-com.apple.CoreData.SQLDebug 1"
+      },
+      {
+        "argument" : "-com.apple.CoreData.ConcurrencyDebug 1"
+      },
+      {
+        "argument" : "-com.apple.CoreData.Logging.stderr 1"
+      }
+    ],
     "environmentVariableEntries" : [
       {
         "key" : "XCODE_RUNNING_FOR_TEST",

@@ -53,7 +53,7 @@ public extension CDMessage {
         edited = model.edited as? NSNumber
         id = model.id as? NSNumber
         mentioned = model.mentioned as? NSNumber
-        self.message = model.message
+        message = model.message
         messageType = model.messageType?.rawValue as? NSNumber
         metadata = model.metadata
         ownerId = model.ownerId as? NSNumber
@@ -61,7 +61,7 @@ public extension CDMessage {
         previousId = model.previousId as? NSNumber
         seen = model.seen as? NSNumber
         systemMetadata = model.systemMetadata
-        threadId = model.threadId as? NSNumber
+        threadId = model.threadId as? NSNumber ?? model.conversation?.id as? NSNumber
         time = model.time as? NSNumber
         uniqueId = model.uniqueId
         pinTime = model.pinTime as? NSNumber

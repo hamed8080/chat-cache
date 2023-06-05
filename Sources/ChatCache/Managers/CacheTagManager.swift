@@ -20,6 +20,6 @@ public final class CacheTagManager: BaseCoreDataManager<CDTag> {
 
     public func delete(_ id: Int?) {
         let predicate = idPredicate(id: id ?? -1)
-        batchDelete(entityName: Entity.name, predicate: predicate)
+        batchDelete(predicate: predicate)
     }
 }

@@ -13,6 +13,6 @@ public final class CacheTagParticipantManager: BaseCoreDataManager<CDTagParticip
     public func delete(_ models: [Entity.Model]) {
         let ids = models.compactMap(\.id)
         let predicate = NSPredicate(format: "\(Entity.idName) IN %@", ids)
-        batchDelete(entityName: Entity.name, predicate: predicate)
+        batchDelete(predicate: predicate)
     }
 }

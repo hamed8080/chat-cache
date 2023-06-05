@@ -10,12 +10,8 @@ import ChatModels
 
 public final class CacheContactManager: BaseCoreDataManager<CDContact> {
 
-    public func delete(_ id: Int) {
-        batchDelete(entityName: Entity.name, predicate: idPredicate(id: id))
-    }
-
-    public func block(_ block: Bool, _ threadId: Int?) {
-        let predicate = idPredicate(id: threadId ?? -1)
+    public func block(_ block: Bool, _ contactId: Int) {
+        let predicate = idPredicate(id: contactId)
         let propertiesToUpdate: [String: Any] = ["blocked": block]
         update(propertiesToUpdate, predicate)
     }
@@ -59,19 +55,11 @@ public final class CacheContactManager: BaseCoreDataManager<CDContact> {
         let lastNameSort = NSSortDescriptor(key: "lastName", ascending: ascending)
         fetchRequest.sortDescriptors = [lastNameSort, firstNameSort]
         viewContext.perform {
-            let count = try? self.viewContext.count(for: Entity.fetchRequest())
+            let count = try self.viewContext.count(for: Entity.fetchRequest())
             fetchRequest.fetchLimit = req.size
             fetchRequest.fetchOffset = req.offset
             let contacts = try self.viewContext.fetch(fetchRequest)
-            completion(contacts, count ?? 0)
-        }
-    }
-
-    public func allContacts(_ completion: @escaping ([Entity]) -> Void) {
-        viewContext.perform {
-            let req = Entity.fetchRequest()
-            let contacts = try self.viewContext.fetch(req)
-            completion(contacts)
+            completion(contacts, count)
         }
     }
 }

@@ -6,9 +6,10 @@
 
 import CoreData
 import Foundation
+import ChatModels
 
 public final class CacheManager {
-    private let persistentManager: PersistentManager
+    internal let persistentManager: PersistentManager
     public private(set) var assistant: CacheAssistantManager?
     public private(set) var contact: CacheContactManager?
     public private(set) var conversation: CacheConversationManager?
@@ -27,28 +28,6 @@ public final class CacheManager {
     public private(set) var tagParticipant: CacheTagParticipantManager?
     public private(set) var user: CacheUserManager?
     public private(set) var userRole: CacheUserRoleManager?
-    lazy var entities: [NSEntityDescription] = {
-        [
-            CDTag.entity(),
-            CDParticipant.entity(),
-            CDConversation.entity(),
-            CDTagParticipant.entity(),
-            CDMessage.entity(),
-            CDReplyInfo.entity(),
-            CDUserRole.entity(),
-            CDUser.entity(),
-            CDQueueOfEditMessages.entity(),
-            CDQueueOfFileMessages.entity(),
-            CDQueueOfTextMessages.entity(),
-            CDQueueOfForwardMessages.entity(),
-            CDFile.entity(),
-            CDImage.entity(),
-            CDAssistant.entity(),
-            CDForwardInfo.entity(),
-            CDMutualGroup.entity(),
-            CDContact.entity(),
-        ]
-    }()
 
     public init(logger: CacheLogDelegate) {
         persistentManager = PersistentManager(logger: logger)
@@ -77,29 +56,6 @@ public final class CacheManager {
         }
     }
 
-    public func truncate(bgTask: NSManagedObjectContext, context: NSManagedObjectContext) {
-        bgTask.perform { [weak self] in
-            var objectIds: [NSManagedObjectID] = []
-            try self?.entities.forEach { entity in
-                let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entity.name ?? "")
-                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-                deleteRequest.resultType = .resultTypeObjectIDs
-                if let result = try bgTask.execute(deleteRequest) as? NSBatchDeleteResult, let ids = result.result as? [NSManagedObjectID] {
-                    objectIds.append(contentsOf: ids)
-                }
-                try? bgTask.save()
-                self?.mergeChanges(context: context, key: NSDeletedObjectsKey, objectIds)
-            }
-        }
-    }
-
-    public func mergeChanges(context: NSManagedObjectContext, key: String, _ objectIDs: [NSManagedObjectID]) {
-        NSManagedObjectContext.mergeChanges(
-            fromRemoteContextSave: [key: objectIDs],
-            into: [context]
-        )
-    }
-
     public func deleteQueues(uniqueIds: [String]) {
         editQueue?.delete(uniqueIds)
         fileQueue?.delete(uniqueIds)
@@ -107,9 +63,10 @@ public final class CacheManager {
         forwardQueue?.delete(uniqueIds)
     }
 
-    public func switchToContainer(userId: Int) {
+    public func switchToContainer(userId: Int, completion: (() ->Void)? = nil) {
         persistentManager.switchToContainer(userId: userId) { [weak self] in
             self?.setupManangers()
+            completion?()
         }
     }
 

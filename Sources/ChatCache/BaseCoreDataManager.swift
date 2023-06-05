@@ -60,19 +60,32 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         viewContext.perform {
             let req = Entity.fetchRequest()
             req.predicate = predicate
-            let userRoles = try self.viewContext.fetch(req)
-            completion(userRoles)
+            let entities = try self.viewContext.fetch(req)
+            completion(entities)
+        }
+    }
+
+    public func batchUpdate(_ updateObjects: @escaping (NSManagedObjectContext) -> Void) {
+        let context = bgContext
+        context.perform { [weak self] in
+            updateObjects(context)
+            self?.save(context: context)
+            let updatedObjectIds = context.updatedObjects.map(\.objectID)
+            self?.mergeChanges(key: NSUpdatedObjectsKey, updatedObjectIds)
         }
     }
 
     public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
-        // batch update request
-        batchUpdate() { bgTask in
+        let context = bgContext
+        context.perform { [weak self] in
             let batchRequest = NSBatchUpdateRequest(entityName: Entity.name)
             batchRequest.predicate = predicate
             batchRequest.propertiesToUpdate = propertiesToUpdate
             batchRequest.resultType = .updatedObjectIDsResultType
-            _ = try? bgTask.execute(batchRequest)
+            let updateResult = try? context.execute(batchRequest) as? NSBatchUpdateResult
+            if let updatedObjectIds = updateResult?.result as? [NSManagedObjectID], updatedObjectIds.count > 0 {
+                self?.mergeChanges(key: NSUpdatedObjectIDsKey, updatedObjectIds)
+            }
         }
     }
 
@@ -91,6 +104,10 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         }
     }
 
+    public func saveViewContext() {
+        save(context: viewContext)
+    }
+
     public func mergeChanges(key: String, _ objectIDs: [NSManagedObjectID]) {
         NSManagedObjectContext.mergeChanges(
             fromRemoteContextSave: [key: objectIDs],
@@ -105,51 +122,38 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
             self?.save(context: context)
             let insertedObjectIds = context.insertedObjects.map(\.objectID)
             let updatedObjectIds = context.updatedObjects.map(\.objectID)
-            self?.mergeChanges(key: NSInsertedObjectsKey, insertedObjectIds)
+            if insertedObjectIds.count > 0 {
+                self?.mergeChanges(key: NSInsertedObjectsKey, insertedObjectIds)
+            }
             // For entities with constraint we the constraint will update not insert, because we use trump policy in bgTask Context.
-            self?.mergeChanges(key: NSUpdatedObjectsKey, updatedObjectIds)
+            if updatedObjectIds.count > 0 {
+                self?.mergeChanges(key: NSUpdatedObjectsKey, updatedObjectIds)
+            }
         }
     }
 
-    public func batchUpdate(_ updateObjects: @escaping (NSManagedObjectContext) -> Void) {
-        let context = bgContext
-        context.perform { [weak self] in
-            updateObjects(context)
-            self?.save(context: context)
-            let updatedObjectIds = context.updatedObjects.map(\.objectID)
-            self?.mergeChanges(key: NSUpdatedObjectsKey, updatedObjectIds)
-        }
+    public func batchDelete(_ ids: [Int]) {
+        let predicate = NSPredicate(format: "\(Entity.idName) IN %@", ids.map { $0 as NSNumber })
+        batchDelete(predicate: predicate)
     }
 
-    public func batchDelete(entityName: String, _ ids: [Int]) {
-        let req = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        req.predicate = NSPredicate(format: "\(Entity.idName) IN %@", ids.map { $0 as NSNumber })
-        let request = NSBatchDeleteRequest(fetchRequest: req)
-        request.resultType = .resultTypeObjectIDs
-        let context = bgContext
-        context.perform { [weak self] in
-            let deleteResult = try context.execute(request) as? NSBatchDeleteResult
-            self?.save(context: context)
-            self?.mergeChanges(key: NSDeletedObjectsKey, deleteResult?.result as? [NSManagedObjectID] ?? [])
-        }
-    }
-
-    public func batchDelete(entityName: String, predicate: NSPredicate) {
-        let req = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+    public func batchDelete(predicate: NSPredicate) {
+        let req = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.name)
         req.predicate = predicate
         let request = NSBatchDeleteRequest(fetchRequest: req)
         request.resultType = .resultTypeObjectIDs
         let context = bgContext
         context.perform { [weak self] in
             let deleteResult = try context.execute(request) as? NSBatchDeleteResult
-            self?.save(context: context)
-            self?.mergeChanges(key: NSDeletedObjectsKey, deleteResult?.result as? [NSManagedObjectID] ?? [])
+            if let deletedObjectIds = deleteResult?.result as? [NSManagedObjectID], deletedObjectIds.count > 0 {
+                self?.mergeChanges(key: NSDeletedObjectIDsKey, deletedObjectIds)
+            }
         }
     }
 
-    public func fetchWithOffset(entityName: String, count: Int?, offset: Int?, predicate: NSPredicate? = nil, sortDescriptor: [NSSortDescriptor]? = nil, _ completion: @escaping ([Entity], Int) -> Void) {
+    public func fetchWithOffset(count: Int?, offset: Int?, predicate: NSPredicate? = nil, sortDescriptor: [NSSortDescriptor]? = nil, _ completion: @escaping ([Entity], Int) -> Void) {
         viewContext.perform {
-            let req = NSFetchRequest<Entity>(entityName: entityName)
+            let req = NSFetchRequest<Entity>(entityName: Entity.name)
             if let sortDescriptors = sortDescriptor {
                 req.sortDescriptors = sortDescriptors
             }
@@ -159,6 +163,24 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
             req.fetchOffset = offset ?? 0
             let objects = try self.viewContext.fetch(req)
             completion(objects, totalCount)
+        }
+    }
+
+    public func all(_ completion: @escaping ([Entity]) -> Void) {
+        viewContext.perform {
+            let req = Entity.fetchRequest()
+            let entities = try self.viewContext.fetch(req)
+            completion(entities)
+        }
+    }
+
+    public func fetchWithObjectIds(ids: [NSManagedObjectID], _ completion: @escaping ([Entity]) -> Void) {
+        viewContext.perform {
+            let req = Entity.fetchRequest()
+            let predicate = NSPredicate(format: "self IN %@", ids)
+            req.predicate = predicate
+            let entities = try self.viewContext.fetch(req)
+            completion(entities)
         }
     }
 }

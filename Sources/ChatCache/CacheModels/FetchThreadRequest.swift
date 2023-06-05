@@ -9,7 +9,8 @@ import Foundation
 public struct FetchThreadRequest {
     internal let count: Int
     internal let offset: Int
-    internal var name: String?
+    internal var title: String?
+    internal var description: String?
     internal let new: Bool?
     internal let archived: Bool?
     internal let threadIds: [Int]?
@@ -23,7 +24,8 @@ public struct FetchThreadRequest {
 
     public init(count: Int = 25,
                 offset: Int = 0,
-                name: String? = nil,
+                title: String? = nil,
+                description: String? = nil,
                 new: Bool? = nil,
                 isGroup: Bool? = nil,
                 type: Int? = nil,
@@ -37,7 +39,8 @@ public struct FetchThreadRequest {
     {
         self.count = count
         self.offset = offset
-        self.name = name
+        self.title = title
+        self.description = description
         self.metadataCriteria = metadataCriteria
         self.new = new
         self.isGroup = isGroup

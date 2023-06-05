@@ -90,28 +90,23 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
         ]
         update(propertiesToUpdate, predicate)
     }
-
-    public func increamentUnreadCount(_ threadId: Int, _ completion: ((Int) -> Void)? = nil) {
+    
+    public func setUnreadCount(action: CacheUnreadCountAction, threadId: Int, completion: ((Int) -> Void)? = nil) {
         first(with: threadId) { entity in
-            let unreadCount = (entity?.unreadCount?.intValue ?? 0) + 1
-            self.update(["unreadCount": unreadCount], self.idPredicate(id: threadId))
-            completion?(unreadCount)
-        }
-    }
-
-    public func decreamentUnreadCount(_ threadId: Int, _ completion: ((Int) -> Void)? = nil) {
-        first(with: threadId) { entity in
-            let dbCount = entity?.unreadCount?.intValue ?? 0
-            let decreamentCount = max(0, dbCount - 1)
-            self.update(["unreadCount": decreamentCount], self.idPredicate(id: threadId))
-            completion?(decreamentCount)
-        }
-    }
-
-    public func setUnreadCountToZero(_ threadId: Int, _ completion: ((Int) -> Void)? = nil) {
-        viewContext.perform {
-            self.update(["unreadCount": 0], self.idPredicate(id: threadId))
-            completion?(0)
+            var cachedThreadCount = entity?.unreadCount?.intValue ?? 0
+            switch action {
+            case .increase:
+                cachedThreadCount += 1
+                break
+            case .decrease:
+                cachedThreadCount = max(0, cachedThreadCount - 1)
+                break
+            case let .set(count):
+                cachedThreadCount = max(0, count)
+                break
+            }
+            self.update(["unreadCount": cachedThreadCount], self.idPredicate(id: threadId))
+            completion?(cachedThreadCount)
         }
     }
 
@@ -120,29 +115,35 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
         fetchRequest.fetchLimit = req.count
         fetchRequest.fetchOffset = req.offset
         var orFetchPredicatArray = [NSPredicate]()
-        if let name = req.name, name != "" {
-            let searchTitle = NSPredicate(format: "title CONTAINS[cd] %@", name)
-            let searchDescriptions = NSPredicate(format: "descriptions CONTAINS[cd] %@", name)
+        if let title = req.title, title != "" {
+            let searchTitle = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(CDConversation.title), title)
             orFetchPredicatArray.append(searchTitle)
+        }
+
+        if let desc = req.description {
+            let searchDescriptions = NSPredicate(format: "%K CONTAINS[cd] %@", #keyPath(CDConversation.descriptions) , desc)
             orFetchPredicatArray.append(searchDescriptions)
         }
 
         if let threadIds = req.threadIds, threadIds.count > 0 {
-            orFetchPredicatArray.append(NSPredicate(format: "\(Entity.idName) IN %@", threadIds))
+            orFetchPredicatArray.append(NSPredicate(format: "%K IN %@", #keyPath(CDConversation.id), threadIds))
         }
 
         if let isGroup = req.isGroup {
-            let groupPredicate = NSPredicate(format: "group == %@", NSNumber(value: isGroup))
+            let groupPredicate = NSPredicate(format: "%K == %@", #keyPath(CDConversation.group), NSNumber(value: isGroup))
             orFetchPredicatArray.append(groupPredicate)
         }
 
         if let type = req.type {
-            let thtreadTypePredicate = NSPredicate(format: "type == %i", type)
+            let thtreadTypePredicate = NSPredicate(format: "%K == %i", #keyPath(CDConversation.type), type)
             orFetchPredicatArray.append(thtreadTypePredicate)
         }
 
-        let archivePredicate = NSPredicate(format: "isArchive == %@", NSNumber(value: req.archived ?? false))
-        orFetchPredicatArray.append(archivePredicate)
+        if let archived = req.archived {
+            let keyPath = #keyPath(CDConversation.isArchive)
+            let archivePredicate = NSPredicate(format: "%K == %@ OR %K == %@", keyPath, NSNumber(value: archived), keyPath, NSNull())
+            orFetchPredicatArray.append(archivePredicate)
+        }
         let orCompound = NSCompoundPredicate(type: .and, subpredicates: orFetchPredicatArray)
         fetchRequest.predicate = orCompound
 
@@ -164,71 +165,71 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
         req.resultType = .dictionaryResultType
         req.propertiesToFetch = [Entity.idName]
         viewContext.perform {
-            let dic = try? self.viewContext.fetch(req)
-            let threadIds = dic?.flatMap(\.allValues).compactMap { $0 as? Int }
-            completion(threadIds ?? [])
+            let dic = try self.viewContext.fetch(req)
+            let threadIds = dic.flatMap(\.allValues).compactMap { $0 as? Int }
+            completion(threadIds)
         }
     }
 
-    public func archive(_ archive: Bool, _ threadId: Int?) {
-        let predicate = idPredicate(id: threadId ?? -1)
+    public func archive(_ archive: Bool, _ threadId: Int) {
+        let predicate = idPredicate(id: threadId)
         let propertiesToUpdate: [String: Any] = ["isArchive": NSNumber(booleanLiteral: archive)]
         update(propertiesToUpdate, predicate)
     }
 
-    public func close(_ close: Bool, _ threadId: Int?) {
-        let predicate = idPredicate(id: threadId ?? -1)
+    public func close(_ close: Bool, _ threadId: Int) {
+        let predicate = idPredicate(id: threadId)
         let propertiesToUpdate: [String: Any] = ["closedThread": NSNumber(booleanLiteral: close)]
         update(propertiesToUpdate, predicate)
     }
 
-    public func mute(_ mute: Bool, _ threadId: Int?) {
-        let predicate = idPredicate(id: threadId ?? -1)
+    public func mute(_ mute: Bool, _ threadId: Int) {
+        let predicate = idPredicate(id: threadId)
         let propertiesToUpdate: [String: Any] = ["mute": NSNumber(booleanLiteral: mute)]
         update(propertiesToUpdate, predicate)
     }
 
-    public func pin(_ pin: Bool, _ threadId: Int?) {
-        let predicate = idPredicate(id: threadId ?? -1)
+    public func pin(_ pin: Bool, _ threadId: Int) {
+        let predicate = idPredicate(id: threadId)
         let propertiesToUpdate: [String: Any] = ["pin": NSNumber(booleanLiteral: pin)]
         update(propertiesToUpdate, predicate)
     }
 
-    public func updateLastMessage(_ thread: Entity.Model) {
-        first(with: thread.id ?? -1) { entity in
-            entity?.lastMessage = thread.lastMessage
-            if let lastMessageVO = thread.lastMessageVO {
-                entity?.lastMessageVO?.update(lastMessageVO)
+
+    /// Insert if there is no conversation or message object, and update if there is a message or thread entity.
+    public func replaceLastMessage(_ model: Entity.Model) throws {
+        guard let threadId = model.id, let lastMessageVO = model.lastMessageVO
+        else { throw NSError(domain: "The threadId or LastMessageVO is nil.", code: 0) }
+        first(with: threadId) { entity in
+            if let entity = entity {
+                self.updateLastMessage(entity: entity, lastMessageVO: lastMessageVO)
+            } else {
+                // Insert
+                self.insert(models: [model])
             }
+            self.saveViewContext()
         }
     }
 
-    public func updateLastMessage(_ threadId: Int?, _ text: String) {
-        let predicate = idPredicate(id: threadId ?? -1)
-        let propertiesToUpdate: [String: Any] = ["lastMessage": text]
-        update(propertiesToUpdate, predicate)
-    }
-
-    public func setLastMessageVO(_ message: Message) {
-        let threadId = message.threadId ?? -1
-        let messageId = message.id ?? -1
-        let req = Entity.fetchRequest()
-        req.predicate = idPredicate(id: threadId)
+    /// We use uniqueId of message to get a message if it the sender were me and if so, in sendMessage method we have added an entity inside message table without an 'Message.id'
+    /// and it will lead to problem such as dupicate message row.
+    private func updateLastMessage(entity: CDConversation, lastMessageVO: Message) {
+        let context = viewContext
+        entity.lastMessage = lastMessageVO.message
         let messageReq = CDMessage.fetchRequest()
-        messageReq.predicate = NSPredicate(format: "conversation.\(CDConversation.idName) == \(Entity.queryIdSpecifier) AND \(CDMessage.idName) == \(Entity.queryIdSpecifier)", threadId, messageId)
-        viewContext.perform {
-            if let threadEntity = try self.viewContext.fetch(req).first, let messageEntity = try self.viewContext.fetch(messageReq).first {
-                threadEntity.lastMessageVO = messageEntity
-                threadEntity.lastMessage = messageEntity.message
-                messageEntity.message = message.message
-                self.save(context: self.viewContext)
-            }
+        messageReq.predicate = NSPredicate(format: "%K == %@ OR %K == %@", #keyPath(CDMessage.id), lastMessageVO.id as? NSNumber ?? -1, #keyPath(CDMessage.uniqueId), lastMessageVO.uniqueId ?? "")
+        if let messageEntity = try? context.fetch(messageReq).first {
+            messageEntity.update(lastMessageVO)
+        } else {
+            let insertMessageEntity = CDMessage.insertEntity(context)
+            insertMessageEntity.update(lastMessageVO)
+            entity.lastMessageVO = insertMessageEntity
         }
     }
 
-    public func changeThreadType(_ thread: Entity.Model?) {
-        let predicate = idPredicate(id: thread?.id ?? -1)
-        let propertiesToUpdate: [String: Any] = ["type": thread?.type?.rawValue ?? -1]
+    public func changeThreadType(_ threadId: Int, _ type: ThreadTypes) {
+        let predicate = idPredicate(id: threadId)
+        let propertiesToUpdate: [String: Any] = ["type": type.rawValue]
         update(propertiesToUpdate, predicate)
     }
 
@@ -244,21 +245,24 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
             req.propertiesToFetch = [sumDesc]
             req.returnsObjectsAsFaults = false
             req.resultType = .dictionaryResultType
-            let dic = try self.viewContext.fetch(req).first as? [String: Int]
-            let allUnreadCount = dic?["sum"] ?? 0
-            completion(allUnreadCount)
+            if let dic = try self.viewContext.fetch(req).first as? [String: Int], let sum = dic["sum"] {
+                completion(sum)
+            } else {
+                completion(0)
+            }
         }
     }
 
     public func delete(_ threadId: Int) {
         let predicate = idPredicate(id: threadId)
-        batchDelete(entityName: Entity.name, predicate: predicate)
+        batchDelete(predicate: predicate)
     }
 
     public func updateThreadsUnreadCount(_ resp: [String: Int]) {
-        resp.forEach { key, value in
-            let predicate = idPredicate(id: Int(key) ?? -1)
-            update(["unreadCount": value], predicate)
+        for (key, value) in resp {
+            if let threadId = Int(key) {
+                setUnreadCount(action: .set(value), threadId: threadId)
+            }
         }
     }
 
@@ -268,20 +272,12 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
         req.propertiesToFetch = ["id", "unreadCount"]
         req.predicate = NSPredicate(format: "\(Entity.idName) IN %@", threadIds)
         viewContext.perform {
-            let rows = try? self.viewContext.fetch(req)
-            var result: [String: Int] = [:]
-            rows?.forEach { dic in
-                var threadId = 0
-                var unreadCount = 0
-                dic.forEach { key, value in
-                    if key as? String == Entity.idName {
-                        threadId = value as? Int ?? 0
-                    } else if key as? String == "unreadCount" {
-                        unreadCount = value as? Int ?? 0
-                    }
-                }
-                result[String(threadId)] = unreadCount
+            let rows = try self.viewContext.fetch(req)
+            let dictionary: [(String, Int)] = rows.compactMap { dic in
+                guard let threadId = dic[Entity.idName] as? Int, let unreadCount = dic["unreadCount"] as? Int else { return nil }
+                return (String(threadId), unreadCount)
             }
+            let result = dictionary.reduce(into: [:]) { $0[$1.0] = $1.1 }
             completion(result)
         }
     }
