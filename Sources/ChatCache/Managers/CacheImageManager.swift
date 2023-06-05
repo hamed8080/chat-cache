@@ -8,4 +8,11 @@ import CoreData
 import Foundation
 import ChatModels
 
-public final class CacheImageManager: BaseCoreDataManager<CDImage> {}
+public final class CacheImageManager: BaseCoreDataManager<CDImage> {
+    public func first(hashCode: String, completion: @escaping ((Entity.Model?) -> Void)) {
+        first(with: hashCode, context: viewContext) { image in
+            let image = image?.codable
+            completion(image)
+        }
+    }
+}

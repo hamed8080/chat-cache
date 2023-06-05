@@ -12,62 +12,42 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
 
     public override func insert(model: Entity.Model, context: NSManagedObjectContext) {
         do {
+            guard let threadId = model.id else { return }
             let req = Entity.fetchRequest()
-            req.predicate = NSPredicate(format: "\(Entity.idName) == \(Entity.queryIdSpecifier)", model.id ?? -1)
-            var entity = try context.fetch(req).first
-            if entity == nil {
-                entity = Entity.insertEntity(context)
-            }
-            entity?.update(model)
+            req.predicate = NSPredicate(format: "\(Entity.idName) == \(Entity.queryIdSpecifier)", threadId)
+            let entity = try context.fetch(req).first ?? Entity.insertEntity(context)
+            entity.update(model)
 
-            if let lastMessageVO = model.lastMessageVO {
-                let req = CDMessage.fetchRequest()
-                req.predicate = NSPredicate(format: "conversation.\(CDConversation.idName) == \(Entity.queryIdSpecifier) AND \(CDMessage.idName) == \(Entity.queryIdSpecifier)", model.id ?? -1, lastMessageVO.id ?? -1)
-                var messageEntity = try context.fetch(req).first
-                if messageEntity == nil {
-                    messageEntity = CDMessage.insertEntity(context)
-                    messageEntity?.update(lastMessageVO)
-                }
-                messageEntity?.conversation = entity
-                messageEntity?.threadId = model.id as? NSNumber
-                entity?.lastMessageVO = messageEntity
-
-                if let participant = model.lastMessageVO?.participant {
-                    let participantReq = CDParticipant.fetchRequest()
-                    participantReq.predicate = NSPredicate(format: "conversation.\(CDConversation.idName) == \(Entity.queryIdSpecifier) AND \(CDParticipant.idName) == \(Entity.queryIdSpecifier)", model.id ?? -1, participant.id ?? -1)
-                    var participantEntity = try context.fetch(participantReq).first
-                    if participantEntity == nil {
-                        participantEntity = CDParticipant.insertEntity(context)
-                        participantEntity?.update(participant)
-                    }
-                    participantEntity?.conversation = entity
-                    messageEntity?.participant = participantEntity
-                }
+            if model.lastMessageVO != nil {
+                try? replaceLastMessage(model, context)
             }
 
             model.pinMessages?.forEach { pinMessage in
                 let pinMessageEntity = CDMessage.insertEntity(context)
                 pinMessageEntity.update(pinMessage)
                 pinMessageEntity.pinned = true
-                pinMessageEntity.threadId = entity?.id
+                pinMessageEntity.threadId = entity.id
                 pinMessageEntity.conversation = entity
-                entity?.addToPinMessages(pinMessageEntity)
+                entity.addToPinMessages(pinMessageEntity)
             }
         } catch {
             logger.log(message: error.localizedDescription, persist: true, error: nil)
         }
     }
 
+    /// It will update, the last message seen when the owner of the message is not me I just saw the partner message.
     public func seen(threadId: Int, messageId: Int) {
         let predicate = idPredicate(id: threadId)
+        let date = Date()
         let propertiesToUpdate = [
             "lastSeenMessageId": (messageId) as NSNumber,
-            "lastSeenMessageTime": (Date().timeIntervalSince1970) as NSNumber,
-            "lastSeenMessageNanos": (Date().timeIntervalSince1970) as NSNumber,
+            "lastSeenMessageTime": (date.timeIntervalSince1970) as NSNumber,
+            "lastSeenMessageNanos": (date.timeIntervalSince1970) as NSNumber,
         ]
         update(propertiesToUpdate, predicate)
     }
 
+    /// It will update, the last message has been delivered to the partner.
     public func partnerDeliver(threadId: Int, messageId: Int, messageTime: UInt) {
         let predicate = idPredicate(id: threadId)
         let propertiesToUpdate: [String: Any] = [
@@ -78,6 +58,7 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
         update(propertiesToUpdate, predicate)
     }
 
+    /// It will update the last message seen by the partner.
     public func partnerSeen(threadId: Int, messageId: Int, messageTime: Int = 0) {
         let predicate = idPredicate(id: threadId)
         let propertiesToUpdate: [String: Any] = [
@@ -92,7 +73,7 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
     }
     
     public func setUnreadCount(action: CacheUnreadCountAction, threadId: Int, completion: ((Int) -> Void)? = nil) {
-        first(with: threadId) { entity in
+        first(with: threadId, context: viewContext) { entity in
             var cachedThreadCount = entity?.unreadCount?.intValue ?? 0
             switch action {
             case .increase:
@@ -196,25 +177,30 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
     }
 
 
-    /// Insert if there is no conversation or message object, and update if there is a message or thread entity.
+    /// Insert if there is no conversation or message object, and update if there is a message or thread entity. and save it immediately.
     public func replaceLastMessage(_ model: Entity.Model) throws {
+        try replaceLastMessage(model, viewContext)
+        save(context: viewContext)
+    }
+
+    /// Insert if there is no conversation or message object, and update if there is a message or thread entity.
+    /// It will not save anything by itself. Only the parent task should call save whenever you feel it is enough to save context.
+    public func replaceLastMessage(_ model: Entity.Model, _ context: NSManagedObjectContext) throws {
         guard let threadId = model.id, let lastMessageVO = model.lastMessageVO
         else { throw NSError(domain: "The threadId or LastMessageVO is nil.", code: 0) }
-        first(with: threadId) { entity in
+        first(with: threadId, context: context) { entity in
             if let entity = entity {
-                self.updateLastMessage(entity: entity, lastMessageVO: lastMessageVO)
+                self.updateLastMessage(entity, threadId, lastMessageVO, context)
             } else {
                 // Insert
                 self.insert(models: [model])
             }
-            self.saveViewContext()
         }
     }
 
     /// We use uniqueId of message to get a message if it the sender were me and if so, in sendMessage method we have added an entity inside message table without an 'Message.id'
     /// and it will lead to problem such as dupicate message row.
-    private func updateLastMessage(entity: CDConversation, lastMessageVO: Message) {
-        let context = viewContext
+    private func updateLastMessage(_ entity: CDConversation, _ threadId: Int, _ lastMessageVO: Message, _ context: NSManagedObjectContext) {
         entity.lastMessage = lastMessageVO.message
         let messageReq = CDMessage.fetchRequest()
         messageReq.predicate = NSPredicate(format: "%K == %@ OR %K == %@", #keyPath(CDMessage.id), lastMessageVO.id as? NSNumber ?? -1, #keyPath(CDMessage.uniqueId), lastMessageVO.uniqueId ?? "")
@@ -223,7 +209,10 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
         } else {
             let insertMessageEntity = CDMessage.insertEntity(context)
             insertMessageEntity.update(lastMessageVO)
+            insertMessageEntity.conversation = entity
             entity.lastMessageVO = insertMessageEntity
+            let cmParticipant = CacheParticipantManager(container: container, logger: logger)
+            cmParticipant.attach(messageEntity: insertMessageEntity, threadEntity: entity, lastMessageVO: lastMessageVO, threadId: threadId, context: context)
         }
     }
 
@@ -279,12 +268,6 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
             }
             let result = dictionary.reduce(into: [:]) { $0[$1.0] = $1.1 }
             completion(result)
-        }
-    }
-
-    func findOrCreateEntity(_ threadId: Int?, _ context: NSManagedObjectContext, _ completion: @escaping (Entity?) -> Void) {
-        first(with: threadId ?? -1, context: context) { thread in
-            completion(thread ?? Entity.insertEntity(context))
         }
     }
 }

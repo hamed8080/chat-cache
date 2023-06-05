@@ -90,7 +90,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected to increase unreadCount to 11.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: models.first!.id!) { response in
+            self.sut.first(with: models.first!.id!, context: self.sut.viewContext) { response in
                 if response?.unreadCount == 11 {
                     exp.fulfill()
                 }
@@ -112,7 +112,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected to increase unreadCount to 9.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: models.first!.id!) { response in
+            self.sut.first(with: models.first!.id!, context: self.sut.viewContext) { response in
                 if response?.unreadCount == 9 {
                     exp.fulfill()
                 }
@@ -134,7 +134,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected to increase unreadCount to 0.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: models.first!.id!) { response in
+            self.sut.first(with: models.first!.id!, context: self.sut.viewContext) { response in
                 if response?.unreadCount == 0 {
                     exp.fulfill()
                 }
@@ -156,7 +156,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected to set the value of unreadCount to 8.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: models.first!.id!) { response in
+            self.sut.first(with: models.first!.id!, context: self.sut.viewContext) { response in
                 if response?.unreadCount == 8 {
                     exp.fulfill()
                 }
@@ -178,7 +178,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected to set unreadCount to 0.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: models.first!.id!) { response in
+            self.sut.first(with: models.first!.id!, context: self.sut.viewContext) { response in
                 if response?.unreadCount == 0 {
                     exp.fulfill()
                 }
@@ -284,7 +284,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected archive value to be true.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if entity?.isArchive == true {
                     exp.fulfill()
                 }
@@ -306,7 +306,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected archive value to be false.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if entity?.isArchive == false {
                     exp.fulfill()
                 }
@@ -328,7 +328,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected thread has been closed.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if entity?.closedThread == true {
                     exp.fulfill()
                 }
@@ -350,7 +350,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected thread has been opennd.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if entity?.closedThread == false {
                     exp.fulfill()
                 }
@@ -372,7 +372,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected the pin has been setted to true.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if entity?.pin == true {
                     exp.fulfill()
                 }
@@ -394,7 +394,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected the pin has been setted to false.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if entity?.pin == false {
                     exp.fulfill()
                 }
@@ -438,7 +438,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected the thread has been muted.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if entity?.mute == true {
                     exp.fulfill()
                 }
@@ -460,7 +460,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected the thread has been not muted.")
         notification.onUpdateIds { objectIds in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if entity?.mute == false {
                     exp.fulfill()
                 }
@@ -498,7 +498,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         }
         let exp = expectation(description: "Expected to change thread type in store to channel.")
         notification.onUpdateIds { _ in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if let typeValue = entity?.type, ThreadTypes(rawValue: typeValue.intValue) == .channel {
                     exp.fulfill()
                 }
@@ -551,7 +551,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected the thread to be deleted from store.")
         notification.onDeletedIds { _ in
-            self.sut.first(with: 1) { entity in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
                 if entity == nil {
                     exp.fulfill()
                 }
@@ -756,7 +756,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         let exp = expectation(description: "Expected to throw an exception when the lastMessageText is nil")
         notification.onInsert { (entities: [CDConversation]) in
             do {
-                try self.sut.replaceLastMessage(.init(id: 1))
+                try self.sut.replaceLastMessage(.init(id: 1), self.sut.viewContext)
             } catch {
                 exp.fulfill()
             }
@@ -775,7 +775,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         let exp = expectation(description: "Expected to throw an exception when the lastMessageVO is nil.")
         notification.onInsert { (entities: [CDConversation]) in
             do {
-                try self.sut.replaceLastMessage(.init(id: 1, lastMessage: "UPDATED"))
+                try self.sut.replaceLastMessage(.init(id: 1, lastMessage: "UPDATED"), self.sut.viewContext)
             } catch {
                 exp.fulfill()
             }
@@ -785,13 +785,13 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
-    func test_whenUpdateLastMessageWhenThreadIsNotExist_insertNewThreadAndSetLastMessageTextNAdLastMessageVO() throws {
+    func test_whenUpdateLastMessageWhenThreadIsNotExist_insertNewThreadAndSetLastMessageTextAndLastMessageVO() throws {
         // Given
         let insertMSG = Message(threadId: 1, message: "Hi, There")
 
         // When
         let exp = expectation(description: "Expected to update the last message text and messageVO to be UPDATED.")
-        try self.sut.replaceLastMessage(.init(id: 1, lastMessage: insertMSG.message, lastMessageVO: insertMSG))
+        try self.sut.replaceLastMessage(.init(id: 1, lastMessage: insertMSG.message, lastMessageVO: insertMSG), self.sut.viewContext)
 
         // Then
         notification.onInsert { (entities: [CDConversation]) in
@@ -810,9 +810,13 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
 
         // When
         let exp = expectation(description: "Expected to update the last message text to Inserted and set properly.")
+        var made = false
         notification.onInsert { (entities: [CDConversation]) in
+            if made == false {
+                made = true
                 let updateLastMSG = Message(threadId: 1, message: "Hi, There")
                 try? self.sut.replaceLastMessage(.init(id: 1, lastMessage: updateLastMSG.message, lastMessageVO: updateLastMSG))
+            }
         }
 
         // Then
@@ -840,7 +844,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         let exp = expectation(description: "Expected to update the last message text to UPDATED.")
         notification.onInsert { (entities: [CDConversation]) in
             let updateLastMSG = Message(threadId: 1, id: 2, message: "Hi, There")
-            try? self.sut.replaceLastMessage(.init(id: 1, lastMessage: updateLastMSG.message, lastMessageVO: updateLastMSG))
+            try? self.sut.replaceLastMessage(.init(id: 1, lastMessage: updateLastMSG.message, lastMessageVO: updateLastMSG), self.sut.viewContext)
         }
 
         // Then
@@ -858,13 +862,52 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenInsertAThreadWithLastMessageVO_itHasLastParticipantInStore() {
+        // Given
+        let thread = mockModel(id: 1)
+        let participant = Participant(firstName: "John", id: 1, conversation: thread)
+        let lastMessageVO = Message(threadId: 1, id: 2, message: "Hello", participant: participant)
+        thread.lastMessageVO = lastMessageVO
+        let models = [thread]
+        sut.insert(models: models)
+
+        // When
+        let exp = expectation(description: "Expected to have a participant object on LastMessageVO.")
+        notification.onInsert { (entities: [CDConversation]) in
+            if let participant = entities.first?.lastMessageVO?.participant, participant.firstName == "John" {
+                exp.fulfill()
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+
+    func test_whenIdInModelIsNil_nothingInsertInStore() {
+        // Given
+        let model = mockModel(id: nil)
+
+        // When
+        sut.insert(model: model, context: sut.viewContext)
+
+        // Then
+        let exp = expectation(description: "Expected to nothing insert in store.")
+        sut.all{ entities in
+            if entities.count == 0 {
+                exp.fulfill()
+            }
+        }
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(admin: Bool? = false,
                            canEditInfo: Bool? = false,
                            canSpam: Bool? = false,
                            closedThread: Bool? = false,
                            description: String? = "Thread Conversation",
                            group: Bool? = false,
-                           id: Int = 1,
+                           id: Int? = 1,
                            image: String? = nil,
                            joinDate: Int? = nil,
                            lastMessage: String? = nil,

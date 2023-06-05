@@ -36,24 +36,12 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         NSPredicate(format: "\(Entity.idName) == \(Entity.queryIdSpecifier)", id as! CVarArg)
     }
 
-    public func first(with id: Entity.Id, completion: @escaping (Entity?) -> Void) {
-        viewContext.perform {
-            let req = Entity.fetchRequest()
-            req.predicate = self.idPredicate(id: id)
-            req.fetchLimit = 1
-            let entity = try self.viewContext.fetch(req).first
-            completion(entity)
-        }
-    }
-
     public func first(with id: Entity.Id, context: NSManagedObjectContext, completion: @escaping (Entity?) -> Void) {
-        context.perform {
-            let req = Entity.fetchRequest()
-            req.predicate = self.idPredicate(id: id)
-            req.fetchLimit = 1
-            let entity = try context.fetch(req).first
-            completion(entity)
-        }
+        let req = Entity.fetchRequest()
+        req.predicate = self.idPredicate(id: id)
+        req.fetchLimit = 1
+        let entity = try? context.fetch(req).first
+        completion(entity)
     }
 
     public func find(predicate: NSPredicate, completion: @escaping ([Entity]) -> Void) {
@@ -181,6 +169,17 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
             req.predicate = predicate
             let entities = try self.viewContext.fetch(req)
             completion(entities)
+        }
+    }
+
+    public func findOrCreate<T: EntityProtocol>(_ id: Entity.Id, _ completion: @escaping (T) -> Void) {
+        let context = viewContext
+        context.perform {
+            let req = T.fetchRequest()
+            req.predicate = self.idPredicate(id: id)
+            req.fetchLimit = 1
+            let entity = try context.fetch(req).first
+            completion(entity ?? T.insertEntity(context))
         }
     }
 }

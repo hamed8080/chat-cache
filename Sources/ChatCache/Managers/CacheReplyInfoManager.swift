@@ -15,8 +15,9 @@ public final class CacheReplyInfoManager: BaseCoreDataManager<CDReplyInfo> {
         entity.update(model)
 
         if let participant = model.participant, let thread = model.participant?.conversation {
-            CacheConversationManager(container: container, logger: logger).findOrCreateEntity(thread.id, context) { threadEntity in
-                threadEntity?.update(thread)
+            let cmThread = BaseCoreDataManager<CDConversation>(container: container, logger: logger)
+            cmThread.findOrCreate(thread.id ?? -1) { (threadEntity: CDConversation) in
+                threadEntity.update(thread)
                 CacheParticipantManager(container: self.container, logger: self.logger).findOrCreateEntity(thread.id, participant.id) { participantEntity in
                     participantEntity?.update(participant)
                     participantEntity?.conversation = threadEntity

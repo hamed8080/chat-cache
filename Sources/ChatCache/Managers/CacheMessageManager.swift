@@ -209,4 +209,15 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
         let predicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId ?? -1)
         batchDelete(predicate: predicate)
     }
+
+    public func findOrCreate(threadId: Int, message: Message, context: NSManagedObjectContext) -> CDMessage {
+        let req = CDMessage.fetchRequest()
+        req.predicate = joinPredicate(threadId, message.id ?? -1)
+        var entity = try? context.fetch(req).first
+        if entity == nil {
+            entity = CDMessage.insertEntity(context)
+            entity?.update(message)
+        }
+        return entity!
+    }
 }

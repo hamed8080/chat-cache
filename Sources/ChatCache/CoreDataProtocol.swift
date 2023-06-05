@@ -25,7 +25,6 @@ public protocol CoreDataProtocol {
     func idPredicate(id: Entity.Id) -> NSPredicate
     func save(context: NSManagedObjectContext)
     func saveViewContext()
-    func first(with id: Entity.Id, completion: @escaping (Entity?) -> Void)
     func first(with id: Entity.Id, context: NSManagedObjectContext, completion: @escaping (Entity?) -> Void)
     func find(predicate: NSPredicate, completion: @escaping ([Entity]) -> Void)
     func insert(model: Entity.Model, context: NSManagedObjectContext)
@@ -41,6 +40,7 @@ public protocol CoreDataProtocol {
     func fetchWithOffset(count: Int?, offset: Int?, predicate: NSPredicate?, sortDescriptor: [NSSortDescriptor]?, _ completion: @escaping ([Entity], Int) -> Void)
     func all(_ completion: @escaping ([Entity]) -> Void)
     func fetchWithObjectIds(ids: [NSManagedObjectID], _ completion: @escaping ([Entity]) -> Void)
+    func findOrCreate<T: EntityProtocol>(_ id: Entity.Id, _ completion: @escaping (T) -> Void)
 }
 
 /// Optional Implementations.

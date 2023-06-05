@@ -14,11 +14,10 @@ public final class CacheMutualGroupManager: BaseCoreDataManager<CDMutualGroup> {
         let entity = Entity.insertEntity(context)
         entity.update(model)
         model.conversations?.forEach { thread in
-            CacheConversationManager(container: container, logger: logger).findOrCreateEntity(thread.id ?? -1, context) { threadEntity in
-                if let threadEntity = threadEntity {
-                    threadEntity.update(thread)
-                    entity.addToConversations(threadEntity)
-                }
+            let cmThread = BaseCoreDataManager<CDConversation>(container: container, logger: logger)
+            cmThread.findOrCreate(thread.id ?? -1) { (threadEntity: CDConversation) in
+                threadEntity.update(thread)
+                entity.addToConversations(threadEntity)
             }
         }
     }
