@@ -19,12 +19,22 @@ public extension EntityProtocol {
     static func fetchRequest() -> NSFetchRequest<Self> {
         NSFetchRequest<Self>(entityName: name)
     }
-
-    static func entityDescription(_ context: NSManagedObjectContext) -> NSEntityDescription {
-        NSEntityDescription.entity(forEntityName: name, in: context)!
+    
+    static func entityDescription(_ context: NSManagedObjectContextProtocol) -> NSEntityDescription {
+        NSEntityDescription.entityDescription(forEntityName: name, in: context)!
     }
+    
+    static func insertEntity(_ context: NSManagedObjectContextProtocol) -> Self {
+        Self(entity: entityDescription(context), insertInto: context as? NSManagedObjectContext)
+    }
+}
 
-    static func insertEntity(_ context: NSManagedObjectContext) -> Self {
-        Self(entity: entityDescription(context), insertInto: context)
+extension NSEntityDescription {
+    class func entityDescription(forEntityName entityName: String, in context: NSManagedObjectContextProtocol) -> NSEntityDescription? {
+        if let context = context as? NSManagedObjectContext {
+            return NSEntityDescription.entity(forEntityName: entityName, in: context)
+        } else {
+            return NSEntityDescription.entity(forEntityName: entityName, in: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+        }
     }
 }

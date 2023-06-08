@@ -9,14 +9,14 @@ import Foundation
 import ChatModels
 
 public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
-    func updateRelations(_ entity: Entity, _ model: Entity.Model, context: NSManagedObjectContext) throws {
+    func updateRelations(_ entity: Entity, _ model: Entity.Model, context: NSManagedObjectContextProtocol) throws {
         entity.threadId = entity.conversation?.id ?? (model.conversation?.id as? NSNumber)
         try updateParticipant(entity, model, context)
         try updateForwardInfo(entity, model, context)
         updateReplyInfo(entity, model, context)
     }
 
-    func updateParticipant(_ entity: Entity, _ model: Entity.Model, _ context: NSManagedObjectContext) throws {
+    func updateParticipant(_ entity: Entity, _ model: Entity.Model, _ context: NSManagedObjectContextProtocol) throws {
         if let participant = model.participant {
             let req = CDParticipant.fetchRequest()
             req.predicate = NSPredicate(format: "conversation.\(CDConversation.idName) == \(CDConversation.queryIdSpecifier) AND \(CDParticipant.idName) == \(Entity.queryIdSpecifier)", entity.conversation?.id?.intValue ?? -1, participant.id ?? -1)
@@ -30,7 +30,7 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
         }
     }
 
-    func updateReplyInfo(_ entity: Entity, _ model: Entity.Model, _ context: NSManagedObjectContext) {
+    func updateReplyInfo(_ entity: Entity, _ model: Entity.Model, _ context: NSManagedObjectContextProtocol) {
         if let replyInfoModel = model.replyInfo {
             let replyInfoEntity = CDReplyInfo.insertEntity(context)
             replyInfoEntity.repliedToMessageId = replyInfoModel.repliedToMessageId as? NSNumber
@@ -40,7 +40,7 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
         }
     }
 
-    func updateForwardInfo(_ entity: Entity, _ model: Entity.Model, _ context: NSManagedObjectContext) throws {
+    func updateForwardInfo(_ entity: Entity, _ model: Entity.Model, _ context: NSManagedObjectContextProtocol) throws {
         if let forwardInfoModel = model.forwardInfo {
             let forwardInfoEntity = CDForwardInfo.insertEntity(context)
             forwardInfoEntity.messageId = model.id as? NSNumber
@@ -60,7 +60,7 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
         }
     }
 
-    func insertOrUpdateConversation(_ threadModel: Conversation, _ context: NSManagedObjectContext) throws -> CDConversation? {
+    func insertOrUpdateConversation(_ threadModel: Conversation, _ context: NSManagedObjectContextProtocol) throws -> CDConversation? {
         let req = CDConversation.fetchRequest()
         req.predicate = NSPredicate(format: "\(CDConversation.idName) == \(CDConversation.queryIdSpecifier)", threadModel.id ?? -1)
         var threadEntity = try context.fetch(req).first

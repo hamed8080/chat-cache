@@ -10,28 +10,24 @@ import ChatModels
 
 public final class CacheConversationManager: BaseCoreDataManager<CDConversation> {
 
-    public override func insert(model: Entity.Model, context: NSManagedObjectContext) {
-        do {
-            guard let threadId = model.id else { return }
-            let req = Entity.fetchRequest()
-            req.predicate = NSPredicate(format: "\(Entity.idName) == \(Entity.queryIdSpecifier)", threadId)
-            let entity = try context.fetch(req).first ?? Entity.insertEntity(context)
-            entity.update(model)
+    public override func insert(model: Entity.Model, context: NSManagedObjectContextProtocol) {
+        guard let threadId = model.id else { return }
+        let req = Entity.fetchRequest()
+        req.predicate = NSPredicate(format: "\(Entity.idName) == \(Entity.queryIdSpecifier)", threadId)
+        let entity = (try? context.fetch(req).first) ?? Entity.insertEntity(context)
+        entity.update(model)
 
-            if model.lastMessageVO != nil {
-                try? replaceLastMessage(model, context)
-            }
+        if model.lastMessageVO != nil {
+            try? replaceLastMessage(model, context)
+        }
 
-            model.pinMessages?.forEach { pinMessage in
-                let pinMessageEntity = CDMessage.insertEntity(context)
-                pinMessageEntity.update(pinMessage)
-                pinMessageEntity.pinned = true
-                pinMessageEntity.threadId = entity.id
-                pinMessageEntity.conversation = entity
-                entity.addToPinMessages(pinMessageEntity)
-            }
-        } catch {
-            logger.log(message: error.localizedDescription, persist: true, error: nil)
+        model.pinMessages?.forEach { pinMessage in
+            let pinMessageEntity = CDMessage.insertEntity(context)
+            pinMessageEntity.update(pinMessage)
+            pinMessageEntity.pinned = true
+            pinMessageEntity.threadId = entity.id
+            pinMessageEntity.conversation = entity
+            entity.addToPinMessages(pinMessageEntity)
         }
     }
 
@@ -59,7 +55,7 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
     }
 
     /// It will update the last message seen by the partner.
-    public func partnerSeen(threadId: Int, messageId: Int, messageTime: Int = 0) {
+    public func partnerSeen(threadId: Int, messageId: Int, messageTime: UInt = 0) {
         let predicate = idPredicate(id: threadId)
         let propertiesToUpdate: [String: Any] = [
             "partnerLastSeenMessageTime": messageTime,
@@ -185,7 +181,7 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
 
     /// Insert if there is no conversation or message object, and update if there is a message or thread entity.
     /// It will not save anything by itself. Only the parent task should call save whenever you feel it is enough to save context.
-    public func replaceLastMessage(_ model: Entity.Model, _ context: NSManagedObjectContext) throws {
+    public func replaceLastMessage(_ model: Entity.Model, _ context: NSManagedObjectContextProtocol) throws {
         guard let threadId = model.id, let lastMessageVO = model.lastMessageVO
         else { throw NSError(domain: "The threadId or LastMessageVO is nil.", code: 0) }
         first(with: threadId, context: context) { entity in
@@ -200,7 +196,7 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
 
     /// We use uniqueId of message to get a message if it the sender were me and if so, in sendMessage method we have added an entity inside message table without an 'Message.id'
     /// and it will lead to problem such as dupicate message row.
-    private func updateLastMessage(_ entity: CDConversation, _ threadId: Int, _ lastMessageVO: Message, _ context: NSManagedObjectContext) {
+    private func updateLastMessage(_ entity: CDConversation, _ threadId: Int, _ lastMessageVO: Message, _ context: NSManagedObjectContextProtocol) {
         entity.lastMessage = lastMessageVO.message
         let messageReq = CDMessage.fetchRequest()
         messageReq.predicate = NSPredicate(format: "%K == %@ OR %K == %@", #keyPath(CDMessage.id), lastMessageVO.id as? NSNumber ?? -1, #keyPath(CDMessage.uniqueId), lastMessageVO.uniqueId ?? "")

@@ -13,7 +13,7 @@ final class CacheAssistantManagerTests: XCTestCase, CacheLogDelegate {
     var objectId: NSManagedObjectID?
 
     override func setUpWithError() throws {
-        cache = CacheManager(logger: self)
+        cache = CacheManager(persistentManager: PersistentManager(logger: self))
         cache.switchToContainer(userId: 1)
         sut = cache.assistant
         notification = MockObjectContextNotificaiton(context: sut.viewContext)

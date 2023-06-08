@@ -9,7 +9,7 @@ import Foundation
 import ChatModels
 
 public final class CacheForwardInfoManager: BaseCoreDataManager<CDForwardInfo> {
-    public override func insert(model: Entity.Model, context: NSManagedObjectContext) {
+    public override func insert(model: Entity.Model, context: NSManagedObjectContextProtocol) {
         let entity = Entity.insertEntity(context)
         if let participant = model.participant, let thread = model.conversation, let threadId = thread.id {
             let cmThread = BaseCoreDataManager<CDConversation>(container: container, logger: logger)

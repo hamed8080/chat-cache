@@ -23,7 +23,6 @@ public final class CacheQueueOfForwardMessagesManager: BaseCoreDataManager<CDQue
 
     /// We do this as a result of some uniqueIds in the message queue object may contain a stringed version of uniqueIds with ["123", "345"] which contains semicolons and brackets, and spaces.
     func sanitizeUniqueIds(_ uniqueIds: String) -> String {
-        let charactersToRemove = ["[","]", " ", "\""]
            return uniqueIds
             .replacingOccurrences(of: "[", with: "")
             .replacingOccurrences(of: "]", with: "")

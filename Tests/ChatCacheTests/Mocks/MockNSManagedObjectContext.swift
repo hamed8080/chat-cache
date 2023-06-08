@@ -10,6 +10,10 @@ import Foundation
 @testable import ChatCache
 
 class MockNSManagedObjectContext: NSObject, NSManagedObjectContextProtocol {
+    static func mergeChanges(fromRemoteContextSave changeNotificationData: [AnyHashable : Any], into contexts: [ChatCache.NSManagedObjectContextProtocol]) {
+
+    }
+
     var error: Error?
     var fetchResult: [NSFetchRequestResult] = []
     var executeResult = NSPersistentStoreResult()
@@ -58,5 +62,13 @@ class MockNSManagedObjectContext: NSObject, NSManagedObjectContextProtocol {
             throw error
         }
         return countResult
+    }
+
+    func performBlock(_ block: @escaping () throws -> Void, errorCompeletion: ((Error) -> Void)? = nil) {
+        do {
+            try block()
+        } catch {
+            errorCompeletion?(error)
+        }
     }
 }

@@ -14,7 +14,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
     var objectId: NSManagedObjectID?
 
     override func setUpWithError() throws {
-        cache = CacheManager(logger: self)
+        cache = CacheManager(persistentManager: PersistentManager(logger: self))
         cache.switchToContainer(userId: 1)
         sut = cache.conversation
         notification = MockObjectContextNotificaiton(context: sut.viewContext)
@@ -527,6 +527,21 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenSumAllUnreadCountWehnHaveAnException_itReturnZeroUnreadCount() {
+        let mock = DefaultMockCacheManager()
+        let sut = mock.cache!.conversation!
+
+        // When
+        mock.context!.fetchResult = []
+        let exp = expectation(description: "Expected to get zero as a result of there is no rows inside the store")
+        sut.allUnreadCount { unreadCount in
+            if unreadCount == 0 {
+                exp.fulfill()
+            }
+        }
+        wait(for: [exp], timeout: 1)
+    }
+
     func test_whenThereIsNoThreadSumAllUnreadCount_itReturnZero() {
         // When
         let exp = expectation(description: "Expected to get summation of all unreads to be 0.")
@@ -895,6 +910,111 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         let exp = expectation(description: "Expected to nothing insert in store.")
         sut.all{ entities in
             if entities.count == 0 {
+                exp.fulfill()
+            }
+        }
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenSeenAMessage_itUpdateLastSeenMessageTime() {
+        // Given
+        let lastMessageVO = Message(threadId: 1, id: 2, message: "Hello")
+
+        sut.insert(models: [mockModel(id: 1,
+                                      lastSeenMessageId: 1,
+                                      lastSeenMessageNanos: 1,
+                                      lastSeenMessageTime: 1,
+                                      lastMessageVO: lastMessageVO)
+        ])
+
+        // When
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.seen(threadId: 1, messageId: 2)
+        }
+
+        // Then
+        let exp = expectation(description: "Expected to update lastSeenMessageId, lastSeenMessageTime, lastSeenMessageNanos.")
+        notification.onUpdateIds { objectIds in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
+                if let entity = entity, entity.lastSeenMessageId == 2, entity.lastSeenMessageTime?.intValue ?? 0 > 1, entity.lastSeenMessageTime?.intValue ?? 0 > 1 {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenAMessageDeliveredToPartner_itUpdateProperties() {
+        // Given
+        let lastMessageVO = Message(threadId: 1, id: 2, message: "Hello")
+
+        sut.insert(models: [mockModel(id: 1,
+                                      partnerLastDeliveredMessageId: 1,
+                                      partnerLastDeliveredMessageTime: 1,
+                                      partnerLastSeenMessageNanos: 1,
+                                      lastMessageVO: lastMessageVO)
+        ])
+
+        // When
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.partnerDeliver(threadId: 1, messageId: 2, messageTime: UInt(Date().timeIntervalSince1970))
+        }
+
+        // Then
+        let exp = expectation(description: "Expected to update partnerLastDeliveredMessageTime, partnerLastDeliveredMessageNanos, partnerLastDeliveredMessageId.")
+        notification.onUpdateIds { objectIds in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
+                if let entity = entity, entity.partnerLastDeliveredMessageId == 2, entity.partnerLastDeliveredMessageTime?.intValue ?? 0 > 1, entity.partnerLastDeliveredMessageNanos?.intValue ?? 0 > 1 {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenAMessageSeenByPartner_itUpdateProperties() {
+        // Given
+        let lastMessageVO = Message(threadId: 1, id: 2, message: "Hello")
+        sut.insert(models: [mockModel(id: 1, lastMessageVO: lastMessageVO)])
+
+        // When
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.partnerSeen(threadId: 1, messageId: 2, messageTime: UInt(Date().timeIntervalSince1970))
+        }
+
+        // Then
+        let exp = expectation(description: "Expected to update all delivered fileds and seen fileds.")
+        notification.onUpdateIds { objectIds in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
+                if let entity = entity,
+                   entity.partnerLastSeenMessageId == 2,
+                   entity.partnerLastSeenMessageTime?.intValue ?? 0 > 1,
+                   entity.partnerLastSeenMessageNanos?.intValue ?? 0 > 1,
+                   entity.partnerLastDeliveredMessageId == 2,
+                   entity.partnerLastDeliveredMessageTime?.intValue ?? 0 > 1,
+                   entity.partnerLastDeliveredMessageNanos?.intValue ?? 0 > 1
+                {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenPinAMessage_itSetPinToTrue() {
+        // Given
+        let message = Message(threadId: 1, id: 2, message: "Hello")
+
+        // When
+        sut.insert(models: [mockModel(id: 1, pinMessages: [message])])
+
+        // Then
+        let exp = expectation(description: "Expected to set pin to true.")
+        notification.onInsert { (entities: [CDConversation]) in
+            if let entity = (entities.first?.pinMessages?.allObjects as? [CDMessage])?.first, entity.pinned == true {
                 exp.fulfill()
             }
         }

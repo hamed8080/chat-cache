@@ -12,7 +12,7 @@ final class CacheManagerTests: XCTestCase, CacheLogDelegate {
     var cancelable = Set<AnyCancellable>()
 
     override func setUpWithError() throws {
-        sut = CacheManager(logger: self)
+        sut = CacheManager(persistentManager: PersistentManager(logger: self))
         notification = NotificationCenter.default
         sut.switchToContainer(userId: 1)
     }
@@ -53,7 +53,7 @@ final class CacheManagerTests: XCTestCase, CacheLogDelegate {
         let uniqueId = UUID().uuidString
         let messageQueue = QueueOfTextMessages(messageType: .text, textMessage: "Hello", threadId: 123, uniqueId: uniqueId)
         sut.textQueue?.insert(models: [messageQueue])
-        let context = sut.persistentManager.viewContext()
+        let context = sut.persistentManager.viewContext(name: "Main")
         // When
         let exp = expectation(description: "Expected the message queue object has been deleted.")
         Publishers.Merge(
@@ -77,7 +77,7 @@ final class CacheManagerTests: XCTestCase, CacheLogDelegate {
         let uniqueId = UUID().uuidString
         let messageQueue = QueueOfEditMessages(messageType: .text, textMessage: "Hello", threadId: 123, uniqueId: uniqueId)
         sut.editQueue?.insert(models: [messageQueue])
-        let context = sut.persistentManager.viewContext()
+        let context = sut.persistentManager.viewContext(name: "Main")
         // When
         let exp = expectation(description: "Expected the edit message queue object has been deleted.")
         Publishers.Merge(
@@ -101,7 +101,7 @@ final class CacheManagerTests: XCTestCase, CacheLogDelegate {
         let uniqueId = UUID().uuidString
         let messageQueue = QueueOfFileMessages(messageType: .text, textMessage: "Hello", threadId: 123, uniqueId: uniqueId)
         sut.fileQueue?.insert(models: [messageQueue])
-        let context = sut.persistentManager.viewContext()
+        let context = sut.persistentManager.viewContext(name: "Main")
         // When
         let exp = expectation(description: "Expected the file message queue object has been deleted.")
         Publishers.Merge(
@@ -125,7 +125,7 @@ final class CacheManagerTests: XCTestCase, CacheLogDelegate {
         let uniqueIds = [UUID().uuidString, UUID().uuidString, UUID().uuidString]
         let messageQueue = QueueOfForwardMessages(fromThreadId: 123, messageIds: [123,1234,12345], threadId: 1111, uniqueIds: uniqueIds)
         sut.forwardQueue?.insert(models: [messageQueue])
-        let context = sut.persistentManager.viewContext()
+        let context = sut.persistentManager.viewContext(name: "Main")
         // When
         let exp = expectation(description: "Expected the forward messages queue objects has been deleted.")
         Publishers.Merge(
@@ -154,6 +154,6 @@ final class CacheManagerTests: XCTestCase, CacheLogDelegate {
     }
 
     override func tearDownWithError() throws {
-        notification.removeObserver(self, name: .NSManagedObjectContextObjectsDidChange, object: sut.persistentManager.viewContext())
+        notification.removeObserver(self, name: .NSManagedObjectContextObjectsDidChange, object: sut.persistentManager.viewContext(name: "Main"))
     }
 }

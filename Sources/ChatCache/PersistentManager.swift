@@ -24,24 +24,24 @@ final class PMPersistentContainer: NSPersistentContainer {
 }
 
 /// TLDR 'Persistance Service Manager'
-public final class PersistentManager {
+public final class PersistentManager: PersistentManagerProtocol {
     public weak var logger: CacheLogDelegate?
-    let baseModelFileName = "ChatSDKModel"
-    var container: NSPersistentContainer?
-    let inMemory: Bool = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_TEST"] == "1"
+    public let baseModelFileName = "ChatSDKModel"
+    public var container: NSPersistentContainer?
+    public let inMemory: Bool = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_TEST"] == "1"
 
     public init(logger: CacheLogDelegate? = nil) {
         self.logger = logger
     }
 
-    public func viewContext(name: String = "Main") -> NSManagedObjectContext? {
+    public func viewContext(name: String = "Main") -> NSManagedObjectContextProtocol? {
         guard let context = container?.viewContext else { return nil }
         context.name = name
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return context
     }
 
-    public func newBgTask(name: String = "BGTASK") -> NSManagedObjectContext? {
+    public func newBgTask(name: String = "BGTASK") -> NSManagedObjectContextProtocol? {
         guard let bgTask = container?.newBackgroundContext() else { return nil }
         bgTask.name = name
         bgTask.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
@@ -57,7 +57,7 @@ public final class PersistentManager {
         return mom
     }()
 
-    func switchToContainer(userId: Int, completion: @escaping () -> Void) {
+    public func switchToContainer(userId: Int, completion: @escaping () -> Void) {
         registerTransformers()
         let container = PMPersistentContainer(name: "\(baseModelFileName)-\(userId)", managedObjectModel: modelFile)
         if inMemory {

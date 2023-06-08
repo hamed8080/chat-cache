@@ -10,7 +10,7 @@ import ChatModels
 
 public final class CacheReplyInfoManager: BaseCoreDataManager<CDReplyInfo> {
 
-    public override func insert(model: Entity.Model, context: NSManagedObjectContext) {
+    public override func insert(model: Entity.Model, context: NSManagedObjectContextProtocol) {
         let entity = Entity.insertEntity(context)
         entity.update(model)
 

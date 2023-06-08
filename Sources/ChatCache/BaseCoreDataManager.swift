@@ -9,17 +9,17 @@ import CoreData
 
 public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
     public typealias Entity = T
-    public var container: PersistentManager
+    public var container: PersistentManagerProtocol
     public let logger: CacheLogDelegate
-    public var viewContext: NSManagedObjectContext { container.viewContext()! }
-    public var bgContext: NSManagedObjectContext { container.newBgTask()! }
+    public var viewContext: NSManagedObjectContextProtocol { container.viewContext(name: "Main")! }
+    public var bgContext: NSManagedObjectContextProtocol { container.newBgTask(name: "BGTask")! }
 
-    required public init(container: PersistentManager, logger: CacheLogDelegate) {
+    required public init(container: PersistentManagerProtocol, logger: CacheLogDelegate) {
         self.container = container
         self.logger = logger
     }
 
-    public func insert(model: Entity.Model, context: NSManagedObjectContext) {
+    public func insert(model: Entity.Model, context: NSManagedObjectContextProtocol) {
         let entity = Entity.insertEntity(context)
         entity.update(model)
     }
@@ -36,7 +36,7 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         NSPredicate(format: "\(Entity.idName) == \(Entity.queryIdSpecifier)", id as! CVarArg)
     }
 
-    public func first(with id: Entity.Id, context: NSManagedObjectContext, completion: @escaping (Entity?) -> Void) {
+    public func first(with id: Entity.Id, context: NSManagedObjectContextProtocol, completion: @escaping (Entity?) -> Void) {
         let req = Entity.fetchRequest()
         req.predicate = self.idPredicate(id: id)
         req.fetchLimit = 1
@@ -53,7 +53,7 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         }
     }
 
-    public func batchUpdate(_ updateObjects: @escaping (NSManagedObjectContext) -> Void) {
+    public func batchUpdate(_ updateObjects: @escaping (NSManagedObjectContextProtocol) -> Void) {
         let context = bgContext
         context.perform { [weak self] in
             updateObjects(context)
@@ -77,7 +77,7 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         }
     }
 
-    public func save(context: NSManagedObjectContext) {
+    public func save(context: NSManagedObjectContextProtocol) {
         if context.hasChanges == true {
             do {
                 try context.save()
@@ -99,11 +99,11 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
     public func mergeChanges(key: String, _ objectIDs: [NSManagedObjectID]) {
         NSManagedObjectContext.mergeChanges(
             fromRemoteContextSave: [key: objectIDs],
-            into: [viewContext]
+            into: [viewContext as! NSManagedObjectContext]
         )
     }
 
-    public func insertObjects(_ makeEntities: @escaping ((NSManagedObjectContext) throws -> Void)) {
+    public func insertObjects(_ makeEntities: @escaping ((NSManagedObjectContextProtocol) throws -> Void)) {
         let context = bgContext
         context.perform { [weak self] in
             try makeEntities(context)

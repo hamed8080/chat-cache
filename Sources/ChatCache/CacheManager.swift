@@ -9,7 +9,7 @@ import Foundation
 import ChatModels
 
 public final class CacheManager {
-    internal let persistentManager: PersistentManager
+    internal let persistentManager: PersistentManagerProtocol
     public private(set) var assistant: CacheAssistantManager?
     public private(set) var contact: CacheContactManager?
     public private(set) var conversation: CacheConversationManager?
@@ -29,8 +29,8 @@ public final class CacheManager {
     public private(set) var user: CacheUserManager?
     public private(set) var userRole: CacheUserRoleManager?
 
-    public init(logger: CacheLogDelegate) {
-        persistentManager = PersistentManager(logger: logger)
+    public init(persistentManager: PersistentManagerProtocol) {
+        self.persistentManager = persistentManager
     }
 
     public func setupManangers(){

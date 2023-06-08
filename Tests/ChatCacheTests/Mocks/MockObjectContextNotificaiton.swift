@@ -8,9 +8,9 @@ import Combine
 final class MockObjectContextNotificaiton {
     var cancelable = Set<AnyCancellable>()
     var notification: NotificationCenter
-    var context: NSManagedObjectContext
+    var context: NSManagedObjectContextProtocol
 
-    init(context: NSManagedObjectContext, cancelable: Set<AnyCancellable> = Set<AnyCancellable>(), notification: NotificationCenter = .default) {
+    init(context: NSManagedObjectContextProtocol, cancelable: Set<AnyCancellable> = Set<AnyCancellable>(), notification: NotificationCenter = .default) {
         self.cancelable = cancelable
         self.notification = notification
         self.context = context

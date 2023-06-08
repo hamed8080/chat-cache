@@ -24,7 +24,27 @@ public protocol NSManagedObjectContextProtocol: AnyObject {
     func count<T>(for request: NSFetchRequest<T>) throws -> Int where T: NSFetchRequestResult
     var hasChanges: Bool { get }
     var name: String? { get }
+    func perform(_ block: @escaping () throws -> Void, errorCompeletion: ((Error) -> Void)?)
 }
 
-extension NSManagedObjectContext: NSManagedObjectContextProtocol {
+extension NSManagedObjectContext: NSManagedObjectContextProtocol {}
+
+public extension NSManagedObjectContextProtocol {
+    func perform(_ block: @escaping () throws -> Void, errorCompeletion: ((Error) -> Void)? = nil) {
+        if let context = self as? NSManagedObjectContext {
+            context.perform {
+                do {
+                    try block()
+                } catch {
+                    errorCompeletion?(error)
+                }
+            }
+        } else {
+            do {
+                try block()
+            } catch {
+                errorCompeletion?(error)
+            }
+        }
+    }
 }

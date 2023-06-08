@@ -10,7 +10,7 @@ import ChatModels
 
 public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
 
-    public override func insert(model: Entity.Model, context: NSManagedObjectContext) {
+    public override func insert(model: Entity.Model, context: NSManagedObjectContextProtocol) {
         let entity = Entity.insertEntity(context)
         entity.update(model)
         let cmThread = BaseCoreDataManager<CDConversation>(container: container, logger: logger)
@@ -63,7 +63,7 @@ public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
     }
 
     /// Attach a participant entity to a message entity as well as set a conversation entity over the participant entity.
-    func attach(messageEntity: CDMessage, threadEntity: CDConversation, lastMessageVO: Message, threadId: Int, context: NSManagedObjectContext) {
+    func attach(messageEntity: CDMessage, threadEntity: CDConversation, lastMessageVO: Message, threadId: Int, context: NSManagedObjectContextProtocol) {
         if let participant = lastMessageVO.participant {
             let entity = findOrCreate(participant: participant, threadId: threadId, context: context)
             messageEntity.participant = entity
@@ -71,7 +71,7 @@ public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
         }
     }
 
-    private func findOrCreate(participant: Participant, threadId: Int, context: NSManagedObjectContext) -> CDParticipant {
+    private func findOrCreate(participant: Participant, threadId: Int, context: NSManagedObjectContextProtocol) -> CDParticipant {
         let participantReq = CDParticipant.fetchRequest()
         participantReq.predicate = predicate(threadId, participant.id ?? -1)
         let entity = (try? context.fetch(participantReq).first) ?? CDParticipant.insertEntity(context)
