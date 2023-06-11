@@ -202,6 +202,8 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
         messageReq.predicate = NSPredicate(format: "%K == %@ OR %K == %@", #keyPath(CDMessage.id), lastMessageVO.id as? NSNumber ?? -1, #keyPath(CDMessage.uniqueId), lastMessageVO.uniqueId ?? "")
         if let messageEntity = try? context.fetch(messageReq).first {
             messageEntity.update(lastMessageVO)
+            messageEntity.conversationLastMessageVO = entity
+            entity.lastMessageVO = messageEntity
         } else {
             let insertMessageEntity = CDMessage.insertEntity(context)
             insertMessageEntity.update(lastMessageVO)

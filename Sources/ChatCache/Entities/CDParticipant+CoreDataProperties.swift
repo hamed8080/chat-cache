@@ -148,6 +148,16 @@ public extension CDParticipant {
         metadata = model.chatProfileVO?.metadata
     }
 
+    class func findOrCreate(threadId: Int, participantId: Int, context: NSManagedObjectContextProtocol) -> CDParticipant {
+        let req = CDParticipant.fetchRequest()
+        req.predicate = NSPredicate(format: "%K == %i AND %K == %i",
+                                    #keyPath(CDParticipant.id), participantId,
+                                    #keyPath(CDParticipant.conversation.id), threadId
+        )
+        let entity = (try? context.fetch(req).first) ?? CDParticipant.insertEntity(context)
+        return entity
+    }
+
     var codable: Model {
         Participant(admin: admin?.boolValue,
                     auditor: auditor?.boolValue,

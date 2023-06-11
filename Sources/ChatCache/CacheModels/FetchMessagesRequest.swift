@@ -20,18 +20,18 @@ public struct FetchMessagesRequest {
     internal let hashtag: String?
     internal let toTimeNanos: UInt?
 
-    public init(messageType: Int?,
-                fromTime: UInt?,
-                messageId: Int?,
-                uniqueIds: [String]?,
-                toTime: UInt?,
-                query: String?,
+    public init(messageType: Int? = nil,
+                fromTime: UInt? = nil,
+                messageId: Int? = nil,
+                uniqueIds: [String]? = nil,
+                toTime: UInt? = nil,
+                query: String? = nil,
                 threadId: Int,
-                offset: Int,
-                count: Int,
-                order: String?,
-                hashtag: String?,
-                toTimeNanos: UInt?) {
+                offset: Int = 0,
+                count: Int = 25,
+                order: String? = nil,
+                hashtag: String? = nil,
+                toTimeNanos: UInt? = nil) {
         self.messageType = messageType
         self.fromTime = fromTime
         self.messageId = messageId

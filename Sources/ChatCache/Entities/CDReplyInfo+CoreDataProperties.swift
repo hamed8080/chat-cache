@@ -18,8 +18,9 @@ public extension CDReplyInfo {
 }
 
 public extension CDReplyInfo {
+    /// This is the id of parentMessage to make this entity unique. Because every ReplyInfo entity must have repliedToMessageId and a parent so we can make them unique in this way.
+    @NSManaged var parentMessageId: NSNumber?
     @NSManaged var markDeleted: NSNumber?
-    @NSManaged var messageId: NSNumber?
     @NSManaged var messageText: String?
     @NSManaged var messageType: NSNumber?
     @NSManaged var metadata: String?
@@ -39,6 +40,18 @@ public extension CDReplyInfo {
         repliedToMessageId = model.repliedToMessageId as? NSNumber
         systemMetadata = model.systemMetadata
         time = model.time as? NSNumber
+        participant?.id = model.participant?.id as? NSNumber
+        if let participant = model.participant, let context = managedObjectContext {
+            self.participant = CDParticipant.insertEntity(context)
+            self.participant?.id = participant.id as? NSNumber
+        }
+    }
+
+    class func findOrCreate(repliedToMessageId: Int, parentMessageId: Int, context: NSManagedObjectContextProtocol) -> CDReplyInfo {
+        let req = CDReplyInfo.fetchRequest()
+        req.predicate = NSPredicate(format: "%K == %i AND %K == %i", #keyPath(CDReplyInfo.repliedToMessageId), repliedToMessageId, #keyPath(CDReplyInfo.parentMessageId), parentMessageId)
+        let entity = (try? context.fetch(req).first) ?? CDReplyInfo.insertEntity(context)
+        return entity
     }
 
     var codable: Model {

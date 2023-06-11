@@ -172,14 +172,11 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         }
     }
 
-    public func findOrCreate<T: EntityProtocol>(_ id: Entity.Id, _ completion: @escaping (T) -> Void) {
-        let context = viewContext
-        context.perform {
-            let req = T.fetchRequest()
-            req.predicate = self.idPredicate(id: id)
-            req.fetchLimit = 1
-            let entity = try context.fetch(req).first
-            completion(entity ?? T.insertEntity(context))
-        }
+    public func findOrCreate<T: EntityProtocol>(_ id: Entity.Id, _ context: NSManagedObjectContextProtocol) -> T {
+        let req = T.fetchRequest()
+        req.predicate = self.idPredicate(id: id)
+        req.fetchLimit = 1
+        let entity = try? context.fetch(req).first
+        return entity ?? T.insertEntity(context)
     }
 }

@@ -196,6 +196,13 @@ public extension CDConversation {
         isArchive = model.isArchive as NSNumber?
     }
 
+    class func findOrCreate(threadId: Int, context: NSManagedObjectContextProtocol) -> CDConversation {
+        let req = CDConversation.fetchRequest()
+        req.predicate = NSPredicate(format: "%K == %i", #keyPath(CDConversation.id), threadId)
+        let entity = (try? context.fetch(req).first) ?? CDConversation.insertEntity(context)
+        return entity
+    }
+
     func codable(fillLastMessageVO: Bool = true, fillParticipants: Bool = false, fillPinMessages: Bool = true) -> Model {
         Conversation(admin: admin?.boolValue,
                      canEditInfo: canEditInfo?.boolValue,

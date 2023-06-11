@@ -1021,6 +1021,43 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    /// Test when GetThreads and later GetHistory all new messages do not lead to set nil lastMessageVO in conversation entity.
+    func test_whenGetThreadsAndThenGetHistory_lastMessageVOIsNotNil() {
+        /// 1- Get Threads
+        let participant = Participant(firstName: "John", id: 1)
+        let lastMessageVO = Message(threadId: 1, id: 3, message: "Hello", participant: participant)
+        sut.insert(models: [mockModel(id: 1, lastMessage: lastMessageVO.message, lastMessageVO: lastMessageVO)])
+
+        let cmMessage = cache.message!
+
+        notification.onInsert { (entities: [CDConversation]) in
+            /// 2- Act as Get History and insert three messages inside a thread with exact same message Id.
+            let olderMessage1 = Message(threadId: 1, id:1, message: "OldMessage1", conversation: Conversation(id: 1))
+            let olderMessage2 = Message(threadId: 1, id: 2, message: "OldMessage2", conversation: Conversation(id: 1))
+            cmMessage.insert(models: [olderMessage1, olderMessage2, lastMessageVO], threadId: 1)
+        }
+
+        let exp = expectation(description: "Expected the lastMessageVO to be not nil in Conversation.lastMessageVO and Message.conversationLastMessageVO.")
+        var fullfiled = false
+        notification.onUpdateIds { objectIds in
+            /// 3- Check lastMessageVO in store.
+            self.sut.first(with: 1, context: self.sut.viewContext) { threadEntity in
+                cmMessage.find(1, 3) { messageEntity in
+                    if let threadLastMessageVO = threadEntity?.lastMessageVO,
+                       threadEntity?.lastMessage == threadLastMessageVO.message,
+                       messageEntity?.conversationLastMessageVO != nil,
+                       messageEntity?.participant != nil,
+                       !fullfiled
+                    {
+                        fullfiled = true
+                        exp.fulfill()
+                    }
+                }
+            }
+        }
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(admin: Bool? = false,
                            canEditInfo: Bool? = false,
                            canSpam: Bool? = false,

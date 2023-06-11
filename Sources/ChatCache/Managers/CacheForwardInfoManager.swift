@@ -13,13 +13,12 @@ public final class CacheForwardInfoManager: BaseCoreDataManager<CDForwardInfo> {
         let entity = Entity.insertEntity(context)
         if let participant = model.participant, let thread = model.conversation, let threadId = thread.id {
             let cmThread = BaseCoreDataManager<CDConversation>(container: container, logger: logger)
-            cmThread.findOrCreate(threadId) { (threadEntity: CDConversation) in
-                threadEntity.update(thread)
-                CacheParticipantManager(container: self.container, logger: self.logger).findOrCreateEntity(model.conversation?.id, participant.id) { participantEntity in
-                    participantEntity?.update(participant)
-                    participantEntity?.conversation = threadEntity
-                    entity.participant = participantEntity
-                }
+            let threadEntity: CDConversation = cmThread.findOrCreate(threadId, context)
+            threadEntity.update(thread)
+            CacheParticipantManager(container: self.container, logger: self.logger).findOrCreateEntity(model.conversation?.id, participant.id) { participantEntity in
+                participantEntity?.update(participant)
+                participantEntity?.conversation = threadEntity
+                entity.participant = participantEntity
             }
         }
     }

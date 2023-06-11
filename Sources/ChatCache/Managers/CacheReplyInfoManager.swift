@@ -16,13 +16,12 @@ public final class CacheReplyInfoManager: BaseCoreDataManager<CDReplyInfo> {
 
         if let participant = model.participant, let thread = model.participant?.conversation {
             let cmThread = BaseCoreDataManager<CDConversation>(container: container, logger: logger)
-            cmThread.findOrCreate(thread.id ?? -1) { (threadEntity: CDConversation) in
-                threadEntity.update(thread)
-                CacheParticipantManager(container: self.container, logger: self.logger).findOrCreateEntity(thread.id, participant.id) { participantEntity in
-                    participantEntity?.update(participant)
-                    participantEntity?.conversation = threadEntity
-                    entity.participant = participantEntity
-                }
+            let threadEntity: CDConversation = cmThread.findOrCreate(thread.id ?? -1, context)
+            threadEntity.update(thread)
+            CacheParticipantManager(container: self.container, logger: self.logger).findOrCreateEntity(thread.id, participant.id) { participantEntity in
+                participantEntity?.update(participant)
+                participantEntity?.conversation = threadEntity
+                entity.participant = participantEntity
             }
         }
     }
