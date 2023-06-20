@@ -42,18 +42,16 @@ public final class CacheContactManager: BaseCoreDataManager<CDContact> {
                 orPredicatArray.append(theSearchPredicate)
             }
 
-            if let uniqueId = req.uniqueId, !uniqueId.contains("G-") {
-                orPredicatArray.append(NSPredicate(format: "uniqueId CONTAINS[cd] %@", uniqueId))
-            }
-
             if orPredicatArray.count > 0 {
                 fetchRequest.predicate = NSCompoundPredicate(type: NSCompoundPredicate.LogicalType.or, subpredicates: orPredicatArray)
             }
         }
 
+        let notSeenDurationSort = NSSortDescriptor(key: "notSeenDuration", ascending: false)
+        let hasUserSort = NSSortDescriptor(key: "hasUser", ascending: false)
         let firstNameSort = NSSortDescriptor(key: "firstName", ascending: ascending)
         let lastNameSort = NSSortDescriptor(key: "lastName", ascending: ascending)
-        fetchRequest.sortDescriptors = [lastNameSort, firstNameSort]
+        fetchRequest.sortDescriptors = [notSeenDurationSort, hasUserSort, lastNameSort, firstNameSort]
         viewContext.perform {
             let count = try self.viewContext.count(for: Entity.fetchRequest())
             fetchRequest.fetchLimit = req.size

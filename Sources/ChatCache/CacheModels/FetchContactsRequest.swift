@@ -16,7 +16,6 @@ public struct FetchContactsRequest {
     internal let order: String?
     internal let query: String?
     internal var summery: Bool?
-    internal var uniqueId: String?
 
     public init(id: Int? = nil,
                 count: Int = 50,
@@ -26,8 +25,7 @@ public struct FetchContactsRequest {
                 offset: Int = 0,
                 order: Ordering? = nil,
                 query: String? = nil,
-                summery: Bool? = nil,
-                uniqueId: String? = nil)
+                summery: Bool? = nil)
     {
         size = count
         self.offset = offset
@@ -38,6 +36,5 @@ public struct FetchContactsRequest {
         self.query = query
         self.summery = summery
         self.coreUserId = coreUserId
-        self.uniqueId = uniqueId
     }
 }
