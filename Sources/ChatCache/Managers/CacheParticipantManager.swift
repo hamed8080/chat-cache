@@ -18,12 +18,14 @@ public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
         threadEntity.addToParticipants(entity)
     }
 
-    public func insert(model: Conversation?) {
+    public func insert(model: Conversation) {
         let cmThread = BaseCoreDataManager<CDConversation>(container: container, logger: logger)
         self.insertObjects() { context in
-            let threadEntity: CDConversation = cmThread.findOrCreate(model?.id ?? -1, context)
-            model?.participants?.forEach { participant in
+            let threadEntity: CDConversation = cmThread.findOrCreate(model.id ?? -1, context)
+            threadEntity.update(model)
+            model.participants?.forEach { participant in
                 let participantEntity = Entity.insertEntity(context)
+                participantEntity.conversation = threadEntity
                 participantEntity.update(participant)
                 threadEntity.addToParticipants(participantEntity)
             }

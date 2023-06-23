@@ -160,6 +160,7 @@ public extension CDConversation {
 
 public extension CDConversation {
     func update(_ model: Model) {
+        if model.id == nil { return }
         admin = model.admin as? NSNumber
         canEditInfo = model.canEditInfo as? NSNumber
         canSpam = model.canSpam as NSNumber?
