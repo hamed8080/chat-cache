@@ -51,7 +51,6 @@ public extension CDParticipant {
     @NSManaged var forwardInfos: NSSet?
     @NSManaged var inviter: CDConversation?
     @NSManaged var messages: NSSet?
-    @NSManaged var replyInfo: NSSet?
 }
 
 // MARK: Generated accessors for assistant
@@ -70,22 +69,6 @@ public extension CDParticipant {
     @NSManaged func removeFromAssistant(_ values: NSSet)
 }
 
-// MARK: Generated accessors for forwardInfos
-
-public extension CDParticipant {
-    @objc(addForwardInfosObject:)
-    @NSManaged func addToForwardInfos(_ value: CDForwardInfo)
-
-    @objc(removeForwardInfosObject:)
-    @NSManaged func removeFromForwardInfos(_ value: CDForwardInfo)
-
-    @objc(addForwardInfos:)
-    @NSManaged func addToForwardInfos(_ values: NSSet)
-
-    @objc(removeForwardInfos:)
-    @NSManaged func removeFromForwardInfos(_ values: NSSet)
-}
-
 // MARK: Generated accessors for messages
 
 public extension CDParticipant {
@@ -100,22 +83,6 @@ public extension CDParticipant {
 
     @objc(removeMessages:)
     @NSManaged func removeFromMessages(_ values: NSSet)
-}
-
-// MARK: Generated accessors for replyInfo
-
-public extension CDParticipant {
-    @objc(addReplyInfoObject:)
-    @NSManaged func addToReplyInfo(_ value: CDReplyInfo)
-
-    @objc(removeReplyInfoObject:)
-    @NSManaged func removeFromReplyInfo(_ value: CDReplyInfo)
-
-    @objc(addReplyInfo:)
-    @NSManaged func addToReplyInfo(_ values: NSSet)
-
-    @objc(removeReplyInfo:)
-    @NSManaged func removeFromReplyInfo(_ values: NSSet)
 }
 
 public extension CDParticipant {

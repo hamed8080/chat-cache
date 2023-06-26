@@ -103,5 +103,7 @@ extension PersistentManager {
     func registerTransformers() {
         RolesValueTransformer.register()
         AssistantValueTransformer.register()
+        ReplyInfoValueTransformer.register()
+        ForwardInfoValueTransformer.register()
     }
 }

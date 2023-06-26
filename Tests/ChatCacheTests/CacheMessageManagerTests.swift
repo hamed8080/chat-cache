@@ -420,6 +420,67 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenInsertReplyInfo_isInStore() {
+        // Given
+        let replyInfo = replyMockModel()
+        let message = Message(replyInfo: replyInfo)
+        sut.insert(models: [message])
+
+        // When
+        let exp = expectation(description: "Expected to insert an reply info to the store.")
+        notification.onInsert { (entities: [CDMessage]) in
+            if entities.first?.replyInfo != nil {
+                exp.fulfill()
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenInsertReplyInfo_firstReturnReplyInfo() {
+        // Given
+        // 1- Original message
+        sut.insert(models: [mockModel(id: 1, message: "Original Message")])
+
+        // 2- Reply to an original message
+        let exp = expectation(description: "Expected to insert an reply info to the store.")
+        notification.onInsert { (entities: [CDMessage]) in
+            if entities.first?.id == 1 {
+                let replyInfo = self.replyMockModel(repliedToMessageId: 1, message: "Test replyInfo")
+                let message = Message(threadId: 1, id: 2, replyInfo: replyInfo)
+                self.sut.insert(models: [message])
+            } else if entities.first?.id == 2, entities.first?.codable().replyInfo?.message == "Test replyInfo" {
+                exp.fulfill()
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    private func replyMockModel(block: Bool = false,
+                           deleted: Bool = false,
+                           repliedToMessageId: Int = 1,
+                           message: String = "Reply Message",
+                           messageType: MessageType = .text,
+                           metadata: String? = nil,
+                           systemMetadata: String? = nil,
+                           time: UInt? = UInt(Date().timeIntervalSince1970),
+                           participant: Participant? = nil) -> ReplyInfo {
+        let thread = Conversation(id: 1, title: "Test Thread")
+        let defaultParticipant = Participant(id: 1, conversation: thread)
+        let model = ReplyInfo(deleted: deleted,
+                              repliedToMessageId: repliedToMessageId,
+                              message: message,
+                              messageType: messageType,
+                              metadata: metadata,
+                              systemMetadata: systemMetadata,
+                              time: time,
+                              participant: participant ?? defaultParticipant)
+        return model
+    }
+
     private func mockModel(
         threadId: Int? = nil,
         deletable: Bool? = nil,

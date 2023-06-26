@@ -56,12 +56,6 @@ public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
         batchDelete(predicate: predicate)
     }
 
-    public func findOrCreateEntity(_ threadId: Int?, _ participantId: Int?, _ completion: @escaping (Entity?) -> Void) {
-        first(threadId ?? -1, participantId ?? -1) { participant in
-            completion(participant ?? Entity.insertEntity(self.viewContext))
-        }
-    }
-
     /// Attach a participant entity to a message entity as well as set a conversation entity over the participant entity.
     func attach(messageEntity: CDMessage, threadEntity: CDConversation, lastMessageVO: Message, threadId: Int, context: NSManagedObjectContextProtocol) {
         if let participant = lastMessageVO.participant {

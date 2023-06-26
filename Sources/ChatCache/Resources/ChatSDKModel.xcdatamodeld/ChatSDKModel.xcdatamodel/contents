@@ -36,7 +36,7 @@
         <attribute name="closedThread" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="descriptions" optional="YES" attributeType="String"/>
         <attribute name="group" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="isArchive" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="joinDate" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
@@ -64,7 +64,6 @@
         <attribute name="uniqueName" optional="YES" attributeType="String"/>
         <attribute name="unreadCount" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="userGroupHash" optional="YES" attributeType="String"/>
-        <relationship name="forwardInfos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDForwardInfo" inverseName="conversation" inverseEntity="CDForwardInfo"/>
         <relationship name="inviter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDParticipant" inverseName="inviter" inverseEntity="CDParticipant"/>
         <relationship name="lastMessageVO" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="conversationLastMessageVO" inverseEntity="CDMessage"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="conversation" inverseEntity="CDMessage"/>
@@ -84,21 +83,6 @@
         <attribute name="size" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="CDForwardInfo" representedClassName="ChatCache.CDForwardInfo" syncable="YES">
-        <attribute name="forwardedMessageId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
-        <attribute name="forwardedThreadId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
-        <attribute name="parentMessageId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
-        <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="forwardInfos" inverseEntity="CDConversation"/>
-        <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="forwardInfo" inverseEntity="CDMessage"/>
-        <relationship name="participant" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDParticipant" inverseName="forwardInfos" inverseEntity="CDParticipant"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="parentMessageId"/>
-                <constraint value="forwardedMessageId"/>
-                <constraint value="forwardedThreadId"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
     <entity name="CDImage" representedClassName="ChatCache.CDImage" syncable="YES">
         <attribute name="actualHeight" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="actualWidth" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
@@ -113,6 +97,7 @@
         <attribute name="delivered" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="editable" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="edited" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="forwardInfo" optional="YES" attributeType="Transformable" valueTransformerName="ForwardInfoValueTransformer" customClassName="ForwardInfo"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="mentioned" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="message" optional="YES" attributeType="String"/>
@@ -123,6 +108,7 @@
         <attribute name="pinned" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="pinTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
         <attribute name="previousId" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
+        <attribute name="replyInfo" optional="YES" attributeType="Transformable" valueTransformerName="ReplyInfoValueTransformer" customClassName="ReplyInfo"/>
         <attribute name="seen" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="systemMetadata" optional="YES" attributeType="String"/>
         <attribute name="threadId" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
@@ -130,10 +116,8 @@
         <attribute name="uniqueId" optional="YES" attributeType="String"/>
         <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="messages" inverseEntity="CDConversation"/>
         <relationship name="conversationLastMessageVO" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="lastMessageVO" inverseEntity="CDConversation"/>
-        <relationship name="forwardInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDForwardInfo" inverseName="message" inverseEntity="CDForwardInfo"/>
         <relationship name="participant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDParticipant" inverseName="messages" inverseEntity="CDParticipant"/>
         <relationship name="pinMessages" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="pinMessages" inverseEntity="CDConversation"/>
-        <relationship name="replyInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDReplyInfo" inverseName="parentMessage" inverseEntity="CDReplyInfo"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -175,10 +159,8 @@
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="assistant" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDAssistant" inverseName="participant" inverseEntity="CDAssistant"/>
         <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="participants" inverseEntity="CDConversation"/>
-        <relationship name="forwardInfos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDForwardInfo" inverseName="participant" inverseEntity="CDForwardInfo"/>
         <relationship name="inviter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="inviter" inverseEntity="CDConversation"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="participant" inverseEntity="CDMessage"/>
-        <relationship name="replyInfo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDReplyInfo" inverseName="participant" inverseEntity="CDReplyInfo"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -233,24 +215,6 @@
         <attribute name="threadId" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="typeCode" optional="YES" attributeType="String"/>
         <attribute name="uniqueId" optional="YES" attributeType="String"/>
-    </entity>
-    <entity name="CDReplyInfo" representedClassName="ChatCache.CDReplyInfo" syncable="YES">
-        <attribute name="markDeleted" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
-        <attribute name="messageText" optional="YES" attributeType="String"/>
-        <attribute name="messageType" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
-        <attribute name="metadata" optional="YES" attributeType="String"/>
-        <attribute name="parentMessageId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
-        <attribute name="repliedToMessageId" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
-        <attribute name="systemMetadata" optional="YES" attributeType="String"/>
-        <attribute name="time" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
-        <relationship name="parentMessage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="replyInfo" inverseEntity="CDMessage"/>
-        <relationship name="participant" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDParticipant" inverseName="replyInfo" inverseEntity="CDParticipant"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="parentMessageId"/>
-                <constraint value="repliedToMessageId"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
     </entity>
     <entity name="CDTag" representedClassName="ChatCache.CDTag" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" valueTransformerName="NSSecureUnarchiveFromDataTransformer" usesScalarValueType="NO"/>

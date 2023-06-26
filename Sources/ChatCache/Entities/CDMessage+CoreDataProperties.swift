@@ -39,11 +39,11 @@ public extension CDMessage {
     @NSManaged var time: NSNumber?
     @NSManaged var uniqueId: String?
     @NSManaged var conversation: CDConversation?
-    @NSManaged var forwardInfo: CDForwardInfo?
+    @NSManaged var forwardInfo: ForwardInfo?
     @NSManaged var conversationLastMessageVO: CDConversation?
     @NSManaged var participant: CDParticipant?
     @NSManaged var pinMessages: CDConversation?
-    @NSManaged var replyInfo: CDReplyInfo?
+    @NSManaged var replyInfo: ReplyInfo?
 }
 
 public extension CDMessage {
@@ -67,24 +67,12 @@ public extension CDMessage {
         uniqueId = model.uniqueId
         pinTime = model.pinTime as? NSNumber
         notifyAll = model.pinNotifyAll as? NSNumber
-        if let replyInfo = model.replyInfo, let repliedToMessageId = replyInfo.repliedToMessageId, let context = managedObjectContext {
-            setReplyInfo(replyInfo, repliedToMessageId, id?.intValue ?? -1, context)
-        }
-
-        if let forwardInfo = model.forwardInfo, let forwardedThreadId = forwardInfo.conversation?.id, let context = managedObjectContext {
-            let forwardedMessageId = -1
-            setForwardInfo(forwardInfo, id?.intValue ?? -1, forwardedMessageId, forwardedThreadId, context)
-        }
+        replyInfo = model.replyInfo
+        forwardInfo = model.forwardInfo
 
         if let participant = model.participant, let threadId = threadId, let context = managedObjectContext {
             setParticipant(participant, threadId.intValue, context)
         }
-    }
-
-    func setReplyInfo(_ replyInfo: ReplyInfo, _ repliedToMessageId: Int, _ parentMessageId: Int, _ context: NSManagedObjectContext) {
-        self.replyInfo = CDReplyInfo.findOrCreate(repliedToMessageId: repliedToMessageId, parentMessageId: parentMessageId, context: context)
-        self.replyInfo?.update(replyInfo)
-        self.replyInfo?.parentMessageId = parentMessageId as NSNumber
     }
 
     func setParticipant(_ participant: Participant, _ threadId: Int, _ context: NSManagedObjectContext) {
@@ -94,19 +82,8 @@ public extension CDMessage {
         self.participant?.update(participant)
     }
 
-    func setForwardInfo(_ forwardInfo: ForwardInfo, _ parentMessageId: Int, _ forwardedMessageId: Int, _ forwardedThreadId: Int, _ context: NSManagedObjectContext) {
-        self.forwardInfo = CDForwardInfo.findOrCreate(parentMessageId: parentMessageId, forwardedMessageId: forwardedMessageId, forwardedThreadId: forwardedThreadId, context: context)
-        self.forwardInfo?.update(forwardInfo)
-        self.forwardInfo?.conversation = CDConversation.findOrCreate(threadId: forwardedThreadId, context: context)
-        if let participant = forwardInfo.participant, let participantId = participant.id {
-            self.forwardInfo?.participant = CDParticipant.findOrCreate(threadId: forwardedThreadId, participantId: participantId, context: context)
-            self.forwardInfo?.participant?.update(participant)
-        }
-        self.forwardInfo?.parentMessageId = parentMessageId as NSNumber
-    }
-
-    func codable(fillConversation: Bool = true, fillParticipant: Bool = true, fillForwardInfo: Bool = false, fillReplyInfo: Bool = false) -> Model {
-        Message(threadId: threadId?.intValue,
+    func codable(fillConversation: Bool = true, fillParticipant: Bool = true) -> Model {
+       return Message(threadId: threadId?.intValue,
                 deletable: deletable?.boolValue,
                 delivered: deletable?.boolValue,
                 editable: editable?.boolValue,
@@ -125,9 +102,9 @@ public extension CDMessage {
                 timeNanos: time?.uintValue,
                 uniqueId: uniqueId,
                 conversation: fillConversation ? conversation?.codable() : nil,
-                forwardInfo: fillForwardInfo ? forwardInfo?.codable : nil,
+                forwardInfo: forwardInfo,
                 participant: fillParticipant ? participant?.codable : nil,
-                replyInfo: fillReplyInfo ? replyInfo?.codable : nil,
+                replyInfo: replyInfo,
                 pinTime: pinTime?.uintValue,
                 notifyAll: notifyAll?.boolValue)
     }

@@ -62,22 +62,6 @@ public extension CDConversation {
     @NSManaged var tagParticipants: NSSet?
 }
 
-// MARK: Generated accessors for forwardInfos
-
-public extension CDConversation {
-    @objc(addForwardInfosObject:)
-    @NSManaged func addToForwardInfos(_ value: CDForwardInfo)
-
-    @objc(removeForwardInfosObject:)
-    @NSManaged func removeFromForwardInfos(_ value: CDForwardInfo)
-
-    @objc(addForwardInfos:)
-    @NSManaged func addToForwardInfos(_ values: NSSet)
-
-    @objc(removeForwardInfos:)
-    @NSManaged func removeFromForwardInfos(_ values: NSSet)
-}
-
 // MARK: Generated accessors for messages
 
 public extension CDConversation {
