@@ -45,12 +45,21 @@ public extension CDTag {
         id = model.id as NSNumber
         name = model.name
         active = model.active as NSNumber
+        model.tagParticipants?.forEach{ participnat in
+            if let context = managedObjectContext {
+                let participantEntity = CDTagParticipant.insertEntity(context)
+                participantEntity.update(participnat)
+                participantEntity.tag = self
+                participantEntity.tagId = id
+                addToTagParticipants(participantEntity)
+            }
+        }
     }
 
     var codable: Model {
         Tag(id: id?.intValue ?? -1,
             name: name ?? "",
             active: active?.boolValue ?? false,
-            tagParticipants: nil)
+            tagParticipants: tagParticipants?.allObjects.compactMap{ $0 as? CDTagParticipant }.compactMap{ $0?.codable } )
     }
 }

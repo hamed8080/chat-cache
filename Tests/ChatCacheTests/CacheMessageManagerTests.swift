@@ -459,15 +459,53 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenInsertForwardInfo_isInStore() {
+        // Given
+        let forwardInfo = forwardMockModel()
+        let message = Message(forwardInfo: forwardInfo)
+        sut.insert(models: [message])
+
+        // When
+        let exp = expectation(description: "Expected to insert an forward info to the store.")
+        notification.onInsert { (entities: [CDMessage]) in
+            if entities.first?.forwardInfo != nil {
+                exp.fulfill()
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenInsertForwardInfo_firstReturnForwardInfo() {
+        // Given
+        // 1- Original message
+        sut.insert(models: [mockModel(threadId: 1, id: 1, message: "Original Message In Thread 1")])
+
+        // 2- Reply to an original message
+        let exp = expectation(description: "Expected to insert an reply info to the store.")
+        notification.onInsert { (entities: [CDMessage]) in
+            if entities.first?.id == 1 {
+                let forwardInfo = self.forwardMockModel(conversation: Conversation(id: 2), participant: Participant(id: 2, name: "Hamed Hosseini"))
+                self.sut.insert(models: [.init(id: 2, message: "Take this.", forwardInfo: forwardInfo)])
+            } else if let message = entities.first?.codable(), message.id == 2, message.message == "Take this.", message.forwardInfo?.conversation?.id == 2 {
+                exp.fulfill()
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func replyMockModel(block: Bool = false,
-                           deleted: Bool = false,
-                           repliedToMessageId: Int = 1,
-                           message: String = "Reply Message",
-                           messageType: MessageType = .text,
-                           metadata: String? = nil,
-                           systemMetadata: String? = nil,
-                           time: UInt? = UInt(Date().timeIntervalSince1970),
-                           participant: Participant? = nil) -> ReplyInfo {
+                                deleted: Bool = false,
+                                repliedToMessageId: Int = 1,
+                                message: String = "Reply Message",
+                                messageType: MessageType = .text,
+                                metadata: String? = nil,
+                                systemMetadata: String? = nil,
+                                time: UInt? = UInt(Date().timeIntervalSince1970),
+                                participant: Participant? = nil) -> ReplyInfo {
         let thread = Conversation(id: 1, title: "Test Thread")
         let defaultParticipant = Participant(id: 1, conversation: thread)
         let model = ReplyInfo(deleted: deleted,
@@ -479,6 +517,10 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
                               time: time,
                               participant: participant ?? defaultParticipant)
         return model
+    }
+
+    private func forwardMockModel(conversation: Conversation? = Conversation(id: 1), participant: Participant? = Participant(id: 1)) -> ForwardInfo {
+        return ForwardInfo(conversation: conversation, participant: participant)
     }
 
     private func mockModel(
@@ -506,31 +548,31 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
         replyInfo: ReplyInfo? = nil,
         pinTime: UInt? = nil,
         notifyAll: Bool? = nil) -> Message {
-        return Message(threadId: threadId,
-                       deletable: deletable,
-                       delivered: delivered,
-                       editable: editable,
-                       edited: edited,
-                       id: id,
-                       mentioned: mentioned,
-                       message: message,
-                       messageType: messageType,
-                       metadata: metadata,
-                       ownerId: ownerId,
-                       pinned: pinned,
-                       previousId: previousId,
-                       seen: seen,
-                       systemMetadata: systemMetadata,
-                       time: time,
-                       timeNanos: timeNanos,
-                       uniqueId: uniqueId,
-                       conversation: conversation,
-                       forwardInfo: forwardInfo,
-                       participant: participant,
-                       replyInfo: replyInfo,
-                       pinTime: pinTime,
-                       notifyAll: notifyAll)
-    }
+            return Message(threadId: threadId,
+                           deletable: deletable,
+                           delivered: delivered,
+                           editable: editable,
+                           edited: edited,
+                           id: id,
+                           mentioned: mentioned,
+                           message: message,
+                           messageType: messageType,
+                           metadata: metadata,
+                           ownerId: ownerId,
+                           pinned: pinned,
+                           previousId: previousId,
+                           seen: seen,
+                           systemMetadata: systemMetadata,
+                           time: time,
+                           timeNanos: timeNanos,
+                           uniqueId: uniqueId,
+                           conversation: conversation,
+                           forwardInfo: forwardInfo,
+                           participant: participant,
+                           replyInfo: replyInfo,
+                           pinTime: pinTime,
+                           notifyAll: notifyAll)
+        }
 
     func log(message: String, persist: Bool, error: Error?) {
 

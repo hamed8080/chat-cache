@@ -32,6 +32,12 @@ public extension CDTagParticipant {
         active = model.active as? NSNumber
         tagId = model.tagId as? NSNumber
         id = model.id as? NSNumber
+        threadId = model.conversation?.id as? NSNumber
+        if let context = managedObjectContext, let thread = model.conversation, let threadId = thread.id {
+            let threadEntity = CDConversation.findOrCreate(threadId: threadId, context: context)
+            threadEntity.update(thread)
+            conversation = threadEntity
+        }
     }
 
     var codable: Model {

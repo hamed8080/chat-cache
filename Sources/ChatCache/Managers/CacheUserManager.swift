@@ -10,13 +10,11 @@ import ChatModels
 
 public final class CacheUserManager: BaseCoreDataManager<CDUser> {
  
-    public func insert(_ models: [Entity.Model], isMe: Bool = false) {
+    public func insert(_ model: Entity.Model, isMe: Bool = false) {
         insertObjects() { context in
-            models.forEach { model in
-                let userEntity = Entity.insertEntity(context)
-                userEntity.update(model)
-                userEntity.isMe = isMe as NSNumber
-            }
+            let userEntity = Entity.insertEntity(context)
+            userEntity.update(model)
+            userEntity.isMe = isMe as NSNumber
         }
     }
 

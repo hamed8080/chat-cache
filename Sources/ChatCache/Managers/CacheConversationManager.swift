@@ -240,11 +240,6 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
         }
     }
 
-    public func delete(_ threadId: Int) {
-        let predicate = idPredicate(id: threadId)
-        batchDelete(predicate: predicate)
-    }
-
     public func updateThreadsUnreadCount(_ resp: [String: Int]) {
         for (key, value) in resp {
             if let threadId = Int(key) {

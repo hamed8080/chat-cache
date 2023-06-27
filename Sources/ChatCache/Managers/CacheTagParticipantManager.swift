@@ -10,9 +10,9 @@ import ChatModels
 
 public final class CacheTagParticipantManager: BaseCoreDataManager<CDTagParticipant> {
 
-    public func delete(_ models: [Entity.Model]) {
+    public func delete(_ models: [Entity.Model], tagId: Int) {
         let ids = models.compactMap(\.id)
-        let predicate = NSPredicate(format: "\(Entity.idName) IN %@", ids)
+        let predicate = NSPredicate(format: "\(Entity.idName) IN %@ AND %K == %i", ids, #keyPath(CDTagParticipant.tagId), tagId)
         batchDelete(predicate: predicate)
     }
 }

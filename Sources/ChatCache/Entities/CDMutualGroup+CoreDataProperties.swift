@@ -42,6 +42,13 @@ public extension CDMutualGroup {
     func update(_ model: Model) {
         idType = model.idType?.rawValue as? NSNumber
         mutualId = model.mutualId
+        model.conversations?.forEach{ thread in
+            if let context = managedObjectContext, let threadId = thread.id {
+                let threadEntity = CDConversation.findOrCreate(threadId: threadId, context: context)
+                threadEntity.update(thread)
+                addToConversations(threadEntity)
+            }
+        }
     }
 
     var codable: Model {

@@ -10,18 +10,11 @@ import ChatModels
 
 public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
 
-    public override func insert(model: Entity.Model, context: NSManagedObjectContextProtocol) {
-        let entity = Entity.insertEntity(context)
-        entity.update(model)
-        let cmThread = BaseCoreDataManager<CDConversation>(container: container, logger: logger)
-        let threadEntity: CDConversation = cmThread.findOrCreate(model.conversation?.id ?? -1, context)
-        threadEntity.addToParticipants(entity)
-    }
-
     public func insert(model: Conversation) {
+        guard let threadId = model.id else { return }
         let cmThread = BaseCoreDataManager<CDConversation>(container: container, logger: logger)
         self.insertObjects() { context in
-            let threadEntity: CDConversation = cmThread.findOrCreate(model.id ?? -1, context)
+            let threadEntity: CDConversation = cmThread.findOrCreate(threadId, context)
             threadEntity.update(model)
             model.participants?.forEach { participant in
                 let participantEntity = Entity.insertEntity(context)
@@ -45,39 +38,25 @@ public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
         NSPredicate(format: "conversation.\(CDConversation.idName) == \(CDConversation.queryIdSpecifier) AND \(Entity.idName) == \(Entity.queryIdSpecifier)", threadId, participantId)
     }
 
-    public func getParticipantsForThread(_ threadId: Int?, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
-        let predicate = NSPredicate(format: "conversation.\(CDConversation.idName) == \(CDConversation.queryIdSpecifier)", threadId ?? -1)
+    public func getThreadParticipants(_ threadId: Int, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
+        let predicate = NSPredicate(format: "conversation.\(CDConversation.idName) == \(CDConversation.queryIdSpecifier)", threadId)
         fetchWithOffset(count: count, offset: offset, predicate: predicate, completion)
     }
 
-    public func delete(_ models: [Entity.Model]) {
+    public func delete(_ models: [Entity.Model], _ threadId: Int) {
         let ids = models.compactMap(\.id)
-        let predicate = NSPredicate(format: "\(Entity.idName) IN %@", ids)
+        let predicate = NSPredicate(format: "%K IN %@ AND %K == %i",
+                                    #keyPath(CDParticipant.id), ids,
+                                    #keyPath(CDParticipant.conversation.id), threadId)
         batchDelete(predicate: predicate)
     }
 
     /// Attach a participant entity to a message entity as well as set a conversation entity over the participant entity.
     func attach(messageEntity: CDMessage, threadEntity: CDConversation, lastMessageVO: Message, threadId: Int, context: NSManagedObjectContextProtocol) {
-        if let participant = lastMessageVO.participant {
-            let entity = findOrCreate(participant: participant, threadId: threadId, context: context)
+        if let participant = lastMessageVO.participant, let participantId = participant.id {
+            let entity = Entity.findOrCreate(threadId: threadId, participantId: participantId, context: context)
             messageEntity.participant = entity
             entity.conversation = threadEntity
         }
-    }
-
-    private func findOrCreate(participant: Participant, threadId: Int, context: NSManagedObjectContextProtocol) -> CDParticipant {
-        let participantReq = CDParticipant.fetchRequest()
-        participantReq.predicate = predicate(threadId, participant.id ?? -1)
-        let entity = (try? context.fetch(participantReq).first) ?? CDParticipant.insertEntity(context)
-        entity.update(participant)
-        return entity
-    }
-
-    private func attachToMessageEntity(entity: CDParticipant, messageEntity: CDMessage) {
-        messageEntity.participant = entity
-    }
-
-    private func attachConversationToEntity(entity: CDParticipant, conversationEntity: CDConversation) {
-        entity.conversation = conversationEntity
     }
 }

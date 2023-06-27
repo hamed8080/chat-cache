@@ -9,10 +9,6 @@ import Foundation
 import ChatModels
 
 public final class CacheQueueOfForwardMessagesManager: BaseCoreDataManager<CDQueueOfForwardMessages> {
-    
-    public func insert(_ forward: Entity.Model) {
-        insert(models: [forward])
-    }
 
     public func delete(_ uniqueIds: [String]) {
         let uniqueIds = uniqueIds.joined(separator: ",")
@@ -30,8 +26,8 @@ public final class CacheQueueOfForwardMessagesManager: BaseCoreDataManager<CDQue
             .replacingOccurrences(of: " ", with: "")
     }
 
-    public func unsedForThread(_ threadId: Int?, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
-        let threadIdPredicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId ?? -1)
+    public func unsendForThread(_ threadId: Int, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
+        let threadIdPredicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId)
         fetchWithOffset(count: count, offset: offset, predicate: threadIdPredicate, completion)
     }
 }

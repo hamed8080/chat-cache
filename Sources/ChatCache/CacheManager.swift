@@ -25,7 +25,7 @@ public final class CacheManager {
     public private(set) var tag: CacheTagManager?
     public private(set) var tagParticipant: CacheTagParticipantManager?
     public private(set) var user: CacheUserManager?
-    public private(set) var userRole: CacheUserRoleManager?
+    public private(set) var userRole: CacheCurrentUserRoleManager?
 
     public init(persistentManager: PersistentManagerProtocol) {
         self.persistentManager = persistentManager
@@ -48,7 +48,7 @@ public final class CacheManager {
             tag = CacheTagManager(container: persistentManager, logger: logger)
             tagParticipant = CacheTagParticipantManager(container: persistentManager, logger: logger)
             user = CacheUserManager(container: persistentManager, logger: logger)
-            userRole = CacheUserRoleManager(container: persistentManager, logger: logger)
+            userRole = CacheCurrentUserRoleManager(container: persistentManager, logger: logger)
         }
     }
 

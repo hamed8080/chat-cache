@@ -13,13 +13,9 @@ public final class CacheTagManager: BaseCoreDataManager<CDTag> {
     public func getTags(_ completion: @escaping ([Entity]) -> Void) {
         viewContext.perform {
             let req = Entity.fetchRequest()
+            req.relationshipKeyPathsForPrefetching = ["tagParticipants"]
             let tags = try self.viewContext.fetch(req)
             completion(tags)
         }
-    }
-
-    public func delete(_ id: Int?) {
-        let predicate = idPredicate(id: id ?? -1)
-        batchDelete(predicate: predicate)
     }
 }

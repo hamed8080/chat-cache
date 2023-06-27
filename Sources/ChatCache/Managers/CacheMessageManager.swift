@@ -16,21 +16,17 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
         insertObjects { context in
             let threadEntity: CDConversation = self.findOrCreate(threadId, context)
             models.forEach { model in
-                let messageId = model.id ?? -1
-                let entity: CDMessage = self.findOrCreate(messageId, context)
-                entity.update(model)
-                entity.conversation = threadEntity
+                if let messageId = model.id {
+                    let entity: CDMessage = self.findOrCreate(messageId, context)
+                    entity.update(model)
+                    entity.conversation = threadEntity
+                }
             }
         }
     }
 
     public func delete(_ threadId: Int, _ messageId: Int) {
         let predicate = predicate(threadId, messageId)
-        batchDelete(predicate: predicate)
-    }
-
-    public func delete(_ messageId: Int) {
-        let predicate = idPredicate(id: messageId)
         batchDelete(predicate: predicate)
     }
 

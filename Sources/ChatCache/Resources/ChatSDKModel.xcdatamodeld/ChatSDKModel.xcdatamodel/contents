@@ -77,11 +77,25 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="CDCurrentUserRole" representedClassName="ChatCache.CDCurrentUserRole" syncable="YES">
+        <attribute name="roles" optional="YES" attributeType="Binary" valueTransformerName="RolesValueTransformer" customClassName="[Roles]"/>
+        <attribute name="threadId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="threadId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="CDFile" representedClassName="ChatCache.CDFile" syncable="YES">
         <attribute name="hashCode" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="type" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="hashCode"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CDImage" representedClassName="ChatCache.CDImage" syncable="YES">
         <attribute name="actualHeight" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
@@ -91,6 +105,11 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="width" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="hashCode"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CDMessage" representedClassName="ChatCache.CDMessage" syncable="YES">
         <attribute name="deletable" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
@@ -177,6 +196,11 @@
         <attribute name="threadId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
         <attribute name="typeCode" optional="YES" attributeType="String"/>
         <attribute name="uniqueId" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uniqueId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CDQueueOfFileMessages" representedClassName="ChatCache.CDQueueOfFileMessages" syncable="YES">
         <attribute name="fileExtension" optional="YES" attributeType="String"/>
@@ -198,6 +222,11 @@
         <attribute name="wC" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
         <attribute name="xC" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
         <attribute name="yC" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uniqueId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CDQueueOfForwardMessages" representedClassName="ChatCache.CDQueueOfForwardMessages" syncable="YES">
         <attribute name="fromThreadId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
@@ -205,6 +234,11 @@
         <attribute name="threadId" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="typeCode" optional="YES" attributeType="String"/>
         <attribute name="uniqueIds" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uniqueIds"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CDQueueOfTextMessages" representedClassName="ChatCache.CDQueueOfTextMessages" syncable="YES">
         <attribute name="messageType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
@@ -215,6 +249,11 @@
         <attribute name="threadId" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="typeCode" optional="YES" attributeType="String"/>
         <attribute name="uniqueId" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uniqueId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CDTag" representedClassName="ChatCache.CDTag" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" valueTransformerName="NSSecureUnarchiveFromDataTransformer" usesScalarValueType="NO"/>
@@ -237,7 +276,6 @@
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
-                <constraint value="conversation"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -260,19 +298,11 @@
         <attribute name="ssoId" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDContact" inverseName="user" inverseEntity="CDContact"/>
-        <relationship name="roles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDUserRole" inverseName="user" inverseEntity="CDUserRole"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
                 <constraint value="username"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
-    </entity>
-    <entity name="CDUserRole" representedClassName="ChatCache.CDUserRole" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="roles" optional="YES" attributeType="Binary" valueTransformerName="RolesValueTransformer" customClassName="[Roles]"/>
-        <attribute name="userId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDUser" inverseName="roles" inverseEntity="CDUser"/>
     </entity>
 </model>

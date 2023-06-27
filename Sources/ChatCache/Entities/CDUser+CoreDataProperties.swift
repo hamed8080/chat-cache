@@ -36,7 +36,6 @@ public extension CDUser {
     @NSManaged var ssoId: String?
     @NSManaged var username: String?
     @NSManaged var contacts: NSSet?
-    @NSManaged var roles: NSSet?
 }
 
 // MARK: Generated accessors for contacts
@@ -53,22 +52,6 @@ public extension CDUser {
 
     @objc(removeContacts:)
     @NSManaged func removeFromContacts(_ values: NSSet)
-}
-
-// MARK: Generated accessors for roles
-
-public extension CDUser {
-    @objc(addRolesObject:)
-    @NSManaged func addToRoles(_ value: CDUserRole)
-
-    @objc(removeRolesObject:)
-    @NSManaged func removeFromRoles(_ value: CDUserRole)
-
-    @objc(addRoles:)
-    @NSManaged func addToRoles(_ values: NSSet)
-
-    @objc(removeRoles:)
-    @NSManaged func removeFromRoles(_ values: NSSet)
 }
 
 public extension CDUser {

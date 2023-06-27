@@ -15,8 +15,8 @@ public final class CacheQueueOfFileMessagesManager: BaseCoreDataManager<CDQueueO
         batchDelete(predicate: predicate)
     }
 
-    public func unsedForThread(_ threadId: Int?, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
-        let threadIdPredicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId ?? -1)
+    public func unsendForThread(_ threadId: Int, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
+        let threadIdPredicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId)
         fetchWithOffset(count: count, offset: offset, predicate: threadIdPredicate, completion)
     }
 }

@@ -35,9 +35,11 @@ public final class CacheAssistantManager: BaseCoreDataManager<CDAssistant> {
 
     private func fetchWithIntIds(_ models: [Entity.Model], _ compeletion: @escaping ([Entity]) -> Void) {        
         models.forEach { model in
-            let predicate = NSPredicate(format: "%K == %i", #keyPath(CDAssistant.participant.id), model.participant?.id ?? 0)
-            find(predicate: predicate) { entities in
-                compeletion(entities)
+            if let participantId = model.participant?.id {
+                let predicate = NSPredicate(format: "%K == %i", #keyPath(CDAssistant.participant.id), participantId)
+                find(predicate: predicate) { entities in
+                    compeletion(entities)
+                }
             }
         }
     }

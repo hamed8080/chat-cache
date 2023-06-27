@@ -126,31 +126,35 @@ public extension CDParticipant {
     }
 
     var codable: Model {
-        Participant(admin: admin?.boolValue,
-                    auditor: auditor?.boolValue,
-                    blocked: blocked?.boolValue,
-                    cellphoneNumber: cellphoneNumber,
-                    contactFirstName: contactFirstName,
-                    contactId: contactId?.intValue,
-                    contactName: contactName,
-                    contactLastName: contactLastName,
-                    coreUserId: coreUserId?.intValue,
-                    email: email,
-                    firstName: firstName,
-                    id: id?.intValue,
-                    ssoId: ssoId,
-                    image: image,
-                    keyId: keyId,
-                    lastName: lastName,
-                    myFriend: myFriend?.boolValue,
-                    name: name,
-                    notSeenDuration: notSeenDuration?.intValue,
-                    online: online?.boolValue,
-                    receiveEnable: receiveEnable?.boolValue,
-                    roles: try? JSONDecoder.instance.decode([Roles].self, from: roles ?? Data()),
-                    sendEnable: sendEnable?.boolValue,
-                    username: username,
-                    chatProfileVO: .init(bio: bio, metadata: metadata),
-                    conversation: conversation?.codable(fillLastMessageVO: false, fillParticipants: false, fillPinMessages: false))
+        var decodedRoles: [Roles]?
+        if let roles = self.roles {
+            decodedRoles = try? JSONDecoder.instance.decode([Roles].self, from: roles)
+        }
+        return Participant(admin: admin?.boolValue,
+                           auditor: auditor?.boolValue,
+                           blocked: blocked?.boolValue,
+                           cellphoneNumber: cellphoneNumber,
+                           contactFirstName: contactFirstName,
+                           contactId: contactId?.intValue,
+                           contactName: contactName,
+                           contactLastName: contactLastName,
+                           coreUserId: coreUserId?.intValue,
+                           email: email,
+                           firstName: firstName,
+                           id: id?.intValue,
+                           ssoId: ssoId,
+                           image: image,
+                           keyId: keyId,
+                           lastName: lastName,
+                           myFriend: myFriend?.boolValue,
+                           name: name,
+                           notSeenDuration: notSeenDuration?.intValue,
+                           online: online?.boolValue,
+                           receiveEnable: receiveEnable?.boolValue,
+                           roles: decodedRoles,
+                           sendEnable: sendEnable?.boolValue,
+                           username: username,
+                           chatProfileVO: .init(bio: bio, metadata: metadata),
+                           conversation: conversation?.codable(fillLastMessageVO: false, fillParticipants: false, fillPinMessages: false))
     }
 }

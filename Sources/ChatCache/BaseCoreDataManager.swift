@@ -120,6 +120,10 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         }
     }
 
+    public func delete(_ id: Int) {
+        batchDelete([id])
+    }
+
     public func batchDelete(_ ids: [Int]) {
         let predicate = NSPredicate(format: "\(Entity.idName) IN %@", ids.map { $0 as NSNumber })
         batchDelete(predicate: predicate)
