@@ -29,7 +29,10 @@ public extension CDCurrentUserRole {
     }
 
     var codable: Model {
-        CurrentUserRole(threadId: threadId?.intValue,
-                 roles: try? JSONDecoder.instance.decode([Roles].self, from: roles ?? Data()))
+        var decodecRoles: [Roles]?
+        if let data = self.roles {
+           decodecRoles = try? JSONDecoder.instance.decode([Roles].self, from: data)
+        }
+        return CurrentUserRole(threadId: threadId?.intValue, roles:  decodecRoles)
     }
 }

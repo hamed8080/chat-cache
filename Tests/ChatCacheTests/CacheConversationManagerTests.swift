@@ -1058,6 +1058,49 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenCodableConversation_fillableAreNotNill() {
+        // Given
+        let pinMessage = Message(id: 1)
+        let participant = Participant(id: 1)
+        let lastMessageVO = Message(id: 2)
+        let conversation = mockModel(lastMessageVO: lastMessageVO, participants: [participant], pinMessages: [pinMessage])
+        sut.insert(models: [conversation])
+
+        // When
+        let exp = expectation(description: "Expected to fillables to be not nil.")
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.fetch(.init()) { conversations, totalCount in
+                let first = conversations.map({$0.codable(fillLastMessageVO: true, fillParticipants: true, fillPinMessages: true)}).first
+                if first?.pinMessages != nil, first?.participants != nil, first?.lastMessageVO != nil {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenCodableConversation_fillableAreNil() {
+        // Given
+        let conversation = mockModel()
+        sut.insert(models: [conversation])
+
+        // When
+        let exp = expectation(description: "Expected to fillables to be nil.")
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.fetch(.init()) { conversations, totalCount in
+                let first = conversations.map({$0.codable(fillLastMessageVO: false, fillParticipants: false, fillPinMessages: false)}).first
+                if first?.pinMessages == nil, first?.participants == nil, first?.lastMessageVO == nil {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(admin: Bool? = false,
                            canEditInfo: Bool? = false,
                            canSpam: Bool? = false,

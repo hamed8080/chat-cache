@@ -19,7 +19,7 @@ public extension CDTag {
 
 public extension CDTag {
     @NSManaged var active: NSNumber?
-    @NSManaged var id: NSNumber?
+    @NSManaged var id: NSNumber
     @NSManaged var name: String?
     @NSManaged var tagParticipants: NSSet?
 }
@@ -57,7 +57,7 @@ public extension CDTag {
     }
 
     var codable: Model {
-        Tag(id: id?.intValue ?? -1,
+        Tag(id: id.intValue,
             name: name ?? "",
             active: active?.boolValue ?? false,
             tagParticipants: tagParticipants?.allObjects.compactMap{ $0 as? CDTagParticipant }.compactMap{ $0?.codable } )

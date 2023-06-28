@@ -26,7 +26,7 @@ public final class CacheQueueOfForwardMessagesManager: BaseCoreDataManager<CDQue
             .replacingOccurrences(of: " ", with: "")
     }
 
-    public func unsendForThread(_ threadId: Int, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
+    public func unsendForThread(_ threadId: Int, _ count: Int = 25, _ offset: Int = 0, _ completion: @escaping ([Entity], Int) -> Void) {
         let threadIdPredicate = NSPredicate(format: "threadId == \(CDConversation.queryIdSpecifier)", threadId)
         fetchWithOffset(count: count, offset: offset, predicate: threadIdPredicate, completion)
     }

@@ -110,6 +110,25 @@ final class CacheQueueOfForwardMessagesManagerTests: XCTestCase, CacheLogDelegat
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenCodableForwardQueue_requiredFieldsAreNotNil() {
+        // Given
+        sut.insert(models: [mockModel()])
+
+        // When
+        let exp = expectation(description: "Expected to fillables to be not nil.")
+        notification.onInsert { (entities: [CDQueueOfForwardMessages]) in
+            self.sut.unsendForThread(1, 10, 0) { entities, totalCount in
+                let codable = entities.first?.codable
+                if codable?.fromThreadId != nil, codable?.threadId != nil {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(
         fromThreadId: Int? = 1,
         messageIds: [Int]? = [1,2,3],

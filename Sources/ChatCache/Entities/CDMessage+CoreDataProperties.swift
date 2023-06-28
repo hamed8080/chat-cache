@@ -76,10 +76,11 @@ public extension CDMessage {
     }
 
     func setParticipant(_ participant: Participant, _ threadId: Int, _ context: NSManagedObjectContext) {
-        let participantId = participant.id ?? -1
-        self.participant = CDParticipant.findOrCreate(threadId: threadId, participantId: participantId, context: context)
-        self.participant?.conversation = CDConversation.findOrCreate(threadId: threadId, context: context)
-        self.participant?.update(participant)
+        if let participantId = participant.id {
+            self.participant = CDParticipant.findOrCreate(threadId: threadId, participantId: participantId, context: context)
+            self.participant?.conversation = CDConversation.findOrCreate(threadId: threadId, context: context)
+            self.participant?.update(participant)
+        }
     }
 
     func codable(fillConversation: Bool = true, fillParticipant: Bool = true) -> Model {

@@ -53,16 +53,6 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         }
     }
 
-    public func batchUpdate(_ updateObjects: @escaping (NSManagedObjectContextProtocol) -> Void) {
-        let context = bgContext
-        context.perform { [weak self] in
-            updateObjects(context)
-            self?.save(context: context)
-            let updatedObjectIds = context.updatedObjects.map(\.objectID)
-            self?.mergeChanges(key: NSUpdatedObjectsKey, updatedObjectIds)
-        }
-    }
-
     public func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate) {
         let context = bgContext
         context.perform { [weak self] in
@@ -108,15 +98,6 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         context.perform { [weak self] in
             try makeEntities(context)
             self?.save(context: context)
-            let insertedObjectIds = context.insertedObjects.map(\.objectID)
-            let updatedObjectIds = context.updatedObjects.map(\.objectID)
-            if insertedObjectIds.count > 0 {
-                self?.mergeChanges(key: NSInsertedObjectsKey, insertedObjectIds)
-            }
-            // For entities with constraint we the constraint will update not insert, because we use trump policy in bgTask Context.
-            if updatedObjectIds.count > 0 {
-                self?.mergeChanges(key: NSUpdatedObjectsKey, updatedObjectIds)
-            }
         }
     }
 
@@ -143,16 +124,14 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         }
     }
 
-    public func fetchWithOffset(count: Int?, offset: Int?, predicate: NSPredicate? = nil, sortDescriptor: [NSSortDescriptor]? = nil, _ completion: @escaping ([Entity], Int) -> Void) {
+    public func fetchWithOffset(count: Int = 25, offset: Int = 0, predicate: NSPredicate? = nil, sortDescriptor: [NSSortDescriptor]? = nil, _ completion: @escaping ([Entity], Int) -> Void) {
         viewContext.perform {
             let req = NSFetchRequest<Entity>(entityName: Entity.name)
-            if let sortDescriptors = sortDescriptor {
-                req.sortDescriptors = sortDescriptors
-            }
+            req.sortDescriptors = sortDescriptor
             req.predicate = predicate
             let totalCount = (try? self.viewContext.count(for: req)) ?? 0
-            req.fetchLimit = count ?? 50
-            req.fetchOffset = offset ?? 0
+            req.fetchLimit = count
+            req.fetchOffset = offset
             let objects = try self.viewContext.fetch(req)
             completion(objects, totalCount)
         }

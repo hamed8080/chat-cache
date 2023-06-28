@@ -21,6 +21,14 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
             try? replaceLastMessage(model, context)
         }
 
+        model.participants?.forEach { participnat in
+            if let participantId = participnat.id {
+                let participantEntity = CDParticipant.findOrCreate(threadId: threadId, participantId: participantId, context: context)
+                participantEntity.update(participnat)
+                participantEntity.conversation = entity
+            }
+        }
+
         model.pinMessages?.forEach { pinMessage in
             let pinMessageEntity = CDMessage.insertEntity(context)
             pinMessageEntity.update(pinMessage)

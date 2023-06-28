@@ -224,7 +224,7 @@ public extension CDConversation {
                      userGroupHash: userGroupHash,
                      inviter: inviter?.codable,
                      lastMessageVO: fillLastMessageVO ? lastMessageVO?.codable(fillConversation: false) : nil,
-                     participants: fillParticipants ? participants?.allObjects.map { $0 as? CDParticipant }.compactMap { $0?.codable } : nil,
+                     participants: fillParticipants ? participants?.allObjects.compactMap { ($0 as? CDParticipant)?.codable } : nil,
                      pinMessages: fillPinMessages ? pinMessages?.allObjects.compactMap { $0 as? CDMessage }.map { $0.codable(fillConversation: false) } : nil,
                      isArchive: isArchive?.boolValue)
     }

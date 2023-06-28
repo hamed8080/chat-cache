@@ -38,7 +38,7 @@ public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
         NSPredicate(format: "conversation.\(CDConversation.idName) == \(CDConversation.queryIdSpecifier) AND \(Entity.idName) == \(Entity.queryIdSpecifier)", threadId, participantId)
     }
 
-    public func getThreadParticipants(_ threadId: Int, _ count: Int?, _ offset: Int?, _ completion: @escaping ([Entity], Int) -> Void) {
+    public func getThreadParticipants(_ threadId: Int, _ count: Int = 25, _ offset: Int = 0, _ completion: @escaping ([Entity], Int) -> Void) {
         let predicate = NSPredicate(format: "conversation.\(CDConversation.idName) == \(CDConversation.queryIdSpecifier)", threadId)
         fetchWithOffset(count: count, offset: offset, predicate: predicate, completion)
     }

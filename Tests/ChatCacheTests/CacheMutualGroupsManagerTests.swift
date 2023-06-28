@@ -60,6 +60,24 @@ final class CacheMutualGroupsManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenCodableMutualGroup_allFilledsAreFill() {
+        // Given
+        let threads: [Conversation] = [.init(id: 1), .init(id: 2)]
+        sut.insert(threads, idType: .contactId, mutualId: "1")
+
+        // When
+        let exp = expectation(description: "Expected to fillables to be not nil.")
+        notification.onInsert { (entities: [CDMutualGroup]) in
+            let first = entities.first?.codable
+            if first?.conversations != nil, first?.idType != nil, first?.mutualId != nil {
+                exp.fulfill()
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(
         idType: InviteeTypes = .contactId,
         mutualId: String? = "1",

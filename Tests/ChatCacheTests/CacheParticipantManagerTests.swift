@@ -151,6 +151,24 @@ final class CacheParticipantManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 0.5)
     }
 
+    func test_whenCodableAParticipant_fillableAreNotNill() {
+        // Given
+        sut.insert(model: Conversation(id: 1, participants: [mockModel(id: 1, roles: [.addNewUser])]))
+
+        // When
+        let exp = expectation(description: "Expected to fillables to be not nil.")
+        notification.onInsert { (entities: [CDParticipant]) in
+            self.sut.getThreadParticipants(1) { entities, _ in
+                if entities.first?.codable.roles != nil {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(
         admin: Bool? = nil,
         auditor: Bool? = nil,

@@ -111,6 +111,25 @@ final class CacheQueueOfTextMessagesManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenCodableTextQueue_requiredFieldsAreNotNil() {
+        // Given
+        sut.insert(models: [mockModel(textMessage: "TEST", uniqueId: "UNIQUE")])
+
+        // When
+        let exp = expectation(description: "Expected to fillables to be not nil.")
+        notification.onInsert { (entities: [CDQueueOfTextMessages]) in
+            self.sut.unsendForThread(1, 10, 0) { entities, totalCount in
+                let codable = entities.first?.codable
+                if codable?.textMessage != nil, codable?.messageType != nil {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(
         messageType: MessageType? = .text,
         metadata: String? = nil,

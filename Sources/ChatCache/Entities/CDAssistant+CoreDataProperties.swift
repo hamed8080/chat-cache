@@ -51,10 +51,14 @@ public extension CDAssistant {
     }
 
     var codable: Model {
-        Assistant(contactType: contactType,
-                  assistant: assistant,
-                  participant: participant?.codable,
-                  roles: try? JSONDecoder.instance.decode([Roles].self, from: roles ?? Data()),
-                  block: block?.boolValue)
+        var decodededRoles: [Roles]?
+        if let data = roles, let roles = try? JSONDecoder.instance.decode([Roles].self, from: data) {
+            decodededRoles = roles
+        }
+        return Assistant(contactType: contactType,
+                         assistant: assistant,
+                         participant: participant?.codable,
+                         roles: decodededRoles,
+                         block: block?.boolValue)
     }
 }

@@ -34,11 +34,10 @@ public protocol CoreDataProtocol {
     func update(_ propertiesToUpdate: [String: Any], _ predicate: NSPredicate)
     func mergeChanges(key: String, _ objectIDs: [NSManagedObjectID])
     func insertObjects(_ makeEntities: @escaping ((NSManagedObjectContextProtocol) throws -> Void))
-    func batchUpdate(_ updateObjects: @escaping (NSManagedObjectContextProtocol) -> Void)
     func delete(_ id: Int)
     func batchDelete(_ ids: [Int])
     func batchDelete(predicate: NSPredicate)
-    func fetchWithOffset(count: Int?, offset: Int?, predicate: NSPredicate?, sortDescriptor: [NSSortDescriptor]?, _ completion: @escaping ([Entity], Int) -> Void)
+    func fetchWithOffset(count: Int, offset: Int, predicate: NSPredicate?, sortDescriptor: [NSSortDescriptor]?, _ completion: @escaping ([Entity], Int) -> Void)
     func all(_ completion: @escaping ([Entity]) -> Void)
     func fetchWithObjectIds(ids: [NSManagedObjectID], _ completion: @escaping ([Entity]) -> Void)
     func findOrCreate<T: EntityProtocol>(_ id: Entity.Id, _ context: NSManagedObjectContextProtocol) -> T

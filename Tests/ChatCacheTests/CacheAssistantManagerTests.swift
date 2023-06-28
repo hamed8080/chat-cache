@@ -137,9 +137,32 @@ final class CacheAssistantManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
-    private func mockModel(id: Int = 1, participantId: Int = 123456, block: Bool = false) -> Assistant {
+    func test_whenCodableAssistant_requiredFieldsAreFilled() {
+        // Given
+        sut.insert(models: [mockModel(roles: [.addNewUser])])
+
+        // When
+        let exp = expectation(description: "Expected to fillables to be not nil.")
+        notification.onInsert { (entities: [CDAssistant]) in
+            self.sut.fetch { entities, count in
+                let first = entities.first?.codable
+                if first?.roles != nil {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    private func mockModel(id: Int = 1, participantId: Int = 123456, block: Bool = false, roles: [Roles]? = nil) -> Assistant {
         let participant = Participant(id: participantId)
-        let model = Assistant(id: id, assistant: .init(id: "\(20)", idType: .cellphoneNumber), participant: participant, roles: nil, block: block)
+        let model = Assistant(id: id,
+                              assistant: .init(id: "\(20)", idType: .cellphoneNumber),
+                              participant: participant,
+                              roles: roles,
+                              block: block)
         return model
     }
 

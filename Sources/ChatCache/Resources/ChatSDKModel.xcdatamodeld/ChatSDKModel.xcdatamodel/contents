@@ -171,7 +171,7 @@
         <attribute name="notSeenDuration" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="online" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="receiveEnable" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
-        <attribute name="roles" optional="YES" attributeType="Binary" valueTransformerName="RolesValueTransformer" customClassName="[Roles]"/>
+        <attribute name="roles" optional="YES" attributeType="Binary" valueTransformerName=""/>
         <attribute name="sendEnable" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="ssoId" optional="YES" attributeType="String"/>
         <attribute name="time" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>

@@ -81,6 +81,47 @@ final class CacheTagManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenCodableTagParticipants_shoulNotbeNil() {
+        // Given
+        let tagParticipants: [TagParticipant] = [.init(id: 1, active: false, tagId: 1, threadId: 1, conversation: Conversation(id: 1))]
+        let tag = Tag(id: 1, name: "Social", active: true, tagParticipants: tagParticipants)
+        sut.insert(models: [tag])
+
+        // When
+        let exp = expectation(description: "Expected to decoded tagParticipants.")
+        notification.onInsert { (entities: [CDTag]) in
+            self.sut.getTags { tags in
+                if tags.map({$0.codable}).first?.tagParticipants?.count == 1 {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenActiveAndNameIsNil_fillThemWithDefaultValues() {
+        // Given
+        let tag = CDTag.insertEntity(sut.viewContext)
+        sut.viewContext.perform {
+            self.sut.saveViewContext()
+        }
+
+        // When
+        let exp = expectation(description: "Expected to get default value whenever name and active is nil.")
+        notification.onInsert { (entities: [CDTag]) in
+            self.sut.getTags { tags in
+                if let tag = tags.map({$0.codable}).first, tag.name == "", tag.active == false, tag.id == 0 {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     func log(message: String, persist: Bool, error: Error?) {
 
     }

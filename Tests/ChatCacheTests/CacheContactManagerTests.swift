@@ -238,6 +238,25 @@ final class CacheContactManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenCodableContact_requiredFieldsAreNotNil() {
+        // Given
+        sut.insert(models: [mockModel()])
+
+        // When
+        let exp = expectation(description: "Expected to fillables to be not nil.")
+        notification.onInsert { (entities: [CDContact]) in
+            self.sut.getContacts(.init()) { entities, totalCount in
+                let codable = entities.first?.codable
+                if codable?.id != nil {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(block: Bool = false, id: Int = 123456, email: String? = nil, cellPhoneNumber: String? = "0912+++") -> Contact {
         return Contact(blocked: block,
                        cellphoneNumber: cellPhoneNumber,

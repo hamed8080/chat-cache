@@ -74,6 +74,23 @@ final class CacheUserManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenCodableUser_requiredFieldsAreNotEmpty() {
+        // Given
+        sut.insert(mockModel(), isMe: true)
+
+        // When
+        let exp = expectation(description: "Expected to fillables to be not nil.")
+        notification.onInsert { (entities: [CDUser]) in
+            let first = entities.first?.codable
+            if first?.id != nil {
+                exp.fulfill()
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(
         cellphoneNumber: String? = "+1235256334",
         coreUserId: Int? = nil,
