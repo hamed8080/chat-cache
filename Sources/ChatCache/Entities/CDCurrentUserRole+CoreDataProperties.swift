@@ -10,7 +10,7 @@ import ChatModels
 
 public extension CDCurrentUserRole {
     typealias Entity = CDCurrentUserRole
-    typealias Model = CurrentUserRole
+    typealias Model = UserRole
     typealias Id = Int
     static let name = "CDCurrentUserRole"
     static var queryIdSpecifier: String = "%i"
@@ -33,6 +33,6 @@ public extension CDCurrentUserRole {
         if let data = self.roles {
            decodecRoles = try? JSONDecoder.instance.decode([Roles].self, from: data)
         }
-        return CurrentUserRole(threadId: threadId?.intValue, roles:  decodecRoles)
+        return UserRole(threadId: threadId?.intValue, roles: decodecRoles)
     }
 }

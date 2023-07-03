@@ -24,7 +24,7 @@ final class CacheCurrentUserRolesManagerTests: XCTestCase, CacheLogDelegate {
     func test_whenInsertUserRoles_userRolesAreInStore() {
         // Given
         let roles: [Roles] = [.addNewUser, .deleteMessageOfOthers, .ownership]
-        let userRole = CurrentUserRole(threadId: 1, roles: roles)
+        let userRole = UserRole(threadId: 1, roles: roles)
         sut.insert(models: [userRole])
 
         // When
@@ -43,8 +43,8 @@ final class CacheCurrentUserRolesManagerTests: XCTestCase, CacheLogDelegate {
         // Given
         let roles1: [Roles] = [.addNewUser, .deleteMessageOfOthers, .ownership]
         let roles2: [Roles] = []
-        let userRole1 = CurrentUserRole(threadId: 1, roles: roles1)
-        let userRole2 = CurrentUserRole(threadId: 2, roles: roles2)
+        let userRole1 = UserRole(threadId: 1, roles: roles1)
+        let userRole2 = UserRole(threadId: 2, roles: roles2)
         sut.insert(models: [userRole1, userRole2])
 
         // When
@@ -62,7 +62,7 @@ final class CacheCurrentUserRolesManagerTests: XCTestCase, CacheLogDelegate {
     func test_whenUserDeletedAUserRole_itReturnNil() {
         // Given
         let roles: [Roles] = [.addNewUser, .deleteMessageOfOthers, .ownership]
-        let userRole = CurrentUserRole(threadId: 1, roles: roles)
+        let userRole = UserRole(threadId: 1, roles: roles)
         sut.insert(models: [userRole])
 
         // When
