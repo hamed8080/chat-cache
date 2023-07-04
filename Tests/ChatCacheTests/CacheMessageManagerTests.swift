@@ -67,6 +67,52 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    public func test_whenThreadPinMessages_pinnedIsInThreadPinMessages() {
+        // Given
+        let thread = CDConversation.insertEntity(self.sut.viewContext)
+        thread.id = 1
+        self.sut.saveViewContext()
+        let msg = mockModel(threadId: 1, id: 2, message: "Hello")
+        sut.insert(models: [msg])
+
+        // Then
+        let exp = expectation(description: "Expected to inserted a pin message in thread.pinMessages.")
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.addOrRemoveThreadPinMessages(true, 1, 2)
+            let req = CDConversation.fetchRequest()
+            req.predicate = NSPredicate(format: "id == %i", 1)
+            if let thread = try? self.sut.viewContext.fetch(req).first {
+                if (thread.pinMessages?.allObjects as? [CDMessage])?.first(where: {$0.id == 2}) != nil {
+                    exp.fulfill()
+                }
+            }
+        }
+        wait(for: [exp], timeout: 1)
+    }
+
+    public func test_whenThreadUnPinMessages_pinnedIsNotInThreadPinMessages() {
+        // Given
+        let thread = CDConversation.insertEntity(self.sut.viewContext)
+        thread.id = 1
+        self.sut.saveViewContext()
+        let msg = mockModel(threadId: 1, id: 2, message: "Hello")
+        sut.insert(models: [msg])
+
+        // Then
+        let exp = expectation(description: "Expected the pin message is not in thread.pinMessages.")
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.addOrRemoveThreadPinMessages(false, 1, 2)
+            let req = CDConversation.fetchRequest()
+            req.predicate = NSPredicate(format: "id == %i", 1)
+            if let thread = try? self.sut.viewContext.fetch(req).first {
+                if (thread.pinMessages?.allObjects as? [CDMessage])?.first(where: {$0.id == 2}) == nil {
+                    exp.fulfill()
+                }
+            }
+        }
+        wait(for: [exp], timeout: 1)
+    }
+
     public func test_whenDeleteAMessage_messageIsDeletedFromStore() {
         // Given
         let msg = mockModel(threadId: 1, id: 2, message: "Hello")
@@ -514,7 +560,7 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
                               messageType: messageType,
                               metadata: metadata,
                               systemMetadata: systemMetadata,
-                              time: time,
+                              repliedToMessageTime: time,
                               participant: participant ?? defaultParticipant)
         return model
     }

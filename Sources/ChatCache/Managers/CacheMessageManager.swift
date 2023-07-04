@@ -36,6 +36,26 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
         update(propertiesToUpdate, predicate)
     }
 
+    public func addOrRemoveThreadPinMessages(_ pin: Bool, _ threadId: Int, _ messageId: Int) {
+        let req = CDConversation.fetchRequest()
+        req.predicate = NSPredicate(format: "id == %i", threadId)
+        if let entity = try? viewContext.fetch(req).first, pin == false {
+            if let pinMessageEntity = entity.pinMessages?.first(where: {($0 as? CDMessage)?.id?.intValue == messageId}) as? CDMessage {
+                entity.removeFromPinMessages(pinMessageEntity)
+                saveViewContext()
+            }
+        }
+
+        if let threadEntity = try? viewContext.fetch(req).first, pin == true {
+            let messageReq = Entity.fetchRequest()
+            messageReq.predicate = predicate(threadId, messageId)
+            if let entity = try? viewContext.fetch(messageReq).first {
+                threadEntity.addToPinMessages(entity)
+                saveViewContext()
+            }
+        }
+    }
+
     /// The owner of the message is our partner so we just seen it.
     /// Set seen only for prior messages where the owner of the message is not me.
     /// We should do that because we need to distinguish between messages that came from the partner or messages sent by myself.
