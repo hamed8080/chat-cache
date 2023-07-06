@@ -104,6 +104,7 @@ extension PersistentManager {
         RolesValueTransformer.register()
         AssistantValueTransformer.register()
         ReplyInfoValueTransformer.register()
+        PinMessageValueTransformer.register()
         ForwardInfoValueTransformer.register()
     }
 }

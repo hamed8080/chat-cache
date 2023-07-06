@@ -1006,15 +1006,15 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
 
     func test_whenPinAMessage_itSetPinToTrue() {
         // Given
-        let message = Message(threadId: 1, id: 2, message: "Hello")
+        let message = PinMessage(messageId: 1, text: "TEST_PIN_MESSAGE")
 
         // When
-        sut.insert(models: [mockModel(id: 1, pinMessages: [message])])
+        sut.insert(models: [mockModel(id: 1, pinMessage: message)])
 
         // Then
         let exp = expectation(description: "Expected to set pin to true.")
         notification.onInsert { (entities: [CDConversation]) in
-            if let entity = (entities.first?.pinMessages?.allObjects as? [CDMessage])?.first, entity.pinned == true {
+            if let entity = entities.first?.pinMessage {
                 exp.fulfill()
             }
         }
@@ -1060,18 +1060,18 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
 
     func test_whenCodableConversation_fillableAreNotNill() {
         // Given
-        let pinMessage = Message(id: 1)
+        let pinMessage = PinMessage(messageId: 1, text: "TEST_PIN_MESSAGE")
         let participant = Participant(id: 1)
         let lastMessageVO = Message(id: 2)
-        let conversation = mockModel(lastMessageVO: lastMessageVO, participants: [participant], pinMessages: [pinMessage])
+        let conversation = mockModel(lastMessageVO: lastMessageVO, participants: [participant], pinMessage: pinMessage)
         sut.insert(models: [conversation])
 
         // When
         let exp = expectation(description: "Expected to fillables to be not nil.")
         notification.onInsert { (entities: [CDConversation]) in
             self.sut.fetch(.init()) { conversations, totalCount in
-                let first = conversations.map({$0.codable(fillLastMessageVO: true, fillParticipants: true, fillPinMessages: true)}).first
-                if first?.pinMessages != nil, first?.participants != nil, first?.lastMessageVO != nil {
+                let first = conversations.map({$0.codable(fillLastMessageVO: true, fillParticipants: true)}).first
+                if first?.pinMessage != nil, first?.participants != nil, first?.lastMessageVO != nil {
                     exp.fulfill()
                 }
             }
@@ -1090,8 +1090,8 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         let exp = expectation(description: "Expected to fillables to be nil.")
         notification.onInsert { (entities: [CDConversation]) in
             self.sut.fetch(.init()) { conversations, totalCount in
-                let first = conversations.map({$0.codable(fillLastMessageVO: false, fillParticipants: false, fillPinMessages: false)}).first
-                if first?.pinMessages == nil, first?.participants == nil, first?.lastMessageVO == nil {
+                let first = conversations.map({$0.codable(fillLastMessageVO: false, fillParticipants: false)}).first
+                if first?.pinMessage == nil, first?.participants == nil, first?.lastMessageVO == nil {
                     exp.fulfill()
                 }
             }
@@ -1137,7 +1137,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
                            inviter: Participant? = nil,
                            lastMessageVO: Message? = nil,
                            participants: [Participant]? = nil,
-                           pinMessages: [Message]? = nil,
+                           pinMessage: PinMessage? = nil,
                            isArchive: Bool? = nil) -> Conversation {
         return Conversation(admin: admin,
                             canEditInfo: canEditInfo,
@@ -1175,7 +1175,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
                             inviter: inviter,
                             lastMessageVO: lastMessageVO,
                             participants: participants,
-                            pinMessages: pinMessages,
+                            pinMessage: pinMessage,
                             isArchive: isArchive)
     }
 

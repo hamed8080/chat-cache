@@ -58,7 +58,7 @@ public extension CDConversation {
     @NSManaged var messages: NSSet?
     @NSManaged var mutualGroups: NSSet?
     @NSManaged var participants: NSSet?
-    @NSManaged var pinMessages: NSSet?
+    @NSManaged var pinMessage: PinMessage?
     @NSManaged var tagParticipants: NSSet?
 }
 
@@ -108,22 +108,6 @@ public extension CDConversation {
 
     @objc(removeParticipants:)
     @NSManaged func removeFromParticipants(_ values: NSSet)
-}
-
-// MARK: Generated accessors for pinMessages
-
-public extension CDConversation {
-    @objc(addPinMessagesObject:)
-    @NSManaged func addToPinMessages(_ value: CDMessage)
-
-    @objc(removePinMessagesObject:)
-    @NSManaged func removeFromPinMessages(_ value: CDMessage)
-
-    @objc(addPinMessages:)
-    @NSManaged func addToPinMessages(_ values: NSSet)
-
-    @objc(removePinMessages:)
-    @NSManaged func removeFromPinMessages(_ values: NSSet)
 }
 
 // MARK: Generated accessors for tagParticipants
@@ -179,6 +163,7 @@ public extension CDConversation {
         uniqueName = model.uniqueName
         userGroupHash = model.userGroupHash
         isArchive = model.isArchive as NSNumber?
+        pinMessage = model.pinMessage
     }
 
     class func findOrCreate(threadId: Int, context: NSManagedObjectContextProtocol) -> CDConversation {
@@ -188,7 +173,7 @@ public extension CDConversation {
         return entity
     }
 
-    func codable(fillLastMessageVO: Bool = true, fillParticipants: Bool = false, fillPinMessages: Bool = true) -> Model {
+    func codable(fillLastMessageVO: Bool = true, fillParticipants: Bool = false) -> Model {
         Conversation(admin: admin?.boolValue,
                      canEditInfo: canEditInfo?.boolValue,
                      canSpam: canSpam?.boolValue,
@@ -225,7 +210,7 @@ public extension CDConversation {
                      inviter: inviter?.codable,
                      lastMessageVO: fillLastMessageVO ? lastMessageVO?.codable(fillConversation: false) : nil,
                      participants: fillParticipants ? participants?.allObjects.compactMap { ($0 as? CDParticipant)?.codable } : nil,
-                     pinMessages: fillPinMessages ? pinMessages?.allObjects.compactMap { $0 as? CDMessage }.map { $0.codable(fillConversation: false) } : nil,
+                     pinMessage: pinMessage,
                      isArchive: isArchive?.boolValue)
     }
 }

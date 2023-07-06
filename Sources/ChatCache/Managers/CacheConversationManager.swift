@@ -28,15 +28,6 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
                 participantEntity.conversation = entity
             }
         }
-
-        model.pinMessages?.forEach { pinMessage in
-            let pinMessageEntity = CDMessage.insertEntity(context)
-            pinMessageEntity.update(pinMessage)
-            pinMessageEntity.pinned = true
-            pinMessageEntity.threadId = entity.id
-            pinMessageEntity.conversation = entity
-            entity.addToPinMessages(pinMessageEntity)
-        }
     }
 
     /// It will update, the last message seen when the owner of the message is not me I just saw the partner message.

@@ -82,7 +82,7 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
             let req = CDConversation.fetchRequest()
             req.predicate = NSPredicate(format: "id == %i", 1)
             if let thread = try? self.sut.viewContext.fetch(req).first {
-                if (thread.pinMessages?.allObjects as? [CDMessage])?.first(where: {$0.id == 2}) != nil {
+                if thread.pinMessage?.messageId == 2 {
                     exp.fulfill()
                 }
             }
@@ -105,7 +105,7 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
             let req = CDConversation.fetchRequest()
             req.predicate = NSPredicate(format: "id == %i", 1)
             if let thread = try? self.sut.viewContext.fetch(req).first {
-                if (thread.pinMessages?.allObjects as? [CDMessage])?.first(where: {$0.id == 2}) == nil {
+                if thread.pinMessage == nil {
                     exp.fulfill()
                 }
             }

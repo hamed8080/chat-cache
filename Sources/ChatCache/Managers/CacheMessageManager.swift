@@ -39,18 +39,17 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
     public func addOrRemoveThreadPinMessages(_ pin: Bool, _ threadId: Int, _ messageId: Int) {
         let req = CDConversation.fetchRequest()
         req.predicate = NSPredicate(format: "id == %i", threadId)
-        if let entity = try? viewContext.fetch(req).first, pin == false {
-            if let pinMessageEntity = entity.pinMessages?.first(where: {($0 as? CDMessage)?.id?.intValue == messageId}) as? CDMessage {
-                entity.removeFromPinMessages(pinMessageEntity)
-                saveViewContext()
-            }
+        guard let threadEntity = try? viewContext.fetch(req).first else { return }
+        if pin == false {
+            threadEntity.pinMessage = nil
+            saveViewContext()
         }
 
-        if let threadEntity = try? viewContext.fetch(req).first, pin == true {
+        if pin == true {
             let messageReq = Entity.fetchRequest()
             messageReq.predicate = predicate(threadId, messageId)
             if let entity = try? viewContext.fetch(messageReq).first {
-                threadEntity.addToPinMessages(entity)
+                threadEntity .pinMessage = PinMessage(message: entity.codable())
                 saveViewContext()
             }
         }

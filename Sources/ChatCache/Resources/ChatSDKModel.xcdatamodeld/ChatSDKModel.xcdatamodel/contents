@@ -58,6 +58,7 @@
         <attribute name="partnerLastSeenMessageNanos" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="partnerLastSeenMessageTime" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="pin" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="pinMessage" optional="YES" attributeType="Transformable" valueTransformerName="PinMessageValueTransformer" customClassName="PinMessage"/>
         <attribute name="time" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="Integer 64" usesScalarValueType="NO"/>
@@ -69,7 +70,6 @@
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="conversation" inverseEntity="CDMessage"/>
         <relationship name="mutualGroups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDMutualGroup" inverseName="conversations" inverseEntity="CDMutualGroup"/>
         <relationship name="participants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDParticipant" inverseName="conversation" inverseEntity="CDParticipant"/>
-        <relationship name="pinMessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDMessage" inverseName="pinMessages" inverseEntity="CDMessage"/>
         <relationship name="tagParticipants" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDTagParticipant" inverseName="conversation" inverseEntity="CDTagParticipant"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -136,7 +136,6 @@
         <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="messages" inverseEntity="CDConversation"/>
         <relationship name="conversationLastMessageVO" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="lastMessageVO" inverseEntity="CDConversation"/>
         <relationship name="participant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDParticipant" inverseName="messages" inverseEntity="CDParticipant"/>
-        <relationship name="pinMessages" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDConversation" inverseName="pinMessages" inverseEntity="CDConversation"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
