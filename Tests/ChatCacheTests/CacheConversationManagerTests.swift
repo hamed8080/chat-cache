@@ -919,7 +919,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
     func test_whenSeenAMessage_itUpdateLastSeenMessageTime() {
         // Given
         let lastMessageVO = Message(threadId: 1, id: 2, message: "Hello")
-
+        let date = UInt(Date().timeIntervalSince1970)
         sut.insert(models: [mockModel(id: 1,
                                       lastSeenMessageId: 1,
                                       lastSeenMessageNanos: 1,
@@ -929,14 +929,17 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
 
         // When
         notification.onInsert { (entities: [CDConversation]) in
-            self.sut.seen(threadId: 1, messageId: 2)
+            self.sut.seen(threadId: 1, lastSeenMessageId: 2, lastSeenMessageTime: date, lastSeenMessageNanos: date)
         }
 
         // Then
         let exp = expectation(description: "Expected to update lastSeenMessageId, lastSeenMessageTime, lastSeenMessageNanos.")
         notification.onUpdateIds { objectIds in
             self.sut.first(with: 1, context: self.sut.viewContext) { entity in
-                if let entity = entity, entity.lastSeenMessageId == 2, entity.lastSeenMessageTime?.intValue ?? 0 > 1, entity.lastSeenMessageTime?.intValue ?? 0 > 1 {
+                if let entity = entity,
+                   entity.lastSeenMessageId == 2,
+                   entity.lastSeenMessageTime?.uintValue == date,
+                   entity.lastSeenMessageNanos?.uintValue == date {
                     exp.fulfill()
                 }
             }

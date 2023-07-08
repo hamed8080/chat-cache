@@ -31,13 +31,13 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
     }
 
     /// It will update, the last message seen when the owner of the message is not me I just saw the partner message.
-    public func seen(threadId: Int, messageId: Int) {
+    public func seen(threadId: Int, lastSeenMessageId: Int, lastSeenMessageTime: UInt? = nil, lastSeenMessageNanos: UInt? = nil) {
         let predicate = idPredicate(id: threadId)
         let date = Date()
         let propertiesToUpdate = [
-            "lastSeenMessageId": (messageId) as NSNumber,
-            "lastSeenMessageTime": (date.timeIntervalSince1970) as NSNumber,
-            "lastSeenMessageNanos": (date.timeIntervalSince1970) as NSNumber,
+            "lastSeenMessageId": (lastSeenMessageId) as NSNumber,
+            "lastSeenMessageTime": (lastSeenMessageTime ?? UInt(date.timeIntervalSince1970)) as NSNumber,
+            "lastSeenMessageNanos": (lastSeenMessageNanos ?? UInt(date.timeIntervalSince1970)) as NSNumber,
         ]
         update(propertiesToUpdate, predicate)
     }
