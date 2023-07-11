@@ -26,10 +26,10 @@ public extension CDFile {
 
 public extension CDFile {
     func update(_ model: Model) {
-        hashCode = model.hashCode
-        name = model.name
-        size = model.size as? NSNumber
-        type = model.type
+        hashCode = model.hashCode ?? hashCode
+        name = model.name ?? name
+        size = model.size as? NSNumber ?? size
+        type = model.type ?? type
     }
 
     var codable: Model {

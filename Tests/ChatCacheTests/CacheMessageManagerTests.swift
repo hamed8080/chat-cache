@@ -415,10 +415,10 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
         sut.insert(models: [msg1, msg2, msg3])
 
         // Then
-        let exp = expectation(description: "Expected to get a descending ordered array.")
+        let exp = expectation(description: "Expected to get a descending ordered array. The array should be in reverse order in time and newer messages should be at the end of the list")
         notification.onInsert { (_: [CDConversation]) in
             self.sut.fetch(.init(threadId: 1, order: ChatCache.Ordering.desc.rawValue)) { entities, total in
-                if entities.count == 3, entities[0].id == 3, entities[1].id == 2, entities[2].id == 1 {
+                if entities.count == 3, entities[0].id == 1, entities[1].id == 2, entities[2].id == 3 {
                     exp.fulfill()
                 }
             }
@@ -435,10 +435,10 @@ final class CacheMessageManagerTests: XCTestCase, CacheLogDelegate {
         sut.insert(models: [msg1, msg2, msg3])
 
         // Then
-        let exp = expectation(description: "Expected to get a ascending ordered array.")
+        let exp = expectation(description: "Expected to get a ascending ordered array. The array should be in reverse order in time and newer messages should be at the top of the list")
         notification.onInsert { (_: [CDConversation]) in
             self.sut.fetch(.init(threadId: 1, order: ChatCache.Ordering.asc.rawValue)) { entities, total in
-                if entities.count == 3, entities[0].id == 1, entities[1].id == 2, entities[2].id == 3 {
+                if entities.count == 3, entities[0].id == 3, entities[1].id == 2, entities[2].id == 1 {
                     exp.fulfill()
                 }
             }

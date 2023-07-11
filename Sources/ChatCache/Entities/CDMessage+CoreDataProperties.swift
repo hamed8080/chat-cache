@@ -48,27 +48,27 @@ public extension CDMessage {
 
 public extension CDMessage {
     func update(_ model: Model) {
-        deletable = model.deletable as? NSNumber
-        delivered = model.delivered as? NSNumber
-        editable = model.editable as? NSNumber
-        edited = model.edited as? NSNumber
-        id = model.id as? NSNumber
-        mentioned = model.mentioned as? NSNumber
-        message = model.message
-        messageType = model.messageType?.rawValue as? NSNumber
-        metadata = model.metadata
-        ownerId = model.ownerId as? NSNumber
-        pinned = model.pinned as? NSNumber
-        previousId = model.previousId as? NSNumber
-        seen = model.seen as? NSNumber
-        systemMetadata = model.systemMetadata
-        threadId = model.threadId as? NSNumber ?? model.conversation?.id as? NSNumber
-        time = model.time as? NSNumber
-        uniqueId = model.uniqueId
-        pinTime = model.pinTime as? NSNumber
-        notifyAll = model.pinNotifyAll as? NSNumber
-        replyInfo = model.replyInfo
-        forwardInfo = model.forwardInfo
+        deletable = model.deletable as? NSNumber ?? deletable
+        delivered = model.delivered as? NSNumber ?? delivered
+        editable = model.editable as? NSNumber ?? editable
+        edited = model.edited as? NSNumber ?? edited
+        id = model.id as? NSNumber ?? id
+        mentioned = model.mentioned as? NSNumber ?? mentioned
+        message = model.message ?? message
+        messageType = model.messageType?.rawValue as? NSNumber ?? messageType
+        metadata = model.metadata ?? metadata
+        ownerId = model.ownerId as? NSNumber ?? ownerId
+        pinned = model.pinned as? NSNumber ?? pinned
+        previousId = model.previousId as? NSNumber ?? previousId
+        seen = model.seen as? NSNumber ?? seen
+        systemMetadata = model.systemMetadata ?? systemMetadata
+        threadId = model.threadId as? NSNumber ?? model.conversation?.id as? NSNumber ?? threadId
+        time = model.time as? NSNumber ?? time
+        uniqueId = model.uniqueId ?? uniqueId
+        pinTime = model.pinTime as? NSNumber ?? pinTime
+        notifyAll = model.pinNotifyAll as? NSNumber ?? notifyAll
+        replyInfo = model.replyInfo ?? replyInfo
+        forwardInfo = model.forwardInfo ?? forwardInfo
 
         if let participant = model.participant, let threadId = threadId, let context = managedObjectContext {
             setParticipant(participant, threadId.intValue, context)

@@ -197,6 +197,9 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
     /// and it will lead to problem such as dupicate message row.
     private func updateLastMessage(_ entity: CDConversation, _ threadId: Int, _ lastMessageVO: Message, _ context: NSManagedObjectContextProtocol) {
         entity.lastMessage = lastMessageVO.message
+        entity.lastSeenMessageTime = lastMessageVO.time as? NSNumber
+        entity.lastSeenMessageNanos = lastMessageVO.timeNanos as? NSNumber
+        entity.lastSeenMessageId = lastMessageVO.id as? NSNumber
         let messageReq = CDMessage.fetchRequest()
         messageReq.predicate = NSPredicate(format: "%K == %@ OR %K == %@", #keyPath(CDMessage.id), lastMessageVO.id as? NSNumber ?? -1, #keyPath(CDMessage.uniqueId), lastMessageVO.uniqueId ?? "")
         if let messageEntity = try? context.fetch(messageReq).first {

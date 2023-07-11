@@ -56,22 +56,22 @@ public extension CDUser {
 
 public extension CDUser {
     func update(_ model: Model) {
-        cellphoneNumber = model.cellphoneNumber
-        coreUserId = model.coreUserId as? NSNumber
-        email = model.email
-        id = model.id as? NSNumber
-        image = model.image
-        lastSeen = model.lastSeen as? NSNumber
-        name = model.name
-        nickname = model.nickname
-        receiveEnable = model.receiveEnable as? NSNumber
-        sendEnable = model.sendEnable as? NSNumber
-        username = model.username
-        bio = model.chatProfileVO?.bio
-        metadata = model.chatProfileVO?.metadata
-        ssoId = model.ssoId
-        lastName = model.lastName
-        firstName = model.firstName
+        cellphoneNumber = model.cellphoneNumber ?? cellphoneNumber
+        coreUserId = model.coreUserId as? NSNumber ?? coreUserId
+        email = model.email ?? email
+        id = model.id as? NSNumber ?? id
+        image = model.image ?? image
+        lastSeen = model.lastSeen as? NSNumber ?? lastSeen
+        name = model.name ?? name
+        nickname = model.nickname ?? nickname
+        receiveEnable = model.receiveEnable as? NSNumber ?? receiveEnable
+        sendEnable = model.sendEnable as? NSNumber ?? sendEnable
+        username = model.username ?? username
+        bio = model.chatProfileVO?.bio ?? bio
+        metadata = model.chatProfileVO?.metadata ?? metadata
+        ssoId = model.ssoId ?? ssoId
+        lastName = model.lastName ?? lastName
+        firstName = model.firstName ?? firstName
     }
 
     var codable: Model {

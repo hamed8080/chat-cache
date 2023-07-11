@@ -42,9 +42,9 @@ public extension CDTag {
 
 public extension CDTag {
     func update(_ model: Model) {
-        id = model.id as NSNumber
-        name = model.name
-        active = model.active as NSNumber
+        id = model.id as NSNumber ?? id
+        name = model.name ?? name
+        active = model.active as NSNumber ?? active
         model.tagParticipants?.forEach{ participnat in
             if let context = managedObjectContext {
                 let participantEntity = CDTagParticipant.insertEntity(context)

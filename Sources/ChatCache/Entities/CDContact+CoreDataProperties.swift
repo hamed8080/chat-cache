@@ -35,17 +35,17 @@ public extension CDContact {
 
 public extension CDContact {
     func update(_ model: Model) {
-        blocked = model.blocked as? NSNumber
-        cellphoneNumber = model.cellphoneNumber
-        email = model.email
-        firstName = model.firstName
-        hasUser = model.hasUser as NSNumber?
-        id = model.id as? NSNumber
-        image = model.image
-        lastName = model.lastName
-        notSeenDuration = model.notSeenDuration as? NSNumber
-        time = model.time as? NSNumber
-        userId = model.userId as? NSNumber
+        blocked = model.blocked as? NSNumber ?? blocked
+        cellphoneNumber = model.cellphoneNumber ?? cellphoneNumber
+        email = model.email ?? email
+        firstName = model.firstName ?? firstName
+        hasUser = model.hasUser as NSNumber? ?? hasUser
+        id = model.id as? NSNumber ?? id
+        image = model.image ?? image
+        lastName = model.lastName ?? lastName
+        notSeenDuration = model.notSeenDuration as? NSNumber ?? notSeenDuration
+        time = model.time as? NSNumber ?? time
+        userId = model.userId as? NSNumber ?? userId
         setUser(model: model)
     }
 

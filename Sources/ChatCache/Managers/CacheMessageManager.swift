@@ -132,14 +132,27 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
     public func fetch(_ req: FetchMessagesRequest, _ completion: @escaping ([Entity], Int) -> Void) {
         viewContext.perform {
             let fetchRequest = Entity.fetchRequest()
-            let sortByTime = NSSortDescriptor(key: "time", ascending: (req.order == Ordering.asc.rawValue) ? true : false)
+            let asc = (req.order == Ordering.asc.rawValue) ? true : false
+            let sortByTime = NSSortDescriptor(key: "time", ascending: asc)
             fetchRequest.sortDescriptors = [sortByTime]
             fetchRequest.predicate = self.predicateArray(req)
             let totalCount = try self.viewContext.count(for: fetchRequest)
             fetchRequest.fetchOffset = req.offset
             fetchRequest.fetchLimit = req.count
-            let messages = try self.viewContext.fetch(fetchRequest)
+            let messages = try self.viewContext.fetch(fetchRequest).sorted(by: { self.compare(asc, $0, $1) })
             completion(messages, totalCount)
+        }
+    }
+
+    private func compare(_ ascending: Bool, _ message1: CDMessage, _ message2: CDMessage) -> Bool {
+        if let time1 = message1.time?.intValue, let time2 = message2.time?.intValue {
+            if ascending {
+                return time1 > time2
+            } else {
+                return time1 < time2
+            }
+        } else {
+            return false
         }
     }
 

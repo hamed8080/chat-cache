@@ -24,8 +24,8 @@ public extension CDCurrentUserRole {
 
 public extension CDCurrentUserRole {
     func update(_ model: Model) {
-        roles = model.roles?.data
-        threadId = model.threadId as? NSNumber
+        roles = model.roles?.data ?? roles
+        threadId = model.threadId as? NSNumber ?? threadId
     }
 
     var codable: Model {

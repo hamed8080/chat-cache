@@ -27,11 +27,11 @@ public extension CDQueueOfForwardMessages {
 
 public extension CDQueueOfForwardMessages {
     func update(_ model: Model) {
-        fromThreadId = model.fromThreadId as? NSNumber
-        messageIds = model.messageIds?.map { "\($0)" }.joined(separator: ",")
-        threadId = model.threadId as? NSNumber
-        typeCode = model.typeCode
-        uniqueIds = model.uniqueIds?.joined(separator: ",")
+        fromThreadId = model.fromThreadId as? NSNumber ?? fromThreadId
+        messageIds = model.messageIds?.map { "\($0)" }.joined(separator: ",") ?? messageIds
+        threadId = model.threadId as? NSNumber ?? threadId
+        typeCode = model.typeCode ?? typeCode
+        uniqueIds = model.uniqueIds?.joined(separator: ",") ?? uniqueIds
     }
 
     var codable: Model {

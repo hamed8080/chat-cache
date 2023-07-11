@@ -30,14 +30,14 @@ public extension CDQueueOfTextMessages {
 
 public extension CDQueueOfTextMessages {
     func update(_ model: Model) {
-        messageType = model.messageType?.rawValue as? NSNumber
-        metadata = model.metadata
-        repliedTo = model.repliedTo as? NSNumber
-        systemMetadata = model.systemMetadata
-        textMessage = model.textMessage
-        threadId = model.threadId as? NSNumber
-        typeCode = model.typeCode
-        uniqueId = model.uniqueId
+        messageType = model.messageType?.rawValue as? NSNumber ?? messageType
+        metadata = model.metadata ?? metadata
+        repliedTo = model.repliedTo as? NSNumber ?? repliedTo
+        systemMetadata = model.systemMetadata ?? systemMetadata
+        textMessage = model.textMessage ?? textMessage
+        threadId = model.threadId as? NSNumber ?? threadId
+        typeCode = model.typeCode ?? typeCode
+        uniqueId = model.uniqueId ?? uniqueId
     }
 
     var codable: Model {

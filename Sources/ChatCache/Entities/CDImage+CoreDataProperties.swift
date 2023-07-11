@@ -29,13 +29,13 @@ public extension CDImage {
 
 public extension CDImage {
     func update(_ model: Model) {
-        actualWidth = model.actualWidth as? NSNumber
-        actualHeight = model.actualHeight as? NSNumber
-        height = model.height as? NSNumber
-        width = model.width as? NSNumber
-        size = model.size as? NSNumber
-        name = model.name
-        hashCode = model.hashCode
+        actualWidth = model.actualWidth as? NSNumber ?? actualWidth
+        actualHeight = model.actualHeight as? NSNumber ?? actualHeight
+        height = model.height as? NSNumber ?? height
+        width = model.width as? NSNumber ?? width
+        size = model.size as? NSNumber ?? size
+        name = model.name ?? name
+        hashCode = model.hashCode ?? hashCode
     }
 
     var codable: Model {

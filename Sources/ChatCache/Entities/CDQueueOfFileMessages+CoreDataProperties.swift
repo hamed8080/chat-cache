@@ -41,25 +41,25 @@ public extension CDQueueOfFileMessages {
 
 public extension CDQueueOfFileMessages {
     func update(_ model: Model) {
-        fileExtension = model.fileExtension
-        fileName = model.fileName
-        fileToSend = model.fileToSend
-        imageToSend = model.imageToSend
-        isPublic = model.isPublic as? NSNumber
-        messageType = model.messageType?.rawValue as? NSNumber
-        metadata = model.metadata
-        mimeType = model.mimeType
-        originalName = model.originalName
-        repliedTo = model.repliedTo as? NSNumber
-        textMessage = model.textMessage
-        threadId = model.threadId as? NSNumber
-        typeCode = model.typeCode
-        uniqueId = model.uniqueId
-        userGroupHash = model.userGroupHash
-        hC = model.hC as? NSNumber
-        wC = model.wC as? NSNumber
-        xC = model.xC as? NSNumber
-        yC = model.yC as? NSNumber
+        fileExtension = model.fileExtension ?? fileExtension
+        fileName = model.fileName ?? fileName
+        fileToSend = model.fileToSend ?? fileToSend
+        imageToSend = model.imageToSend ?? imageToSend
+        isPublic = model.isPublic as? NSNumber ?? isPublic
+        messageType = model.messageType?.rawValue as? NSNumber ?? messageType
+        metadata = model.metadata ?? metadata
+        mimeType = model.mimeType ?? mimeType
+        originalName = model.originalName ?? originalName
+        repliedTo = model.repliedTo as? NSNumber ?? repliedTo
+        textMessage = model.textMessage ?? textMessage
+        threadId = model.threadId as? NSNumber ?? threadId
+        typeCode = model.typeCode ?? typeCode
+        uniqueId = model.uniqueId ?? uniqueId
+        userGroupHash = model.userGroupHash ?? userGroupHash
+        hC = model.hC as? NSNumber ?? hC
+        wC = model.wC as? NSNumber ?? wC
+        xC = model.xC as? NSNumber ?? xC
+        yC = model.yC as? NSNumber ?? yC
     }
 
     var codable: Model {

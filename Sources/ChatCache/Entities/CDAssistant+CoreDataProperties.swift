@@ -29,10 +29,10 @@ public extension CDAssistant {
 
 public extension CDAssistant {
     func update(_ model: Model) {
-        contactType = model.contactType
-        self.assistant = model.assistant
-        roles = model.roles?.data
-        block = model.block as? NSNumber
+        contactType = model.contactType ?? contactType
+        self.assistant = model.assistant ?? assistant
+        roles = model.roles?.data ?? roles
+        block = model.block as? NSNumber ?? block
         setParticipant(model: model)
     }
     

@@ -87,32 +87,32 @@ public extension CDParticipant {
 
 public extension CDParticipant {
     func update(_ model: Model) {
-        admin = model.admin as? NSNumber
-        auditor = model.auditor as? NSNumber
-        blocked = model.blocked as? NSNumber
-        cellphoneNumber = model.cellphoneNumber
-        contactFirstName = model.contactFirstName
-        contactId = model.contactId as? NSNumber
-        contactName = model.contactName
-        contactLastName = model.contactLastName
-        coreUserId = model.coreUserId as? NSNumber
-        email = model.email
-        firstName = model.firstName
-        id = model.id as? NSNumber
-        image = model.image
-        keyId = model.keyId
-        lastName = model.lastName
-        myFriend = model.myFriend as? NSNumber
-        name = model.name
-        notSeenDuration = model.notSeenDuration as? NSNumber
-        online = model.online as? NSNumber
-        receiveEnable = model.receiveEnable as? NSNumber
-        sendEnable = model.sendEnable as? NSNumber
-        username = model.username
-        roles = model.roles?.data
-        bio = model.chatProfileVO?.bio
-        ssoId = model.ssoId
-        metadata = model.chatProfileVO?.metadata
+        admin = model.admin as? NSNumber ?? admin
+        auditor = model.auditor as? NSNumber ?? auditor
+        blocked = model.blocked as? NSNumber ?? blocked
+        cellphoneNumber = model.cellphoneNumber ?? cellphoneNumber
+        contactFirstName = model.contactFirstName ?? contactFirstName
+        contactId = model.contactId as? NSNumber ?? contactId
+        contactName = model.contactName ?? contactName
+        contactLastName = model.contactLastName ?? contactLastName
+        coreUserId = model.coreUserId as? NSNumber ?? coreUserId
+        email = model.email ?? email
+        firstName = model.firstName ?? firstName
+        id = model.id as? NSNumber ?? id
+        image = model.image ?? image
+        keyId = model.keyId ?? keyId
+        lastName = model.lastName ?? lastName
+        myFriend = model.myFriend as? NSNumber ?? myFriend
+        name = model.name ?? name
+        notSeenDuration = model.notSeenDuration as? NSNumber ?? notSeenDuration
+        online = model.online as? NSNumber ?? online
+        receiveEnable = model.receiveEnable as? NSNumber ?? receiveEnable
+        sendEnable = model.sendEnable as? NSNumber ?? sendEnable
+        username = model.username ?? username
+        roles = model.roles?.data ?? roles
+        bio = model.chatProfileVO?.bio ?? bio
+        ssoId = model.ssoId ?? ssoId
+        metadata = model.chatProfileVO?.metadata ?? metadata
     }
 
     class func findOrCreate(threadId: Int, participantId: Int, context: NSManagedObjectContextProtocol) -> CDParticipant {

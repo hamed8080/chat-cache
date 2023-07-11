@@ -28,11 +28,11 @@ public extension CDTagParticipant {
 
 public extension CDTagParticipant {
     func update(_ model: Model) {
-        id = model.id as? NSNumber
-        active = model.active as? NSNumber
-        tagId = model.tagId as? NSNumber
-        id = model.id as? NSNumber
-        threadId = model.conversation?.id as? NSNumber
+        id = model.id as? NSNumber ?? id
+        active = model.active as? NSNumber ?? active
+        tagId = model.tagId as? NSNumber ?? tagId
+        id = model.id as? NSNumber ?? id
+        threadId = model.conversation?.id as? NSNumber ?? threadId
         if let context = managedObjectContext, let thread = model.conversation, let threadId = thread.id {
             let threadEntity = CDConversation.findOrCreate(threadId: threadId, context: context)
             threadEntity.update(thread)

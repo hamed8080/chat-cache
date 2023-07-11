@@ -129,41 +129,41 @@ public extension CDConversation {
 public extension CDConversation {
     func update(_ model: Model) {
         if model.id == nil { return }
-        admin = model.admin as? NSNumber
-        canEditInfo = model.canEditInfo as? NSNumber
-        canSpam = model.canSpam as NSNumber?
-        closedThread = model.closedThread as NSNumber?
-        descriptions = model.description
-        group = model.group as? NSNumber
-        id = model.id as? NSNumber
-        image = model.image
-        joinDate = model.joinDate as? NSNumber
-        lastMessage = model.lastMessage
-        lastParticipantImage = model.lastParticipantImage
-        lastParticipantName = model.lastParticipantName
-        lastSeenMessageId = model.lastSeenMessageId as? NSNumber
-        lastSeenMessageNanos = model.lastSeenMessageNanos as? NSNumber
-        lastSeenMessageTime = model.lastSeenMessageTime as? NSNumber
-        mentioned = model.mentioned as? NSNumber
-        metadata = model.metadata
-        mute = model.mute as? NSNumber
-        participantCount = model.participantCount as? NSNumber
-        partner = model.partner as? NSNumber
-        partnerLastDeliveredMessageId = model.partnerLastDeliveredMessageId as? NSNumber
-        partnerLastDeliveredMessageNanos = model.partnerLastDeliveredMessageNanos as? NSNumber
-        partnerLastDeliveredMessageTime = model.partnerLastDeliveredMessageTime as? NSNumber
-        partnerLastSeenMessageId = model.partnerLastSeenMessageId as? NSNumber
-        partnerLastSeenMessageNanos = model.partnerLastSeenMessageNanos as? NSNumber
-        partnerLastSeenMessageTime = model.partnerLastSeenMessageTime as? NSNumber
-        pin = model.pin as? NSNumber
-        time = model.time as? NSNumber
-        title = model.title
-        type = model.type?.rawValue as? NSNumber
-        unreadCount = model.unreadCount as? NSNumber
-        uniqueName = model.uniqueName
-        userGroupHash = model.userGroupHash
-        isArchive = model.isArchive as NSNumber?
-        pinMessage = model.pinMessage
+        admin = model.admin as? NSNumber ?? admin
+        canEditInfo = model.canEditInfo as? NSNumber ?? canEditInfo
+        canSpam = model.canSpam as NSNumber? ?? canSpam
+        closedThread = model.closedThread as NSNumber? ?? closedThread
+        descriptions = model.description ?? description
+        group = model.group as? NSNumber ?? group
+        id = model.id as? NSNumber ?? id
+        image = model.image ?? image
+        joinDate = model.joinDate as? NSNumber ?? joinDate
+        lastMessage = model.lastMessage ?? lastMessage
+        lastParticipantImage = model.lastParticipantImage ?? lastParticipantImage
+        lastParticipantName = model.lastParticipantName ?? lastParticipantName
+        lastSeenMessageId = model.lastSeenMessageId as? NSNumber ?? lastSeenMessageId
+        lastSeenMessageNanos = model.lastSeenMessageNanos as? NSNumber ?? lastSeenMessageNanos
+        lastSeenMessageTime = model.lastSeenMessageTime as? NSNumber ?? lastSeenMessageTime
+        mentioned = model.mentioned as? NSNumber ?? mentioned
+        metadata = model.metadata ?? metadata
+        mute = model.mute as? NSNumber ?? mute
+        participantCount = model.participantCount as? NSNumber ?? participantCount
+        partner = model.partner as? NSNumber ?? partner
+        partnerLastDeliveredMessageId = model.partnerLastDeliveredMessageId as? NSNumber ?? partnerLastDeliveredMessageId
+        partnerLastDeliveredMessageNanos = model.partnerLastDeliveredMessageNanos as? NSNumber ?? partnerLastDeliveredMessageNanos
+        partnerLastDeliveredMessageTime = model.partnerLastDeliveredMessageTime as? NSNumber ?? partnerLastDeliveredMessageTime
+        partnerLastSeenMessageId = model.partnerLastSeenMessageId as? NSNumber ?? partnerLastSeenMessageId
+        partnerLastSeenMessageNanos = model.partnerLastSeenMessageNanos as? NSNumber ?? partnerLastSeenMessageNanos
+        partnerLastSeenMessageTime = model.partnerLastSeenMessageTime as? NSNumber ?? partnerLastSeenMessageTime
+        pin = model.pin as? NSNumber ?? pin
+        time = model.time as? NSNumber ?? time
+        title = model.title ?? title
+        type = model.type?.rawValue as? NSNumber ?? type
+        unreadCount = model.unreadCount as? NSNumber ?? unreadCount
+        uniqueName = model.uniqueName ?? uniqueName
+        userGroupHash = model.userGroupHash ?? userGroupHash
+        isArchive = model.isArchive as NSNumber? ?? isArchive
+        pinMessage = model.pinMessage ?? pinMessage
     }
 
     class func findOrCreate(threadId: Int, context: NSManagedObjectContextProtocol) -> CDConversation {
