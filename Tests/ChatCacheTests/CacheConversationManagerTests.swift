@@ -1104,6 +1104,73 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenGetPinMessagesWithNewThread_insertThreadIntoStoreAndInsertPinMess() {
+        // Given
+        sut.conversationsPin([1: .init(messageId: 2, text: "Hello")])
+
+        // When
+        let exp = expectation(description: "Expected to insert a thread and then set pinMessage filed")
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
+                if entity?.pinMessage?.text == "Hello", entity?.pinMessage?.messageId == 2 {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenGetPinMessagesWithThreadExistInStore_updateOnlyPinMessage() {
+        // Given
+        sut.insert(models: [.init(id: 1, title: "TEST")])
+
+        // When
+        let exp = expectation(description: "Expected to insert a thread and then set pinMessage filed")
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.conversationsPin([1: .init(messageId: 2, text: "Hello")])
+        }
+
+        notification.onUpdate { (objects: [CDConversation]) in
+            self.sut.first(with: 1, context: self.sut.viewContext) { entity in
+                if entity?.pinMessage?.text == "Hello", entity?.pinMessage?.messageId == 2, entity?.title == "TEST" {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenGetPinMessagesWithMixInStoreOrNew_pinMessageSet() {
+        // Given
+        sut.insert(models: [.init(id: 1, title: "TEST")])
+
+        // When
+        let exp = expectation(description: "Expected to insert a thread and then set pinMessage filed")
+        exp.expectedFulfillmentCount = 2
+        notification.onInsert { (entities: [CDConversation]) in
+            self.sut.conversationsPin([1: .init(messageId: 2, text: "Hello"), 2: .init(messageId: 3, text: "New 2")])
+
+            let entity = entities.first(where: {$0.id == 2})
+            if entity?.pinMessage?.text == "New 2", entity?.pinMessage?.messageId == 3, entity?.title == nil {
+                exp.fulfill()
+            }
+        }
+
+        notification.onUpdate { (objects: [CDConversation]) in
+            let entity = objects.first(where: {$0.id == 1})
+            if entity?.id == 1, entity?.pinMessage?.text == "Hello", entity?.pinMessage?.messageId == 2, entity?.title == "TEST", objects.count == 1 {
+                exp.fulfill()
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(admin: Bool? = false,
                            canEditInfo: Bool? = false,
                            canSpam: Bool? = false,

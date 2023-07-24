@@ -265,4 +265,15 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
             completion(result)
         }
     }
+
+    public func conversationsPin(_ dictionary: [Int: PinMessage]) {
+        viewContext.perform {
+            dictionary.forEach { (key, value) in
+                let entity = Entity.findOrCreate(threadId: key, context: self.viewContext)
+                entity.id = key as NSNumber
+                entity.pinMessage = value
+            }
+            self.saveViewContext()
+        }
+    }
 }
