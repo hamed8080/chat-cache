@@ -19,6 +19,7 @@ public extension CDAssistant {
 }
 
 public extension CDAssistant {
+    @NSManaged var id: NSNumber?
     @NSManaged var assistant: Invitee?
     @NSManaged var block: NSNumber?
     @NSManaged var contactType: String?
@@ -29,6 +30,7 @@ public extension CDAssistant {
 
 public extension CDAssistant {
     func update(_ model: Model) {
+        id = model.participant?.id as? NSNumber ?? id
         contactType = model.contactType ?? contactType
         self.assistant = model.assistant ?? assistant
         roles = model.roles?.data ?? roles
@@ -55,7 +57,8 @@ public extension CDAssistant {
         if let data = roles, let roles = try? JSONDecoder.instance.decode([Roles].self, from: data) {
             decodededRoles = roles
         }
-        return Assistant(contactType: contactType,
+        return Assistant(id: id?.intValue,
+                         contactType: contactType,
                          assistant: assistant,
                          participant: participant?.codable,
                          roles: decodededRoles,

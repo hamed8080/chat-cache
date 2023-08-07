@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CDAssistant" representedClassName="ChatCache.CDAssistant" syncable="YES">
         <attribute name="assistant" optional="YES" attributeType="Transformable" valueTransformerName="AssistantValueTransformer" customClassName="Invitee"/>
         <attribute name="block" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="contactType" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
         <attribute name="inviteeId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="roles" optional="YES" attributeType="Binary" valueTransformerName="RolesValueTransformer" customClassName="[Roles]"/>
         <relationship name="participant" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDParticipant" inverseName="assistant" inverseEntity="CDParticipant"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CDContact" representedClassName="ChatCache.CDContact" syncable="YES">
         <attribute name="blocked" optional="YES" attributeType="Boolean" defaultValueString="0.0" usesScalarValueType="NO"/>

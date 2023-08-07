@@ -156,7 +156,26 @@ final class CacheAssistantManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
-    private func mockModel(id: Int = 1, participantId: Int = 123456, block: Bool = false, roles: [Roles]? = nil) -> Assistant {
+    func test_whenIdNil_assistantIdIsGettingFilledByParticipantId() {
+        // Given
+        sut.insert(models: [mockModel(id: nil, participantId: 123456)])
+
+        // When
+        let exp = expectation(description: "Expected the id of assistant to be equal to participantId")
+        notification.onInsert { (entities: [CDAssistant]) in
+            self.sut.fetch { entities, count in
+                let first = entities.first?.codable
+                if first?.id == 123456 {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    private func mockModel(id: Int? = 1, participantId: Int = 123456, block: Bool = false, roles: [Roles]? = nil) -> Assistant {
         let participant = Participant(id: participantId)
         let model = Assistant(id: id,
                               assistant: .init(id: "\(20)", idType: .cellphoneNumber),
