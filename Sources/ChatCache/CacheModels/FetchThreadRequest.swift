@@ -7,20 +7,20 @@
 import Foundation
 
 public struct FetchThreadRequest {
-    internal let count: Int
-    internal let offset: Int
-    internal var title: String?
-    internal var description: String?
-    internal let new: Bool?
-    internal let archived: Bool?
-    internal let threadIds: [Int]?
-    internal let creatorCoreUserId: Int?
-    internal let partnerCoreUserId: Int?
-    internal let partnerCoreContactId: Int?
-    internal private(set) var metadataCriteria: String?
-    internal private(set) var isGroup: Bool?
-    internal private(set) var type: Int?
-    internal let uniqueId: String?
+    public let count: Int
+    public let offset: Int
+    public var title: String?
+    public var description: String?
+    public let new: Bool?
+    public let archived: Bool?
+    public let threadIds: [Int]?
+    public let creatorCoreUserId: Int?
+    public let partnerCoreUserId: Int?
+    public let partnerCoreContactId: Int?
+    public var metadataCriteria: String?
+    public var isGroup: Bool?
+    public var type: Int?
+    public let uniqueId: String?
 
     public init(count: Int = 25,
                 offset: Int = 0,

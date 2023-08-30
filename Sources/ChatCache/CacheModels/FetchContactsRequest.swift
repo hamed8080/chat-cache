@@ -7,15 +7,15 @@
 import Foundation
 
 public struct FetchContactsRequest {
-    internal var size: Int = 25
-    internal var offset: Int = 0
-    internal let id: Int?
-    internal let cellphoneNumber: String?
-    internal let email: String?
-    internal let coreUserId: Int?
-    internal let order: String?
-    internal let query: String?
-    internal var summery: Bool?
+    public var size: Int = 25
+    public var offset: Int = 0
+    public let id: Int?
+    public let cellphoneNumber: String?
+    public let email: String?
+    public let coreUserId: Int?
+    public let order: String?
+    public let query: String?
+    public var summery: Bool?
 
     public init(id: Int? = nil,
                 count: Int = 50,
