@@ -103,7 +103,7 @@ final class CacheTagManagerTests: XCTestCase, CacheLogDelegate {
 
     func test_whenActiveAndNameIsNil_fillThemWithDefaultValues() {
         // Given
-        let tag = CDTag.insertEntity(sut.viewContext)
+        let _ = CDTag.insertEntity(sut.viewContext)
         sut.viewContext.perform {
             self.sut.saveViewContext()
         }

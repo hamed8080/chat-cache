@@ -1017,7 +1017,7 @@ final class CacheConversationManagerTests: XCTestCase, CacheLogDelegate {
         // Then
         let exp = expectation(description: "Expected to set pin to true.")
         notification.onInsert { (entities: [CDConversation]) in
-            if let entity = entities.first?.pinMessage {
+            if entities.first?.pinMessage != nil {
                 exp.fulfill()
             }
         }
