@@ -17,7 +17,7 @@ public final class CacheReactionCountManager: BaseCoreDataManager<CDReactionCoun
         }
     }
 
-    public func setReactionCount(messageId: Int?, reaction: Int?, action: ReactionCountAction) {
+    public func setReactionCount(messageId: Int?, reaction: Sticker?, action: ReactionCountAction) {
         guard let messageId = messageId else { return }
         first(with: messageId, context: viewContext) { entity in
             let reactionCounts = entity?.codable.reactionCounts
