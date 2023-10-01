@@ -133,7 +133,7 @@ public extension CDConversation {
         canEditInfo = model.canEditInfo as? NSNumber ?? canEditInfo
         canSpam = model.canSpam as NSNumber? ?? canSpam
         closedThread = model.closedThread as NSNumber? ?? closedThread
-        descriptions = model.description ?? description
+        descriptions = model.description ?? descriptions
         group = model.group as? NSNumber ?? group
         id = model.id as? NSNumber ?? id
         image = model.image ?? image
