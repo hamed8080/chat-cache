@@ -169,6 +169,50 @@ final class CacheParticipantManagerTests: XCTestCase, CacheLogDelegate {
         wait(for: [exp], timeout: 1)
     }
 
+    func test_whenSetAdminRole_itSetAdminToTrue() {
+        // Given
+        sut.insert(model: Conversation(id: 1, participants: [Participant(admin: false, id: 1)]))
+
+        // When
+        let exp = expectation(description: "Expected to set admin to true.")
+        notification.onInsert { (entities: [CDParticipant]) in
+            self.sut.addAdminRole(participantIds: [1])
+        }
+
+        notification.onUpdateIds { entities in
+            self.sut.first(1, 1) { entity in
+                if entity?.admin == true {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_whenRemoveAdminRole_itSetAdminToFalse() {
+        // Given
+        sut.insert(model: Conversation(id: 1, participants: [Participant(admin: true, id: 1)]))
+
+        // When
+        let exp = expectation(description: "Expected to set admin to true.")
+        notification.onInsert { (entities: [CDParticipant]) in
+            self.sut.removeAdminRole(participantIds: [1])
+        }
+
+        notification.onUpdateIds { entities in
+            self.sut.first(1, 1) { entity in
+                if entity?.admin == false {
+                    exp.fulfill()
+                }
+            }
+        }
+
+        // Then
+        wait(for: [exp], timeout: 1)
+    }
+
     private func mockModel(
         admin: Bool? = nil,
         auditor: Bool? = nil,

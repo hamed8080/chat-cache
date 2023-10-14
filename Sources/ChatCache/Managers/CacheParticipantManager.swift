@@ -59,4 +59,20 @@ public final class CacheParticipantManager: BaseCoreDataManager<CDParticipant> {
             entity.conversation = threadEntity
         }
     }
+
+    public func addAdminRole(participantIds: [Int]) {
+        participantIds.forEach { participantId in
+            let predicate = idPredicate(id: participantId)
+            let propertiesToUpdate: [String: Any] = ["admin": NSNumber(booleanLiteral: true)]
+            update(propertiesToUpdate, predicate)
+        }
+    }
+
+    public func removeAdminRole(participantIds: [Int]) {
+        participantIds.forEach { participantId in
+            let predicate = idPredicate(id: participantId)
+            let propertiesToUpdate: [String: Any] = ["admin": NSNumber(booleanLiteral: false)]
+            update(propertiesToUpdate, predicate)
+        }
+    }
 }
