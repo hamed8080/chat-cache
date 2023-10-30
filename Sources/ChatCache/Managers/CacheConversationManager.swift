@@ -119,6 +119,10 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
             let keyPath = #keyPath(CDConversation.isArchive)
             let archivePredicate = NSPredicate(format: "%K == %@ OR %K == %@", keyPath, NSNumber(value: archived), keyPath, NSNull())
             orFetchPredicatArray.append(archivePredicate)
+        } else {
+            let keyPath = #keyPath(CDConversation.isArchive)
+            let archivePredicate = NSPredicate(format: "%K == %@", keyPath, NSNumber(value: false))
+            orFetchPredicatArray.append(archivePredicate)
         }
         let orCompound = NSCompoundPredicate(type: .and, subpredicates: orFetchPredicatArray)
         fetchRequest.predicate = orCompound
