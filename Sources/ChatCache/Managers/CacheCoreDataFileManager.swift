@@ -10,7 +10,7 @@ import ChatModels
 
 public final class CacheCoreDataFileManager: BaseCoreDataManager<CDFile> {
     public func first(hashCode: String, completion: @escaping ((Entity.Model?) -> Void)) {
-        first(with: hashCode, context: viewContext) { file in
+        firstOnMain(with: hashCode, context: viewContext) { file in
             let file = file?.codable
             completion(file)
         }

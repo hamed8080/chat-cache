@@ -19,7 +19,7 @@ public final class CacheReactionCountManager: BaseCoreDataManager<CDReactionCoun
 
     public func setReactionCount(messageId: Int?, reaction: Sticker?, action: ReactionCountAction) {
         guard let messageId = messageId else { return }
-        first(with: messageId, context: viewContext) { entity in
+        firstOnMain(with: messageId, context: viewContext) { entity in
             let reactionCounts = entity?.codable.reactionCounts
             if let reactionCounts = reactionCounts, let index = reactionCounts.firstIndex(where: { $0.sticker == reaction }) {
                 let currentCount = reactionCounts[index].count ?? 0
@@ -31,7 +31,6 @@ public final class CacheReactionCountManager: BaseCoreDataManager<CDReactionCoun
                 case .set(let value):
                     reactionCounts[index].count = max(0, value)
                 }
-                entity?.update(.init(messageId: entity?.messageId?.intValue, reactionCounts: reactionCounts))
             }
         }
     }

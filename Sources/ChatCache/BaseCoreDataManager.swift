@@ -13,6 +13,7 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
     public let logger: CacheLogDelegate
     public var viewContext: NSManagedObjectContextProtocol { container.viewContext(name: "Main")! }
     public var bgContext: NSManagedObjectContextProtocol { container.newBgTask(name: "BGTask")! }
+    private let mainQueue = DispatchQueue.main
 
     required public init(container: PersistentManagerProtocol, logger: CacheLogDelegate) {
         self.container = container
@@ -44,12 +45,26 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         completion(entity)
     }
 
-    public func find(predicate: NSPredicate, completion: @escaping ([Entity]) -> Void) {
-        viewContext.perform {
+    public func firstOnMain(with id: Entity.Id, context: NSManagedObjectContextProtocol, completion: @escaping (Entity?) -> Void) {
+        mainQueue.async { [weak self] in
+            guard let self = self else { return }
             let req = Entity.fetchRequest()
-            req.predicate = predicate
-            let entities = try self.viewContext.fetch(req)
-            completion(entities)
+            req.predicate = self.idPredicate(id: id)
+            req.fetchLimit = 1
+            let entity = try? context.fetch(req).first
+            completion(entity)
+        }
+    }
+
+    public func find(predicate: NSPredicate, completion: @escaping ([Entity]) -> Void) {
+        mainQueue.async { [weak self] in
+            guard let self = self else { return }
+            viewContext.perform {
+                let req = Entity.fetchRequest()
+                req.predicate = predicate
+                let entities = try self.viewContext.fetch(req)
+                completion(entities)
+            }
         }
     }
 
@@ -83,7 +98,10 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
     }
 
     public func saveViewContext() {
-        save(context: viewContext)
+        mainQueue.async { [weak self] in
+            guard let self = self else { return }
+            save(context: viewContext)
+        }
     }
 
     public func mergeChanges(key: String, _ objectIDs: [NSManagedObjectID]) {
@@ -125,33 +143,42 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
     }
 
     public func fetchWithOffset(count: Int = 25, offset: Int = 0, predicate: NSPredicate? = nil, sortDescriptor: [NSSortDescriptor]? = nil, _ completion: @escaping ([Entity], Int) -> Void) {
-        viewContext.perform {
-            let req = NSFetchRequest<Entity>(entityName: Entity.name)
-            req.sortDescriptors = sortDescriptor
-            req.predicate = predicate
-            let totalCount = (try? self.viewContext.count(for: req)) ?? 0
-            req.fetchLimit = count
-            req.fetchOffset = offset
-            let objects = try self.viewContext.fetch(req)
-            completion(objects, totalCount)
+        mainQueue.async { [weak self] in
+            guard let self = self else { return }
+            viewContext.perform {
+                let req = NSFetchRequest<Entity>(entityName: Entity.name)
+                req.sortDescriptors = sortDescriptor
+                req.predicate = predicate
+                let totalCount = (try? self.viewContext.count(for: req)) ?? 0
+                req.fetchLimit = count
+                req.fetchOffset = offset
+                let objects = try self.viewContext.fetch(req)
+                completion(objects, totalCount)
+            }
         }
     }
 
     public func all(_ completion: @escaping ([Entity]) -> Void) {
-        viewContext.perform {
-            let req = Entity.fetchRequest()
-            let entities = try self.viewContext.fetch(req)
-            completion(entities)
+        mainQueue.async { [weak self] in
+            guard let self = self else { return }
+            viewContext.perform {
+                let req = Entity.fetchRequest()
+                let entities = try self.viewContext.fetch(req)
+                completion(entities)
+            }
         }
     }
 
     public func fetchWithObjectIds(ids: [NSManagedObjectID], _ completion: @escaping ([Entity]) -> Void) {
-        viewContext.perform {
-            let req = Entity.fetchRequest()
-            let predicate = NSPredicate(format: "self IN %@", ids)
-            req.predicate = predicate
-            let entities = try self.viewContext.fetch(req)
-            completion(entities)
+        mainQueue.async { [weak self] in
+            guard let self = self else { return }
+            viewContext.perform {
+                let req = Entity.fetchRequest()
+                let predicate = NSPredicate(format: "self IN %@", ids)
+                req.predicate = predicate
+                let entities = try self.viewContext.fetch(req)
+                completion(entities)
+            }
         }
     }
 

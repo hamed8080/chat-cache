@@ -68,24 +68,21 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
     }
     
     public func setUnreadCount(action: CacheUnreadCountAction, threadId: Int, completion: ((Int) -> Void)? = nil) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            first(with: threadId, context: viewContext) { entity in
-                var cachedThreadCount = entity?.unreadCount?.intValue ?? 0
-                switch action {
-                case .increase:
-                    cachedThreadCount += 1
-                    break
-                case .decrease:
-                    cachedThreadCount = max(0, cachedThreadCount - 1)
-                    break
-                case let .set(count):
-                    cachedThreadCount = max(0, count)
-                    break
-                }
-                self.update(["unreadCount": cachedThreadCount], self.idPredicate(id: threadId))
-                completion?(cachedThreadCount)
+        firstOnMain(with: threadId, context: viewContext) { entity in
+            var cachedThreadCount = entity?.unreadCount?.intValue ?? 0
+            switch action {
+            case .increase:
+                cachedThreadCount += 1
+                break
+            case .decrease:
+                cachedThreadCount = max(0, cachedThreadCount - 1)
+                break
+            case let .set(count):
+                cachedThreadCount = max(0, count)
+                break
             }
+            self.update(["unreadCount": cachedThreadCount], self.idPredicate(id: threadId))
+            completion?(cachedThreadCount)
         }
     }
 

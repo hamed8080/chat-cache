@@ -25,6 +25,7 @@ public protocol CoreDataProtocol {
     func idPredicate(id: Entity.Id) -> NSPredicate
     func save(context: NSManagedObjectContextProtocol)
     func saveViewContext()
+    func firstOnMain(with id: Entity.Id, context: NSManagedObjectContextProtocol, completion: @escaping (Entity?) -> Void)
     func first(with id: Entity.Id, context: NSManagedObjectContextProtocol, completion: @escaping (Entity?) -> Void)
     func find(predicate: NSPredicate, completion: @escaping ([Entity]) -> Void)
     func insert(model: Entity.Model, context: NSManagedObjectContextProtocol)
