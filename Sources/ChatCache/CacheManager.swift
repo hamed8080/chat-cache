@@ -62,9 +62,12 @@ public final class CacheManager {
     }
 
     public func switchToContainer(userId: Int, completion: (() ->Void)? = nil) {
-        persistentManager.switchToContainer(userId: userId) { [weak self] in
-            self?.setupManangers()
-            completion?()
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            persistentManager.switchToContainer(userId: userId) { [weak self] in
+                self?.setupManangers()
+                completion?()
+            }
         }
     }
 
