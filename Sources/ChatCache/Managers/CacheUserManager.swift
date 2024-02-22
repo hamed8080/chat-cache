@@ -18,6 +18,17 @@ public final class CacheUserManager: BaseCoreDataManager<CDUser> {
         }
     }
 
+    public func insertOnMain(_ model: Entity.Model, isMe: Bool = false) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            insertObjects() { context in
+                let userEntity = Entity.insertEntity(context)
+                userEntity.update(model)
+                userEntity.isMe = isMe as NSNumber
+            }
+        }
+    }
+
     public func fetchCurrentUser(_ compeletion: @escaping (Entity?) -> Void) {
         viewContext.perform {
             let req = Entity.fetchRequest()
