@@ -189,4 +189,18 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         let entity = try? context.fetch(req).first
         return entity ?? T.insertEntity(context)
     }
+
+    public func truncate() {
+        let req = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.name)
+        let batchReq = NSBatchDeleteRequest(fetchRequest: req)
+        batchReq.resultType = .resultTypeObjectIDs
+
+        let context = bgContext
+        context.perform { [weak self] in
+            let deleteResult = try context.execute(batchReq) as? NSBatchDeleteResult
+            if let deletedObjectIds = deleteResult?.result as? [NSManagedObjectID], deletedObjectIds.count > 0 {
+                self?.mergeChanges(key: NSDeletedObjectIDsKey, deletedObjectIds)
+            }
+        }
+    }
 }

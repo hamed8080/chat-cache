@@ -42,6 +42,7 @@ public protocol CoreDataProtocol {
     func all(_ completion: @escaping ([Entity]) -> Void)
     func fetchWithObjectIds(ids: [NSManagedObjectID], _ completion: @escaping ([Entity]) -> Void)
     func findOrCreate<T: EntityProtocol>(_ id: Entity.Id, _ context: NSManagedObjectContextProtocol) -> T
+    func truncate()
 }
 
 /// Optional Implementations.

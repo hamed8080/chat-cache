@@ -72,6 +72,26 @@ public final class CacheManager {
     }
 
     public func delete() {
-         persistentManager.delete()
+        persistentManager.delete()
+    }
+
+    public func truncate() {
+        assistant?.truncate()
+        contact?.truncate()
+        conversation?.truncate()
+        file?.truncate()
+        image?.truncate()
+        message?.truncate()
+        mutualGroup?.truncate()
+        participant?.truncate()
+        editQueue?.truncate()
+        textQueue?.truncate()
+        forwardQueue?.truncate()
+        fileQueue?.truncate()
+        tag?.truncate()
+        tagParticipant?.truncate()
+        user?.truncate()
+        userRole?.truncate()
+        reactionCount?.truncate()
     }
 }
