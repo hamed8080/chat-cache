@@ -34,6 +34,6 @@ public extension CDReactionCountList {
         if let data = reactionCounts, let roles = try? JSONDecoder.instance.decode([ReactionCount].self, from: data) {
             decodededReactionCount = roles
         }
-        return ReactionCountList(messageId: messageId?.intValue, reactionCounts: decodededReactionCount)
+        return ReactionCountList(messageId: messageId?.intValue, reactionCounts: decodededReactionCount, userReaction: nil)
     }
 }
