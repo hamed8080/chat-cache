@@ -84,14 +84,16 @@ public final class CacheManager {
         message?.truncate()
         mutualGroup?.truncate()
         participant?.truncate()
-        editQueue?.truncate()
-        textQueue?.truncate()
-        forwardQueue?.truncate()
-        fileQueue?.truncate()
         tag?.truncate()
         tagParticipant?.truncate()
         user?.truncate()
         userRole?.truncate()
         reactionCount?.truncate()
+
+        /// We do not need to truncate queues due to they are essential to continue sending text messages/images/files after the user connection is established.
+//        editQueue?.truncate()
+//        textQueue?.truncate()
+//        forwardQueue?.truncate()
+//        fileQueue?.truncate()
     }
 }
