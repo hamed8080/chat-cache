@@ -41,7 +41,7 @@ public protocol CoreDataProtocol {
     func fetchWithOffset(count: Int, offset: Int, predicate: NSPredicate?, sortDescriptor: [NSSortDescriptor]?, _ completion: @escaping ([Entity], Int) -> Void)
     func all(_ completion: @escaping ([Entity]) -> Void)
     func fetchWithObjectIds(ids: [NSManagedObjectID], _ completion: @escaping ([Entity]) -> Void)
-    func findOrCreate<T: EntityProtocol>(_ id: Entity.Id, _ context: NSManagedObjectContextProtocol) -> T
+    func findOrCreate(_ id: Entity.Id, _ context: NSManagedObjectContextProtocol) -> Entity
     func truncate()
 }
 

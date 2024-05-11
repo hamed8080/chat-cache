@@ -182,7 +182,7 @@ public class BaseCoreDataManager<T: EntityProtocol>: CoreDataProtocol {
         }
     }
 
-    public func findOrCreate<T: EntityProtocol>(_ id: Entity.Id, _ context: NSManagedObjectContextProtocol) -> T {
+    public func findOrCreate(_ id: Entity.Id, _ context: NSManagedObjectContextProtocol) -> Entity {
         let req = T.fetchRequest()
         req.predicate = self.idPredicate(id: id)
         req.fetchLimit = 1

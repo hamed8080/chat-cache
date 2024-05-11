@@ -14,7 +14,7 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
     /// We must fetch the message object with findOrCreate, if not it will lead to lastMessageVO object corruption.
     public func insert(models: [Message], threadId: Int) {
         insertObjects { context in
-            let threadEntity: CDConversation = self.findOrCreate(threadId, context)
+            let threadEntity: CDConversation = CDConversation.findOrCreate(threadId: threadId, context: context)
             models.forEach { model in
                 if let messageId = model.id {
                     let entity: CDMessage = self.findOrCreate(messageId, context)
