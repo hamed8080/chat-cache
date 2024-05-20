@@ -17,17 +17,17 @@ let package = Package(
             targets: ["ChatCache"]),
     ],
     dependencies: [
-        .package(url: "https://pubgi.fanapsoft.ir/chat/ios/chat-models", from: "2.0.0"),
-        .package(url: "https://pubgi.fanapsoft.ir/chat/ios/additive", from: "1.2.0"),
-        .package(url: "https://pubgi.fanapsoft.ir/chat/ios/mocks", from: "1.2.0"),
+        .package(path: "../ChatModels"),
+        .package(path: "../Additive"),
+        .package(path: "../Mocks"),
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],
     targets: [        
         .target(
             name: "ChatCache",
             dependencies: [
-                .product(name: "Additive", package: "additive"),
-                .product(name: "ChatModels", package: "chat-models"),
+                .product(name: "Additive", package: "Additive"),
+                .product(name: "ChatModels", package: "ChatModels"),
             ],
             resources: [.process("Resources")]
         ),
@@ -35,9 +35,9 @@ let package = Package(
             name: "ChatCacheTests",
             dependencies: [
                 "ChatCache",
-                .product(name: "Additive", package: "additive"),
-                .product(name: "ChatModels", package: "chat-models"),
-                .product(name: "Mocks", package: "mocks"),
+                .product(name: "Additive", package: "Additive"),
+                .product(name: "ChatModels", package: "ChatModels"),
+                .product(name: "Mocks", package: "Mocks"),
             ]
         ),
     ]
