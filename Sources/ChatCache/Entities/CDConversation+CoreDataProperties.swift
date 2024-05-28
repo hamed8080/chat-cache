@@ -58,7 +58,7 @@ public extension CDConversation {
     @NSManaged var messages: NSSet?
     @NSManaged var mutualGroups: NSSet?
     @NSManaged var participants: NSSet?
-    @NSManaged var pinMessage: PinMessage?
+    @NSManaged var pinMessage: PinMessageClass?
     @NSManaged var tagParticipants: NSSet?
 }
 
@@ -163,7 +163,7 @@ public extension CDConversation {
         uniqueName = model.uniqueName ?? uniqueName
         userGroupHash = model.userGroupHash ?? userGroupHash
         isArchive = model.isArchive as NSNumber? ?? isArchive
-        pinMessage = model.pinMessage ?? pinMessage
+        pinMessage = model.pinMessage?.toClass ?? pinMessage
     }
 
     class func findOrCreate(threadId: Int, context: NSManagedObjectContextProtocol) -> CDConversation {
@@ -208,9 +208,9 @@ public extension CDConversation {
                      uniqueName: uniqueName,
                      userGroupHash: userGroupHash,
                      inviter: inviter?.codable,
-                     lastMessageVO: fillLastMessageVO ? lastMessageVO?.codable(fillConversation: false) : nil,
+                     lastMessageVO: fillLastMessageVO ? lastMessageVO?.codable(fillConversation: false).toLastMessageVO : nil,
                      participants: fillParticipants ? participants?.allObjects.compactMap { ($0 as? CDParticipant)?.codable } : nil,
-                     pinMessage: pinMessage,
+                     pinMessage: pinMessage?.toStruct,
                      isArchive: isArchive?.boolValue)
     }
 }

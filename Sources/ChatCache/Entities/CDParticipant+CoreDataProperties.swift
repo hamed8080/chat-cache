@@ -155,6 +155,6 @@ public extension CDParticipant {
                            sendEnable: sendEnable?.boolValue,
                            username: username,
                            chatProfileVO: .init(bio: bio, metadata: metadata),
-                           conversation: conversation?.codable(fillLastMessageVO: false, fillParticipants: false))
+                           conversation: conversation?.codable(fillLastMessageVO: false, fillParticipants: false).toParticipantConversation)
     }
 }

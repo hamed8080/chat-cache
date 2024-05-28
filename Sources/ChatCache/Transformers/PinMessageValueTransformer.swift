@@ -11,7 +11,7 @@ import Additive
 @objc(PinMessageValueTransformer)
 final class PinMessageValueTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
-        PinMessage.self
+        PinMessageClass.self
     }
 
     override class func allowsReverseTransformation() -> Bool {
@@ -19,7 +19,7 @@ final class PinMessageValueTransformer: ValueTransformer {
     }
 
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let pinMessage = value as? PinMessage else { return nil }
+        guard let pinMessage = value as? PinMessageClass else { return nil }
         do {
             let data = try JSONEncoder.instance.encode(pinMessage)
             return data
@@ -32,7 +32,7 @@ final class PinMessageValueTransformer: ValueTransformer {
     override func reverseTransformedValue(_ value: Any?) -> Any? {
         guard let data = value as? NSData else { return nil }
         do {
-            let pinMessage = try JSONDecoder.instance.decode(PinMessage.self, from: data as Data)
+            let pinMessage = try JSONDecoder.instance.decode(PinMessageClass.self, from: data as Data)
             return pinMessage
         } catch {
             assertionFailure("Failed to transform `Data` to `PinMessage`")

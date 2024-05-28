@@ -11,7 +11,7 @@ import Additive
 @objc(ForwardInfoValueTransformer)
 final class ForwardInfoValueTransformer: ValueTransformer {
     override class func transformedValueClass() -> AnyClass {
-        ForwardInfo.self
+        ForwardInfoClass.self
     }
 
     override class func allowsReverseTransformation() -> Bool {
@@ -19,7 +19,7 @@ final class ForwardInfoValueTransformer: ValueTransformer {
     }
 
     override func transformedValue(_ value: Any?) -> Any? {
-        guard let forwardInfo = value as? ForwardInfo else { return nil }
+        guard let forwardInfo = value as? ForwardInfoClass else { return nil }
         do {
             let data = try JSONEncoder.instance.encode(forwardInfo)
             return data
@@ -32,7 +32,7 @@ final class ForwardInfoValueTransformer: ValueTransformer {
     override func reverseTransformedValue(_ value: Any?) -> Any? {
         guard let data = value as? NSData else { return nil }
         do {
-            let forwardInfo = try JSONDecoder.instance.decode(ForwardInfo.self, from: data as Data)
+            let forwardInfo = try JSONDecoder.instance.decode(ForwardInfoClass.self, from: data as Data)
             return forwardInfo
         } catch {
             assertionFailure("Failed to transform `Data` to `ForwardInfo`")

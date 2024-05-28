@@ -39,11 +39,11 @@ public extension CDMessage {
     @NSManaged var time: NSNumber?
     @NSManaged var uniqueId: String?
     @NSManaged var conversation: CDConversation?
-    @NSManaged var forwardInfo: ForwardInfo?
+    @NSManaged var forwardInfo: ForwardInfoClass?
     @NSManaged var conversationLastMessageVO: CDConversation?
     @NSManaged var participant: CDParticipant?
     @NSManaged var pinMessages: CDConversation?
-    @NSManaged var replyInfo: ReplyInfo?
+    @NSManaged var replyInfo: ReplyInfoClass?
 }
 
 public extension CDMessage {
@@ -67,8 +67,8 @@ public extension CDMessage {
         uniqueId = model.uniqueId ?? uniqueId
         pinTime = model.pinTime as? NSNumber ?? pinTime
         notifyAll = model.pinNotifyAll as? NSNumber ?? notifyAll
-        replyInfo = model.replyInfo ?? replyInfo
-        forwardInfo = model.forwardInfo ?? forwardInfo
+        replyInfo = model.replyInfo?.toClass ?? replyInfo
+        forwardInfo = model.forwardInfo?.toClass ?? forwardInfo
 
         if let participant = model.participant, let threadId = threadId, let context = managedObjectContext {
             setParticipant(participant, threadId.intValue, context)
@@ -103,9 +103,9 @@ public extension CDMessage {
                 timeNanos: time?.uintValue,
                 uniqueId: uniqueId,
                 conversation: fillConversation ? conversation?.codable() : nil,
-                forwardInfo: forwardInfo,
+                forwardInfo: forwardInfo?.toStruct,
                 participant: fillParticipant ? participant?.codable : nil,
-                replyInfo: replyInfo,
+                replyInfo: replyInfo?.toStruct,
                 pinTime: pinTime?.uintValue,
                 notifyAll: notifyAll?.boolValue)
     }

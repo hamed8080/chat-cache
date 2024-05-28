@@ -192,7 +192,7 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
         else { throw NSError(domain: "The threadId or LastMessageVO is nil.", code: 0) }
         first(with: threadId, context: context) { entity in
             if let entity = entity {
-                self.updateLastMessage(entity, threadId, lastMessageVO, context)
+                self.updateLastMessage(entity, threadId, lastMessageVO.toMessage, context)
             } else {
                 // Insert
                 self.insert(models: [model])
@@ -278,7 +278,7 @@ public final class CacheConversationManager: BaseCoreDataManager<CDConversation>
             dictionary.forEach { (key, value) in
                 let entity = Entity.findOrCreate(threadId: key, context: self.viewContext)
                 entity.id = key as NSNumber
-                entity.pinMessage = value
+                entity.pinMessage = value.toClass
             }
             self.saveViewContext()
         }

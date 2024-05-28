@@ -21,7 +21,7 @@ public final class CacheReactionCountManager: BaseCoreDataManager<CDReactionCoun
         guard let messageId = messageId else { return }
         firstOnMain(with: messageId, context: viewContext) { entity in
             let reactionCounts = entity?.codable.reactionCounts
-            if let reactionCounts = reactionCounts, let index = reactionCounts.firstIndex(where: { $0.sticker == reaction }) {
+            if var reactionCounts = reactionCounts, let index = reactionCounts.firstIndex(where: { $0.sticker == reaction }) {
                 let currentCount = reactionCounts[index].count ?? 0
                 switch action {
                 case .increase:

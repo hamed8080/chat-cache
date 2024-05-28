@@ -49,7 +49,7 @@ public final class CacheMessageManager: BaseCoreDataManager<CDMessage> {
             let messageReq = Entity.fetchRequest()
             messageReq.predicate = predicate(threadId, messageId)
             if let entity = try? viewContext.fetch(messageReq).first {
-                threadEntity .pinMessage = PinMessage(message: entity.codable())
+                threadEntity.pinMessage = PinMessageClass(message: entity.codable())
                 saveViewContext()
             }
         }

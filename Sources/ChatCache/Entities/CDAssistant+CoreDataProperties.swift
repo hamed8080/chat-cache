@@ -20,7 +20,7 @@ public extension CDAssistant {
 
 public extension CDAssistant {
     @NSManaged var id: NSNumber?
-    @NSManaged var assistant: Invitee?
+    @NSManaged var assistant: InviteeClass?
     @NSManaged var block: NSNumber?
     @NSManaged var contactType: String?
     @NSManaged var inviteeId: Int64
@@ -32,7 +32,7 @@ public extension CDAssistant {
     func update(_ model: Model) {
         id = model.participant?.id as? NSNumber ?? id
         contactType = model.contactType ?? contactType
-        self.assistant = model.assistant ?? assistant
+        self.assistant = model.assistant?.toClass ?? assistant
         roles = model.roles?.data ?? roles
         block = model.block as? NSNumber ?? block
         setParticipant(model: model)
@@ -59,7 +59,7 @@ public extension CDAssistant {
         }
         return Assistant(id: id?.intValue,
                          contactType: contactType,
-                         assistant: assistant,
+                         assistant: assistant?.toStruct,
                          participant: participant?.codable,
                          roles: decodededRoles,
                          block: block?.boolValue)
