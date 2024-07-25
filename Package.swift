@@ -28,8 +28,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Additive", package: "Additive"),
                 .product(name: "ChatModels", package: "ChatModels"),
-            ],
-            resources: [.process("Resources")]
+            ]
         ),
         .testTarget(
             name: "ChatCacheTests",

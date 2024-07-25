@@ -61,10 +61,10 @@ public final class CacheManager {
         forwardQueue?.delete(uniqueIds)
     }
 
-    public func switchToContainer(userId: Int, completion: (() ->Void)? = nil) {
+    public func switchToContainer(userId: Int, bundle: Bundle, completion: (() ->Void)? = nil) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            persistentManager.switchToContainer(userId: userId) { [weak self] in
+            persistentManager.switchToContainer(userId: userId, bundle: bundle) { [weak self] in
                 self?.setupManangers()
                 completion?()
             }

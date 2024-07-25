@@ -6,16 +6,6 @@
 
 import CoreData
 
-extension Bundle {
-    static var moduleBundle: Bundle {
-#if SWIFT_PACKAGE
-        return Bundle.module
-#else
-        return Bundle(identifier: "org.cocoapods.ChatCache") ?? Bundle.main
-#endif
-    }
-}
-
 /// It leads to loading the MOMD file from the current module, not by default the main module.
 final class PMPersistentContainer: NSPersistentContainer {
     override class func defaultDirectoryURL() -> URL {
@@ -51,15 +41,15 @@ public final class PersistentManager: PersistentManagerProtocol {
     /// The structure and model of SQLite database which is a file we created at Resources/ChaSDKModel.xcdataModeld.
     /// Notice: In runtime we should not call this mutliple times and this is the reason why we made this property lazy variable, because we wanted to init this property only once.
     /// If you call this multiple times such as inside a concreate object you will get console warning realted to `mutiple Climas entity`.
-    private lazy var modelFile: NSManagedObjectModel = {
-        guard let modelURL = Bundle.moduleBundle.url(forResource: baseModelFileName, withExtension: "momd") else { fatalError("Couldn't find the mond file!") }
+    private func modelFile(bundle: Bundle) -> NSManagedObjectModel {
+        guard let modelURL = bundle.url(forResource: baseModelFileName, withExtension: "momd") else { fatalError("Couldn't find the momd file!") }
         guard let mom = NSManagedObjectModel(contentsOf: modelURL) else { fatalError("Error initializing mom from: \(modelURL)") }
         return mom
-    }()
+    }
 
-    public func switchToContainer(userId: Int, completion: @escaping () -> Void) {
+    public func switchToContainer(userId: Int, bundle: Bundle, completion: @escaping () -> Void) {
         registerTransformers()
-        let container = PMPersistentContainer(name: "\(baseModelFileName)-\(userId)", managedObjectModel: modelFile)
+        let container = PMPersistentContainer(name: "\(baseModelFileName)-\(userId)", managedObjectModel: modelFile(bundle: bundle))
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

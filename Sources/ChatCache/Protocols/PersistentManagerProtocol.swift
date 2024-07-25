@@ -16,6 +16,6 @@ public protocol PersistentManagerProtocol {
     init(logger: CacheLogDelegate?)
     func viewContext(name: String) -> NSManagedObjectContextProtocol?
     func newBgTask(name: String) -> NSManagedObjectContextProtocol?
-    func switchToContainer(userId: Int, completion: @escaping () -> Void)
+    func switchToContainer(userId: Int, bundle: Bundle, completion: @escaping () -> Void)
     func delete()
 }
