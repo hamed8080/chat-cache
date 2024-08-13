@@ -132,7 +132,7 @@ public extension CDConversation {
         admin = model.admin as? NSNumber ?? admin
         canEditInfo = model.canEditInfo as? NSNumber ?? canEditInfo
         canSpam = model.canSpam as NSNumber? ?? canSpam
-        closedThread = model.closedThread as NSNumber? ?? closedThread
+        closedThread = model.closed as NSNumber? ?? closedThread
         descriptions = model.description ?? descriptions
         group = model.group as? NSNumber ?? group
         id = model.id as? NSNumber ?? id
@@ -177,7 +177,7 @@ public extension CDConversation {
         Conversation(admin: admin?.boolValue,
                      canEditInfo: canEditInfo?.boolValue,
                      canSpam: canSpam?.boolValue,
-                     closedThread: closedThread?.boolValue,
+                     closed: closedThread?.boolValue,
                      description: descriptions,
                      group: group?.boolValue,
                      id: id?.intValue,
