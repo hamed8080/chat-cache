@@ -3,7 +3,7 @@
 
 import PackageDescription
 
-let useLocalDependeny = false
+let useLocalDependency = false
 
 let local: [Package.Dependency] = [
     .package(path: "../ChatModels"),
@@ -13,9 +13,9 @@ let local: [Package.Dependency] = [
 ]
 
 let remote: [Package.Dependency] = [
-    .package(url: "https://pubgi.sandpod.ir/chat/ios/chat-models", from: "2.2.0"),
-    .package(url: "https://pubgi.sandpod.ir/chat/ios/additive", from: "1.2.3"),
-    .package(url: "https://pubgi.sandpod.ir/chat/ios/mocks", from: "1.2.4"),
+    .package(url: "https://pubgi.sandpod.ir/chat/ios/chat-models", from: "2.2.1"),
+    .package(url: "https://pubgi.sandpod.ir/chat/ios/additive", from: "1.2.4"),
+    .package(url: "https://pubgi.sandpod.ir/chat/ios/mocks", from: "1.2.5"),
     .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
 ]
 
@@ -24,7 +24,7 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [
         .iOS(.v10),
-        .macOS(.v12),
+        .macOS(.v10_13),
         .macCatalyst(.v13),
     ],
     products: [
@@ -32,13 +32,13 @@ let package = Package(
             name: "ChatCache",
             targets: ["ChatCache"]),
     ],
-    dependencies: useLocalDependeny ? local : remote,
+    dependencies: useLocalDependency ? local : remote,
     targets: [
         .target(
             name: "ChatCache",
             dependencies: [
-                .product(name: "Additive", package: useLocalDependeny ? "Additive" : "additive"),
-                .product(name: "ChatModels", package: useLocalDependeny ? "ChatModels" : "chat-models"),
+                .product(name: "Additive", package: useLocalDependency ? "Additive" : "additive"),
+                .product(name: "ChatModels", package: useLocalDependency ? "ChatModels" : "chat-models"),
             ],
             resources: [.process("Resources")]
         ),
@@ -46,9 +46,9 @@ let package = Package(
             name: "ChatCacheTests",
             dependencies: [
                 "ChatCache",
-                .product(name: "Additive", package: useLocalDependeny ? "Additive" : "additive"),
-                .product(name: "ChatModels", package: useLocalDependeny ? "ChatModels" : "chat-models"),
-                .product(name: "Mocks", package: useLocalDependeny ? "Mocks" : "mocks"),
+                .product(name: "Additive", package: useLocalDependency ? "Additive" : "additive"),
+                .product(name: "ChatModels", package: useLocalDependency ? "ChatModels" : "chat-models"),
+                .product(name: "Mocks", package: useLocalDependency ? "Mocks" : "mocks"),
             ]
         ),
     ]

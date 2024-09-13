@@ -77,8 +77,8 @@ public final class PersistentManager: PersistentManagerProtocol {
         let storeCordinator = container?.persistentStoreCoordinator
         guard let store = storeCordinator?.persistentStores.first, let url = store.url else { return }
         do {
-            if #available(iOS 15.0, *) {
-                try storeCordinator?.destroyPersistentStore(at: url, type: .sqlite)
+            if #available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *) {
+                    try storeCordinator?.destroyPersistentStore(at: url, type: .sqlite)
             } else {
                 try storeCordinator?.destroyPersistentStore(at: url, ofType: NSSQLiteStoreType)
             }
